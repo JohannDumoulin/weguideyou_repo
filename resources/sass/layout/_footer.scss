@@ -15,13 +15,13 @@ footer {
 	width: 100%;
 
 	#top {
-		height: 105px; 
-		background-color: $color-1;
+		height: 105px;
+		background-color: $deepBlue;
 		clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
 	}
 
 	#content {
-		background-color: $color-1;
+		background-color: $deepBlue;
 	}
 
 	h2 {
@@ -31,7 +31,7 @@ footer {
 	content {
 		display: flex;
 		align-items: center;
-		padding-bottom: 100px;	
+		padding-bottom: 100px;
 
 		div {
 			margin: auto;
