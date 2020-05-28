@@ -7,12 +7,17 @@
     <meta name="author" content="Gwendal Lefort, Johann Dumoulin,Thomas Ghignon">
     <title>@yield('title')</title>
 
+
     @stack('style')
 </head>
 <body data-content="@yield('attribute')">
     @include('layout.nav')
 
     @yield('content')
+
+    @include('layout.footer')
+
+    @include('layout.modalProfil')
 
     @stack('script')
 </body>
