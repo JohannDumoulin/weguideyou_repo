@@ -11,8 +11,6 @@
 
 @section('content')
 
-
-
 @endsection
 
 @push('script')

@@ -191,6 +191,71 @@ header {
   background-color: green;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+footer {
+  margin-top: 500px;
+  color: white;
+  text-align: center;
+  width: 98vw;
+}
+
+footer #top {
+  height: 100px;
+  background-color: #29ABE2;
+  -webkit-clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
+          clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
+}
+
+footer #content {
+  background-color: #29ABE2;
+}
+
+footer h2 {
+  padding: 100px;
+}
+
+footer content {
+  display: flex;
+  align-items: center;
+  padding-bottom: 100px;
+}
+
+footer content div {
+  margin: auto;
+  text-align: left;
+}
+
+footer content a {
+  display: block;
+  padding: 5px;
+  opacity: 0.75;
+  font-size: 15px;
+}
+
+footer content a:hover {
+  opacity: 1;
+}
+
+footer content h3 {
+  padding: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+}
+
+footer content #reseaux {
+  display: flex;
+}
+
+footer content #reseaux i {
+  font-size: 25px;
+  padding: 5px;
+}
+
 body[data-content=home] {
   background: #FFFFFF;
 }
