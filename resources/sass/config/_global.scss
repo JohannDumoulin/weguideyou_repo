@@ -1,6 +1,22 @@
+body{
+    margin: 0;
+    background: $background;
+}
+
 .wrap{
     max-width: 1440px;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 145px;
+    padding: 0 100px;
+}
+
+h2{
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 3em;
+}
+
+p{
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 1em;
 }

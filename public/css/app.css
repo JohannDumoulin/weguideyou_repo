@@ -135,11 +135,27 @@ table {
   border-spacing: 0;
 }
 
+body {
+  margin: 0;
+  background: #FFFFFF;
+}
+
 .wrap {
   max-width: 1440px;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 145px;
+  padding: 0 100px;
+}
+
+h2 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+}
+
+p {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1em;
 }
 
 nav {
@@ -363,6 +379,110 @@ body[data-content=home] {
 }
 
 body[data-content=homeIndividual] {
-  background: #FFFFFF;
+  background-color: #FFFFFF;
+  height: 100vh;
+  overflow-x: hidden;
+  /*.icon {
+      width: 100%;
+  }*/
+}
+
+body[data-content=homeIndividual] .topPro {
+  padding: 50px 0;
+}
+
+body[data-content=homeIndividual] .topPro h2 {
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+body[data-content=homeIndividual] .topPro h2 span {
+  color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topPro .wrap p {
+  text-align: justify;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*margin: 0 30px 0 30px;*/
+  width: calc(80%/3);
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > * {
+  margin-bottom: 10px;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50% 50%;
+  background-color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment {
+  position: relative;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg {
+  position: absolute;
+  width: 40px;
+  color: #29ABE2;
+  opacity: 0.1;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg:first-child {
+  top: -20px;
+  left: -20px;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg:last-child {
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(180deg);
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > p {
+  font-weight: 500;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > p span {
+  color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topSport {
+  background-color: #29ABE2;
+  padding: 50px 0;
+}
+
+body[data-content=homeIndividual] .topSport .wrap h2 {
+  color: #FFFFFF;
+  margin-bottom: 50px;
+}
+
+body[data-content=homeIndividual] .topSport .wrap h2 span {
+  color: #000000;
+}
+
+body[data-content=homeIndividual] .topSport .wrap > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+body[data-content=homeIndividual] .topSport .wrap > div > div {
+  width: calc(90%/4);
+  height: 350px;
+  background-color: #FFFFFF;
+  border-radius: 9% 9%;
+  cursor: pointer;
 }
 
