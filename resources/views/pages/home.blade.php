@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 @endpush
 
+@section('attribute', 'home')
+
 @section('content')
 
 @endsection
