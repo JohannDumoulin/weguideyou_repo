@@ -10,7 +10,7 @@
     @stack('style')
 </head>
 <body data-content="@yield('attribute')">
-    {{--@include('layout.nav')--}}
+    @include('layout.nav')
 
     @yield('content')
 
