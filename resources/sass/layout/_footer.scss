@@ -1,4 +1,7 @@
 
+body {
+	margin: 0;
+}
 
 a {
 	text-decoration: none;
@@ -9,10 +12,10 @@ footer {
 	margin-top: 500px;
 	color: white;
 	text-align: center;
-	width: 98vw;
+	width: 100%;
 
 	#top {
-		height: 100px; 
+		height: 105px; 
 		background-color: $color-1;
 		clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
 	}
@@ -35,9 +38,9 @@ footer {
 			text-align: left;
 		}
 
-		a {
+		a, span {
 			display: block;
-			padding: 5px;
+			padding: 8px 5px;
 			opacity: .75;
 			font-size: 15px;
 		}

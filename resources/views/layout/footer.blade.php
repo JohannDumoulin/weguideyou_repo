@@ -20,8 +20,8 @@
 			<div>
 				<h3>Nous Contacter</h3>
 				<a href="">Messagerie</a>
-				<a href="">contact@we-guide-you.com</a>
-				<a href="">07 68 06 12 95</a>
+				<span>contact@we-guide-you.com</span>
+				<span>07 68 06 12 95</span>
 				<h3>Compte</h3>
 				<a href="">Connexion</a>
 				<a href="">Inscription</a>

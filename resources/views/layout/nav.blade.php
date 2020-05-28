@@ -9,7 +9,7 @@
 			</span>
 			<span>Poster une annonce</span>
 			<span>Favoris</span>
-			<span>
+			<span class="toggleModalProfil">
 				<div class="img"></div>
 				<p>Megan</p>
 				<i class="fa fa-chevron-down arrow"></i>
