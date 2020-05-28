@@ -5,6 +5,13 @@
 @import "config/font-face";
 @import "config/variables";
 @import "config/global";
+
+//layout
+@import "layout/nav";
+@import "layout/header";
+
+//components
+@import "components/buttonLink";
  
 //layout
 @import "layout/nav";
@@ -15,4 +22,3 @@
 //pages
 @import "pages/home";
 @import "pages/homeIndividual";
-//
