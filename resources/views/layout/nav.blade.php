@@ -1,6 +1,6 @@
 
 <nav>
-	<div>
+	<div class="wrap">
 		<span id="logo">We Guide You</span>
 		<section>
 			<span>
