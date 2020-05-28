@@ -188,9 +188,13 @@ body[data-content=homeIndividual] {
   }*/
 }
 
+body[data-content=homeIndividual] .topPro {
+  padding: 50px 0;
+}
+
 body[data-content=homeIndividual] .topPro h2 {
   color: #000000;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 body[data-content=homeIndividual] .topPro h2 span {
@@ -254,5 +258,32 @@ body[data-content=homeIndividual] .topPro .wrap > div > div > p {
 
 body[data-content=homeIndividual] .topPro .wrap > div > div > p span {
   color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topSport {
+  background-color: #29ABE2;
+  padding: 50px 0;
+}
+
+body[data-content=homeIndividual] .topSport .wrap h2 {
+  color: #FFFFFF;
+  margin-bottom: 50px;
+}
+
+body[data-content=homeIndividual] .topSport .wrap h2 span {
+  color: #000000;
+}
+
+body[data-content=homeIndividual] .topSport .wrap > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+body[data-content=homeIndividual] .topSport .wrap > div > div {
+  width: calc(90%/4);
+  height: 350px;
+  background-color: #FFFFFF;
+  border-radius: 9% 9%;
+  cursor: pointer;
 }
 

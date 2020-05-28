@@ -6,9 +6,11 @@ body[data-content="homeIndividual"]{
 
     .topPro{
 
+        padding: 50px 0;
+
         h2{
             color: #000000;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
 
             span{
                 color: $deepBlue;
@@ -76,6 +78,41 @@ body[data-content="homeIndividual"]{
             }
         }
 
+    }
+
+    .topSport{
+        background-color: $deepBlue;
+
+        padding: 50px 0;
+
+        .wrap{
+
+            h2{
+                color: #FFFFFF;
+                margin-bottom: 50px;
+
+                span{
+                    color: #000000;
+                }
+            }
+
+            >div{
+
+                display: flex;
+                justify-content: space-between;
+
+                >div{
+                    width: calc(90%/4);
+                    height: 350px;
+
+                    background-color: #FFFFFF;
+
+                    border-radius: 9% 9%;
+
+                    cursor: pointer;
+                }
+            }
+        }
     }
 
     /*.icon {

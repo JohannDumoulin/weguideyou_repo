@@ -54,12 +54,14 @@
         </div>
     </div>
     <div class="topSport">
-        <h2>Le top des <span>sport</span> les plus <span>consultés</span></h2>
-        <div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="wrap">
+            <h2>Le top des <span>sport</span> les plus <span>consultés</span></h2>
+            <div>
+                <div><img src="" alt=""></div>
+                <div><img src="" alt=""></div>
+                <div><img src="" alt=""></div>
+                <div><img src="" alt=""></div>
+            </div>
         </div>
     </div>
 
