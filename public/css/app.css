@@ -180,7 +180,7 @@ body[data-content=home] {
 }
 
 body[data-content=homeIndividual] {
-  background: #636e72;
+  background-color: #FFFFFF;
   height: 100vh;
   overflow-x: hidden;
   /*.icon {
@@ -189,15 +189,21 @@ body[data-content=homeIndividual] {
 }
 
 body[data-content=homeIndividual] .topPro h2 {
-  color: #FFFFFF;
+  color: #000000;
+  margin-bottom: 40px;
 }
 
 body[data-content=homeIndividual] .topPro h2 span {
   color: #29ABE2;
 }
 
+body[data-content=homeIndividual] .topPro .wrap p {
+  text-align: justify;
+}
+
 body[data-content=homeIndividual] .topPro .wrap > div {
   display: flex;
+  justify-content: space-around;
 }
 
 body[data-content=homeIndividual] .topPro .wrap > div > div {
@@ -205,6 +211,12 @@ body[data-content=homeIndividual] .topPro .wrap > div > div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /*margin: 0 30px 0 30px;*/
+  width: calc(80%/3);
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > * {
+  margin-bottom: 10px;
 }
 
 body[data-content=homeIndividual] .topPro .wrap > div > div .img {
@@ -212,5 +224,35 @@ body[data-content=homeIndividual] .topPro .wrap > div > div .img {
   height: 150px;
   border-radius: 50% 50%;
   background-color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment {
+  position: relative;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg {
+  position: absolute;
+  width: 40px;
+  color: #29ABE2;
+  opacity: 0.1;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg:first-child {
+  top: -20px;
+  left: -20px;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg:last-child {
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(180deg);
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > p {
+  font-weight: 500;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > p span {
+  color: #29ABE2;
 }
 
