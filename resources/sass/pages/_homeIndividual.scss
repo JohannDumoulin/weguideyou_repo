@@ -1,3 +1,17 @@
 body[data-content="homeIndividual"]{
-    background: #FFFFFF;
+    background: #636e72;
+    height: 100vh;
+
+    overflow-x: hidden;
+
+    .topPro{
+        h2{
+            color: #FFFFFF;
+
+        }
+    }
+
+    /*.icon {
+        width: 100%;
+    }*/
 }

@@ -144,7 +144,13 @@ body {
   max-width: 1440px;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 145px;
+  padding: 0 100px;
+}
+
+h2 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 3em;
 }
 
 /*div{
@@ -169,6 +175,15 @@ body[data-content=home] {
 }
 
 body[data-content=homeIndividual] {
-  background: #FFFFFF;
+  background: #636e72;
+  height: 100vh;
+  overflow-x: hidden;
+  /*.icon {
+      width: 100%;
+  }*/
+}
+
+body[data-content=homeIndividual] .topPro h2 {
+  color: #FFFFFF;
 }
 
