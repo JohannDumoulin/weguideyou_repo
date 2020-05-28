@@ -5,10 +5,36 @@ body[data-content="homeIndividual"]{
     overflow-x: hidden;
 
     .topPro{
+
         h2{
             color: #FFFFFF;
 
+            span{
+                color: $deepBlue;
+            }
         }
+
+        .wrap{
+            >div{
+                display: flex;
+
+                >div{
+                    display: flex;
+                    flex-direction: column;
+
+                    justify-content: center;
+                    align-items: center;
+
+                    .img{
+                        width: 150px;
+                        height: 150px;
+                        border-radius: 50% 50%;
+                        background-color: $deepBlue;
+                    }
+                }
+            }
+        }
+
     }
 
     /*.icon {

@@ -14,27 +14,29 @@
         <div class="wrap">
             <h2>Redécouvrez le <span>sport</span> aux côtés de <span>professionnels qualifiés.</span></h2>
             <div>
-                <div class="img"></div>
-                <p>Lisa</p>
-                <p><span></span></p>
                 <div>
-                    <p>Est nihil videre haec est permittunt haec pendentem memorabile cum dimicationum mirum ad cum infuso innumeram plebem similiaque ardore cum...</p>
+                    <div class="img"></div>
+                    <p>Lisa</p>
+                    <p>Moniteur de ski - <span>Val thorens</span></p>
+                    <div>
+                        <p>Est nihil videre haec est permittunt haec pendentem memorabile cum dimicationum mirum ad cum infuso innumeram plebem similiaque ardore cum...</p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="img"></div>
-                <p>Claire</p>
-                <p><span></span></p>
                 <div>
-                    <p>Est nihil videre haec est permittunt haec pendentem memorabile cum dimicationum mirum ad cum infuso innumeram plebem similiaque ardore cum...</p>
+                    <div class="img"></div>
+                    <p>Claire</p>
+                    <p>Moniteur de ski - <span>Val thorens</span></p>
+                    <div>
+                        <p>Est nihil videre haec est permittunt haec pendentem memorabile cum dimicationum mirum ad cum infuso innumeram plebem similiaque ardore cum...</p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="img"></div>
-                <p>Paul</p>
-                <p><span></span></p>
                 <div>
-                    <p>Est nihil videre haec est permittunt haec pendentem memorabile cum dimicationum mirum ad cum infuso innumeram plebem similiaque ardore cum...</p>
+                    <div class="img"></div>
+                    <p>Paul</p>
+                    <p>Moniteur de ski - <span>Val thorens</span></p>
+                    <div>
+                        <p>Est nihil videre haec est permittunt haec pendentem memorabile cum dimicationum mirum ad cum infuso innumeram plebem similiaque ardore cum...</p>
+                    </div>
                 </div>
             </div>
         </div>

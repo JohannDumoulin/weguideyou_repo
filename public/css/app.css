@@ -153,6 +153,11 @@ h2 {
   font-size: 3em;
 }
 
+p {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1em;
+}
+
 /*div{
     background-color: #000;
 
@@ -185,5 +190,27 @@ body[data-content=homeIndividual] {
 
 body[data-content=homeIndividual] .topPro h2 {
   color: #FFFFFF;
+}
+
+body[data-content=homeIndividual] .topPro h2 span {
+  color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div {
+  display: flex;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50% 50%;
+  background-color: #29ABE2;
 }
 
