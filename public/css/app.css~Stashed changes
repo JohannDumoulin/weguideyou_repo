@@ -1,0 +1,320 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap);/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  margin: 0;
+  background: #FFFFFF;
+}
+
+.wrap {
+  max-width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 100px;
+}
+
+h2 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+}
+
+p {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1em;
+}
+
+a {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+}
+
+/*div{
+    background-color: #000;
+
+    h1{
+        color: #0b2e13;
+
+    }
+
+    .maClass{
+        border: 1px solid red;
+    }
+}*/
+
+header {
+  background-color: green;
+}
+
+.buttonLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 200px;
+  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
+  text-decoration: none;
+  color: #FFFFFF;
+  border-radius: 200px 200px 200px 200px;
+  -moz-border-radius: 200px 200px 200px 200px;
+  -webkit-border-radius: 200px 200px 200px 200px;
+  border: 0px solid #000000;
+}
+
+body[data-content=home] {
+  background: #FFFFFF;
+}
+
+body[data-content=homeIndividual] {
+  background-color: #FFFFFF;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+body[data-content=homeIndividual] .topPro {
+  padding: 50px 0;
+}
+
+body[data-content=homeIndividual] .topPro h2 {
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+body[data-content=homeIndividual] .topPro h2 span {
+  color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topPro .wrap p {
+  text-align: justify;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*margin: 0 30px 0 30px;*/
+  width: calc(80%/3);
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > * {
+  margin-bottom: 10px;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50% 50%;
+  background-color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment {
+  position: relative;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg {
+  position: absolute;
+  width: 40px;
+  color: #29ABE2;
+  opacity: 0.1;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg:first-child {
+  top: -20px;
+  left: -20px;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div .comment svg:last-child {
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(180deg);
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > p {
+  font-weight: 500;
+}
+
+body[data-content=homeIndividual] .topPro .wrap > div > div > p span {
+  color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .topSport {
+  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
+  padding: 50px 0;
+}
+
+body[data-content=homeIndividual] .topSport .wrap h2 {
+  color: #FFFFFF;
+  margin-bottom: 50px;
+}
+
+body[data-content=homeIndividual] .topSport .wrap h2 span {
+  color: #000000;
+}
+
+body[data-content=homeIndividual] .topSport .wrap > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+body[data-content=homeIndividual] .topSport .wrap > div > div {
+  width: calc(90%/4);
+  height: 350px;
+  background-color: #FFFFFF;
+  border-radius: 9% 9%;
+  cursor: pointer;
+}
+
+body[data-content=homeIndividual] .catchBanner {
+  background-color: grey;
+  padding: 50px 0;
+}
+
+body[data-content=homeIndividual] .catchBanner .wrap h2 {
+  color: #FFFFFF;
+  margin-bottom: 50px;
+}
+
+body[data-content=homeIndividual] .catchBanner .wrap h2 span {
+  color: #29ABE2;
+}
+
