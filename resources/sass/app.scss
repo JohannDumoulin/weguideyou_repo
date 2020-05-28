@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 //libs
 @import "libs/cssReset";
 
@@ -14,9 +12,13 @@
 
 //components
 @import "components/buttonLink";
+ 
+//layout
+@import "layout/nav";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/modalProfil";
 
 //pages
 @import "pages/home";
 @import "pages/homeIndividual";
->>>>>>> Stashed changes
-//

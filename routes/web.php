@@ -14,5 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages/home');
 });
+
+Route::get('/particulier', function () {
+    return view('pages/homeIndividual');
+});
+
+
+
+
+// Temporary route
+
