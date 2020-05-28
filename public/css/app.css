@@ -135,6 +135,13 @@ table {
   border-spacing: 0;
 }
 
+.wrap {
+  max-width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 145px;
+}
+
 /*div{
     background-color: #000;
 
@@ -153,6 +160,10 @@ header {
 }
 
 body[data-content=home] {
+  background: #FFFFFF;
+}
+
+body[data-content=homeIndividual] {
   background: #FFFFFF;
 }
 
