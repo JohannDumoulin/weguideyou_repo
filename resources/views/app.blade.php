@@ -10,7 +10,7 @@
     @stack('style')
 </head>
 <body>
-    @include('layout.nav')
+    {{--@include('layout.nav')--}}
 
     @yield('content')
 
