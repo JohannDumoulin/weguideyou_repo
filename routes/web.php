@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('pages/home');
 });
 
+Route::get('/particulier', function () {
+    return view('pages/homeIndividual');
+});
+
 
 
 
