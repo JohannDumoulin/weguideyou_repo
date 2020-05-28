@@ -6,8 +6,14 @@
     <meta name="keywords" content="HTML,CSS,PHP">
     <meta name="author" content="Gwendal Lefort, Johann Dumoulin,Thomas Ghignon">
     <title>@yield('title')</title>
+
+    @stack('style')
 </head>
 <body>
+    {{--@include('layout.nav')--}}
 
+    @yield('content')
+
+    @stack('script')
 </body>
 </html>

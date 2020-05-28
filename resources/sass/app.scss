@@ -1,1 +1,15 @@
+//libs
+@import "libs/cssReset";
+
+//config
+@import "config/font-face";
+@import "config/variables";
+@import "config/global";
+
+//layout
+@import "layout/nav";
+@import "layout/header";
+
+//pages
+@import "pages/home";
 //
