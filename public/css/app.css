@@ -135,6 +135,11 @@ table {
   border-spacing: 0;
 }
 
+body {
+  margin: 0;
+  background: #FFFFFF;
+}
+
 .wrap {
   max-width: 1440px;
   width: 100%;
