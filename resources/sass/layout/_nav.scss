@@ -1,13 +1,46 @@
-//exemple scss
-/*div{
-    background-color: #000;
 
-    h1{
-        color: #0b2e13;
+nav {
+	color: white;
+	background-color: $color-1;
+	text-align: center;
+}
 
-    }
+nav div {
+	display: flex;
 
-    .maClass{
-        border: 1px solid red;
-    }
-}*/
+	#logo {
+		margin: 0;
+	}
+
+	section {
+		display: flex;
+		margin: 0 0 0 auto;
+	}
+
+	span {
+		display: flex;
+		padding: 30px;
+		align-items: center;
+	}
+
+	section span:hover {
+		opacity: .7;
+		cursor: pointer;
+	}
+
+	.arrow {
+		font-size: 10px;
+		padding: 5px 0 0 6px;
+	}
+
+	.img {
+		height: 35px;
+		width: 35px;
+		border-radius: 50%;
+		margin-right: 8px;
+
+		background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+		background-size: cover;
+		background-position: center;
+	}
+}

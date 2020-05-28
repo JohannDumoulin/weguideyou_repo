@@ -142,18 +142,50 @@ table {
   padding: 0 145px;
 }
 
-/*div{
-    background-color: #000;
+nav {
+  color: white;
+  background-color: #29ABE2;
+  text-align: center;
+}
 
-    h1{
-        color: #0b2e13;
+nav div {
+  display: flex;
+}
 
-    }
+nav div #logo {
+  margin: 0;
+}
 
-    .maClass{
-        border: 1px solid red;
-    }
-}*/
+nav div section {
+  display: flex;
+  margin: 0 0 0 auto;
+}
+
+nav div span {
+  display: flex;
+  padding: 30px;
+  align-items: center;
+}
+
+nav div section span:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+nav div .arrow {
+  font-size: 10px;
+  padding: 5px 0 0 6px;
+}
+
+nav div .img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+  background-size: cover;
+  background-position: center;
+}
 
 header {
   background-color: green;

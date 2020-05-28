@@ -7,6 +7,7 @@
     <meta name="author" content="Gwendal Lefort, Johann Dumoulin,Thomas Ghignon">
     <title>@yield('title')</title>
 
+
     @stack('style')
 </head>
 <body data-content="@yield('attribute')">
