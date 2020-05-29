@@ -21,6 +21,10 @@ Route::get('/particulier', function () {
     return view('pages/homeIndividual');
 });
 
+Route::get('/annonces', function() {
+	return view('pages/advertisement');
+});
+
 
 
 
