@@ -21,6 +21,7 @@
 
     @include('layout.footer')
 
+
 <!-- Temporary -->
     @if (\Request::is('/'))
       {{--@include('layout.connexion')--}}
