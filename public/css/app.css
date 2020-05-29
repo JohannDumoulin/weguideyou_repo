@@ -191,6 +191,70 @@ label {
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.09);
 }
 
+.weGuideNews {
+  padding: 50px 0;
+  overflow: hidden;
+}
+
+.weGuideNews h1 {
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+.weGuideNews h1 span {
+  color: #29ABE2;
+}
+
+.weGuideNews h2 {
+  margin-bottom: 20px;
+}
+
+.weGuideNews p {
+  text-align: justify;
+}
+
+.weGuideNews .wrap > div {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.weGuideNews .wrap > div svg {
+  position: absolute;
+  color: #29ABE2;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.weGuideNews .wrap > div svg:nth-of-type(1) {
+  width: 400px;
+  top: -180px;
+  right: -100px;
+  transform: rotate(40deg);
+}
+
+.weGuideNews .wrap > div svg:nth-of-type(2) {
+  width: 300px;
+  top: -10px;
+  left: -100px;
+  transform: rotate(-130deg);
+}
+
+.weGuideNews .wrap > div > div {
+  cursor: pointer;
+  width: calc(80%/3);
+}
+
+.weGuideNews .wrap > div > div > div {
+  width: 100%;
+}
+
+.weGuideNews .wrap > div > div > div img {
+  width: 100%;
+  border-radius: 2% 2%;
+  margin-bottom: 20px;
+}
+
 nav {
   color: #FFFFFF;
   text-align: center;
@@ -610,6 +674,10 @@ body[data-content=home] .recruitingPro .wrap div:last-child > div {
   width: 100%;
 }
 
+body[data-content=home] .findJob {
+  margin-bottom: 50px;
+}
+
 body[data-content=home] .findJob h1 {
   margin-bottom: 50px;
 }
@@ -640,6 +708,33 @@ body[data-content=home] .findJob .wrap div:first-child > div {
 
 body[data-content=home] .findJob .wrap div:last-child {
   width: 35%;
+}
+
+body[data-content=home] .catchBanner {
+  position: relative;
+  overflow: hidden;
+}
+
+body[data-content=home] .catchBanner .backgroundBanner {
+  width: 100%;
+  transform: scaleX(-1);
+  position: absolute;
+  z-index: -1;
+  top: -100px;
+}
+
+body[data-content=home] .catchBanner .wrap {
+  margin: 250px 0 100px 0;
+}
+
+body[data-content=home] .catchBanner .wrap h1 {
+  color: #FFFFFF;
+  margin-bottom: 50px;
+  line-height: 70px;
+}
+
+body[data-content=home] .catchBanner .wrap h1 span {
+  color: #29ABE2;
 }
 
 body[data-content=homeIndividual] {
@@ -784,69 +879,5 @@ body[data-content=homeIndividual] .catchBanner .wrap h1 {
 
 body[data-content=homeIndividual] .catchBanner .wrap h1 span {
   color: #29ABE2;
-}
-
-body[data-content=homeIndividual] .weGuideNews {
-  padding: 50px 0;
-  overflow: hidden;
-}
-
-body[data-content=homeIndividual] .weGuideNews h1 {
-  color: #000000;
-  margin-bottom: 50px;
-}
-
-body[data-content=homeIndividual] .weGuideNews h1 span {
-  color: #29ABE2;
-}
-
-body[data-content=homeIndividual] .weGuideNews h2 {
-  margin-bottom: 20px;
-}
-
-body[data-content=homeIndividual] .weGuideNews p {
-  text-align: justify;
-}
-
-body[data-content=homeIndividual] .weGuideNews .wrap > div {
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-}
-
-body[data-content=homeIndividual] .weGuideNews .wrap > div svg {
-  position: absolute;
-  color: #29ABE2;
-  opacity: 0.1;
-  z-index: -1;
-}
-
-body[data-content=homeIndividual] .weGuideNews .wrap > div svg:nth-of-type(1) {
-  width: 400px;
-  top: -180px;
-  right: -100px;
-  transform: rotate(40deg);
-}
-
-body[data-content=homeIndividual] .weGuideNews .wrap > div svg:nth-of-type(2) {
-  width: 300px;
-  top: -10px;
-  left: -100px;
-  transform: rotate(-130deg);
-}
-
-body[data-content=homeIndividual] .weGuideNews .wrap > div > div {
-  cursor: pointer;
-  width: calc(80%/3);
-}
-
-body[data-content=homeIndividual] .weGuideNews .wrap > div > div > div {
-  width: 100%;
-}
-
-body[data-content=homeIndividual] .weGuideNews .wrap > div > div > div img {
-  width: 100%;
-  border-radius: 2% 2%;
-  margin-bottom: 20px;
 }
 

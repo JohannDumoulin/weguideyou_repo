@@ -33,7 +33,14 @@
             <div><img src="{{asset('/img/dmitrii-vaccinium-ByUAo3RpA6c-unsplash.jpg')}}" alt=""></div>
         </div>
     </section>
-
+    <section class="catchBanner">
+        <img class="backgroundBanner" src="{{asset('/img/christopher-campbell-kFCdfLbu6zA-unsplash.jpg')}}" alt="Professionnel fitness">
+        <div class="wrap">
+            <h1>Partagez votre <span>passion</span> en proposant vos cours en toute <span>sécurité</span> et <span>gratuitement.</span></h1>
+            @include('components.buttonLink', ['link' => '#'], ['text' => 'Proposer un cours'])
+        </div>
+    </section>
+    @include('components.weGuideNews')
 @endsection
 
 @push('script')
