@@ -11,9 +11,9 @@
 
 @section('content')
 
-    <div class="topPro">
+    <section class="topPro">
         <div class="wrap">
-            <h2>Redécouvrez le <span>sport</span> aux côtés de <span>professionnels qualifiés.</span></h2>
+            <h1>Redécouvrez le <span>sport</span> aux côtés de <span>professionnels qualifiés.</span></h1>
             <div>
                 <div>
                     <div class="img">
@@ -53,10 +53,10 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="topSport">
+    </section>
+    <section class="topSport">
         <div class="wrap">
-            <h2>Le top des <span>sport</span> les plus <span>consultés</span></h2>
+            <h1>Le top des <span>sport</span> les plus <span>consultés</span></h1>
             <div>
                 <div><img src="" alt=""></div>
                 <div><img src="" alt=""></div>
@@ -64,13 +64,13 @@
                 <div><img src="" alt=""></div>
             </div>
         </div>
-    </div>
-    <div class="catchBanner">
+    </section>
+    <section class="catchBanner">
         <div class="wrap">
-            <h2>Rejoignez <span>WeGuideYou</span> et réservez vos cours en toute <span>sécurité</span> et <span>gratuitement.</span></h2>
+            <h1>Rejoignez <span>WeGuideYou</span> et réservez vos cours en toute <span>sécurité</span> et <span>gratuitement.</span></h1>
             @include('components.buttonLink', ['link' => '#'], ['text' => 'Trouver un cours'])
         </div>
-    </div>
+    </section>
 @endsection
 
 @push('script')
