@@ -192,7 +192,7 @@ label {
 }
 
 nav {
-  color: white;
+  color: #FFFFFF;
   text-align: center;
   position: absolute;
   z-index: 900;
@@ -200,43 +200,41 @@ nav {
   padding: 25px 0;
 }
 
-nav div {
+nav .wrap {
   display: flex;
   justify-content: space-between;
 }
 
-nav div .logo {
-  margin: 0;
-}
-
-nav div .section {
-  display: flex;
-}
-
-nav div .section > * {
-  margin-left: 25px;
-}
-
-nav div a {
+nav .wrap > div {
   display: flex;
   align-items: center;
 }
 
-nav div .buttonLink {
-  padding: 0;
+nav .wrap > div a {
+  display: flex;
+  align-items: center;
 }
 
-nav div .section a:hover {
+nav .wrap .navLogo img {
+  width: 10%;
+}
+
+nav .wrap .navMain > * {
+  margin-left: 25px;
+  white-space: nowrap;
+}
+
+nav .wrap .section a:hover {
   color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
 }
 
-nav div .arrow {
+nav .wrap .arrow {
   font-size: 10px;
   padding: 5px 0 0 6px;
 }
 
-nav div .img {
+nav .wrap .img {
   height: 35px;
   width: 35px;
   border-radius: 50%;

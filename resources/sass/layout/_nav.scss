@@ -1,37 +1,36 @@
-
 nav {
-	color: white;
+	color: #FFFFFF;
 	text-align: center;
     position: absolute;
     z-index: 900;
-
     width: 100%;
-
     padding: 25px 0;
 
-    div {
+    .wrap {
         display: flex;
         justify-content: space-between;
 
-        .logo {
-            margin: 0;
-        }
-
-        .section {
+        >div{
             display: flex;
-
-            >*{
-                margin-left: 25px;
+            align-items: center;
+            a {
+                display: flex;
+                align-items: center;
             }
         }
 
-        a {
-            display: flex;
-            align-items: center;
+        .navLogo {
+
+            img{
+                width: 10%;
+            }
         }
 
-        .buttonLink {
-            padding: 0;
+        .navMain {
+            >*{
+                margin-left: 25px;
+                white-space: nowrap;
+            }
         }
 
         .section a:hover {
