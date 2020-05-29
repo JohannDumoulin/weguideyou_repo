@@ -3,9 +3,9 @@
 	<div id="top"></div>
 	<div id="content">
 
-		<section>
+		<div>
 			<h2>We Guide You</h2>
-		</section>
+		</div>
 
 		<content>
 

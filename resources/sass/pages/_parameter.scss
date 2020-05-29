@@ -1,0 +1,291 @@
+html {
+	scroll-behavior: smooth;
+}
+
+body[data-content="parameter"]{
+    background: $background;
+    
+    .content {
+    	display: flex;
+    }
+
+    h3 {
+		font-size: 150%;
+		font-weight: bold;
+	}
+
+    input {
+        border: none;
+        border-bottom: 1px solid lightgrey;
+        outline: none;
+        padding: 10px;
+        padding-left: 0;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+	section {
+    	padding: 60px 0;
+    	border-bottom: 1px solid black;
+	}
+
+
+    .password, .payement {	
+
+	    .wrap {
+	    	display: flex;
+
+	    	.inputs {
+	    		width: 40%;
+	    		margin: 0;
+
+	    		.mdp {
+	    			margin-top: 50px;
+	    		}
+	    	}
+
+		    div {
+		    	margin: auto;
+
+		    	label {
+		    		display: block;
+		    		margin: 0 0 15px 0;
+		    	}
+		    }
+	    }
+    }
+
+    .notif {
+
+    	.wrap {
+
+    		div {
+    			display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				justify-items: center;
+
+    			:nth-child(1) {
+    				grid-column: 1;
+    			}	
+
+    			:nth-child(2) {
+    				grid-column: 2;
+    			}
+
+    			:nth-child(3) {
+    				grid-column: 3;
+    			}
+    		}
+
+    		.titles {
+    			padding: 0 0 30px 0;
+
+    			:first-child {
+    				width: 100%;
+    			}
+    		}
+
+    		.elem {
+    			padding: 20px 0;
+
+    			p {
+    				width: 100%;
+    			}
+
+    			input {
+    				padding: 50px;
+    			}
+
+    			input:hover {
+    				cursor: pointer;
+    			}
+    		}
+    	}
+    }
+
+    .alerte {
+
+    	h3 {
+    		margin-bottom: 20px;
+    	}
+
+    	.elem {
+    		display: flex;
+    		align-items: center;
+    		padding: 10px 0;
+
+    		span:before {
+    			content: "-";
+    			margin: 0 10px;
+    		}
+
+    		.buttonSup {
+    			border: 2px solid red;
+    			border-radius: 20px;
+    			color: red;
+    			font-weight: bold;
+    			padding: 5px 10px 7px 10px;
+    			margin-left: 20px;
+    		}
+
+    		.buttonSup:hover {
+    			cursor: pointer;
+    		}
+    	}
+
+    	#titreCritere {
+    		margin-top: 30px;
+    		font-size: 120%;
+    	}
+
+    	.criteres {
+    		display: flex;
+
+    		.inputs {
+    			width: 40%;
+    		}
+
+    		input {
+    			margin-bottom: 20px;
+    		}
+
+    		.btn {
+    			margin: auto;
+    		}
+    	}
+
+    }
+
+    .payement {
+
+    	.wrap {
+    		display: block;
+    	}
+
+    	.wrap .content {
+    		display: flex;
+    	}
+
+    	h3 {
+    		margin-bottom: 50px;
+    	}
+
+    	.inputs {
+
+    		div {
+    			margin-top: 30px;
+    		}
+    	}
+    }
+
+    .sup {
+    	border: none;
+    	margin-bottom: 40px;
+
+    	.wrap {
+    		display: flex;
+    	}
+
+		button {
+			margin: auto;
+			background-color: white;
+			border: 2px solid red;
+			border-radius: 20px;
+			color: red;
+			font-weight: 1000;
+			padding: 10px 15px;
+			outline: none;
+		}
+
+		button:hover {
+			cursor: pointer;
+			color: white;
+			background-color: red;
+		}
+    }
+
+
+    /* Menu */
+
+    .menu {
+	    position: -webkit-sticky;
+		position: sticky;
+		top: 20px;
+		height: min-content;
+
+    	a {
+	    	width: auto;
+	    	color: black;
+	    	display: block;
+	    	padding: 20px 60px;
+    	}
+
+    	a:hover {
+	    	opacity: .7;
+	    }
+    }
+
+
+    /* Checkbox */
+	.switch {
+	  position: relative;
+	  display: inline-block;
+	  width: 60px;
+	  height: 34px;
+	  zoom: 0.7;
+	}
+
+	.switch input { 
+	  opacity: 0;
+	  width: 0;
+	  height: 0;
+	}
+
+	.slider {
+	  position: absolute;
+	  cursor: pointer;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background-color: #ccc;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+
+	.slider:before {
+	  position: absolute;
+	  content: "";
+	  height: 26px;
+	  width: 26px;
+	  left: 4px;
+	  bottom: 4px;
+	  background-color: white;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+
+	input:checked + .slider {
+	  background-color: $deepBlue;
+	}
+
+	input:focus + .slider {
+	  box-shadow: 0 0 1px #2196F3;
+	}
+
+	input:checked + .slider:before {
+	  -webkit-transform: translateX(26px);
+	  -ms-transform: translateX(26px);
+	  transform: translateX(26px);
+	}
+
+	.slider.round {
+	  border-radius: 34px;
+	}
+
+	.slider.round:before {
+	  border-radius: 50%;
+	}
+
+}
