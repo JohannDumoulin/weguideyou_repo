@@ -2,16 +2,18 @@ footer {
 	color: white;
 	text-align: center;
 	width: 100%;
+    clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 100%);
+    background: $gradient;
 
-	.footerTop {
+	/*.footerTop {
 		height: 105px;
 		background-color: $deepBlue;
 		clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
-	}
+	}*/
 
-	.footerContent {
-		background-color: $deepBlue;
+	.wrap {
 
+        padding: 150px 0;
         span{
             font-family: "Roboto", Arial, sans-serif;
             font-weight: 700;
@@ -36,7 +38,6 @@ footer {
         >div:nth-of-type(2) {
             display: flex;
             justify-content: center;
-            padding-bottom: 100px;
 
             a {
                 display: block;

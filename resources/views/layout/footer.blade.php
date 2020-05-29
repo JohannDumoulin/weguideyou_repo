@@ -1,7 +1,7 @@
 
 <footer>
 	<div class="footerTop"></div>
-	<div class="footerContent">
+	<div class="wrap">
 		<div>
             <img src="{{asset('img/logo/logoWeGuideYou.png')}}" alt="Logo de l'agence WeGuideYou">
 			<a href="#">We Guide You</a>

@@ -391,20 +391,21 @@ footer {
   color: white;
   text-align: center;
   width: 100%;
+  -webkit-clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 100%);
+  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
+  /*.footerTop {
+  	height: 105px;
+  	background-color: $deepBlue;
+  	clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
+  }*/
 }
 
-footer .footerTop {
-  height: 105px;
-  background-color: #29ABE2;
-  -webkit-clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
-          clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
+footer .wrap {
+  padding: 150px 0;
 }
 
-footer .footerContent {
-  background-color: #29ABE2;
-}
-
-footer .footerContent span {
+footer .wrap span {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 700;
   opacity: 1;
@@ -412,54 +413,53 @@ footer .footerContent span {
   text-transform: uppercase;
 }
 
-footer .footerContent > div:nth-of-type(1) {
+footer .wrap > div:nth-of-type(1) {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 0 50px 0;
 }
 
-footer .footerContent > div:nth-of-type(1) img {
+footer .wrap > div:nth-of-type(1) img {
   width: 10%;
 }
 
-footer .footerContent > div:nth-of-type(1) a {
+footer .wrap > div:nth-of-type(1) a {
   font-size: 2em;
 }
 
-footer .footerContent > div:nth-of-type(2) {
+footer .wrap > div:nth-of-type(2) {
   display: flex;
   justify-content: center;
-  padding-bottom: 100px;
 }
 
-footer .footerContent > div:nth-of-type(2) a {
+footer .wrap > div:nth-of-type(2) a {
   display: block;
   opacity: 0.75;
 }
 
-footer .footerContent > div:nth-of-type(2) a:hover {
+footer .wrap > div:nth-of-type(2) a:hover {
   opacity: 1;
 }
 
-footer .footerContent > div:nth-of-type(2) > div {
+footer .wrap > div:nth-of-type(2) > div {
   text-align: left;
 }
 
-footer .footerContent > div:nth-of-type(2) > div > * {
+footer .wrap > div:nth-of-type(2) > div > * {
   margin: 20px 0;
 }
 
-footer .footerContent > div:nth-of-type(2) div:nth-of-type(2) {
+footer .wrap > div:nth-of-type(2) div:nth-of-type(2) {
   margin: 0 80px;
 }
 
-footer .footerContent > div:nth-of-type(2) div:nth-of-type(3) > div {
+footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div {
   display: flex;
   justify-content: space-between;
 }
 
-footer .footerContent > div:nth-of-type(2) div:nth-of-type(3) > div i {
+footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div i {
   font-size: 25px;
 }
 
