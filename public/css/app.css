@@ -158,9 +158,78 @@ p {
   font-size: 1em;
 }
 
+a {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+}
+
 nav {
   color: white;
-  background-color: #29ABE2;
+  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
+  text-align: center;
+}
+
+nav div {
+  display: flex;
+}
+
+nav div #logo {
+  margin: 0;
+}
+
+nav div section {
+  display: flex;
+  margin: 0 0 0 auto;
+}
+
+nav div span {
+  display: flex;
+  padding: 30px;
+  align-items: center;
+}
+
+nav div section span:hover {
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+nav div .arrow {
+  font-size: 10px;
+  padding: 5px 0 0 6px;
+}
+
+nav div .img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  background-color: green;
+}
+
+.buttonLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 200px;
+  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
+  text-decoration: none;
+  color: #FFFFFF;
+  border-radius: 200px 200px 200px 200px;
+  -moz-border-radius: 200px 200px 200px 200px;
+  -webkit-border-radius: 200px 200px 200px 200px;
+  border: 0px solid #000000;
+}
+
+nav {
+  color: white;
+  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
   text-align: center;
 }
 
@@ -382,9 +451,6 @@ body[data-content=homeIndividual] {
   background-color: #FFFFFF;
   height: 100vh;
   overflow-x: hidden;
-  /*.icon {
-      width: 100%;
-  }*/
 }
 
 body[data-content=homeIndividual] .topPro {
@@ -460,7 +526,7 @@ body[data-content=homeIndividual] .topPro .wrap > div > div > p span {
 }
 
 body[data-content=homeIndividual] .topSport {
-  background-color: #29ABE2;
+  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
   padding: 50px 0;
 }
 
@@ -484,5 +550,19 @@ body[data-content=homeIndividual] .topSport .wrap > div > div {
   background-color: #FFFFFF;
   border-radius: 9% 9%;
   cursor: pointer;
+}
+
+body[data-content=homeIndividual] .catchBanner {
+  background-color: grey;
+  padding: 50px 0;
+}
+
+body[data-content=homeIndividual] .catchBanner .wrap h2 {
+  color: #FFFFFF;
+  margin-bottom: 50px;
+}
+
+body[data-content=homeIndividual] .catchBanner .wrap h2 span {
+  color: #29ABE2;
 }
 
