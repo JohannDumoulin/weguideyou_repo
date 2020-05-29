@@ -5,12 +5,16 @@
 @import "config/font-face";
 @import "config/variables";
 @import "config/global";
+
+//components
+@import "components/buttonLink";
  
 //layout
 @import "layout/nav";
 @import "layout/header";
 @import "layout/footer";
 @import "layout/modalProfil";
+@import "layout/connexion";
 
 //pages
 @import "pages/home";

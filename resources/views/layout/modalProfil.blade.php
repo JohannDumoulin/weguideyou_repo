@@ -2,13 +2,13 @@
 <div id="menuProfil" class="hidden">
 
 	<div class="modal">
-		
-		<section class="head">
+		 
+		<div class="head">
 			<div class="img"></div>
 			<p>Megan</p>
-		</section>
+		</div>
 
-		<section class="content">
+		<div class="content">
 			<span>Profil</span>
 			<span>Messagerie</span>
 			<span>Mes Annonces</span>
@@ -17,16 +17,14 @@
 			<span>Virement en cours</span>
 			<span>Payements et remboursements</span>
 			<span id="parametres">Paramètres</span>
-		</section>
+		</div>
 
-		<section class="bottom">
+		<div class="bottom">
 			<span>Déconnexion</span>
-		</section>
+		</div>
 
 	</div>
 
 	<div class="reste toggleModalProfil">
-
-</div>
 	
 </div>

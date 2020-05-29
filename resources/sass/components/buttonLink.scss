@@ -1,0 +1,18 @@
+.buttonLink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 40px;
+    width: 200px;
+
+    background: $gradient;
+
+    text-decoration: none;
+    color: #FFFFFF;
+
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
+}

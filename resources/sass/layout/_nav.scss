@@ -1,29 +1,35 @@
 
 nav {
 	color: white;
-	background-color: $color-1;
+	background-color: $deepBlue;
 	text-align: center;
 }
 
 nav div {
 	display: flex;
 
-	#logo {
+	.logo {
 		margin: 0;
 	}
 
-	section {
+	.section {
 		display: flex;
 		margin: 0 0 0 auto;
 	}
 
-	span {
+	a {
 		display: flex;
 		padding: 30px;
 		align-items: center;
 	}
 
-	section span:hover {
+	.buttonLink {
+		padding: 0;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
+	.section a:hover {
 		color: rgba(255,255,255,.7);
 		cursor: pointer;
 	}
