@@ -11,6 +11,36 @@
 
 @section('content')
 
+    <section class="recruitingPro">
+        <div class="wrap">
+            <div><img src="{{asset('/img/nate-johnston-2gBpsNuHcyA-unsplash.jpg')}}" alt=""></div>
+            <div>
+                <div>
+                    <h1>Recrutez des <span>professionnels</span> à tous moment.</h1>
+                    @include('components.buttonLink', ['link' => '#'], ['text' => 'Recruter un professionnel'])
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="findJob">
+        <div class="wrap">
+            <div>
+                <div>
+                    <h1>Trouvez un <span>job</span> près de chez vous qui <span>vous correspond.</span></h1>
+                    @include('components.buttonLink', ['link' => '#'], ['text' => 'Trouver un job'])
+                </div>
+            </div>
+            <div><img src="{{asset('/img/dmitrii-vaccinium-ByUAo3RpA6c-unsplash.jpg')}}" alt=""></div>
+        </div>
+    </section>
+    <section class="catchBanner">
+        <img class="backgroundBanner" src="{{asset('/img/christopher-campbell-kFCdfLbu6zA-unsplash.jpg')}}" alt="Professionnel fitness">
+        <div class="wrap">
+            <h1>Partagez votre <span>passion</span> en proposant vos cours en toute <span>sécurité</span> et <span>gratuitement.</span></h1>
+            @include('components.buttonLink', ['link' => '#'], ['text' => 'Proposer un cours'])
+        </div>
+    </section>
+    @include('components.weGuideNews')
 @endsection
 
 @push('script')

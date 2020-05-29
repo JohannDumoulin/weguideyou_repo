@@ -55,8 +55,9 @@
         </div>
     </section>
     <section class="topSport">
+        {{--<div class="splitterBanner"> </div>--}}
         <div class="wrap">
-            <h1>Le top des <span>sport</span> les plus <span>consultés</span></h1>
+            <h1>Le top des <span>sports</span> les plus <span>consultés</span></h1>
             <div>
                 <div><img src="" alt=""></div>
                 <div><img src="" alt=""></div>
@@ -66,11 +67,13 @@
         </div>
     </section>
     <section class="catchBanner">
+        <img class="backgroundBanner" src="{{asset('/img/christopher-campbell-kFCdfLbu6zA-unsplash.jpg')}}" alt="Professionnel fitness">
         <div class="wrap">
             <h1>Rejoignez <span>WeGuideYou</span> et réservez vos cours en toute <span>sécurité</span> et <span>gratuitement.</span></h1>
             @include('components.buttonLink', ['link' => '#'], ['text' => 'Trouver un cours'])
         </div>
     </section>
+    @include('components.weGuideNews')
 @endsection
 
 @push('script')

@@ -13,13 +13,22 @@
 <body data-content="@yield('attribute')">
     @include('layout.nav')
 
+    @if (\Request::is('/'))  
+      @include('layout.header')
+    @endif
+
     @yield('content')
 
     @include('layout.footer')
 
-    {{--@include('layout.connexion')--}}
 
-    @include('layout.modalProfil')
+<!-- Temporary -->
+    @if (\Request::is('/'))  
+      @include('layout.connexion')
+
+      @include('layout.modalProfil')
+    @endif
+<!-- -->
 
     @stack('script')
 </body>

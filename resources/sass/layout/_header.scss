@@ -1,3 +1,79 @@
 header {
-	background-color: green;
+	background-image: url('/img/ski1.jpg');
+	background-size: cover;
+	height: 100vh;
+	position: relative;
+
+	h1 {
+		padding-top: 160px;
+		color: white;
+		text-align: center;
+	}
+
+	#select {
+		display: flex;
+		justify-content: space-between;
+		width: 600px;
+		margin: 50px auto 0 auto;
+
+		a {
+			cursor: pointer;
+			font-size: 14px;
+			padding: 20px 0;
+			width: 250px;
+			text-align: center;
+			border-radius: 50px;
+
+			&:nth-of-type(1) {
+				color: white;
+				background-color: $deepBlue;
+			}
+
+			&:nth-of-type(2) {
+				color: $deepBlue;
+				background-color: white;
+			}
+		}
+	}
+
+	form {
+		background-color: white;
+		display: flex;
+		justify-content: space-between;
+		width: 60%;
+		margin: 50px auto 0 auto;
+		border-radius: 9px;
+		padding: 20px 20px;
+
+		.header_filter {
+			display: flex;
+			flex-direction: column;
+
+			select {
+				margin-top: 10px;
+				border: none;
+				outline: 0;
+				margin-left: -4px;
+				cursor: pointer;
+
+				option {
+
+				}
+			}
+		}
+
+		>img {
+			cursor: pointer;
+		}
+	}
+
+	#bottom {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		background-color: white;
+		height: 140px;
+		width: 100%;
+		clip-path: polygon(0 10%, 0% 101%, 100% 101%);
+	}
 }
