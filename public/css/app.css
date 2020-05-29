@@ -167,6 +167,8 @@ p {
 a {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
 label {
@@ -385,73 +387,80 @@ header #bottom {
           clip-path: polygon(0 10%, 0% 101%, 100% 101%);
 }
 
-body {
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
 footer {
   color: white;
   text-align: center;
   width: 100%;
 }
 
-footer #top {
+footer .footerTop {
   height: 105px;
   background-color: #29ABE2;
   -webkit-clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
           clip-path: polygon(0% 0%, 105% 101%, 0% 101%);
 }
 
-footer #content {
+footer .footerContent {
   background-color: #29ABE2;
 }
 
-footer h2 {
-  padding: 100px;
+footer .footerContent span {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+  opacity: 1;
+  font-size: 1.2em;
+  text-transform: uppercase;
 }
 
-footer content {
+footer .footerContent > div:nth-of-type(1) {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 0 0 50px 0;
+}
+
+footer .footerContent > div:nth-of-type(1) img {
+  width: 10%;
+}
+
+footer .footerContent > div:nth-of-type(1) a {
+  font-size: 2em;
+}
+
+footer .footerContent > div:nth-of-type(2) {
+  display: flex;
+  justify-content: center;
   padding-bottom: 100px;
 }
 
-footer content div {
-  margin: auto;
-  text-align: left;
-}
-
-footer content a,
-footer content span {
+footer .footerContent > div:nth-of-type(2) a {
   display: block;
-  padding: 8px 5px;
   opacity: 0.75;
-  font-size: 15px;
 }
 
-footer content a:hover {
+footer .footerContent > div:nth-of-type(2) a:hover {
   opacity: 1;
 }
 
-footer content h3 {
-  padding: 5px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.9px;
+footer .footerContent > div:nth-of-type(2) > div {
+  text-align: left;
 }
 
-footer content #reseaux {
+footer .footerContent > div:nth-of-type(2) > div > * {
+  margin: 20px 0;
+}
+
+footer .footerContent > div:nth-of-type(2) div:nth-of-type(2) {
+  margin: 0 80px;
+}
+
+footer .footerContent > div:nth-of-type(2) div:nth-of-type(3) > div {
   display: flex;
+  justify-content: space-between;
 }
 
-footer content #reseaux i {
+footer .footerContent > div:nth-of-type(2) div:nth-of-type(3) > div i {
   font-size: 25px;
-  padding: 5px;
 }
 
 .modal {

@@ -1,36 +1,32 @@
 
 <footer>
-	<div id="top"></div>
-	<div id="content">
-
-		<section>
-			<h2>We Guide You</h2>
-		</section>
-
-		<content>
-
+	<div class="footerTop"></div>
+	<div class="footerContent">
+		<div>
+            <img src="{{asset('img/logo/logoWeGuideYou.png')}}" alt="Logo de l'agence WeGuideYou">
+			<a href="#">We Guide You</a>
+		</div>
+		<div>
 			<div>
-				<h3>Assistance</h3>
+				<p><span>Assistance</span></p>
 				<a href="">A propos de nous</a>
 				<a href="">FAQ</a>
 				<a href="">Conditions Générales d'Utilisation</a>
 				<a href="">Charte de Confidentialité</a>
-			</div>	
-
+			</div>
 			<div>
-				<h3>Nous Contacter</h3>
+				<p><span>Nous Contacter</span></p>
 				<a href="">Messagerie</a>
-				<span>contact@we-guide-you.com</span>
-				<span>07 68 06 12 95</span>
-				<h3>Compte</h3>
+				<a href="mailto:contact@we-guide-you.com">contact@we-guide-you.com</a>
+				<a href="tel:+33768061295">07 68 06 12 95</a>
+				<p><span>Compte</span></p>
 				<a href="">Connexion</a>
 				<a href="">Inscription</a>
 				<a href="">Récupérer son mot de passe</a>
 			</div>
-
 			<div>
-				<h3>Suivez nous</h3>
-				<div id="reseaux">
+				<p><span>Suivez nous</span></p>
+				<div>
 					<a href="">
 						<i class="fa fa-facebook-f"></i>
 					</a>
@@ -42,8 +38,6 @@
 					</a>
 				</div>
 			</div>
-
-		</content>
-
+		</div>
 	</div>
 </footer>
