@@ -578,6 +578,70 @@ body[data-content=home] {
   background: #FFFFFF;
 }
 
+body[data-content=home] .recruitingPro h1 {
+  margin-bottom: 50px;
+}
+
+body[data-content=home] .recruitingPro h1 span {
+  color: #29ABE2;
+}
+
+body[data-content=home] .recruitingPro .wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+body[data-content=home] .recruitingPro .wrap img {
+  width: 100%;
+}
+
+body[data-content=home] .recruitingPro .wrap div:first-child {
+  width: 30%;
+}
+
+body[data-content=home] .recruitingPro .wrap div:last-child {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body[data-content=home] .recruitingPro .wrap div:last-child > div {
+  width: 100%;
+}
+
+body[data-content=home] .findJob h1 {
+  margin-bottom: 50px;
+}
+
+body[data-content=home] .findJob h1 span {
+  color: #29ABE2;
+}
+
+body[data-content=home] .findJob .wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+body[data-content=home] .findJob .wrap img {
+  width: 100%;
+}
+
+body[data-content=home] .findJob .wrap div:first-child {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body[data-content=home] .findJob .wrap div:first-child > div {
+  width: 100%;
+}
+
+body[data-content=home] .findJob .wrap div:last-child {
+  width: 35%;
+}
+
 body[data-content=homeIndividual] {
   background-color: #FFFFFF;
   height: 100vh;

@@ -1,3 +1,68 @@
 body[data-content="home"]{
-    background: #FFFFFF;
+    background: $background;
+
+    .recruitingPro{
+
+        h1{
+            margin-bottom: 50px;
+            span{
+                color: $deepBlue;
+            }
+        }
+
+        .wrap{
+            display: flex;
+            justify-content: space-between;
+            img{
+                width: 100%;
+            }
+
+            div:first-child{
+                width: 30%;
+            }
+            div:last-child{
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                >div{
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .findJob{
+
+        h1{
+            margin-bottom: 50px;
+            span{
+                color: $deepBlue;
+            }
+        }
+
+        .wrap{
+            display: flex;
+            justify-content: space-between;
+            img{
+                width: 100%;
+            }
+
+            div:first-child{
+                width: 55%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                >div{
+                    width: 100%;
+                }
+            }
+            div:last-child{
+                width: 35%;
+            }
+        }
+    }
+
 }
