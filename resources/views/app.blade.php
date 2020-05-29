@@ -17,7 +17,7 @@
 
     @include('layout.footer')
 
-    {{--@include('layout.connexion')--}}
+    @include('layout.connexion')
 
     @include('layout.modalProfil')
 
