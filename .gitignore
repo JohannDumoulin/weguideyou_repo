@@ -11,5 +11,5 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .idea/laravel-plugin.xml
-/public/
-public/js/app.js
+public/js/
+public/css/

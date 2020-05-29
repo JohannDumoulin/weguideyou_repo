@@ -1,4 +1,3 @@
-
 <nav>
 	<div class="wrap">
 		<span id="logo">We Guide You</span>
