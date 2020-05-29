@@ -81,8 +81,21 @@ body[data-content="homeIndividual"]{
     }
 
     .topSport{
-        background: $gradient;
+        background: $deepBlue;
         padding: 50px 0;
+        position: relative;
+        z-index: 1;
+
+        /*.splitterBanner{
+            position: absolute;
+            width: 150%;
+            height: 163px;
+            background-color: $deepBlue;
+            z-index: 100;
+            bottom: -28px;
+            transform: rotate(-4deg);
+            left: -30px;
+        }*/
 
         .wrap{
 
@@ -106,7 +119,7 @@ body[data-content="homeIndividual"]{
 
                     background-color: #FFFFFF;
 
-                    border-radius: 9% 9%;
+                    border-radius: 2% 2%;
 
                     cursor: pointer;
                 }
@@ -116,15 +129,26 @@ body[data-content="homeIndividual"]{
 
 
     .catchBanner{
-        background-color: grey;
+       position: relative;
+        overflow: hidden;
 
-        padding: 50px 0;
+        .backgroundBanner{
+            width: 100%;
+            transform: scaleX(-1);
+            position: absolute;
+            z-index: -1;
+
+            top: -100px;
+        }
 
         .wrap{
 
+            margin: 250px 0 100px 0;
             h1 {
                 color: #FFFFFF;
                 margin-bottom: 50px;
+
+                line-height: 70px;
 
                 span{
                     color: $deepBlue;
@@ -132,4 +156,50 @@ body[data-content="homeIndividual"]{
             }
         }
     }
+
+    .weGuideNews{
+        padding: 50px 0;
+
+        h1 {
+            color: #000000;
+            margin-bottom: 50px;
+
+            span{
+                color: $deepBlue;
+            }
+        }
+
+        h2{
+            margin-bottom: 20px;
+        }
+
+        p{
+            text-align: justify;
+        }
+
+        .wrap{
+
+            >div{
+                display: flex;
+                justify-content: space-around;
+
+                >div{
+
+                    width: calc(80%/3);
+
+                    >div{
+                        width: 100%;
+
+                        img{
+                            width: 100%;
+                            border-radius: 2% 2%;
+
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

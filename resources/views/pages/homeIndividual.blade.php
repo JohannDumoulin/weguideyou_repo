@@ -55,6 +55,7 @@
         </div>
     </section>
     <section class="topSport">
+        {{--<div class="splitterBanner"> </div>--}}
         <div class="wrap">
             <h1>Le top des <span>sport</span> les plus <span>consultés</span></h1>
             <div>
@@ -66,10 +67,35 @@
         </div>
     </section>
     <section class="catchBanner">
+        <img class="backgroundBanner" src="{{asset('/img/christopher-campbell-kFCdfLbu6zA-unsplash.jpg')}}" alt="Professionnel fitness">
         <div class="wrap">
-            <h1>Rejoignez <span>WeGuideYou</span> et réservez vos cours en toute <span>sécurité</span> et <span>gratuitement.</span></h1>
+            <h1>Rejoignez <span>WeGuideYou</span> et réservez <br>vos cours en toute <span>sécurité</span> et <br> <span>gratuitement.</span></h1>
             @include('components.buttonLink', ['link' => '#'], ['text' => 'Trouver un cours'])
         </div>
+    </section>
+    <section class="weGuideNews">
+        <div class="wrap">
+            <h1>WeGuide<span>News</span></h1>
+            <div>
+                <div>
+                    <div><img src="{{asset('/img/dane-wetton-t1NEMSm1rgI-unsplash.jpg')}}" alt="exemple article"></div>
+                    <h2>Istum ipsum sic quem cave.
+                    </h2>
+                    <p>Tempus formidatam veri inopiam ad interpellata haut sine ne ventum respiratione liberalium tenerentur alimentorum ob tempus id extrusis sectatoribus.</p>
+                </div>
+                <div>
+                    <div><img src="{{asset('/img/dane-wetton-t1NEMSm1rgI-unsplash.jpg')}}" alt="exemple article"></div>
+                    <h2>Iste modo putat omne sublatum.</h2>
+                    <p>Recte recte Ennius inventu videntur difficiles qui honoribus non qui istum Quid est graves suo facile istum calamitatum suo omittam.</p>
+                </div>
+                <div>
+                    <div><img src="{{asset('/img/dane-wetton-t1NEMSm1rgI-unsplash.jpg')}}" alt="exemple article"></div>
+                    <h2>Gratiam faeneramur sed expetendam fructus.</h2>
+                    <p>Per iam nefanda fines hiscere nefanda iam cum Clematius cum permissus Alexandrini repentina ut idem Clematius contactus palatii oblato per mors mors loqui cuius non cuius nec nec.</p>
+                </div>
+            </div>
+        </div>
+
     </section>
 @endsection
 

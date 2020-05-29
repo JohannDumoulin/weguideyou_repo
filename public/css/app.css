@@ -147,10 +147,16 @@ body {
   padding: 0 100px;
 }
 
-h2 {
+h1 {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 700;
   font-size: 3em;
+}
+
+h2 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2em;
 }
 
 p {
@@ -286,7 +292,6 @@ a {
 }
 
 footer {
-  margin-top: 500px;
   color: white;
   text-align: center;
   width: 100%;
@@ -457,12 +462,12 @@ body[data-content=homeIndividual] .topPro {
   padding: 50px 0;
 }
 
-body[data-content=homeIndividual] .topPro h2 {
+body[data-content=homeIndividual] .topPro h1 {
   color: #000000;
   margin-bottom: 50px;
 }
 
-body[data-content=homeIndividual] .topPro h2 span {
+body[data-content=homeIndividual] .topPro h1 span {
   color: #29ABE2;
 }
 
@@ -526,16 +531,28 @@ body[data-content=homeIndividual] .topPro .wrap > div > div > p span {
 }
 
 body[data-content=homeIndividual] .topSport {
-  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
+  background: #29ABE2;
   padding: 50px 0;
+  position: relative;
+  z-index: 1;
+  /*.splitterBanner{
+      position: absolute;
+      width: 150%;
+      height: 163px;
+      background-color: $deepBlue;
+      z-index: 100;
+      bottom: -28px;
+      transform: rotate(-4deg);
+      left: -30px;
+  }*/
 }
 
-body[data-content=homeIndividual] .topSport .wrap h2 {
+body[data-content=homeIndividual] .topSport .wrap h1 {
   color: #FFFFFF;
   margin-bottom: 50px;
 }
 
-body[data-content=homeIndividual] .topSport .wrap h2 span {
+body[data-content=homeIndividual] .topSport .wrap h1 span {
   color: #000000;
 }
 
@@ -548,21 +565,74 @@ body[data-content=homeIndividual] .topSport .wrap > div > div {
   width: calc(90%/4);
   height: 350px;
   background-color: #FFFFFF;
-  border-radius: 9% 9%;
+  border-radius: 2% 2%;
   cursor: pointer;
 }
 
 body[data-content=homeIndividual] .catchBanner {
-  background-color: grey;
+  position: relative;
+  overflow: hidden;
+}
+
+body[data-content=homeIndividual] .catchBanner .backgroundBanner {
+  width: 100%;
+  transform: scaleX(-1);
+  position: absolute;
+  z-index: -1;
+  top: -100px;
+}
+
+body[data-content=homeIndividual] .catchBanner .wrap {
+  margin: 250px 0 100px 0;
+}
+
+body[data-content=homeIndividual] .catchBanner .wrap h1 {
+  color: #FFFFFF;
+  margin-bottom: 50px;
+  line-height: 70px;
+}
+
+body[data-content=homeIndividual] .catchBanner .wrap h1 span {
+  color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .weGuideNews {
   padding: 50px 0;
 }
 
-body[data-content=homeIndividual] .catchBanner .wrap h2 {
-  color: #FFFFFF;
+body[data-content=homeIndividual] .weGuideNews h1 {
+  color: #000000;
   margin-bottom: 50px;
 }
 
-body[data-content=homeIndividual] .catchBanner .wrap h2 span {
+body[data-content=homeIndividual] .weGuideNews h1 span {
   color: #29ABE2;
+}
+
+body[data-content=homeIndividual] .weGuideNews h2 {
+  margin-bottom: 20px;
+}
+
+body[data-content=homeIndividual] .weGuideNews p {
+  text-align: justify;
+}
+
+body[data-content=homeIndividual] .weGuideNews .wrap > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+body[data-content=homeIndividual] .weGuideNews .wrap > div > div {
+  width: calc(80%/3);
+}
+
+body[data-content=homeIndividual] .weGuideNews .wrap > div > div > div {
+  width: 100%;
+}
+
+body[data-content=homeIndividual] .weGuideNews .wrap > div > div > div img {
+  width: 100%;
+  border-radius: 2% 2%;
+  margin-bottom: 20px;
 }
 
