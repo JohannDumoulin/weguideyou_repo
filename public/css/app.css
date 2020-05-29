@@ -238,7 +238,80 @@ nav div .img {
 }
 
 header {
-  background-color: green;
+  background-image: url("/img/ski1.jpg");
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+
+header h1 {
+  padding-top: 160px;
+  color: white;
+  text-align: center;
+}
+
+header #select {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin: 50px auto 0 auto;
+}
+
+header #select a {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 20px 0;
+  width: 250px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+header #select a:nth-of-type(1) {
+  color: white;
+  background-color: #29ABE2;
+}
+
+header #select a:nth-of-type(2) {
+  color: #29ABE2;
+  background-color: white;
+}
+
+header form {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 50px auto 0 auto;
+  border-radius: 9px;
+  padding: 20px 20px;
+}
+
+header form .header_filter {
+  display: flex;
+  flex-direction: column;
+}
+
+header form .header_filter select {
+  margin-top: 10px;
+  border: none;
+  outline: 0;
+  margin-left: -4px;
+  cursor: pointer;
+}
+
+header form > img {
+  cursor: pointer;
+}
+
+header #bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  height: 140px;
+  width: 100%;
+  -webkit-clip-path: polygon(0 10%, 0% 101%, 100% 101%);
+          clip-path: polygon(0 10%, 0% 101%, 100% 101%);
 }
 
 body {

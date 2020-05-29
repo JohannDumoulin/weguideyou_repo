@@ -13,6 +13,8 @@
 <body data-content="@yield('attribute')">
     @include('layout.nav')
 
+    @include('layout.header')
+
     @yield('content')
 
     @include('layout.footer')
