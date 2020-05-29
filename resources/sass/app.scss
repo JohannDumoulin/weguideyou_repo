@@ -6,10 +6,6 @@
 @import "config/variables";
 @import "config/global";
 
-//layout
-@import "layout/nav";
-@import "layout/header";
-
 //components
 @import "components/buttonLink";
  
@@ -18,6 +14,7 @@
 @import "layout/header";
 @import "layout/footer";
 @import "layout/modalProfil";
+@import "layout/connexion";
 
 //pages
 @import "pages/home";

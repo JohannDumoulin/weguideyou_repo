@@ -17,6 +17,8 @@
 
     @include('layout.footer')
 
+    @include('layout.connexion')
+
     @include('layout.modalProfil')
 
     @stack('script')
