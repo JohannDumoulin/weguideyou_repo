@@ -7,6 +7,7 @@
 			<a href="#">We Guide You</a>
 		</div>
 		<div>
+
 			<div>
 				<p><span>Assistance</span></p>
 				<a href="">A propos de nous</a>
