@@ -23,7 +23,7 @@ Route::get('/particulier', function () {
 
 Route::get('/parametres', function () {
     return view('pages/parameter');
-}
+});
 
 Route::get('/annonces', function() {
 	return view('pages/advertisement');
