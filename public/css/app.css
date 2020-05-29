@@ -193,13 +193,16 @@ label {
 
 nav {
   color: white;
-  background-color: #29ABE2;
-  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
   text-align: center;
+  position: absolute;
+  z-index: 900;
+  width: 100%;
+  padding: 25px 0;
 }
 
 nav div {
   display: flex;
+  justify-content: space-between;
 }
 
 nav div .logo {
@@ -208,19 +211,19 @@ nav div .logo {
 
 nav div .section {
   display: flex;
-  margin: 0 0 0 auto;
+}
+
+nav div .section > * {
+  margin-left: 25px;
 }
 
 nav div a {
   display: flex;
-  padding: 30px;
   align-items: center;
 }
 
 nav div .buttonLink {
   padding: 0;
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 nav div .section a:hover {

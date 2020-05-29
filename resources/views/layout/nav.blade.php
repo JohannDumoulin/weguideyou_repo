@@ -1,6 +1,6 @@
 <nav>
 	<div class="wrap">
-		<a class="logo">We Guide You</a>
+		<a class="logo">WeGuideYou</a>
 		<div class="section">
 			<a>
 				<i class="fa fa-globe"></i>
@@ -10,7 +10,7 @@
 			<a>Favoris</a>
 			<a>Connexion</a>
 			@include('components.buttonLink', ['link' => '#'], ['text' => 'Inscription'])
-<!-- 
+<!--
 			<span class="toggleModalProfil">
 				<div class="img"></div>
 				<p>Megan</p>
