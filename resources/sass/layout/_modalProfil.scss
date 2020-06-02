@@ -8,6 +8,17 @@
 	top: 0;
 	right: 0;
 
+	animation: openModalP .5s ease forwards;
+
+	@keyframes openModalP {
+		0% {
+			right: -100%;
+		}
+		100% {
+			right: 0%;
+		}
+	}
+
 	display: block;
 
 	section {
