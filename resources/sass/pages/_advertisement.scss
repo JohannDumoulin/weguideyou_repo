@@ -36,34 +36,121 @@ body[data-content="advertisement"] {
 		}
 	}
 
-	.advertisement_container {
-		margin-top: 40px;
+	#advertisement_section {
+		display: flex;
+		justify-content: space-between;
 
-		&.all {
-			.advertisement_content {
-				display: flex;
-				width: 650px;
-				box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
-				border-radius: 5px;
-				position: relative;
-				cursor: pointer;
-				margin-bottom: 20px;
+		.advertisement_container {
+			margin-top: 40px;
 
-				.infos {
-					padding: 20px 0;
-					margin-left: 15px;
+			&.all {
+				.advertisement_content {
+					display: flex;
+					width: 650px;
+					box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+					border-radius: 5px;
+					position: relative;
+					cursor: pointer;
+					margin-bottom: 20px;
 
-					h3 {
-						font-size: 1.4em;
-						font-family: "Roboto", Arial, sans-serif;
+					.profil_picture_container {
+						overflow: hidden;
+						background-color: red;
+						height: 200px;
+
+						img {
+							height: 100%;
+						}
 					}
 
-					.info_content {
-						display: flex;
-						margin-top: 10px;
+					.infos {
+						padding: 20px 0;
+						margin-left: 15px;
 
-						.more {
-							width: 100px;
+						h3 {
+							font-size: 1.4em;
+							font-family: "Roboto", Arial, sans-serif;
+						}
+
+						.info_content {
+							display: flex;
+							margin-top: 10px;
+
+							.more {
+								width: 100px;
+
+								>p {
+									color: white;
+									background-color: $deepBlue;
+									text-align: center;
+									margin-bottom: 10px;
+									padding: 10px 0;
+									border-radius: 9px;
+								}
+								
+								.seller_infos {
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+								}
+							}
+
+							.desc {
+								font-weight: 300;
+								margin-left: 35px;
+								width: 200px;
+								line-height: 18px;
+							}
+						}
+					}
+
+					.picto {
+						position: absolute;
+
+						&.like {
+							top: 20px;
+							right: 20px;
+						}
+
+						&.urgent {
+							top: 60px;
+							right: 20px;
+						}
+					}
+				}
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+
+			&.premium {
+				.advertisement_content_premium {
+					display: flex;
+					width: 500px;
+					box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+					border-radius: 5px;
+					position: relative;
+					cursor: pointer;
+					margin-bottom: 20px;
+
+					>img {
+						width: 250px;
+					}
+
+					.infos_premium {
+						padding: 20px 0;
+						margin-left: 15px;
+
+						h3 {
+							font-size: 1.4em;
+							font-family: "Roboto", Arial, sans-serif;
+							width: 300px;
+						}
+
+						.info_content_premium {
+							display: flex;
+							margin-top: 10px;
 
 							>p {
 								color: white;
@@ -73,7 +160,7 @@ body[data-content="advertisement"] {
 								padding: 10px 0;
 								border-radius: 9px;
 							}
-							
+								
 							.seller_infos {
 								display: flex;
 								justify-content: space-between;
@@ -88,30 +175,26 @@ body[data-content="advertisement"] {
 							line-height: 18px;
 						}
 					}
+
+					.picto {
+						position: absolute;
+
+						&.like {
+							top: 20px;
+							right: 20px;
+						}
+
+						&.urgent {
+							top: 60px;
+							right: 20px;
+						}
+					}
 				}
 
-				.picto {
-					position: absolute;
-
-					&.like {
-						top: 20px;
-						right: 20px;
-					}
-
-					&.urgent {
-						top: 60px;
-						right: 20px;
-					}
+				&:last-of-type {
+					margin-bottom: 0;
 				}
 			}
-
-			&:last-of-type {
-				margin-bottom: 0;
-			}
-		}
-
-		&.premium {
-
 		}
 	}
 }

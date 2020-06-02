@@ -13,3 +13,4 @@ yarn-error.log
 .idea/laravel-plugin.xml
 public/js/
 public/css/
+public/css/app.css
