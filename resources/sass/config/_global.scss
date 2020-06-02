@@ -20,6 +20,11 @@ h2{
     font-weight: 700;
     font-size: 3em;
 }
+h3{
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.5em;
+}
 
 p{
     font-family: "Roboto", Arial, sans-serif;
@@ -39,4 +44,8 @@ label {
     font-family: "Roboto", Arial, sans-serif;
     font-weight: 700;
     font-size: 1.2em;
+}
+
+.stopScrolling {
+    overflow: hidden;
 }
