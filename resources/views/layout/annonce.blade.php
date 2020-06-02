@@ -17,12 +17,16 @@
 	            <div class="btnResa">
 	                <h1>Titre de l'annonce</h1>
 	                @include('components.buttonLink', ['link' => '#'], ['text' => 'Réserver'])
-	            </div>                
+	            </div>   
 	            <h2>90€ / h</h2>
-	            <i class="fas fa-map-marker-alt"></i>
-	            <h3>Courchevel</h3>
-	            <i class="fas fa-calendar-alt"></i>
-	            <h3>20 avril 2020 - 15 septembre 2020</h3>
+	            <div class="item">
+					<i class="fa fa-map-marker"></i>
+					<h3>Courchevel</h3>
+	            </div>
+	            <div class="item">
+					<i class="fa fa-calendar"></i>
+					<h3>20 avril 2020 - 15 septembre 2020</h3>
+	            </div>
 	        </div>
 	    </section>
 
@@ -91,7 +95,7 @@
 	            </div>                
 
 	            <div>
-	                <i class="far fa-clock"></i>
+					<i class="fa fa-calendar"></i>
 	                <label>Période de la journée</label>
 	                <p>Toute la journée</p>
 	            </div>
@@ -118,9 +122,11 @@
 	    </section>
 
 	    <section class="map">
-	    	<div class="wrap">
-	    		
+	    	<div class="wrap titre">
+		    	<i class="fa fa-map-marker"></i>
+		    	<label>Courchevel :</label>
 	    	</div>
+	    	<div id="map"></div>
 	    </section>
 
 	</div>

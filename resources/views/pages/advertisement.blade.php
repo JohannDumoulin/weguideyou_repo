@@ -285,6 +285,8 @@
 @endsection
 
 @push('script')
+	<!-- Google Map -->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqNHvLl6Xm9StLAO9WoYv3r-H_pVcr_M&callback=initMap"></script>
     <script src="{{asset('js/app.js')}}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
