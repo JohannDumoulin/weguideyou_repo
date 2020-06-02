@@ -61,13 +61,13 @@ body {
 h1 {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 700;
-  font-size: 3em;
+  font-size: 3.1em;
 }
 
 h2 {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 3em;
 }
 
 p {
@@ -563,11 +563,11 @@ body[data-content=home] {
   background: #FFFFFF;
 }
 
-body[data-content=home] .recruitingPro h1 {
+body[data-content=home] .recruitingPro h2 {
   margin-bottom: 50px;
 }
 
-body[data-content=home] .recruitingPro h1 span {
+body[data-content=home] .recruitingPro h2 span {
   color: #29ABE2;
 }
 
@@ -599,11 +599,11 @@ body[data-content=home] .findJob {
   margin-bottom: 50px;
 }
 
-body[data-content=home] .findJob h1 {
+body[data-content=home] .findJob h2 {
   margin-bottom: 50px;
 }
 
-body[data-content=home] .findJob h1 span {
+body[data-content=home] .findJob h2 span {
   color: #29ABE2;
 }
 
@@ -648,13 +648,13 @@ body[data-content=home] .catchBanner .wrap {
   margin: 250px 0 100px 0;
 }
 
-body[data-content=home] .catchBanner .wrap h1 {
+body[data-content=home] .catchBanner .wrap h2 {
   color: #FFFFFF;
   margin-bottom: 50px;
   line-height: 70px;
 }
 
-body[data-content=home] .catchBanner .wrap h1 span {
+body[data-content=home] .catchBanner .wrap h2 span {
   color: #29ABE2;
 }
 
@@ -668,12 +668,12 @@ body[data-content=homeIndividual] .topPro {
   padding: 50px 0;
 }
 
-body[data-content=homeIndividual] .topPro h1 {
+body[data-content=homeIndividual] .topPro h2 {
   color: #000000;
   margin-bottom: 50px;
 }
 
-body[data-content=homeIndividual] .topPro h1 span {
+body[data-content=homeIndividual] .topPro h2 span {
   color: #29ABE2;
 }
 
@@ -753,12 +753,12 @@ body[data-content=homeIndividual] .topSport {
   }*/
 }
 
-body[data-content=homeIndividual] .topSport .wrap h1 {
+body[data-content=homeIndividual] .topSport .wrap h2 {
   color: #FFFFFF;
   margin-bottom: 50px;
 }
 
-body[data-content=homeIndividual] .topSport .wrap h1 span {
+body[data-content=homeIndividual] .topSport .wrap h2 span {
   color: #000000;
 }
 
@@ -792,13 +792,13 @@ body[data-content=homeIndividual] .catchBanner .wrap {
   margin: 250px 0 100px 0;
 }
 
-body[data-content=homeIndividual] .catchBanner .wrap h1 {
+body[data-content=homeIndividual] .catchBanner .wrap h2 {
   color: #FFFFFF;
   margin-bottom: 50px;
   line-height: 70px;
 }
 
-body[data-content=homeIndividual] .catchBanner .wrap h1 span {
+body[data-content=homeIndividual] .catchBanner .wrap h2 span {
   color: #29ABE2;
 }
 
