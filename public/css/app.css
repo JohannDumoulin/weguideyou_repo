@@ -70,6 +70,12 @@ h2 {
   font-size: 3em;
 }
 
+h3 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
 p {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 1em;
@@ -87,6 +93,10 @@ label {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 700;
   font-size: 1.2em;
+}
+
+.stopScrolling {
+  overflow: hidden;
 }
 
 .buttonLink {
@@ -110,16 +120,16 @@ label {
   overflow: hidden;
 }
 
-.weGuideNews h1 {
+.weGuideNews h2 {
   color: #000000;
   margin-bottom: 50px;
 }
 
-.weGuideNews h1 span {
+.weGuideNews h2 span {
   color: #29ABE2;
 }
 
-.weGuideNews h2 {
+.weGuideNews h3 {
   margin-bottom: 20px;
 }
 
@@ -375,8 +385,8 @@ footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div i {
   font-size: 25px;
 }
 
-.modal {
-  z-index: 10;
+.menuProfil .modal {
+  z-index: 910;
   position: fixed;
   height: 100vh;
   width: 30vw;
@@ -384,53 +394,36 @@ footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div i {
   background-color: white;
   top: 0;
   right: 0;
-  box-shadow: 0px 2px 12px black;
+  padding: 20px 50px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menuProfil .modal hr {
+  opacity: 0.1;
+}
+
+.menuProfil .modal a {
   display: block;
+  padding: 10px 0;
+  box-sizing: border-box;
+  font-weight: 400;
+  color: #000000;
 }
 
-.modal section {
-  margin-right: 30px;
-  margin-left: 30px;
-}
-
-.modal span {
-  display: block;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 85%;
-}
-
-.modal span:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
-.modal .content {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
-}
-
-.modal .content #premium {
-  color: #29ABE2;
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.modal .head {
+.menuProfil .modal .head {
   display: flex;
   align-items: center;
   margin: auto;
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-  padding: 30px;
+  height: 15%;
 }
 
-.modal .head p {
+.menuProfil .modal .head p {
   display: block;
   padding: 10px;
   font-weight: bold;
@@ -438,7 +431,7 @@ footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div i {
   margin: auto 0;
 }
 
-.modal .head .img {
+.menuProfil .modal .head .img {
   height: 70px;
   width: 70px;
   border-radius: 50%;
@@ -448,28 +441,30 @@ footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div i {
   background-position: center;
 }
 
-.modal .bottom {
-  border-bottom: 1px solid lightgrey;
-  padding-top: 5px;
-  padding-bottom: 5px;
+.menuProfil .modal .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80%;
 }
 
-.reste {
+.menuProfil .modal .content #premium {
+  color: #29ABE2;
+}
+
+.menuProfil .reste {
+  z-index: 909;
   position: fixed;
-  background-color: black;
-  opacity: 0.3;
+  background: rgba(0, 0, 0, 0.3);
   height: 100vw;
   width: 100vw;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 
-.hidden {
+.menuProfil .hidden {
   display: none;
-}
-
-.t {
-  overflow: hidden;
 }
 
 .divConnexion {
@@ -1177,11 +1172,16 @@ body[data-content=advertisement] #second_filter .second_filter_child select {
   outline: 0;
 }
 
-body[data-content=advertisement] .advertisement_container {
+body[data-content=advertisement] #advertisement_section {
+  display: flex;
+  justify-content: space-between;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container {
   margin-top: 40px;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content {
   display: flex;
   width: 650px;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
@@ -1191,26 +1191,36 @@ body[data-content=advertisement] .advertisement_container.all .advertisement_con
   margin-bottom: 20px;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .infos {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .profil_picture_container {
+  overflow: hidden;
+  background-color: red;
+  height: 200px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .profil_picture_container img {
+  height: 100%;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .infos {
   padding: 20px 0;
   margin-left: 15px;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .infos h3 {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .infos h3 {
   font-size: 1.4em;
   font-family: "Roboto", Arial, sans-serif;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .infos .info_content {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .infos .info_content {
   display: flex;
   margin-top: 10px;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .infos .info_content .more {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .infos .info_content .more {
   width: 100px;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .infos .info_content .more > p {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .infos .info_content .more > p {
   color: white;
   background-color: #29ABE2;
   text-align: center;
@@ -1219,34 +1229,104 @@ body[data-content=advertisement] .advertisement_container.all .advertisement_con
   border-radius: 9px;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .infos .info_content .more .seller_infos {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .infos .info_content .more .seller_infos {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .infos .info_content .desc {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .infos .info_content .desc {
   font-weight: 300;
   margin-left: 35px;
   width: 200px;
   line-height: 18px;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .picto {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .picto {
   position: absolute;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .picto.like {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .picto.like {
   top: 20px;
   right: 20px;
 }
 
-body[data-content=advertisement] .advertisement_container.all .advertisement_content .picto.urgent {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all .advertisement_content .picto.urgent {
   top: 60px;
   right: 20px;
 }
 
-body[data-content=advertisement] .advertisement_container.all:last-of-type {
+body[data-content=advertisement] #advertisement_section .advertisement_container.all:last-of-type {
+  margin-bottom: 0;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium {
+  display: flex;
+  width: 500px;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium > img {
+  width: 250px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .infos_premium {
+  padding: 20px 0;
+  margin-left: 15px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .infos_premium h3 {
+  font-size: 1.4em;
+  font-family: "Roboto", Arial, sans-serif;
+  width: 300px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .infos_premium .info_content_premium {
+  display: flex;
+  margin-top: 10px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .infos_premium .info_content_premium > p {
+  color: white;
+  background-color: #29ABE2;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-radius: 9px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .infos_premium .info_content_premium .seller_infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .infos_premium .desc {
+  font-weight: 300;
+  margin-left: 35px;
+  width: 200px;
+  line-height: 18px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .picto {
+  position: absolute;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .picto.like {
+  top: 20px;
+  right: 20px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium .advertisement_content_premium .picto.urgent {
+  top: 60px;
+  right: 20px;
+}
+
+body[data-content=advertisement] #advertisement_section .advertisement_container.premium:last-of-type {
   margin-bottom: 0;
 }
 
