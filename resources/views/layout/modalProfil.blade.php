@@ -1,8 +1,8 @@
 
-<div id="menuProfil" class="hidden">
+<div id="" class="js-menuProfil hidden">
 
 	<div class="modal">
-		 
+
 		<div class="head">
 			<div class="img"></div>
 			<p>Megan</p>
@@ -25,6 +25,6 @@
 
 	</div>
 
-	<div class="reste toggleModalProfil">
-	
+    <div class="reste js-reste toggleModalProfil"></div>
+
 </div>
