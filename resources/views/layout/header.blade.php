@@ -4,10 +4,10 @@
 		<a href="#">Je suis un professionnel</a>
 		<a href="#">Je suis un particulier</a>
 	</div>
-	<form action="">
+	<form action="" class="first_filter">
 		<div class="header_filter">
 			<label for="activity">ACTIVITÉ</label>
-			<select name="" id="activity">
+			<select name="activity" id="activity">
 				<option value="">Que voulez vous faire ?</option>
 				<option value="">Ski</option>
 				<option value="">Snowboard</option>
@@ -15,19 +15,19 @@
 		</div>
 		<div class="header_filter">
 			<label for="place">LIEU</label>
-			<select name="" id="place">
+			<select name="place" id="place">
 				<option value="">Où voulez vous aller ?</option>
 			</select>
 		</div>
 		<div class="header_filter">
 			<label for="dates">DATES</label>
-			<select name="" id="dates">
+			<select name="dates" id="dates">
 				<option value="">Quand voulez vous partir ?</option>
 			</select>
 		</div>
 		<div class="header_filter">
 			<label for="search">RECHERCHE</label>
-			<select name="" id="search">
+			<select name="search" id="search">
 				<option value="">Que cherchez vous ?</option>
 			</select>
 		</div>
