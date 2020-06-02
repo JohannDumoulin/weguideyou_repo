@@ -4,8 +4,12 @@
 	padding: 0 40px;
 }
 
+section {
+    padding-top: 0 !important;
+}
+
 .annonce {
-	position: absolute;
+	position: fixed;
 	top:0;
 	left:0;
 
@@ -83,7 +87,7 @@
 }
 
 .detail {
-	padding-top: 30px;
+	padding-top: 30px !important;
 	margin-top: 30px;
 	margin-bottom: 30px;
 	border-top: 1px solid black;
@@ -124,6 +128,26 @@
         background-position: center;
 	}
 }
+
+.reste {
+    z-index: 909;
+    position: fixed;
+    background: $background-fade;
+    height: 100vw;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.stopScrolling {
+	overflow: hidden;
+}
+
 
 /* Caroussel */
 .carousel-inner > .item > img,

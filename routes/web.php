@@ -29,6 +29,10 @@ Route::get('/annonces', function() {
 	return view('pages/advertisement');
 });
 
+Route::get('/profil', function() {
+	return view('pages/profil');
+});
+
 
 
 
