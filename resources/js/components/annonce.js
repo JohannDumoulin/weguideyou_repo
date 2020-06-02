@@ -17,9 +17,9 @@ export default class Annonce{
     }
 
     toggleAnnonce() {
-        this.$els.btn.on( "click", function( event ) {
+        this.$els.btn.on("click", function() {
             $(".annonce").toggleClass("hidden");
-            $("body").toggleClass("t");
+            $("body").toggleClass("stopScrolling");
         });
     }
 

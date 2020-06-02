@@ -1,7 +1,46 @@
 body[data-content="advertisement"] {
+	section {
+		padding-top: 100px;
+	}
+
+	.first_filter_more {
+		width: 60%;
+		box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.25);
+		border-radius: 9px;
+		margin: 0 auto;
+		margin-top: 35px;
+		padding: 20px;
+
+		.first_filter_more_content {
+			display: flex;
+			align-items: center;
+			margin-bottom: 15px;
+
+			label {
+				font-weight: 400;
+				font-size: 1em;
+			}
+
+			input {
+				margin-left: 30px;
+
+				&[type="checkbox"] {
+					margin-right: 10px;
+					cursor: pointer;
+				}
+			}
+		}
+
+		>p {
+			margin-top: 30px;
+		}
+	}
+
 	#second_filter {
 		display: flex;
 		justify-content: space-between;
+		margin-top: 40px;
+
 		.second_filter_child {
 			display: flex;
 			align-items: center;
@@ -52,14 +91,18 @@ body[data-content="advertisement"] {
 					position: relative;
 					cursor: pointer;
 					margin-bottom: 20px;
+					overflow: hidden;
 
 					.profil_picture_container {
 						overflow: hidden;
-						background-color: red;
 						height: 200px;
+						width: 150px;
+						text-align: center;
 
 						img {
 							height: 100%;
+							margin-left: 50%;
+							transform: translateX(-50%);
 						}
 					}
 
@@ -133,9 +176,19 @@ body[data-content="advertisement"] {
 					position: relative;
 					cursor: pointer;
 					margin-bottom: 20px;
+					overflow: hidden;
 
-					>img {
-						width: 250px;
+					.profil_picture_container_premium {
+						overflow: hidden;
+						height: 275px;
+						width: 150px;
+						text-align: center;
+
+						img {
+							height: 100%;
+							margin-left: 50%;
+							transform: translateX(-50%);
+						}
 					}
 
 					.infos_premium {
@@ -150,29 +203,25 @@ body[data-content="advertisement"] {
 
 						.info_content_premium {
 							display: flex;
+							justify-content: space-between;
+							align-items: center;
 							margin-top: 10px;
+							width: 225px;
 
-							>p {
+							.price {
 								color: white;
 								background-color: $deepBlue;
 								text-align: center;
-								margin-bottom: 10px;
-								padding: 10px 0;
+								padding: 10px 30px;
 								border-radius: 9px;
-							}
-								
-							.seller_infos {
-								display: flex;
-								justify-content: space-between;
-								align-items: center;
 							}
 						}
 
 						.desc {
 							font-weight: 300;
-							margin-left: 35px;
 							width: 200px;
 							line-height: 18px;
+							margin-top: 20px;
 						}
 					}
 
