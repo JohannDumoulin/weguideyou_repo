@@ -1,14 +1,13 @@
-.menuProfil{
-
-  /* animation: openModalP .5s ease forwards;
-
-  @keyframes openModalP {
+/*@keyframes openModalP {
     0% {
-      right: -100%;
+        right: -100%;
     }
     100% {
-      right: 0%;
-    } */
+        right: 0%;
+    }
+}*/
+
+.menuProfil {
 
     .modal {
         z-index: 910;
@@ -27,7 +26,9 @@
         flex-direction: column;
         justify-content: space-between;
 
-        hr{
+        /*animation: openModalP .5s ease forwards;*/
+
+        hr {
             opacity: 0.1;
         }
 
@@ -92,3 +93,4 @@
     .hidden {
         display: none;
     }
+}
