@@ -7,11 +7,11 @@
     <meta name="author" content="Gwendal Lefort, Johann Dumoulin, Thomas Ghignon">
     <title>@yield('title')</title>
 
-
     @stack('style')
 </head>
 <body data-content="@yield('attribute')">
     @include('layout.nav')
+    {{--@include('layout.registration')--}}
 
     @if (\Request::is('/'))
       @include('layout.header')
@@ -22,11 +22,10 @@
     @include('layout.footer')
 
     @include('layout.annonce')
-    
+
 <!-- Temporary -->
     @if (\Request::is('/'))
       {{--@include('layout.connexion')--}}
-      {{--@include('layout.inscription')--}}
 
       @include('layout.modalProfil')
     @endif
