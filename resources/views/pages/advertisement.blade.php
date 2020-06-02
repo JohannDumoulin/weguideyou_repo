@@ -43,27 +43,32 @@
 					</select>
 				</div>
 				<img src="{{ asset('img/search_logo.svg') }}" alt="">
-				<div id="bottom"></div>
 			</form>
 
 			<!-- More filters -->
 			<form action="" class="first_filter_more">
 				<div class="first_filter_more_content">
 					<p>Choix du prestataire :</p>
-					<label for="organization">Structure (école, ...)</label>
 					<input type="checkbox" id="organization" name="organization" checked>
-					<label for="organization">Indépendant</label>
+					<label for="organization">Structure (école, ...)</label>
 					<input type="checkbox" id="freelance" name="freelance">
+					<label for="freelance">Indépendant</label>
 				</div>
 				<div class="first_filter_more_content">
-					<p>Nombre de personne (s) :</p>
-					<label for="nb_person">Personne (s)</label>
-					<input type="number" id="nb_person" name="nb_person" min="1">	
+					<p>Nombre de personne(s) :</p>
+					<input type="number" id="nb_person" name="nb_person" min="1" value="1">
 				</div>
 				<div class="first_filter_more_content">
 					<p>Durée :</p>
-					<label for="duration"></label>
+					<select name="duration" id="duration">
+						<option value="1h">1h</option>
+						<option value="1h">2h</option>
+						<option value="1h">4h</option>
+						<option value="1h">Demi-journée</option>
+						<option value="1h">Journée complète</option>
+					</select>
 				</div>
+				<p>Moins de filtres</p>
 			</form>
 			
 <!---------------------- Second Filters -------------------->
@@ -112,7 +117,7 @@
 <!-------------------- Advertisement List --------------------->
 			<div id="advertisement_section">
 				<div class="advertisement_container all">
-					
+
 					<div class="advertisement_content js-toggleAnnonce">
 						<div class="profil_picture_container">
 							<img src="{{ asset('img/advertisement.jpg') }}" alt="">

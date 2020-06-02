@@ -1349,9 +1349,43 @@ body[data-content=advertisement] section {
   padding-top: 100px;
 }
 
+body[data-content=advertisement] .first_filter_more {
+  width: 60%;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  margin: 0 auto;
+  margin-top: 35px;
+  padding: 20px;
+}
+
+body[data-content=advertisement] .first_filter_more .first_filter_more_content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+body[data-content=advertisement] .first_filter_more .first_filter_more_content label {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+body[data-content=advertisement] .first_filter_more .first_filter_more_content input {
+  margin-left: 30px;
+}
+
+body[data-content=advertisement] .first_filter_more .first_filter_more_content input[type=checkbox] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+body[data-content=advertisement] .first_filter_more > p {
+  margin-top: 30px;
+}
+
 body[data-content=advertisement] #second_filter {
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
 body[data-content=advertisement] #second_filter .second_filter_child {
