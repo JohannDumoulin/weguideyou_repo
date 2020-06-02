@@ -20,11 +20,11 @@ export default class MenuProfil {
     getMenuProfil(){
         this.$els.btn.click(function(){
             $('.js-menuProfil').toggleClass("hidden");
-            $('body').toggleClass("t");
+            $('body').toggleClass("stopScrolling");
         });
         this.$els.back.click(function(){
             $('.js-menuProfil').toggleClass("hidden");
-            $('body').toggleClass("t");
+            $('body').toggleClass("stopScrolling");
         });
     }
 }

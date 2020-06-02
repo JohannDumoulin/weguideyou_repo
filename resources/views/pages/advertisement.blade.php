@@ -3,6 +3,7 @@
 @section('title', 'Annonces')
 
 @push('style')
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endpush
@@ -111,8 +112,8 @@
 <!-------------------- Advertisement List --------------------->
 			<div id="advertisement_section">
 				<div class="advertisement_container all">
-
-					<div class="advertisement_content">
+					
+					<div class="advertisement_content js-toggleAnnonce">
 						<div class="profil_picture_container">
 							<img src="{{ asset('img/advertisement.jpg') }}" alt="">
 						</div>
@@ -144,7 +145,7 @@
 							</defs>
 						</svg>
 					</div>
-					<div class="advertisement_content">
+					<div class="advertisement_content js-toggleAnnonce">
 						<div class="profil_picture_container">
 							<img src="{{ asset('img/advertisement.jpg') }}" alt="">
 						</div>
@@ -176,7 +177,7 @@
 							</defs>
 						</svg>
 					</div>
-					<div class="advertisement_content">
+					<div class="advertisement_content js-toggleAnnonce">
 						<div class="profil_picture_container">
 							<img src="{{ asset('img/advertisement.jpg') }}" alt="">
 						</div>
@@ -280,4 +281,6 @@
 
 @push('script')
     <script src="{{asset('js/app.js')}}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 @endpush

@@ -30168,6 +30168,7 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_menuProfil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/menuProfil */ "./resources/js/components/menuProfil.js");
+/* harmony import */ var _components_annonce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/annonce */ "./resources/js/components/annonce.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -30176,6 +30177,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /*Components*/
+
 
 
 
@@ -30193,6 +30195,7 @@ var App = /*#__PURE__*/function () {
     value: function initApp() {
       // Start application
       new _components_menuProfil__WEBPACK_IMPORTED_MODULE_0__["default"]();
+      new _components_annonce__WEBPACK_IMPORTED_MODULE_1__["default"]();
     }
   }]);
 
@@ -30232,6 +30235,63 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/annonce.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/annonce.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Annonce; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Annonce = /*#__PURE__*/function () {
+  function Annonce() {
+    _classCallCheck(this, Annonce);
+
+    this.initEls();
+    this.initEvents();
+  }
+
+  _createClass(Annonce, [{
+    key: "initEls",
+    value: function initEls() {
+      this.$els = {
+        btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-toggleAnnonce')
+      };
+    }
+  }, {
+    key: "initEvents",
+    value: function initEvents() {
+      this.toggleAnnonce();
+    }
+  }, {
+    key: "toggleAnnonce",
+    value: function toggleAnnonce() {
+      this.$els.btn.on("click", function (event) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".annonce").toggleClass("hidden");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").toggleClass("t");
+      });
+    }
+  }]);
+
+  return Annonce;
+}();
+
+
 
 /***/ }),
 
@@ -30281,11 +30341,11 @@ var MenuProfil = /*#__PURE__*/function () {
     value: function getMenuProfil() {
       this.$els.btn.click(function () {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-menuProfil').toggleClass("hidden");
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass("t");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass("stopScrolling");
       });
       this.$els.back.click(function () {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-menuProfil').toggleClass("hidden");
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass("t");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass("stopScrolling");
       });
     }
   }]);

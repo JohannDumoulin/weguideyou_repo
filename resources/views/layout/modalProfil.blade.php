@@ -1,5 +1,4 @@
-
-<div id="" class="js-menuProfil hidden">
+<div class="menuProfil js-menuProfil hidden">
 
 	<div class="modal">
 
@@ -9,20 +8,27 @@
 		</div>
 
 		<div class="content">
-			<span>Profil</span>
-			<span>Messagerie</span>
-			<span>Mes Annonces</span>
-			<span id="premium">Premium</span>
-			<span>Historique des cours effectués</span>
-			<span>Virement en cours</span>
-			<span>Payements et remboursements</span>
-			<span id="parametres">Paramètres</span>
+            <div class="modalNav">
+                <hr>
+                <a href="#">Profil</a>
+                <a href="#">Messagerie</a>
+                <a href="#">Mes Annonces</a>
+                <hr>
+                <a href="#" id="premium">Premium</a>
+                <hr>
+                <a href="#">Historique des cours effectués</a>
+                <a href="#">Virement en cours</a>
+                <a href="#">Payements et remboursements</a>
+                <hr>
+                <a href="#" id="parametres">Paramètres</a>
+                <hr>
+            </div>
+            <div class="logout">
+                <hr>
+                <a href="#">Déconnexion</a>
+                <hr>
+            </div>
 		</div>
-
-		<div class="bottom">
-			<span>Déconnexion</span>
-		</div>
-
 	</div>
 
     <div class="reste js-reste toggleModalProfil"></div>
