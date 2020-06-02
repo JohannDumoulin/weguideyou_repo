@@ -46,6 +46,8 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+@charset "UTF-8";
+
 body {
   margin: 0;
   background: #FFFFFF;
@@ -589,12 +591,11 @@ footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div i {
 }
 
 .registration .wrap > div > div {
-  padding: 50px;
+  padding: 50px 100px;
 }
 
 .registration .wrap > div > div:first-child {
-  height: 100%;
-  width: 30%;
+  width: 40%;
   background-image: url("/img/asoggetti-xqBllPa7XEs-unsplash.jpg");
   background-size: cover;
   background-position: 75% 0%;
@@ -612,17 +613,54 @@ footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div i {
 }
 
 .registration .wrap > div > div:last-child {
-  height: 100%;
-  width: 70%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /*overflow: auto;*/
+  /*.registrationContent{
+      >div{
+          .registration-request{
+              color: #000000;
+              font-family: "Roboto", Arial, sans-serif;
+              font-weight: 500;
+              font-size: 1.5em;
+              line-height: 35px;
+
+              padding-bottom: 50px;
+          }
+
+          p:nth-of-type(2)::after{
+              content: "(Immobilière, vacances...)";
+              display: block;
+              color: #000000;
+              opacity: .3;
+              font-family: "Roboto", Arial, sans-serif;
+              font-weight: 400;
+              font-size: 1em;
+
+          }
+
+          .registration-detail{
+              color: #000000;
+              opacity: .3;
+              font-family: "Roboto", Arial, sans-serif;
+              font-weight: 400;
+              font-size: 1em;
+          }
+      }
+  }*/
+}
+
+.registration .wrap > div > div:last-child > div,
+.registration .wrap > div > div:last-child > form {
+  width: 100%;
 }
 
 .registration .wrap > div > div:last-child .registrationNav {
-  width: 50%;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 50px;
 }
 
 .registration .wrap > div > div:last-child .registrationNav span {
@@ -631,13 +669,218 @@ footer .wrap > div:nth-of-type(2) div:nth-of-type(3) > div i {
   font-weight: 700;
   font-size: 1em;
   text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
 }
 
-.registration .wrap > div > div:last-child .registrationContent span {
-  color: #000000;
-  font-family: "Roboto", Arial, sans-serif;
-  font-weight: 500;
-  font-size: 1em;
+.registration .wrap > div > div:last-child .registrationNav .is-selected::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #29abe2, #29ade5, #2ab0e9, #2ab2ec, #2bb5f0);
+  position: absolute;
+  bottom: -7px;
+}
+
+.registration .wrap > div > div:last-child .registration-carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.registration .wrap > div > div:last-child .registration-carousel .registration-cell {
+  width: 100%;
+  /* full width */
+  height: 160px;
+  /* height of carousel */
+  margin-right: 10px;
+  background-color: #0C9A9A;
+}
+
+.wrap {
+  padding: 0 40px;
+}
+
+.annonce {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: openModal 0.5s ease forwards;
+          animation: openModal 0.5s ease forwards;
+}
+
+@-webkit-keyframes openModal {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes openModal {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 0%;
+  }
+}
+
+.modalAnnonce {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 910;
+  background-color: #FFFFFF;
+  height: 100vh;
+  overflow: auto;
+  width: 75vw;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.icons {
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.icons .wrap {
+  display: flex;
+}
+
+.icons i {
+  padding: 10px 20px;
+  margin: auto;
+  font-size: 25px;
+  transition: transform 0.3s;
+}
+
+.icons i:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+.titres {
+  margin-bottom: 20px;
+}
+
+.titres h1,
+.titres h2,
+.titres h3 {
+  padding: 5px;
+}
+
+.titres .btnResa {
+  display: flex;
+  align-items: center;
+}
+
+.titres .btnResa .buttonLink {
+  margin-left: auto;
+}
+
+.description label {
+  display: block;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.detail {
+  padding-top: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.detail .wrap div {
+  padding-bottom: 30px;
+}
+
+.profil {
+  margin-bottom: 20px;
+}
+
+.profil .txt {
+  display: block;
+}
+
+.profil div {
+  display: flex;
+}
+
+.profil div p {
+  padding-top: 10px;
+}
+
+.profil div p .nom {
+  font-size: 150%;
+}
+
+.profil .img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-right: 15px;
+  background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Caroussel */
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  width: 90%;
+}
+
+.carousel-control {
+  width: 10%;
+}
+
+.carousel .item {
+  height: 400px;
+}
+
+.carousel li {
+  border: 1px solid black;
+}
+
+.carousel-indicators .active {
+  background-color: black;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #969696;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b4b4b4;
 }
 
 .wrap {

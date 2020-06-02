@@ -18,12 +18,11 @@
             display: flex;
 
             >div{
-                padding: 50px;
+                padding: 50px 100px;
             }
 
             >div:first-child{
-                height: 100%;
-                width: 30%;
+                width: 40%;
                 background-image: url("/img/asoggetti-xqBllPa7XEs-unsplash.jpg");
                 background-size: cover;
                 background-position: 75% 0%;
@@ -42,35 +41,87 @@
                 }
             }
             >div:last-child{
-                height: 100%;
-                width: 70%;
+                width: 60%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                /*overflow: auto;*/
+
+                >div, >form{
+                    width: 100%;
+                }
 
                 .registrationNav{
-                    width: 50%;
                     display: flex;
                     justify-content: space-around;
+                    margin-bottom: 50px;
 
                     span{
                         color: #000000;
                         font-family: "Roboto", Arial, sans-serif;
                         font-weight: 700;
                         font-size: 1em;
-
                         text-transform: uppercase;
+                        cursor: pointer;
+
+                        position: relative;
+                    }
+
+                    .is-selected::after{
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 2px;
+                        background: $gradient;
+                        position: absolute;
+                        bottom: -7px;
                     }
                 }
 
-                .registrationContent{
-                    span{
-                        color: #000000;
-                        font-family: "Roboto", Arial, sans-serif;
-                        font-weight: 500;
-                        font-size: 1em;
+                .registration-carousel{
+                    width: 100%;
+                    overflow: hidden;
+                    .registration-cell{
+                        width: 100%; /* full width */
+                        height: 160px; /* height of carousel */
+                        margin-right: 10px;
+                        background-color: #0C9A9A;
                     }
                 }
+
+
+                /*.registrationContent{
+                    >div{
+                        .registration-request{
+                            color: #000000;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 500;
+                            font-size: 1.5em;
+                            line-height: 35px;
+
+                            padding-bottom: 50px;
+                        }
+
+                        p:nth-of-type(2)::after{
+                            content: "(Immobilière, vacances...)";
+                            display: block;
+                            color: #000000;
+                            opacity: .3;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 1em;
+
+                        }
+
+                        .registration-detail{
+                            color: #000000;
+                            opacity: .3;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 1em;
+                        }
+                    }
+                }*/
             }
         }
     }
