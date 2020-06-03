@@ -14,7 +14,7 @@
         >div{
             background-color: #FFFFFF;
             width: 80%;
-            height: 80vh;
+            height: 90vh;
             display: flex;
 
             >div{
@@ -45,7 +45,6 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                /*overflow: auto;*/
 
                 >div, >form{
                     width: 100%;
@@ -55,6 +54,7 @@
                     display: flex;
                     justify-content: space-around;
                     margin-bottom: 50px;
+                    height: 5%;
 
                     span{
                         color: #000000;
@@ -78,42 +78,89 @@
                     }
                 }
 
-                .registration-carousel{
+                .main-carousel{
                     width: 100%;
-                    overflow: hidden;
-                    .registration-cell{
-                        width: 100%; /* full width */
-                        height: 160px; /* height of carousel */
-                        margin-right: 10px;
-                        background-color: #0C9A9A;
+                    height: 95%;
+                    position: relative;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+
+                    .flickity-page-dots {
+                        bottom: 0;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        position: absolute;
                     }
-                }
 
+                    .flickity-page-dots .dot {
+                        height: 4px;
+                        width: 40px;
+                        margin: 0;
+                        border-radius: 0;
+                        background-color: rgba(0, 0, 0, 0.1);
+                    }
 
-                /*.registrationContent{
-                    >div{
-                        .registration-request{
+                    .flickity-page-dots .dot.is-selected {
+                        background: $deepBlue;
+                        border-radius: 200px 200px 200px 200px;
+                        -moz-border-radius: 200px 200px 200px 200px;
+                        -webkit-border-radius: 200px 200px 200px 200px;
+                        border: 0px solid #000000;
+                    }
+
+                    .carousel-cell{
+                        width: 100%; /* full width */
+                        margin-right: 20px;
+                        padding: 5px;
+                        box-sizing: border-box;
+
+                        .registration-request {
                             color: #000000;
                             font-family: "Roboto", Arial, sans-serif;
                             font-weight: 500;
-                            font-size: 1.5em;
+                            font-size: 1.3em;
                             line-height: 35px;
-
-                            padding-bottom: 50px;
+                            padding-bottom: 30px;
                         }
 
-                        p:nth-of-type(2)::after{
-                            content: "(Immobilière, vacances...)";
-                            display: block;
+                        .registration-detail {
+                            position: absolute;
+                            bottom: -20px;
                             color: #000000;
-                            opacity: .3;
+                            opacity: 0.3;
                             font-family: "Roboto", Arial, sans-serif;
                             font-weight: 400;
                             font-size: 1em;
-
                         }
 
-                        .registration-detail{
+                        p {
+                            margin-right: 30px;
+                            cursor: pointer;
+                        }
+
+                        i {
+                            opacity: 0.2;
+                        }
+
+                        input[type="password"],[type="text"],[type="date"], {
+                            width: 60%;
+                            display: block;
+                            border: none;
+                            padding-bottom: 10px;
+                            border-bottom: solid 2px rgba(0, 0, 0, 0.6);
+                            background-position: -200px 0;
+                            background-size: 200px 100%;
+                            background-repeat: no-repeat;
+                            color: #000000;
+                            opacity: 0.3;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 1em;
+                        }
+
+                        select {
+                            border: none;
                             color: #000000;
                             opacity: .3;
                             font-family: "Roboto", Arial, sans-serif;
@@ -121,7 +168,65 @@
                             font-size: 1em;
                         }
                     }
-                }*/
+
+                    .registration-step1{
+
+                        .registration-answer{
+
+                            >div {
+                                display: flex;
+                                margin-bottom: 40px;
+                                position: relative;
+                            }
+                        }
+                    }
+                    .registration-step2{
+
+                        .registration-answer{
+
+                            >div {
+                                display: flex;
+                                margin-bottom: 20px;
+                                position: relative;
+                            }
+
+                            a {
+                                margin: auto;
+                            }
+                        }
+                    }
+
+                    .registration-step3{
+
+                        .registration-answer{
+
+                            >div {
+                                display: flex;
+                                margin-bottom: 20px;
+                                position: relative;
+                                align-items: flex-start;
+                            }
+
+                            label {
+                                color: #000000;
+                                font-family: "Roboto", Arial, sans-serif;
+                                font-weight: 400;
+                                font-size: 1em;
+
+                                a {
+                                    color: #29ABE2;
+                                    font-family: "Roboto", Arial, sans-serif;
+                                    font-weight: 400;
+                                    font-size: 1em;
+                                }
+                            }
+
+                            a {
+                                margin: auto;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

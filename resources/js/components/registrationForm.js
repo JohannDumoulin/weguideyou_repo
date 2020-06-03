@@ -9,8 +9,8 @@ export default class RegistrationForm {
 
     initEls(){
         this.$els ={
-            flky: new Flickity( '.registration-carousel', {
-                freeScroll: true,
+            flky: new Flickity( '.main-carousel', {
+                freeScroll: false,
                 contain: true,
                 // disable previous & next buttons and dots
                 prevNextButtons: false
