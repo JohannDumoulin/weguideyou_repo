@@ -156,6 +156,18 @@ section {
 	}
 }
 
+.signal {
+	margin-top: 20px;
+	padding: 20px;
+	border-top: 1px solid black;
+	display: flex;
+	justify-content: center;
+
+	a {
+		color: black;
+	}
+}
+
 .reste {
     z-index: 909;
     position: fixed;
@@ -231,7 +243,6 @@ section {
 }
 
 /* Map */
-#map {
+#mapid {
 	height: 400px;
-	width: 100%;
 }

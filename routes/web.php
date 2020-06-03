@@ -33,6 +33,10 @@ Route::get('/profil', function() {
 	return view('pages/profil');
 });
 
+Route::get('/favoris', function() {
+	return view('pages/favoris');
+});
+
 
 
 

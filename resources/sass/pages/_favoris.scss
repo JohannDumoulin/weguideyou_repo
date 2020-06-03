@@ -1,0 +1,21 @@
+.contentFavoris {
+
+	.titre {
+		padding-top: 30px;
+	}
+
+	.sort {
+		justify-content: center;
+		display: flex;
+
+		label {
+			display: block;
+			margin-right: 10px;
+		}
+	}
+
+	#advertisement_section {
+		justify-content: center !important;
+	}
+
+}

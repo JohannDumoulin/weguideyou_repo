@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Home')
+@section('title', 'Parametres')
 
 @push('style')
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
