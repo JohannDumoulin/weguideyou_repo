@@ -35,6 +35,9 @@ Route::get('/profil', function() {
 
 Route::get('/favoris', function() {
 	return view('pages/favoris');
+
+Route::get('/messagerie', function() {
+	return view('pages/mailbox');
 });
 
 
