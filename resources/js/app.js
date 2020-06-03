@@ -5,6 +5,8 @@ import MenuProfil from './components/menuProfil';
 import Annonce from './components/annonce';
 import RegistrationForm from "./components/registrationForm";
 import Favoris from "./components/favoris";
+import AdvertisementPage from './pages/advertisement.js'
+
 /*Components*/
 
 class App {
@@ -18,6 +20,7 @@ class App {
         new Annonce();
         new RegistrationForm();
         new Favoris();
+        new AdvertisementPage;
     }
 }
 new App();

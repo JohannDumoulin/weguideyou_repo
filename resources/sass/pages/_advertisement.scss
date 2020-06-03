@@ -3,6 +3,25 @@ body[data-content="advertisement"] {
 		padding-top: 100px;
 	}
 
+	.more_filter {
+		display: flex;
+		align-items: center;
+		width: 65%;
+		margin: 0 auto;
+		margin-top: 20px;
+		cursor: pointer;
+		display: none;
+
+		&.js-active {
+			display: flex;
+		}
+
+		p {
+			margin-left: 10px;
+			color: $darkGrey;
+		}
+	}
+
 	.first_filter_more {
 		width: 60%;
 		box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.25);
@@ -10,6 +29,11 @@ body[data-content="advertisement"] {
 		margin: 0 auto;
 		margin-top: 35px;
 		padding: 20px;
+		display: none;
+
+		&.js-active {
+			display: block;
+		}
 
 		.first_filter_more_content {
 			display: flex;
@@ -27,12 +51,30 @@ body[data-content="advertisement"] {
 				&[type="checkbox"] {
 					margin-right: 10px;
 					cursor: pointer;
+
+					&:checked {
+						background-color: $deepBlue;
+					}
 				}
+			}
+
+			select {
+				margin-left: 30px;
+				border-radius: 5px;
+				border: 1px solid $lightGrey;
 			}
 		}
 
-		>p {
+		.less_filter {
+			display: flex;
+			align-items: center;
 			margin-top: 30px;
+			cursor: pointer;
+
+			p {
+				color: $darkGrey;
+				margin-left: 10px;
+			}
 		}
 	}
 
@@ -63,14 +105,6 @@ body[data-content="advertisement"] {
 			select {
 				border: none;
 				outline: 0;
-			}
-
-			&.left {
-
-			}
-
-			&.right {
-
 			}
 		}
 	}
