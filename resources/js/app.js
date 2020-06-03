@@ -4,6 +4,7 @@ require('./bootstrap');
 import MenuProfil from './components/menuProfil';
 import Annonce from './components/annonce';
 import RegistrationForm from "./components/registrationForm";
+import AdvertisementPage from './pages/advertisement.js'
 /*Components*/
 
 class App {
@@ -15,7 +16,8 @@ class App {
         // Start application
         new MenuProfil();
         new Annonce();
-        new RegistrationForm()
+        new RegistrationForm();
+        new AdvertisementPage;
     }
 }
 new App();

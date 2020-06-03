@@ -44,9 +44,14 @@
 				</div>
 				<img src="{{ asset('img/search_logo.svg') }}" alt="">
 			</form>
+			
+			<div class="more_filter js-active js-more_filter">
+				<img src="{{ asset('img/plus_filter.svg') }}" alt="">
+				<p>Plus de filtres</p>
+			</div>
 
 			<!-- More filters -->
-			<form action="" class="first_filter_more">
+			<form action="" class="first_filter_more js-first_filter_more">
 				<div class="first_filter_more_content">
 					<p>Choix du prestataire :</p>
 					<input type="checkbox" id="organization" name="organization" checked>
@@ -56,19 +61,31 @@
 				</div>
 				<div class="first_filter_more_content">
 					<p>Nombre de personne(s) :</p>
-					<input type="number" id="nb_person" name="nb_person" min="1" value="1">
+					<select name="nb_person" id="nb_person">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7+">7+</option>
+					</select>
 				</div>
 				<div class="first_filter_more_content">
 					<p>Durée :</p>
 					<select name="duration" id="duration">
 						<option value="1h">1h</option>
-						<option value="1h">2h</option>
-						<option value="1h">4h</option>
-						<option value="1h">Demi-journée</option>
-						<option value="1h">Journée complète</option>
+						<option value="2h">2h</option>
+						<option value="4h">4h</option>
+						<option value="half-day">Demi-journée</option>
+						<option value="day">Journée complète</option>
 					</select>
 				</div>
-				<p>Moins de filtres</p>
+
+				<div class="less_filter js-less_filter">
+					<img src="{{ asset('img/minus_filter.svg') }}" alt="">
+					<p>Moins de filtres</p>
+				</div>
 			</form>
 			
 <!---------------------- Second Filters -------------------->
