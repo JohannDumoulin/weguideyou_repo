@@ -15,11 +15,25 @@ export default class RegistrationForm {
                 // disable previous & next buttons and dots
                 prevNextButtons: false
             }),
+            registrationBtn: $('#js-registrationBtn'),
+            registrationBack : $('#close-registration'),
         }
     }
 
     initEvents(){
+        this.getRegistrationPanel();
+    }
 
+    getRegistrationPanel(){
+        $('.registration').toggleClass("hidden");
+        this.$els.registrationBtn.click(function(){
+            $('.registration').toggleClass("hidden");
+            $('body').toggleClass("stopScrolling");
+        });
+        this.$els.registrationBack.click(function(){
+            $('.registration').toggleClass("hidden");
+            $('body').toggleClass("stopScrolling");
+        });
     }
 
 }

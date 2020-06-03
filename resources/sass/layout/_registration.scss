@@ -11,6 +11,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+
+        #close-registration{
+            margin-right: 100px;
+            position: absolute;
+            right: 0;
+            width: 3%;
+
+            cursor: pointer;
+        }
         >div{
             background-color: #FFFFFF;
             width: 80%;
@@ -157,12 +167,27 @@
                             font-family: "Roboto", Arial, sans-serif;
                             font-weight: 400;
                             font-size: 1em;
+
+                            &:focus, &:valid {
+                                box-shadow: none;
+                                outline: none;
+                                background-position: 0 0;
+                                transition: 0.2s;
+                                border-bottom: solid 2px $deepBlue;
+                                color: $deepBlue;
+                                opacity: 1;
+                                &::-webkit-input-placeholder {
+                                    color: $deepBlue;
+                                    font-size: 11px;
+                                    transform: translateY(-20px);
+                                    visibility: visible !important;
+                                }
+                            }
                         }
 
                         select {
                             border: none;
                             color: #000000;
-                            opacity: .3;
                             font-family: "Roboto", Arial, sans-serif;
                             font-weight: 400;
                             font-size: 1em;
