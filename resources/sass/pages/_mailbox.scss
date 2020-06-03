@@ -1,0 +1,115 @@
+body[data-content="mailbox"] {
+	#mailbox {
+		h1 {
+			margin-top: 70px;
+			margin-bottom: 40px;
+		}
+
+		#mail_container {
+			display: flex;
+			justify-content: space-between;
+
+			#all_mails {
+				box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.25);
+				border-radius: 9px;
+				padding: 20px 15px;
+				width: 330px;
+
+				.mail_content {
+					display: flex;
+					margin-bottom: 40px;
+					cursor: pointer;
+
+					&:last-of-type {
+						margin-bottom: 0;
+					}
+
+					.advertisement_picture_container {
+						overflow: hidden;
+						height: 140px;
+						width: 125px;
+						text-align: center;
+						border-radius: 5px;
+
+						img {
+							height: 100%;
+							margin-left: 50%;
+							transform: translateX(-50%);
+						}
+					}
+
+					.advertisement_content {
+						margin-left: 20px;
+
+						.seller_infos {
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+							width: 50%;
+						}
+
+						.title {
+							margin: 15px 0;
+						}
+
+						.last_msg {
+							font-weight: 300;
+							color: $darkGrey;
+							font-size: 0.8em;
+						}
+					}
+				}
+			}
+
+			#the_mail {
+				box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.25);
+				border-radius: 9px;
+				width: 70%;
+
+				#mail_header {
+					display: flex;
+					padding: 20px;
+					justify-content: space-between;
+
+					h2 {
+						font-size: 1.5em;
+					}
+
+					#mail_header_content {
+						display: flex;
+
+						#the_mail_more {
+							margin-right: 15px;
+							text-align: right;
+
+							#seller {
+
+							}
+
+							#price {
+								color: white;
+								background-color: $deepBlue;
+								text-align: center;
+								padding: 10px 20px;
+								border-radius: 9px;
+								margin-top: 15px;
+							}
+						}
+
+						>img {
+							height: calc(100% + 20px);
+						}
+					}
+				}
+
+				#the_mail_content {
+
+				}
+
+				#writing_area {
+
+				}
+			}
+		}
+	}
+}

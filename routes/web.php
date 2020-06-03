@@ -33,6 +33,10 @@ Route::get('/profil', function() {
 	return view('pages/profil');
 });
 
+Route::get('/messagerie', function() {
+	return view('pages/mailbox');
+});
+
 
 
 
