@@ -26,7 +26,7 @@ export default class AdvertisementPage {
         this.$els.less_filter_btn.click(function(){
         	console.log('test');
             $('.js-first_filter_more').removeClass("js-active");
-            $(this.$els.more_filter_btn).addClass("js-active");
+            $('.js-more_filter').addClass("js-active");
         });
     }
 }

@@ -1,5 +1,7 @@
 body[data-content="mailbox"] {
 	#mailbox {
+		padding-bottom: 100px;
+
 		h1 {
 			margin-top: 70px;
 			margin-bottom: 40px;
@@ -14,6 +16,8 @@ body[data-content="mailbox"] {
 				border-radius: 9px;
 				padding: 20px 15px;
 				width: 330px;
+				overflow: auto;
+				max-height: 660px;
 
 				.mail_content {
 					display: flex;
@@ -97,17 +101,88 @@ body[data-content="mailbox"] {
 						}
 
 						>img {
-							height: calc(100% + 20px);
+							height: 100%;
 						}
 					}
 				}
 
 				#the_mail_content {
+					display: flex;
+					flex-direction: column;
+					border-top: 2px solid $lightGrey;
+					border-bottom: 2px solid $lightGrey;
+					padding: 20px;
+					max-height: 400px;
+					overflow: auto;
 
+					.msg_infos {
+						color: $darkGrey;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						margin-bottom: 20px;
+						font-size: 0.8em;
+
+						>p:nth-of-type(1) {
+							margin-bottom: 5px;
+						}
+					}
+
+					.message {
+						max-width: 60%;
+						margin-bottom: 20px;
+						border-radius: 9px;
+						padding: 15px 20px;
+						line-height: 20px;
+
+						&.right {
+							align-self: flex-end;
+							color: white;
+							background-color: $deepBlue;
+						}
+
+						&.left {
+							background-color: $lightGrey;
+						}
+					}
 				}
 
 				#writing_area {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 30px;
 
+					label {
+						cursor: pointer;
+						margin-right: 30px;
+					}
+
+					#file_input {
+						display: none;
+					}
+
+					textarea {
+						flex: 1;
+						resize: none;
+						font-family: "Roboto", Arial, sans-serif;
+						padding: 15px 20px;
+						border: none;
+						box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.25);
+						border-radius: 5px;
+						outline: none;
+					}
+
+					input[type="submit"] {
+						border: none;
+						background-color: $deepBlue;
+						border-radius: 50px;
+						padding: 15px 30px;
+						font-family: "Roboto", Arial, sans-serif;
+						color: white;
+						margin-left: 30px;
+						outline: 0;
+					}
 				}
 			}
 		}

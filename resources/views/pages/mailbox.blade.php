@@ -73,12 +73,28 @@
 					</div>
 
 					<div id="the_mail_content">
+						<div class="msg_infos">
+							<p class="day">20 Juin 2020</p>
+							<p class="date">17h45</p>
+						</div>
+						<p class="message right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis iaculis est. Vestibulum facilisis ullamcorper aliquam. Praesent ac ipsum risus. Vivamus mauris nibh, aliquam eget cursus sed, bibendum sit amet mauris. Suspendisse bibendum tellus id aliquam maximus. Fusce ultricies, leo ornare ultrices lobortis, nibh odio blandit quam, a ultricies lectus arcu ut mauris.</p>
 						
+						<p class="message left">Pellentesque dignissim, quam ut auctor iaculis, nulla mauris bibendum nisi, ut euismod eros eros bibendum tellus. Etiam at dignissim nulla. Sed sagittis imperdiet nisl, non consequat erat egestas in. Nullam ultrices nulla nec orci rhoncus posuere. Morbi orci neque, suscipit id ligula sit amet, laoreet ullamcorper enim.</p>
+						
+						<p class="message left">Aenean imperdiet tortor risus, id hendrerit.</p>
+						
+						<p class="message right">Aenean ac orci vehicula, cursus sapien sit amet, malesuada felis. Nulla placerat, arcu eget suscipit laoreet, turpis turpis imperdiet quam, et laoreet quam est eu libero.</p>
 					</div>
 
-					<div id="writing_area">
-						
-					</div>
+					<form id="writing_area">
+						<label for="file_input">
+							<img src="{{ asset('img/attach_mailbox.svg') }}" alt="">
+						</label>
+						<input type="file" id="file_input">
+					
+						<textarea name="" id="" placeholder="Écrivez votre message" required="" wrap="" rows="4"></textarea>
+						<input type="submit" value="Envoyer">
+					</form>
 				</div>
 			</div>
 		</section>
