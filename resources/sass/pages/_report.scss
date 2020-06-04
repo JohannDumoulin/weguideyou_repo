@@ -1,0 +1,36 @@
+
+
+.report {
+
+	label {
+	    font-size: 1rem;
+	}
+
+	input[type=radio] {
+	    margin: .4rem;
+	}
+
+	.msg {
+		display: flex;
+	}
+
+	div {
+		padding-top: 20px;
+	}
+
+	textarea {
+		margin-left: 20px;
+		width: 300px;
+		height: 100px;
+	}
+
+	input[type=submit] {
+	    margin: 40px 0;
+	    background-color: $background;
+	    border: 1px solid black;
+	    border-radius: 10px;
+	    padding: 10px 20px;
+	    cursor: pointer;
+	}
+
+}

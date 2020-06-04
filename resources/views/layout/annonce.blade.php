@@ -138,7 +138,7 @@
 	    </section>
 
 	    <div class="signal">
-	    	<a href="">Signaler l'annonce</a>
+	    	<a href="annonce/report">Signaler l'annonce</a>
 	    </div>
 
 	</div>

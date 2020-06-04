@@ -41,8 +41,17 @@ Route::get('/messagerie', function() {
 	return view('pages/mailbox');
 });
 
+Route::get('annonce/report', function() {
+	return view('pages/report');
+});
+
+
+
+Route::post('annonce/report', 'NotificationController@report');
 
 
 
 // Temporary route
+Route::get('getnotifs', 'NotificationController@recupNotif');
+
 
