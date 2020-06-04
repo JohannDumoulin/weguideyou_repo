@@ -1,4 +1,4 @@
-<nav>
+<nav {{--class="js-onMoveNav"--}}>
 	<div class="wrap">
         <div class="navLogo">
             <img src="{{asset('img/logo/logoWeGuideYou.png')}}" alt="Logo de l'agence WeGuideYou">
