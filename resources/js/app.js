@@ -7,6 +7,7 @@ import RegistrationForm from "./components/registrationForm";
 import Favoris from "./components/favoris";
 import AdvertisementPage from './pages/advertisement.js'
 import Nav from "./layout/nav";
+import Profil from "./pages/profil";
 /*Components*/
 
 class App {
@@ -22,6 +23,7 @@ class App {
         new Annonce();
         new RegistrationForm();
         new Favoris();
+        new Profil;
 
         //layout
         /*new Nav();*/
