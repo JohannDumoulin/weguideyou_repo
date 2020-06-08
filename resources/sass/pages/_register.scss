@@ -1,28 +1,192 @@
 body[data-content="register"]{
-    .registration{
-        background-color: rgba(0,0,0,0.2);
+    .register{
         width: 100%;
-        height: 100vh;
-        z-index: 999;
 
-        position: absolute;
+        h1{
+            padding: 50px 0;
+        }
+
+        h2{
+            font-size: 1.2em;
+            opacity: .8;
+        }
+
+        label{
+            color: #000000;
+            font-family: "Roboto", Arial, sans-serif;
+            font-weight: 400;
+            font-size: 1em;
+        }
+
 
         .wrap{
             height: 100%;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
             position: relative;
 
-            #close-registration{
-                margin-right: 100px;
-                position: absolute;
-                right: 0;
-                width: 3%;
+            form{
+                width: 100%;
 
-                cursor: pointer;
+                hr{
+                    width: 100%;
+                    opacity: .2;
+                }
+
+                .registration-step:nth-of-type(2), .registration-step:nth-of-type(3){
+                    margin-top: 100px;
+                }
+
+                .registration-step{
+                    width: 100%;
+                    margin-bottom: 100px;
+
+                    .registration-request {
+                        color: #000000;
+                        font-family: "Roboto", Arial, sans-serif;
+                        font-weight: 500;
+                        font-size: 1.3em;
+                        line-height: 35px;
+                        padding-bottom: 30px;
+                    }
+
+                    .registration-detail {
+                        position: absolute;
+                        bottom: -20px;
+                        color: #000000;
+                        opacity: 0.3;
+                        font-family: "Roboto", Arial, sans-serif;
+                        font-weight: 400;
+                        font-size: 1em;
+                    }
+
+                    p {
+                        margin-right: 30px;
+                        cursor: pointer;
+                    }
+
+                    i {
+                        opacity: 0.2;
+                    }
+
+                    input[type="password"],[type="text"],[type="date"], {
+                        display: block;
+                        border: none;
+                        padding-bottom: 10px;
+                        border-bottom: solid 2px rgba(0, 0, 0, 0.6);
+                        background-position: -200px 0;
+                        background-size: 200px 100%;
+                        background-repeat: no-repeat;
+                        color: #000000;
+                        opacity: 0.3;
+                        font-family: "Roboto", Arial, sans-serif;
+                        font-weight: 400;
+                        font-size: 1em;
+
+                        &:focus, &:valid {
+                            box-shadow: none;
+                            outline: none;
+                            background-position: 0 0;
+                            transition: 0.2s;
+                            border-bottom: solid 2px $deepBlue;
+                            color: $deepBlue;
+                            opacity: 1;
+                            &::-webkit-input-placeholder {
+                                color: $deepBlue;
+                                font-size: 11px;
+                                transform: translateY(-20px);
+                                visibility: visible !important;
+                            }
+                        }
+                    }
+
+                    select {
+                        border: none;
+                        color: #000000;
+                        font-family: "Roboto", Arial, sans-serif;
+                        font-weight: 400;
+                        font-size: 1em;
+                    }
+                }
+
+                .registration-step1{
+
+                    .registration-answer{
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        >div {
+                            display: flex;
+                            margin-bottom: 40px;
+                            margin-right: 50px;
+                            position: relative;
+                            flex-wrap: nowrap;
+
+                            label{
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+
+                .registration-step2{
+
+                    .registration-answer{
+                        display: flex;
+
+                        >*{
+                            margin-right: 50px;
+                        }
+
+                        a {
+                            margin: auto;
+                        }
+                    }
+                }
+
+                .registration-step3{
+
+                    .registration-answer{
+
+                        >div {
+                            display: flex;
+                            margin-bottom: 20px;
+                            position: relative;
+                            align-items: flex-start;
+                        }
+
+                        >div:first-child{
+                            margin-bottom: 50px;
+                            >*{
+                                margin-right: 50px;
+                            }
+                            div{
+                                display: flex;
+                            }
+                        }
+
+                        label {
+
+                            a {
+                                color: #29ABE2;
+                                font-family: "Roboto", Arial, sans-serif;
+                                font-weight: 400;
+                                font-size: 1em;
+                            }
+                        }
+
+                        a,button {
+                            margin: auto;
+                        }
+                    }
+                }
             }
-            >div{
+
+
+
+
+
+            >.none{
                 background-color: #FFFFFF;
                 width: 80%;
                 height: 90vh;
