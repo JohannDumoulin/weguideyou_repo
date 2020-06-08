@@ -27,7 +27,7 @@ Route::get('/parametres', function () {
 
 Route::get('/annonces', function() {
 	return view('pages/advertisement');
-});
+})->name('advertisements');
 
 Route::get('/profil', function() {
 	return view('pages/profil');
@@ -53,5 +53,14 @@ Route::post('annonce/report', 'NotificationController@report');
 
 // Temporary route
 Route::get('getnotifs', 'NotificationController@recupNotif');
+
+
+
+// Create Advertisement
+Route::get('/deposer-une-annonce', function() {
+	return view('pages/create_advertisement');
+});
+
+Route::post('/advertisement-send', 'Create_advertisementController@send')->name('advertisement-send');
 
 
