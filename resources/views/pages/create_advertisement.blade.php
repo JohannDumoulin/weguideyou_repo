@@ -14,7 +14,7 @@
 	<section>
 		<h1>Créer une annonce</h1>
 
-		<form action="{{ route('advertisement-send') }}" method="post" enctype="multipart/form-data">
+		<form action="{{ route('advertisement-send') }}" method="post" enctype="multipart/form-data" autocomplete="off">
 			@csrf
 			<div class="container">
 				<label for="ad_name">Titre de l'annonce</label>
@@ -32,42 +32,44 @@
 				</select>
 			</div>
 			<div class="container">
-				<label for="">Disponibilité : du</label>
-				<input type="date">
-				<label for="">au</label>
-				<input type="date">
+				<label for="ad_date_from">Disponibilité : du</label>
+				<input type="date" name="date_from" id="ad_date_from">
+				<label for="ad_date_to">au</label>
+				<input type="date" name="date_to" id="ad_date_to">
 			</div>
 			<div class="container">
-				<label for="">Prix</label>
-				<p>Laisser à 0 si vous ne souhaiter pas proposer de prix pour cet horaire</p>
-				<div class="price_container">
-					<input type="number" value="0" min="0">
-					<p>Pour 1h</p>
-				</div>
-				<div class="price_container">
-					<input type="number" value="0" min="0">
-					<p>Pour 2h</p>
-				</div>
-				<div class="price_container">
-					<input type="number" value="0" min="0">
-					<p>Pour 4h</p>
-				</div>
-				<div class="price_container">
-					<input type="number" value="0" min="0">
-					<p>Pour la demi-journée</p>
-				</div>
-				<div class="price_container">
-					<input type="number" value="0" min="0">
-					<p>Pour la journée</p>
+				<label for="price_container">Prix</label>
+				<div id="price_container">
+					<p>Laisser à 0 si vous ne souhaiter pas proposer de prix pour cet horaire</p>
+					<div class="price_content">
+						<input type="number" id="ad_one_h" name="price_one_h" value="1h" min="0">
+						<label for="ad_one_h">Pour 1h</label>
+					</div>
+					<div class="price_content">
+						<input type="number" id="ad_two_h" name="price_two_h" value="2h" min="0">
+						<label for="ad_two_h">Pour 2h</label>
+					</div>
+					<div class="price_content">
+						<input type="number" id="ad_four_h" name="price_four_h" value="4h" min="0">
+						<label for="ad_four_h">Pour 4h</label>
+					</div>
+					<div class="price_content">
+						<input type="number" id="ad_half_day" name="price_half_day" value="half_day" min="0">
+						<label for="ad_half_day">Pour la demi-journée</label>
+					</div>
+					<div class="price_content">
+						<input type="number" id="ad_day" name="price_day" value="day" min="0">
+						<label for="ad_day">Pour la journée</label>
+					</div>
 				</div>
 			</div>
 			<div class="container">
-				<label for="">Afficher votre numéro sur l'annonce</label>
-				<input type="checkbox">
+				<label for="ad_phone">Afficher votre numéro sur l'annonce</label>
+				<input type="checkbox" id="ad_phone" name="phone_bool">
 			</div>
 			<div class="container">
-				<label for="">Photos</label>
-				<input type="file">
+				<label for="ad_pictures">Photos</label>
+				<input type="file" id="ad_pictures" name="pictures">
 			</div>
 			<input type="submit" value="Déposer l'annonce">
 		</form>
