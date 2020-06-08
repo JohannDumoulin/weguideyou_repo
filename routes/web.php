@@ -53,5 +53,11 @@ Route::post('annonce/report', 'NotificationController@report');
 
 // Temporary route
 Route::get('getnotifs', 'NotificationController@recupNotif');
+Route::get('addAdvert', 'AdvertController@addAdvert');
+
+Route::get('annonces2', 'AdvertController@displayAdverts');
+Route::get('getAdverts', 'AdvertController@getAdverts');
+Route::get('sortAdverts', 'AdvertController@sortAdverts');
+Route::get('filterAdverts', 'AdvertController@filterAdverts');
 
 

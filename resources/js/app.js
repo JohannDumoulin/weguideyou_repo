@@ -2,7 +2,8 @@ require('./bootstrap');
 
 /*Components*/
 import MenuProfil from './components/menuProfil';
-import Annonce from './components/annonce';
+import Advert from './components/advert';
+import Adverts from './components/advert';
 import RegistrationForm from "./components/registrationForm";
 import Favoris from "./components/favoris";
 import AdvertisementPage from './pages/advertisement.js'
@@ -19,7 +20,8 @@ class App {
 
         //components
         new MenuProfil();
-        new Annonce();
+        new Advert();
+        new Adverts();
         new RegistrationForm();
         new Favoris();
 
