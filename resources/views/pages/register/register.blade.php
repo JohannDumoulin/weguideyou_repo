@@ -22,7 +22,8 @@
                     <h2>Quel type de compte souhaitez vous créer ?</h2>
                 </div>
                 <div class="registration-answer">
-                    <div>
+                    {!! form_row($formRegister->languages) !!}
+                    {{--<div>
                         <input type="radio" name="status-account" value="pro1">
                         <label for="vehicle1"> Professionnel indépendant</label>
                     </div>
@@ -37,7 +38,7 @@
                     <div>
                         <input type="radio" name="status-account" value="par">
                         <label for="vehicle3"> Particulier</label>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
             <div class="registration-step registration-step2">
@@ -48,16 +49,7 @@
                     {!! form_row($formRegister->name) !!}
                     {!! form_row($formRegister->fullName) !!}
                     {!! form_row($formRegister->age) !!}
-                    {{--<input name="name" placeholder="Nom" type="text" required="">--}}
-                    {{--<input name="firstName" placeholder="Prénom" type="text" required="">--}}
-                    {{--<input name="age" placeholder="Age" type="date" required="">--}}
-                    {!! form_row($formRegister->sex) !!}
-                   {{-- <select name="sex" required="">
-                        <option value="incomplete">Sexe</option>
-                        <option value="femme">Femme</option>
-                        <option value="homme">Homme</option>
-                        <option value="autre">Autre</option>
-                    </select>--}}
+                    {!! form_row($formRegister->gender) !!}
                 </div>
             </div>
             <div class="registration-step registration-step3">
@@ -66,17 +58,9 @@
                 </div>
                 <div class="registration-answer">
                     <div>
-                        <input name="mail" placeholder="Adresse mail" type="text" required="">
-                        <div>
-                            <input name="password" placeholder="Mot de passe" type="password" required="">
-                            <i class="far fa-eye"></i>
-                            <i class="far fa-eye-slash"></i>
-                        </div>
-                        <div>
-                            <input name="passwordConfirmation" placeholder="Confirmation" type="password" required="">
-                            <i class="far fa-eye"></i>
-                            <i class="far fa-eye-slash"></i>
-                        </div>
+                        {!! form_row($formRegister->mailAdress) !!}
+                        {!! form_row($formRegister->password) !!}
+                        {!! form_row($formRegister->passwordConfirm) !!}
                     </div>
                     <div>
                         <input type="checkbox" id="CGU" name="CGU" required="">
@@ -88,7 +72,6 @@
                     </div>
                 </div>
             </div>
-            {{--<button type="submit" class="buttonLink">S'inscrire</button>--}}
             {!! form_row($formRegister->submit) !!}
         {!! form_rest($formRegister) !!}
         {!! form_end($formRegister) !!}
