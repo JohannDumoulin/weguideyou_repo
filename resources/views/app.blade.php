@@ -11,7 +11,7 @@
 </head>
 <body data-content="@yield('attribute')">
     @include('layout.nav')
-    @include('layout.registration')
+    {{--@include('layout.registration')--}}
 
     @if (\Request::is('/'))
       @include('layout.header')

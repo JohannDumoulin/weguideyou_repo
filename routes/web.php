@@ -27,7 +27,7 @@ Route::get('/parametres', function () {
 
 Route::get('/annonces', function() {
 	return view('pages/advertisement');
-});
+})->name('advertisements');
 
 Route::get('/profil', function() {
 	return view('pages/profil');
@@ -45,6 +45,10 @@ Route::get('annonce/report', function() {
 	return view('pages/report');
 });
 
+Route::get('/register','RegisterController@index');
+
+
+
 
 
 Route::post('annonce/report', 'NotificationController@report');
@@ -59,5 +63,14 @@ Route::get('annonces2', 'AdvertController@displayAdverts');
 Route::get('getAdverts', 'AdvertController@getAdverts');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
+
+
+
+// Create Advertisement
+Route::get('/deposer-une-annonce', function() {
+	return view('pages/create_advertisement');
+});
+
+Route::post('/advertisement-send', 'Create_advertisementController@send')->name('advertisement-send');
 
 
