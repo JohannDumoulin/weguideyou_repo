@@ -25,9 +25,10 @@ Route::get('/parametres', function () {
     return view('pages/parameter');
 });
 
-Route::get('/annonces', function() {
+/*Route::get('/annonces', function() {
 	return view('pages/advertisement');
-})->name('advertisements');
+})->name('advertisements');*/
+Route::get('annonces', 'AdvertController@displayAdverts');
 
 Route::get('/profil', function() {
 	return view('pages/profil');
@@ -53,13 +54,17 @@ Route::get('register','RegisterController@create');
 /*Register*/
 
 
-
 Route::post('annonce/report', 'NotificationController@report');
+
+Route::get('getAdverts', 'AdvertController@getAdverts');
+Route::get('sortAdverts', 'AdvertController@sortAdverts');
+Route::get('filterAdverts', 'AdvertController@filterAdverts');
 
 
 
 // Temporary route
 Route::get('getnotifs', 'NotificationController@recupNotif');
+Route::get('addAdvert', 'AdvertController@addAdvert');
 
 
 
