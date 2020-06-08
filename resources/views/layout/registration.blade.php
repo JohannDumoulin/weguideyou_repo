@@ -90,8 +90,6 @@
                                     <input type="checkbox" id="newsLetter" name="newsLetter">
                                     <label for="newsLetter">Je souhaite recevoir les dernières nouvelles de la part de We Guide You.</label>
                                 </div>
-                                {{--<a class="buttonLink" href="#"><span>S'inscrire</span></a>--}}
-                                {{--@include('components.buttonLink', ['link' => '#'], ['text' => "S'inscrire"])--}}
                                 <button class="buttonLink">S'inscrire</button>
                             </div>
                         </div>
