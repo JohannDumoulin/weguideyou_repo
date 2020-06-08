@@ -1,12 +1,58 @@
 body[data-content="create_advertisement"] {
 	section {
-		text-align: center;
+		padding: 100px 0;
+
+		h1 {
+			text-align: center;
+		}
 
 		form {
+			margin-top: 100px;
+
 			.container {
-				.price_container {
-					display: flex;
-					flex-direction: row;
+				display: flex;
+				align-items: center;
+				margin-bottom: 50px;
+
+				label {
+					font-weight: 400;
+				}
+
+				input, textarea, select {
+					border-radius: 5px;
+					border: 1px solid $lightGrey;
+					font-family: "Roboto", Arial, sans-serif;
+					margin-left: 25px;
+					outline: 0;
+					padding: 10px 15px;
+				}
+
+				input {
+					cursor: pointer;
+					&[type="text"] {
+						font-size: 1.2em;
+						width: 50%;
+					}
+
+					&:not(input[type="text"]) {
+						cursor: pointer;
+					}
+				}
+
+				textarea {
+					resize: none;
+					padding: 10px 15px;
+					width: 75%;
+				}
+
+				select {
+					cursor: pointer;
+				}
+
+				#price_container {
+					.price_content {
+						display: flex;
+					}
 				}
 			}
 		}
