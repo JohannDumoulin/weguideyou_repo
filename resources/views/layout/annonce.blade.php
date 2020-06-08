@@ -23,7 +23,7 @@
 	    <section class="titres">
 	        <div class="wrap">
 	            <div class="btnResa">
-	                <h1>Titre de l'annonce</h1>
+	                <h1 id="ad_title">Titre de l'annonce</h1>
 	                @include('components.buttonLink', ['link' => '#'], ['text' => 'Réserver'])
 	            </div>   
 	            <h2>90€ / h</h2>

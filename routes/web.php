@@ -57,6 +57,7 @@ Route::get('register','RegisterController@create');
 Route::post('annonce/report', 'NotificationController@report');
 
 Route::get('getAdverts', 'AdvertController@getAdverts');
+Route::get('displayAdvert', 'AdvertController@displayAdvert');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
 

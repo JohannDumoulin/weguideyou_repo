@@ -1,5 +1,6 @@
 import $ from 'jquery';
 
+
 export default class AdvertisementPage {
     constructor() {
         this.initEls();
@@ -55,14 +56,13 @@ export default class AdvertisementPage {
     }
 
     displayAdverts() {
-
         var adverts = this.$els.adverts;
 
         var container = document.querySelector("#js-container");
         container.innerHTML = "";
         for(let advert of adverts) {
             container.innerHTML += `
-                <div class="advertisement_content js-toggleAnnonce">
+                <div class="advertisement_content js-toggleAnnonce" id="`+advert.id+`">
                     <div class="profil_picture_container">
                         <img src="{{ asset('img/advertisement.jpg') }}" alt="">
                     </div>
@@ -97,6 +97,45 @@ export default class AdvertisementPage {
                 </div>
                 `;
         }
+
+        this.toggleAdvert();
+    }
+
+    displayAdvert(id) {
+        var _this = this
+        $.ajax({
+            method: "get",
+            url: "/displayAdvert",
+            data: {id: id},
+            success: function (data) {
+                _this.display(data[0]);
+            },
+            error: function(data) {
+                console.log(data.responseJSON);
+            }
+        })
+    }
+
+    display(advert) {
+
+        document.querySelector("#ad_title").innerHTML = advert.title;
+
+        /* Map */
+        let x = 45.420258;
+        let y = 6.613953
+        
+        var map = L.map('mapid').setView([x,y], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ'
+        }).addTo(map);
+
+        map.invalidateSize();
     }
 
 
@@ -147,5 +186,19 @@ export default class AdvertisementPage {
             })
 
         });  
+    }
+
+    toggleAdvert() {
+
+        var _this = this;
+
+        $('.js-toggleAnnonce').on("click", function() {
+
+            _this.displayAdvert(this.id);
+
+            $(".annonce").toggleClass("hidden");
+            $("body").toggleClass("stopScrolling");
+            $(".modalAnnonce").scrollTop(0);
+        }); 
     }
 }

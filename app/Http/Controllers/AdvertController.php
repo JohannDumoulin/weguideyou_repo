@@ -17,6 +17,11 @@ class AdvertController extends Controller
         return $adverts;
 	}
 
+	public function displayAdvert(Request $request) {
+        $advert = DB::select('select * from Advertisement where id ='.$request->id);
+        return $advert;
+	}
+
 	public function displayAdverts() {
 		$adverts = DB::table('Advertisement')->get();
 		return view('pages/advertisement')->with('adverts', $adverts);

@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+
 @endpush
 
 @section('attribute', 'advertisement')
@@ -19,16 +22,17 @@
 			<form action="" class="first_filter">
 				<div class="header_filter">
 					<label for="activity">ACTIVITÉ</label>
-					<select name="activity" id="activities" class="js-filter">
-						<option value="">Que voulez vous faire ?</option>
+					<select name="activity" id="activities" class="js-filter js-example-basic-multiple" multiple>
 						<option value="ski">Ski</option>
 						<option value="snowboard">Snowboard</option>
+						<option value="randonnée">Randonnée</option>
+						<option value="escalade">Escalade</option>
 					</select>
 				</div>
 				<div class="header_filter">
 					<label for="place">LIEU</label>
-					<select name="place" id="place" class="js-filter">
-						<option value="">Où voulez vous aller ?</option>
+					<select name="place" id="place" class="js-filter js-example-basic-multiple" multiple>
+						<option value="courchevel">Courchevel</option>
 					</select>
 				</div>
 				<div class="header_filter">
@@ -38,12 +42,13 @@
 					</select> -->
 					<input type="date" id="date" class="js-filter">
 				</div>
+				<!--  
 				<div class="header_filter">
 					<label for="search">RECHERCHE</label>
 					<select name="search" id="search" class="js-filter">
 						<option value="">Que cherchez vous ?</option>
 					</select>
-				</div>
+				</div>-->
 				<img src="{{ asset('img/search_logo.svg') }}" alt="">
 			</form>
 			
@@ -181,7 +186,7 @@
 
 
 					@endforeach  -->
-
+<!--
 					<div class="advertisement_content js-toggleAnnonce">
 						<div class="profil_picture_container">
 							<img src="{{ asset('img/advertisement.jpg') }}" alt="">
@@ -278,7 +283,7 @@
 							</defs>
 						</svg>
 					</div>
-
+ -->
 				</div>
 
 				<div class="advertisement_container premium">
@@ -349,8 +354,22 @@
 @endsection
 
 @push('script')
-    <script src="{{asset('js/app.js')}}"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+	<script type="text/javascript">
+		$('.js-example-basic-multiple').select2();
+		$("#activities").select2({
+		    placeholder: "Que voulez-vous faire ?",
+		    allowClear: true
+		});
+		$("#place").select2({
+		    placeholder: "Où voulez-vous partir ?",
+		    allowClear: true
+		});
+	</script>
+
+    <script src="{{asset('js/app.js')}}"></script>
+  
 @endpush

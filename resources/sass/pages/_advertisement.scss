@@ -3,6 +3,19 @@ body[data-content="advertisement"] {
 		padding-top: 100px;
 	}
 
+	.select2-container {
+		min-width: 160px;
+		margin-right: 10px;
+	}
+
+	#date {
+		background-color: white;
+		border: 1px solid #aaa;
+		border-radius: 4px;
+		cursor: text;
+		padding: 4px;
+	}
+
 	.more_filter {
 		display: flex;
 		align-items: center;
@@ -62,6 +75,7 @@ body[data-content="advertisement"] {
 				margin-left: 30px;
 				border-radius: 5px;
 				border: 1px solid $lightGrey;
+				
 			}
 		}
 
