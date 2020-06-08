@@ -45,9 +45,7 @@ Route::get('annonce/report', function() {
 	return view('pages/report');
 });
 
-Route::get('/register', function() {
-	return view('pages/register');
-});
+Route::get('/register','RegisterController@index');
 
 
 
