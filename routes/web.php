@@ -45,6 +45,10 @@ Route::get('annonce/report', function() {
 	return view('pages/report');
 });
 
+Route::get('/register','RegisterController@index');
+
+
+
 
 
 Route::post('annonce/report', 'NotificationController@report');

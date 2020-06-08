@@ -19,7 +19,7 @@
                     <div>
                         <div class="profilOverview">
                             <div>
-                                <img src="img/megan1.jpg" alt="Photo de profil">
+                                <img src="{{asset('/img/megan1.jpg')}}" alt="Photo de profil">
                             </div>
                             <div>
                                 <div>

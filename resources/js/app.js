@@ -21,7 +21,7 @@ class App {
         //components
         new MenuProfil();
         new Annonce();
-        new RegistrationForm();
+        //new RegistrationForm();
         new Favoris();
         new Profil;
 
