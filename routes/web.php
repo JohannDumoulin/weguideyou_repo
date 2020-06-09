@@ -48,7 +48,8 @@ Route::get('annonce/report', function() {
 
 
 /*Register*/
-
+Route::get('new-account', 'RegisterController@index');
+Route::resource('register','RegisterController');
 Route::get('register','RegisterController@create');
 
 /*Register*/
