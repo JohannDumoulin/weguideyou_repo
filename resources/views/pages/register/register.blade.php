@@ -24,7 +24,7 @@
             <hr>
             <div class="registration-answer">
                 {!! form_row($formRegister->name) !!}
-                {!! form_row($formRegister->fullName) !!}
+                {!! form_row($formRegister->surName) !!}
                 {!! form_row($formRegister->age) !!}
                 {!! form_row($formRegister->gender) !!}
             </div>

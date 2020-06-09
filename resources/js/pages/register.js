@@ -25,6 +25,11 @@ export default class RegisterForm {
                 $('.account-nso').addClass('hidden');
                 /*$('.account-so').addClass('hidden');*/
                 $('.account-all').addClass('hidden');
+
+                $('.account-pro input').prop("required", true);
+                $('.account-par input').prop("required", true);
+                $('.account-nso input').prop("required", true);
+                /*$('.account-so input').prop("required", true);*/
             }
             if (accountStatus === 'PRO'){
                 $('.account-par').addClass('hidden');
@@ -33,6 +38,11 @@ export default class RegisterForm {
 
                 $('.account-pro').removeClass('hidden');
                 $('.account-all').removeClass('hidden');
+
+                $('.account-pro input').prop("required", true);
+                $('.account-par input').prop("required", false);
+                $('.account-nso input').prop("required", false);
+                /*$('.account-so input').prop("required", false);*/
             }
             if (accountStatus === 'PAR'){
                 $('.account-pro').addClass('hidden');
@@ -41,6 +51,11 @@ export default class RegisterForm {
 
                 $('.account-par').removeClass('hidden');
                 $('.account-all').removeClass('hidden');
+
+                $('.account-pro input').prop("required", false);
+                $('.account-par input').prop("required", true);
+                $('.account-nso input').prop("required", false);
+                /*$('.account-so input').prop("required", false);*/
             }
             if (accountStatus === 'NSO'){
                 $('.account-pro').addClass('hidden');
@@ -49,6 +64,11 @@ export default class RegisterForm {
 
                 $('.account-nso').removeClass('hidden');
                 $('.account-all').removeClass('hidden');
+
+                $('.account-pro input').prop("required", false);
+                $('.account-par input').prop("required", false);
+                $('.account-nso input').prop("required", true);
+                /*$('.account-so input').prop("required", false);*/
             }
             if (accountStatus === 'SO'){
                 $('.account-nso').addClass('hidden');
@@ -57,6 +77,11 @@ export default class RegisterForm {
 
                 /*$('.account-so').removeClass('hidden');*/
                 $('.account-all').removeClass('hidden');
+
+                $('.account-pro input').prop("required", false);
+                $('.account-par input').prop("required", false);
+                $('.account-nso input').prop("required", false);
+                /*$('.account-so input').prop("required", true);*/
             }
 
         });

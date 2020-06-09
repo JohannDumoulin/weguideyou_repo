@@ -18,25 +18,28 @@ class PostRegister extends Form
                 'choices' => ['PRO' => 'Professionnel indépendant', 'NSO' => 'Organisme non sportif', 'SO' => 'Organisme sportif', 'PAR' => 'Particulier'],
                 'selected' => '',
                 'empty_value' => 'Choisir',
-                'label' => 'Compte : '
+                'label' => 'Compte : ',
             ])
             ->add('name', 'text',[
-                'label' => 'Nom'
+                'label' => 'Prénom',
             ])
-            ->add('fullName', 'text',[
-                'label' => 'Prénom'
+            ->add('surName', 'text',[
+                'label' => 'Nom',
             ])
             ->add('age', 'date',[
-                'label' => 'Age'
+                'label' => 'Age',
             ])
             ->add('gender', 'select', [
-                'choices' => ['Femme', 'Homme', 'Autre'],
+                'choices' => ['f' =>'Femme', 'h' =>'Homme', 'a' =>'Autre'],
                 'selected' => '',
                 'empty_value' => 'Choisir',
                 'label' => 'Genre : ',
             ])
             ->add('organizationName', 'text',[
-                'label' => 'Nom de l\'organisme'
+                'label' => 'Nom de l\'organisme',
+                'rules' => [
+                    'required',
+                ],
             ])
             ->add('organizationStatus', 'text',[
                 'label' => 'Statut'
@@ -46,7 +49,7 @@ class PostRegister extends Form
             ->add('postcode', 'text')
             ->add('phone', 'text')
             ->add('mailAddress', 'email',[
-                'label' => 'Adresse mail'
+                'label' => 'Adresse mail',
             ])
             ->add('password', 'password',[
                 'label' => 'Mot de passe'
