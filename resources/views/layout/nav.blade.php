@@ -10,7 +10,7 @@
 				<i class="fa fa-chevron-down arrow"></i>
 			</a>
 			<a href="#">Poster une annonce</a>
-			<a href="#">Favoris</a>
+			<a href="/favoris">Favoris</a>
 			<a href="#" class="toggleModalProfil js-toggleModalProfil">Connexion</a>
 			@include('components.buttonLink', ['newId' => 'js-registrationBtn','link' => '/register','text' => 'Inscription'])
 <!--

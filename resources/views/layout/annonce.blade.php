@@ -7,9 +7,9 @@
    crossorigin=""></script>
 
 
-<div class="annonce hidden">
+<div class="annonce">
 
-	<div class="modalAnnonce">
+	<div class="modalAnnonce" id={{ $advert->id }}>
 
 	    <section class="icons">
 	        <div class="wrap">
@@ -23,17 +23,21 @@
 	    <section class="titres">
 	        <div class="wrap">
 	            <div class="btnResa">
-	                <h1 id="ad_title">Titre de l'annonce</h1>
+	                <h1 id="ad-title">{{ $advert->title }}</h1>
 	                @include('components.buttonLink', ['link' => '#'], ['text' => 'Réserver'])
 	            </div>   
-	            <h2>90€ / h</h2>
+	            <h2>
+	            	<span id="ad-price">{{ $advert->price }}</span>€ / h
+		        </h2>
 	            <div class="item">
 					<i class="fa fa-map-marker"></i>
-					<h3>Courchevel</h3>
+					<h3 id="ad-location">{{ $advert->locations }}</h3>
 	            </div>
 	            <div class="item">
 					<i class="fa fa-calendar"></i>
-					<h3>20 avril 2020 - 15 septembre 2020</h3>
+					<h3>
+						<span id="ad-dateStart">{{ $advert->dateStart }}</span> - <span id="ad-dateEnd">{{ $advert->dateEnd }}</span>
+					</h3>
 	            </div>
 	        </div>
 	    </section>
@@ -89,7 +93,7 @@
 	    <section class="description">
 	        <div class="wrap">
 	            <label>Description</label>
-	            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat risus vel cursus congue. Nullam a suscipit urna. Fusce blandit condimentum sapien sit amet aliquet. In elementum interdum pharetra. Fusce rhoncus lectus ac lorem dictum, a ornare ipsum lacinia. Sed lorem risus, gravida eu accumsan ut, maximus eu odio. Curabitur vestibulum eu orci a molestie. Aliquam congue magna eget nisi tempus, et fermentum odio facilisis. Sed vulputate lobortis leo, sed cursus nibh gravida at. Praesent sit amet magna id erat varius viverra vestibulum a tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat risus vel cursus congue. Nullam a suscipit urna. Fusce blandit condimentum sapien sit amet aliquet. In elementum interdum pharetra. Fusce rhoncus lectus ac lorem dictum, a ornare ipsum lacinia. Sed lorem risus, gravida eu accumsan ut, maximus eu odio. Curabitur vestibulum eu orci a molestie. Aliquam congue magna eget nisi tempus, et fermentum odio facilisis. Sed vulputate lobortis leo, sed cursus nibh gravida at. Praesent sit amet magna id erat varius viverra vestibulum a tellus.</p>
+	            <p id="ad-description">{{ $advert->description }}</p>
 	        </div>
 	    </section>
 
@@ -99,13 +103,13 @@
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>Type de cours</label>
-	                <p>Collectif</p>
+	                <p id="ad-nb_pers">Collectif</p>
 	            </div>                
 
 	            <div>
 					<i class="fa fa-calendar"></i>
 	                <label>Période de la journée</label>
-	                <p>Toute la journée</p>
+	                <p id="ad-duration">Toute la journée</p>
 	            </div>
 
 	        </div>
@@ -132,13 +136,15 @@
 	    <section class="map">
 	    	<div class="wrap titre">
 		    	<i class="fa fa-map-marker"></i>
-		    	<label>Courchevel :</label>
+		    	<label><span class="firstL" id={{ $advert->firstLocation }}>{{ $advert->firstLocation }} </span> :</label>
 	    	</div>
-	    	<div id="mapid"></div>
+	    	<div id="js-map">
+	    		<div id='mapid'></div>
+	    	</div>
 	    </section>
 
 	    <div class="signal">
-	    	<a href="annonce/report">Signaler l'annonce</a>
+	    	<a href=/report/{{ $advert->id }} id="btnReport">Signaler l'annonce</a>
 	    </div>
 
 	</div>

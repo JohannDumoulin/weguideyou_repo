@@ -33,33 +33,4 @@ class NotificationController extends Controller
 
         return redirect('/annonces');
     }
-
-
-    public function alerte(Request $request)
-    {
-
-/*
-        $request->validate([
-            'type' => 'requiered|string',
-            'content' => 'requiered|string',
-        ]),
-
-        $post = new Post();
-        $post->type = $request->type;
-        $post->content = $request->content;
-        $post->save();
-
-        $post = (new MailMessage)
-            ->from('test@example.com', 'Example')
-            ->subject('Notification Subject')
-            ->greeting('Bonjour')
-            ->line('The introduction to the notification. t')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application! t');
-*/
-
-        $post = "bjr";
-
-        Notification::route('mail', 'gwendallefort@gmail.com')->notify(new Alerte($post));
-    }
 }

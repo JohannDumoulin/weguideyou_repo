@@ -11,6 +11,8 @@
 
 @section('content')
 
+	{{ $id }}
+
 	<div class="wrap report">
 
 		<form method="post" action="{{url('annonce/report')}}"> {{ csrf_field() }}
