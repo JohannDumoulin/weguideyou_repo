@@ -1,3 +1,30 @@
 body[data-content="select_account_type"]{
+    .main{
+        .wrap{
 
+            h1{
+                text-align: center;
+                margin: 50px 0;
+            }
+
+            .selectTypeAccount{
+                display: flex;
+                justify-content: space-between;
+                >div{
+                    width: calc(90%/4);
+                    display: flex;
+
+                    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+                    >a{
+                        color: #000000;
+                    }
+                }
+            }
+
+
+        }
+    }
 }

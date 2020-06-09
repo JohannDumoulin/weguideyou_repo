@@ -10,13 +10,15 @@
 @section('attribute', 'select_account_type')
 
 @section('content')
-    <section>
+    <section class="main">
         <div class="wrap">
             <h1>Choix du type de compte</h1>
-            <div><a href="">Professionnel indépendant</a></div>
-            <div><a href="">Organisme non sportif</a></div>
-            <div><a href="">Organisme sportif</a></div>
-            <div><a href="">Particulier</a></div>
+            <div class="selectTypeAccount">
+                <div><a href="particular">Professionnel indépendant</a></div>
+                <div><a href="#">Organisme non sportif</a></div>
+                <div><a href="#">Organisme sportif</a></div>
+                <div><a href="#">Particulier</a></div>
+            </div>
         </div>
     </section>
 @endsection
