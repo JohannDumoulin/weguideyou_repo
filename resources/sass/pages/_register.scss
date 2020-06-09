@@ -18,7 +18,6 @@ body[data-content="register"]{
             font-size: 1em;
         }
 
-
         .wrap{
             height: 100%;
             display: flex;
@@ -28,18 +27,26 @@ body[data-content="register"]{
             form{
                 width: 100%;
 
+                margin-bottom: 100px;
+
                 hr{
                     width: 100%;
-                    opacity: .2;
+                    opacity: .1;
                 }
 
-                .registration-step:nth-of-type(2), .registration-step:nth-of-type(3){
-                    margin-top: 100px;
+                .buttonLink{
+                    margin: auto;
+                }
+
+                .registration-middleStep, .registration-finalStep{
+                    hr{
+                        margin-bottom: 50px;
+                    }
                 }
 
                 .registration-step{
                     width: 100%;
-                    margin-bottom: 100px;
+                    margin-bottom: 50px;
 
                     .registration-request {
                         color: #000000;
@@ -69,21 +76,22 @@ body[data-content="register"]{
                         opacity: 0.2;
                     }
 
-                    input[type="password"],[type="text"],[type="date"],[type="email"] {
-                        display: block;
-                        border: none;
-                        padding-bottom: 10px;
-                        border-bottom: solid 2px rgba(0, 0, 0, 0.6);
-                        background-position: -200px 0;
-                        background-size: 200px 100%;
-                        background-repeat: no-repeat;
-                        color: #000000;
-                        opacity: 0.3;
-                        font-family: "Roboto", Arial, sans-serif;
-                        font-weight: 400;
-                        font-size: 1em;
-
-                        &:focus, &:valid {
+                    .form-group{
+                        input {
+                            display: block;
+                            border: none;
+                            padding-bottom: 10px;
+                            border-bottom: solid 2px rgba(0, 0, 0, 0.6);
+                            background-position: -200px 0;
+                            background-size: 200px 100%;
+                            background-repeat: no-repeat;
+                            color: #000000;
+                            opacity: 0.3;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 1em;
+                        }
+                        input:focus, {
                             box-shadow: none;
                             outline: none;
                             background-position: 0 0;
@@ -91,12 +99,6 @@ body[data-content="register"]{
                             border-bottom: solid 2px $deepBlue;
                             color: $deepBlue;
                             opacity: 1;
-                            &::-webkit-input-placeholder {
-                                color: $deepBlue;
-                                font-size: 11px;
-                                transform: translateY(-20px);
-                                visibility: visible !important;
-                            }
                         }
                     }
 
@@ -109,42 +111,18 @@ body[data-content="register"]{
                     }
                 }
 
-                .registration-step1{
-
-                    .registration-answer{
-                        display: flex;
-                        flex-wrap: wrap;
-
-                        >div {
-                            display: flex;
-                            margin-bottom: 40px;
-                            margin-right: 50px;
-                            position: relative;
-                            flex-wrap: nowrap;
-
-                            label{
-                                margin-left: 5px;
-                            }
-                        }
-                    }
-                }
-
-                .registration-step2{
+                .registration-middleStep{
 
                     .registration-answer{
                         display: flex;
 
-                        >*{
+                        >div{
                             margin-right: 50px;
-                        }
-
-                        a {
-                            margin: auto;
                         }
                     }
                 }
 
-                .registration-step3{
+                .registration-finalStep{
 
                     .registration-answer{
 
@@ -165,13 +143,10 @@ body[data-content="register"]{
                             }
                         }
 
-                        label {
-
-                            a {
-                                color: #29ABE2;
-                                font-family: "Roboto", Arial, sans-serif;
-                                font-weight: 400;
-                                font-size: 1em;
+                        .cguLink{
+                            label{
+                                color: $deepBlue;
+                                cursor: pointer;
                             }
                         }
 

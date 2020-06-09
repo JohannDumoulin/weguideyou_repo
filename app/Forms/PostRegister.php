@@ -14,6 +14,12 @@ class PostRegister extends Form
         ];
 
         $this
+            ->add('typeAccount', 'select', [
+                'choices' => ['PRO' => 'Professionnel indépendant', 'NSO' => 'Organisme non sportif', 'SO' => 'Organisme sportif', 'PAR' => 'Particulier'],
+                'selected' => '',
+                'empty_value' => 'Choisir',
+                'label' => 'Compte : '
+            ])
             ->add('name', 'text',[
                 'label' => 'Nom'
             ])
@@ -29,7 +35,17 @@ class PostRegister extends Form
                 'empty_value' => 'Choisir',
                 'label' => 'Genre : ',
             ])
-            ->add('mailAdress', 'email',[
+            ->add('organizationName', 'text',[
+                'label' => 'Nom de l\'organisme'
+            ])
+            ->add('organizationStatus', 'text',[
+                'label' => 'Statut'
+            ])
+            ->add('address', 'text')
+            ->add('city', 'text')
+            ->add('postcode', 'text')
+            ->add('phone', 'text')
+            ->add('mailAddress', 'email',[
                 'label' => 'Adresse mail'
             ])
             ->add('password', 'password',[
@@ -38,36 +54,20 @@ class PostRegister extends Form
             ->add('passwordConfirm', 'password',[
                 'label' => 'Confirmation mot de passe'
             ])
-            ->add('languages', 'choice', [
-                'choices' => ['en' => 'English', 'fr' => 'French'],
-                'choice_options' => [
-                    'wrapper' => ['class' => 'choice-wrapper'],
-                    'label_attr' => ['class' => 'label-class'],
-                ],
-                'selected' => ['en', 'fr'],
-                'expanded' => true,
-                'multiple' => true
-            ]);
-            /*->add('status', 'radio', [
-            'value' => 'PRO',
-            'checked' => false
+            ->add('CGU', 'checkbox', [
+                'value' => 1,
+                'wrapper' => ['class' => 'form-group cguLink'],
+                'label' => 'J’accepte les Conditions Générales d\'Utilisation.',
+                'checked' => false
             ])
-            ->add('remember_me', 'radio', [
-            'value' => 'SCH1',
-            'checked' => false
+            ->add('newsLetter', 'checkbox', [
+                'value' => 1,
+                'label' => 'Je souhaite recevoir les dernières nouvelles de la part de We Guide You.',
+                'checked' => false
             ])
-            ->add('remember_m', 'radio', [
-            'value' => 'SCH2',
-            'checked' => false
-            ])
-            ->add('remember_', 'radio', [
-            'value' => 'PAR',
-            'checked' => false
-            ]);*/
-
-        $this->add('submit', 'submit',[
+            ->add('submit', 'submit',[
             'label' => 'Envoyer',
-            'class' => 'buttonLink'
+            'attr' => ['class' => 'buttonLink'],
             ]);
 
     }
