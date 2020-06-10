@@ -21,7 +21,7 @@
                 <div class="registration-answer">
                     {!! form_row($formRegister->name) !!}
                     {!! form_row($formRegister->surName) !!}
-                    {!! form_row($formRegister->age) !!}
+                    {!! form_row($formRegister->birth) !!}
                     {!! form_row($formRegister->gender) !!}
                 </div>
             </div>
@@ -40,7 +40,6 @@
                     <div>
                         {!! form_row($formRegister->mailAddress) !!}
                         {!! form_row($formRegister->password) !!}
-                        {!! form_row($formRegister->passwordConfirm) !!}
                     </div>
                     {!! form_row($formRegister->CGU)!!}
                     {!! form_row($formRegister->newsLetter)!!}

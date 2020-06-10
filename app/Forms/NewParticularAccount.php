@@ -10,7 +10,7 @@ class NewParticularAccount extends Form
     {
         $this->formOptions = [
             'method' =>  'POST',
-            'url' => route('par-account.store'),
+            'url' => route('particular-account.store'),
         ];
 
         $this

@@ -10,43 +10,98 @@ class NewProfessionalAccount extends Form
     {
         $this->formOptions = [
             'method' =>  'POST',
-            /*'url' => route('storePro'),*/
+            'url' => route('professional-account.store'),
         ];
 
         $this
             ->add('name', 'text',[
                 'label' => 'Prénom',
+                'rules' => [
+                    'required',
+                    'string',
+                    'max:50',
+                    'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                ],
             ])
             ->add('surName', 'text',[
                 'label' => 'Nom',
+                'rules' => [
+                    'required',
+                    'string',
+                    'max:50',
+                    'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                ],
             ])
-            ->add('age', 'date',[
-                'label' => 'Age',
+            ->add('birth', 'date',[
+                'label' => 'Birth',
+                'rules' => [
+                    'required|date'
+                ],
             ])
             ->add('gender', 'select', [
-                'choices' => ['f' =>'Femme', 'h' =>'Homme', 'a' =>'Autre'],
+                'choices' => ['f' =>'Femme', 'h' =>'Homme', 'o' =>'Autre'],
                 'selected' => '',
                 'empty_value' => 'Choisir',
                 'label' => 'Genre : ',
+                'rules' => [
+                    'required|string|size:1'
+                ],
             ])
-            ->add('address', 'text')
-            ->add('city', 'text')
-            ->add('postcode', 'text')
-            ->add('phone', 'text')
+            ->add('address', 'text',[
+                'babel' => 'required','string','max:100','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                'rules' => [
+                    'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                ]
+            ])
+            ->add('city', 'text',[
+                'babel' => 'City',
+                'rules' => [
+                    'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                ]
+            ])
+            ->add('postcode', 'text',[
+                'babel' => 'Poste code',
+                'rules' => [
+                    'required|numeric|digits:5'
+                ]
+            ])
+            ->add('phone', 'text',[
+                'babel' => 'Téléphone',
+                'rules' => [
+                    'required|numeric|digits_between:1,15'
+                ]
+            ])
             ->add('mailAddress', 'email',[
                 'label' => 'Adresse mail',
+                'rules' => [
+                    'required|string|email|max:255',
+                ],
             ])
-            ->add('password', 'password',[
-                'label' => 'Mot de passe'
-            ])
-            ->add('passwordConfirm', 'password',[
-                'label' => 'Confirmation mot de passe'
+            ->add('password', 'repeated', [
+                'wrapper' => ['class' => 'form-group passwordBox'],
+                'type' => 'password',
+                'second_name' => 'password_confirmation',
+                'first_options' => [
+                    'label' => 'Mot de passe',
+                    'rules' => [
+                        'required|string|min:6|confirmed'
+                    ],
+                ],
+                'second_options' => [
+                    'label' => 'Confirmation mot de passe',
+                    'rules' => [
+                        'required|string|min:6'
+                    ],
+                ],
             ])
             ->add('CGU', 'checkbox', [
                 'value' => 1,
                 'wrapper' => ['class' => 'form-group cguLink'],
                 'label' => 'J’accepte les Conditions Générales d\'Utilisation.',
-                'checked' => false
+                'checked' => false,
+                'rules' => [
+                    'required'
+                ],
             ])
             ->add('newsLetter', 'checkbox', [
                 'value' => 1,

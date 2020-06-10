@@ -55,6 +55,6 @@ class NewParController extends Controller
 
         $user->save();
 
-        return redirect()->route('/');
+        return redirect('/');
     }
 }

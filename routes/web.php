@@ -52,8 +52,15 @@ Route::post('/report', 'NotificationController@report');
 /*Register*/
 Route::get('register', 'RegisterController@index');
 
-Route::resource('par-account','register\NewParController');
-Route::get('register/par','register\NewParController@create');
+Route::resource('particular-account','register\NewParController');
+Route::resource('particular-account','register\NewParController');
+Route::resource('particular-account','register\NewParController');
+Route::resource('particular-account','register\NewParController');
+
+Route::get('register/particular','register\NewParController@create');
+Route::get('register/professional','register\NewProController@create');
+Route::get('register/non-sport-organization','register\NewParController@create');
+Route::get('register/sport-organization','register\NewParController@create');
 
 /*Register*/
 
