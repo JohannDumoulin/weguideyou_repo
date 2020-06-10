@@ -26,8 +26,9 @@ Route::get('/parametres', function () {
 });
 
 
-Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements');
-Route::get('/annonce/{id}', 'AdvertController@displayAdvert');
+Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements'); // affiche la page des annonces
+Route::get('/advert/{id}', 'AdvertController@displayAdverts2'); // affiche les annonces sur la page
+Route::get('/annonce/{id}', 'AdvertController@displayAdvert'); // affiche les détails d'une annonce
 
 
 Route::get('/profil', function() {
@@ -45,6 +46,7 @@ Route::get('/messagerie', function() {
 Route::get('/report/{id}', function($id) {
 	return view('pages/report')->with('id', $id);
 });
+Route::post('/report', 'NotificationController@report');
 
 
 /*Register*/
@@ -56,14 +58,17 @@ Route::get('register/par','register\NewParController@create');
 /*Register*/
 
 
-Route::post('annonce/report', 'NotificationController@report');
-
+/* Advertissement */
 Route::get('getAdverts', 'AdvertController@getAdverts');
 Route::get('displayAdvert', 'AdvertController@displayAdvert');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
 Route::get('getActs', 'AdvertController@getActs');
 //Route::get('getCities', 'AdvertController@getCities');
+
+/* Favorites */
+Route::get('toggleFavorite', 'FavoritesController@toggleFavorite');
+Route::get('getFavorites', 'FavoritesController@getFavorites');
 
 
 
@@ -74,10 +79,6 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 
 
 // Create Advertisement
-Route::get('/deposer-une-annonce', function() {
-	return view('pages/create_advertisement');
-});
-
-Route::post('/advertisement-send', 'Create_advertisementController@send')->name('advertisement-send');
-
+Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create');
+Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store');
 

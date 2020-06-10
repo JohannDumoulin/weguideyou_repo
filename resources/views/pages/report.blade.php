@@ -15,9 +15,12 @@
 
 	<div class="wrap report">
 
-		<form method="post" action="{{url('annonce/report')}}"> {{ csrf_field() }}
+		<form method="post" action="{{url('/report')}}"> {{ csrf_field() }}
 
 			<div>
+
+				<input type="" name="id" value={{ $id }}>
+
 				<label>Motif :</label>
 				<div>
 					<input type="radio" name="motif" value="Fraude" required>

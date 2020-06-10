@@ -13,10 +13,11 @@ class Report extends Notification
 
     protected $content;
 
-    public function __construct($content, $motif)
+    public function __construct($content, $motif, $id)
     {
         $this->content = $content;
         $this->motif = $motif;
+        $this->id = $id;
     }
 
     /**
@@ -41,13 +42,14 @@ class Report extends Notification
 
         $content = $this->content;
         $motif = $this->motif;
+        $id = $this->id;
 
         return (new MailMessage)
                     ->subject("Signalement d'une Annonce")
                     ->line('Une Annonce a été signalée')
                     ->line('Motif : ' . $motif)
                     ->line('Messages : ' . $content)
-                    ->action('Voir l\'annonce concernée', url('/'));
+                    ->action('Voir l\'annonce concernée', url('/annonce/'.$id));
     }
 
     /**
