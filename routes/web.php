@@ -26,7 +26,7 @@ Route::get('/parametres', function () {
 });
 
 
-Route::get('annonces', 'AdvertController@displayAdverts'); // affiche la page des annonces
+Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements'); // affiche la page des annonces
 Route::get('/advert/{id}', 'AdvertController@displayAdverts2'); // affiche les annonces sur la page
 Route::get('/annonce/{id}', 'AdvertController@displayAdvert'); // affiche les détails d'une annonce
 
@@ -60,11 +60,17 @@ Route::get('/displayAlerte', 'NotificationController@displayAlerte');
 
 
 /*Register*/
-Route::get('new-account', 'RegisterController@index');
+Route::get('register', 'RegisterController@index');
 
-Route::get('new-account/{accountType}','RegisterController@create');
+Route::resource('particular-account','register\NewParController');
+Route::resource('particular-account','register\NewParController');
+Route::resource('particular-account','register\NewParController');
+Route::resource('particular-account','register\NewParController');
 
-Route::resource('new-account','RegisterController');
+Route::get('register/particular','register\NewParController@create');
+Route::get('register/professional','register\NewProController@create');
+Route::get('register/non-sport-organization','register\NewParController@create');
+Route::get('register/sport-organization','register\NewParController@create');
 
 /*Register*/
 
@@ -92,10 +98,6 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 
 
 // Create Advertisement
-Route::get('/deposer-une-annonce', function() {
-	return view('pages/create_advertisement');
-});
-
-Route::post('/advertisement-send', 'Create_advertisementController@send')->name('advertisement-send');
-
+Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create');
+Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store');
 

@@ -16,19 +16,19 @@
             <div class="selectTypeAccount">
                 <div>
                     <h2>Professionnel indépendant</h2>
-                    @include('components.buttonLink', ['link' => 'new-account/pro'], ['text' => 'Choisir'])
+                    @include('components.buttonLink', ['link' => 'register/professional'], ['text' => 'Choisir'])
                 </div>
                 <div>
                     <h2>Organisme non sportif</h2>
-                    @include('components.buttonLink', ['link' => 'new-account/nso'], ['text' => 'Choisir'])
+                    @include('components.buttonLink', ['link' => 'register/non-sport-organization'], ['text' => 'Choisir'])
                 </div>
                 <div>
                     <h2>Organisme sportif</h2>
-                    @include('components.buttonLink', ['link' => 'new-account/so'], ['text' => 'Choisir'])
+                    @include('components.buttonLink', ['link' => 'register/sport-organization'], ['text' => 'Choisir'])
                 </div>
                 <div>
                     <h2>Particulier</h2>
-                    @include('components.buttonLink', ['link' => 'new-account/par'], ['text' => 'Choisir'])
+                    @include('components.buttonLink', ['link' => 'register/particular'], ['text' => 'Choisir'])
                 </div>
             </div>
         </div>

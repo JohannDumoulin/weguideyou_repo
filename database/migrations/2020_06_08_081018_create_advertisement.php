@@ -22,10 +22,10 @@ class CreateAdvertisement extends Migration
             $table->date('date_to');
             $table->integer('price_one_h')->nullable()->default(false);
             $table->integer('price_two_h')->nullable()->default(false);
-            $table->integer('price_four_h')->nullable()->default(false);
             $table->integer('price_half_day')->nullable()->default(false);
             $table->integer('price_day')->nullable()->default(false);
             $table->boolean('phone_bool')->nullable()->default(false);
+            $table->string('img')->nullable()->default(false);
             $table->boolean('premium_in_front_week')->nullable()->default(false);
             $table->boolean('premium_in_front_month')->nullable()->default(false);
             $table->boolean('premium_banner_week')->nullable()->default(false);
