@@ -8,20 +8,51 @@ export default class Annonce{
 
     initEls(){
         this.$els ={
-            select: $('.js-inputSort'),
+
         }
     }
 
     initEvents(){
-        this.sort();
+        this.toggleFavorite();
+        this.getFavorites();
     }
 
-    sort() {
-        this.$els.select.change(function(){
-            var value = $("select option:selected")[0].value
-            
+    toggleFavorite() {
+
+        $(document).on("click", ".buttonFav", function(event) {
+
+            event.stopPropagation();
+
+            this.classList.toggle("buttonFavOn");
+
+            var value = this.className.includes("buttonFavOn"); // true => add favoris - false => remove favoris
+            var id = this.id
+
+            $.ajax({
+                method: "get",
+                url: "/toggleFavorite",
+                data: {type: value, id: id},
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function(data) {
+                    console.log(data.responseJSON);
+                }
+            })
         });
     }
 
+    getFavorites() {
+        $.ajax({
+            method: "get",
+            url: "/getFavorites",
+            success: function (data) {
+                //console.log(data);
+            },
+            error: function(data) {
+                console.log(data.responseJSON);
+            }
+        })
+    }
 
 }

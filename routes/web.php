@@ -26,8 +26,9 @@ Route::get('/parametres', function () {
 });
 
 
-Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements');
-Route::get('/annonce/{id}', 'AdvertController@displayAdvert');
+Route::get('annonces', 'AdvertController@displayAdverts'); // affiche la page des annonces
+Route::get('/advert/{id}', 'AdvertController@displayAdverts2'); // affiche les annonces sur la page
+Route::get('/annonce/{id}', 'AdvertController@displayAdvert'); // affiche les détails d'une annonce
 
 
 Route::get('/profil', function() {
@@ -45,24 +46,30 @@ Route::get('/messagerie', function() {
 Route::get('/report/{id}', function($id) {
 	return view('pages/report')->with('id', $id);
 });
+Route::post('/report', 'NotificationController@report');
 
 
 /*Register*/
 Route::get('new-account', 'RegisterController@index');
-Route::resource('register','RegisterController');
-Route::get('register','RegisterController@create');
+
+Route::get('new-account/{accountType}','RegisterController@create');
+
+Route::resource('new-account','RegisterController');
 
 /*Register*/
 
 
-Route::post('annonce/report', 'NotificationController@report');
-
+/* Advertissement */
 Route::get('getAdverts', 'AdvertController@getAdverts');
 Route::get('displayAdvert', 'AdvertController@displayAdvert');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
 Route::get('getActs', 'AdvertController@getActs');
 //Route::get('getCities', 'AdvertController@getCities');
+
+/* Favorites */
+Route::get('toggleFavorite', 'FavoritesController@toggleFavorite');
+Route::get('getFavorites', 'FavoritesController@getFavorites');
 
 
 
