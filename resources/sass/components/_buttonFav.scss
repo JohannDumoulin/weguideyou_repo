@@ -1,0 +1,14 @@
+
+.buttonFav {
+	color: black;
+	font-size: 170%;
+	transition: color .3s, transform .5s;
+}
+
+.buttonFav:hover {
+	transform: scale(1.2);
+}
+
+.buttonFavOn {
+	color: red;
+}

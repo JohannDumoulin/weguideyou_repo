@@ -26,8 +26,9 @@ class NotificationController extends Controller
 
         $content = $request->content;
         $motif = $request->motif;
+        $id = $request->id;
 
-        Notification::route('mail', 'admin@test.com')->notify(new Report($content, $motif));
+        Notification::route('mail', 'admin@test.com')->notify(new Report($content, $motif, $id));
 
         //msg de validation
 

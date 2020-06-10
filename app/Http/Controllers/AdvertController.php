@@ -11,10 +11,17 @@ use View;
 class AdvertController extends Controller
 {
 
-	public function getAdverts() {
-        $adverts = DB::table('Advertisement')->get();
-		$adverts = (array) $adverts;
-		$adverts = $adverts["\x00*\x00items"];
+	public function getAdverts(Request $request) {
+
+		if($request->type == "Annonces")
+        	$adverts = DB::table('advertisement')->get();
+
+        else if($request->type == "Favoris")
+        	$adverts = DB::table('advertisement')
+	            ->join('favorites', 'advertisement.id', '=', 'favorites.advert_id')
+	            ->select('advertisement.*')
+	            ->get();
+
         return $adverts;
 	}
 
@@ -44,7 +51,12 @@ class AdvertController extends Controller
 
         return view('layout/annonce')->with('advert', $advert);
     }
-	
+
+    public function displayAdverts2($id) {
+    	$advert = DB::select('select * from Advertisement where id ='.$id);
+    	$advert = $advert[0];
+    	return view('components/advert')->with('advert', $advert);
+    }
 
 	public function displayAdverts() {
 		$adverts = DB::table('Advertisement')->get();
