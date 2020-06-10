@@ -20,12 +20,21 @@ class CreateAdvertisement extends Migration
             $table->string('type');
             $table->date('date_from');
             $table->date('date_to');
-            $table->integer('price_one_h');
-            $table->integer('price_two_h');
-            $table->integer('price_four_h');
-            $table->integer('price_half_day');
-            $table->integer('price_day');
+            $table->integer('price_one_h')->nullable()->default(false);
+            $table->integer('price_two_h')->nullable()->default(false);
+            $table->integer('price_four_h')->nullable()->default(false);
+            $table->integer('price_half_day')->nullable()->default(false);
+            $table->integer('price_day')->nullable()->default(false);
             $table->boolean('phone_bool')->nullable()->default(false);
+            $table->boolean('premium_in_front_week')->nullable()->default(false);
+            $table->boolean('premium_in_front_month')->nullable()->default(false);
+            $table->boolean('premium_banner_week')->nullable()->default(false);
+            $table->boolean('premium_banner_month')->nullable()->default(false);
+            $table->boolean('premium_urgent_week')->nullable()->default(false);
+            $table->boolean('premium_urgent_month')->nullable()->default(false);
+            $table->boolean('premium_booking')->nullable()->default(false);
+            $table->boolean('premium_securing')->nullable()->default(false);
+            $table->boolean('premium_insurance')->nullable()->default(false);
             $table->timestamps();
         });
     }

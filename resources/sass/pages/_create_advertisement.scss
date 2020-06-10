@@ -28,7 +28,6 @@ body[data-content="create_advertisement"] {
 				}
 
 				input {
-					cursor: pointer;
 					&[type="text"] {
 						font-size: 1.2em;
 						width: 50%;
@@ -54,6 +53,10 @@ body[data-content="create_advertisement"] {
 						display: flex;
 					}
 				}
+			}
+
+			.premium_container {
+				border: 1px solid black;
 			}
 		}
 	}
