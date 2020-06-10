@@ -34,4 +34,45 @@ class NotificationController extends Controller
 
         return redirect('/annonces');
     }
+
+    public function addAlerte(Request $request) {
+
+        $id = DB::table('alerte')->insertGetId([
+            'type' => $request->alerte["type"],
+            'act' => $request->alerte["act"], 
+            'place' => $request->alerte["place"], 
+            'user_id' => 1, 
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+        ]);
+
+        $object = (object) [
+            'type' => $request->alerte["type"],
+            'act' => $request->alerte["act"],
+            'place' => $request->alerte["place"],
+            'id' => $id
+        ];
+
+
+        return view('components/alerte')->with('alerte', $object);
+    }
+
+    public function removeAlerte(Request $request) {
+
+        DB::table('alerte')
+            ->where('id', $request->id)
+            ->delete();
+
+        return $request;
+    }
+
+    public function getAlertes() {
+        $alertes = DB::table('alerte')->get();
+        return $alertes;
+    }
+
+    public function displayAlerte(Request $request) {
+        $alerte = DB::select('select * from alerte where id ='.$request->id);
+        $alerte = $alerte[0];
+        return view('components/alerte')->with('alerte', $alerte);
+    }
 }

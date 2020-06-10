@@ -30,7 +30,6 @@ body[data-content="parameter"]{
     	border-bottom: 1px solid black;
 	}
 
-
     .password, .payement {	
 
 	    .wrap {
@@ -106,19 +105,53 @@ body[data-content="parameter"]{
 
     .alerte {
 
+        .first_filter {
+            display: block;
+            margin: 0;
+            box-shadow: none;
+
+            div {
+                padding-bottom: 20px;
+
+                label {
+                    padding-bottom: 5px;
+                }
+            }
+
+            .btnAddAlerte {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                width: 200px;
+                background: $gradient;
+                text-decoration: none;
+                color: #FFFFFF;
+                border-radius: 200px 200px 200px 200px;
+                -moz-border-radius: 200px 200px 200px 200px;
+                -webkit-border-radius: 200px 200px 200px 200px;
+                border: 0px solid #000000;
+                box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.09);
+                cursor: pointer;
+                outline: none;
+            }
+        }
+
     	h3 {
     		margin-bottom: 20px;
     	}
+
+        .divElemAlertes {
+
+            span {
+                padding: 0 8px;
+            }
+        }
 
     	.elem {
     		display: flex;
     		align-items: center;
     		padding: 10px 0;
-
-    		span:before {
-    			content: "-";
-    			margin: 0 10px;
-    		}
 
     		.buttonSup {
     			border: 2px solid red;

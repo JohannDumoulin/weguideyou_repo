@@ -3,8 +3,10 @@
 @section('title', 'Parametres')
 
 @push('style')
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 
 @section('attribute', 'parameter')
@@ -109,32 +111,30 @@
 
                  <h3>Alertes</h3>
 
-                <div class="elem">
-                    <span>Cours</span>
-                    <span> Courchevel</span>
-                    <span>Ski</span>
-                    <div class="buttonSup">Supprimer</div>
-                </div>
+                <div class="divElemAlertes">
 
-                <div class="elem">
-                    <span>Cours</span>
-                    <span>Savoie</span>
-                    <span>Randonné</span>
-                    <div class="buttonSup">Supprimer</div>
                 </div>
 
                 <h3 id="titreCritere">Critères</h3>
 
-                <div class="criteres">
-                    <div class="inputs">
-                        <input type="" name="" placeholder="Type de cours">
-                        <input type="" name="" placeholder="Lieu">
-                        <input type="" name="" placeholder="Activité">
-                     </div>
-                    <div class="btn">
-                        @include('components.buttonLink', ['link' => '#'], ['text' => 'Ajouter'])
+                <div class="first_filter">
+                    <div class="header_filter">
+                        <label>Type d'annonce</label>
+                        <select id="inpType" class="js-example-basic">
+                            <option>Cours</option>
+                            <option>Recherche de travail</option>
+                            <option>Recherche d'employé</option>
+                        </select>
                     </div>
-
+                    <div class="header_filter">
+                        <label for="activity">Activité</label>
+                        <select id="activities" class="js-example-basic"></select>
+                    </div>
+                    <div class="header_filter">
+                        <label for="place">Lieu</label>
+                        <select id="place" class="js-example-basic"></select>
+                    </div>
+                    <button class="btnAddAlerte">Ajouter</button>
                 </div>
                     
             </section>
@@ -184,5 +184,18 @@
 @endsection
 
 @push('script')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $('.js-example-basic').select2();
+        $('.js-example-basic').select2({
+            placeholder: "-",
+            allowClear: true
+        });
+    </script>
+
     <script src="{{asset('js/app.js')}}"></script>
 @endpush
+

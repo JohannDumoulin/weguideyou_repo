@@ -43,10 +43,20 @@ Route::get('/messagerie', function() {
 	return view('pages/mailbox');
 });
 
+
+
+/* Notifications */
 Route::get('/report/{id}', function($id) {
 	return view('pages/report')->with('id', $id);
 });
 Route::post('/report', 'NotificationController@report');
+
+/* Alerte */
+Route::get('/addAlerte', 'NotificationController@addAlerte');
+Route::get('/removeAlerte', 'NotificationController@removeAlerte');
+Route::get('/getAlertes', 'NotificationController@getAlertes');
+Route::get('/displayAlerte', 'NotificationController@displayAlerte');
+
 
 
 /*Register*/
@@ -70,6 +80,8 @@ Route::get('getActs', 'AdvertController@getActs');
 /* Favorites */
 Route::get('toggleFavorite', 'FavoritesController@toggleFavorite');
 Route::get('getFavorites', 'FavoritesController@getFavorites');
+
+
 
 
 

@@ -23,18 +23,14 @@ class FavoritesController extends Controller
 	}
 
 	public function toggleFavorite(Request $request) {
-        
-		$rep = "none";
 
 		if($request->type == "true") {
-			$rep = "1";
 			DB::table('favorites')->insert([
 		    	'user_id' => 1,
 		    	'advert_id' => $request->id, 
 				'created_at' => \Carbon\Carbon::now()->toDateTimeString()
 			]);
 		} else {
-			$rep = "2";
 			DB::table('favorites')
 				->where('advert_id', $request->id)
 				->delete();

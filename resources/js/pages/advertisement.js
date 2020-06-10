@@ -24,13 +24,13 @@ export default class AdvertisementPage {
 
     initEvents(){
         this.getAdvertisementPage();
+        this.getActs();
+        this.getCities();
     }
 
     initEventsAdverts() {
         this.filter();
         this.getAdverts($('title')[0].innerHTML);
-        this.getCities();
-        this.getActs();
     }
 
     getAdvertisementPage(){
@@ -209,11 +209,15 @@ export default class AdvertisementPage {
 
     getCities() {
         $('.select2-container').on("click", function() {
-            checkChange();
+            
+            if(this.parentNode.childNodes[3].id == "place") {
+                checkChange();
+            }
         });
 
         function checkChange() {
-            $('.select2-search__field:eq(1)').on("input", function() {
+
+            $('.select2-search__field').on("input", function() {
                 var value = this.value;
 
                 $.ajax({
@@ -240,10 +244,10 @@ export default class AdvertisementPage {
     } 
 
     getActs() {
+        
         $.ajax({
             method: "get",
             url: "/getActs",
-
             success: function (data) {
                 $('#activities')[0].innerHTML = "";
 
