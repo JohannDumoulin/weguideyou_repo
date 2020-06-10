@@ -47,8 +47,10 @@ Route::get('/report/{id}', function($id) {
 
 /*Register*/
 Route::get('new-account', 'RegisterController@index');
-Route::resource('register','RegisterController');
-Route::get('register','RegisterController@create');
+
+Route::get('new-account/{accountType}','RegisterController@create');
+
+Route::resource('new-account','RegisterController');
 
 /*Register*/
 
