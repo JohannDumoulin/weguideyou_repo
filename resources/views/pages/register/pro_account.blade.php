@@ -15,47 +15,40 @@
             <div>
                 <h1>Inscription</h1>
             </div>
-            {{--{!! form_start($formRegister) !!}--}}
-            <div class="registration-step registration-middleStep account-par account-pro hidden">
+            {!! form_start($formRegister) !!}
+            <div class="registration-step registration-middleStep">
                 <hr>
                 <div class="registration-answer">
-                    {{--{!! form_row($formRegister->name) !!}
+                    {!! form_row($formRegister->name) !!}
                     {!! form_row($formRegister->surName) !!}
                     {!! form_row($formRegister->age) !!}
-                    {!! form_row($formRegister->gender) !!}--}}
+                    {!! form_row($formRegister->gender) !!}
                 </div>
             </div>
-            <div class="registration-step registration-middleStep account-nso hidden">
+            <div class="registration-step registration-middleStep">
                 <hr>
                 <div class="registration-answer">
-                    {{--{!! form_row($formRegister->organizationName) !!}
-                    {!! form_row($formRegister->organizationStatus) !!}--}}
-                </div>
-            </div>
-            <div class="registration-step registration-middleStep account-all hidden">
-                <hr>
-                <div class="registration-answer">
-                    {{--{!! form_row($formRegister->address) !!}
+                    {!! form_row($formRegister->address) !!}
                     {!! form_row($formRegister->city) !!}
                     {!! form_row($formRegister->postcode) !!}
-                    {!! form_row($formRegister->phone) !!}--}}
+                    {!! form_row($formRegister->phone) !!}
                 </div>
             </div>
-            <div class="registration-step registration-finalStep account-all hidden">
+            <div class="registration-step registration-finalStep">
                 <hr>
                 <div class="registration-answer">
                     <div>
-                        {{--{!! form_row($formRegister->mailAddress) !!}
+                        {!! form_row($formRegister->mailAddress) !!}
                         {!! form_row($formRegister->password) !!}
-                        {!! form_row($formRegister->passwordConfirm) !!}--}}
+                        {!! form_row($formRegister->passwordConfirm) !!}
                     </div>
-                    {{--{!! form_row($formRegister->CGU)!!}
-                    {!! form_row($formRegister->newsLetter)!!}--}}
+                    {!! form_row($formRegister->CGU)!!}
+                    {!! form_row($formRegister->newsLetter)!!}
                 </div>
             </div>
-            {{--{!! form_row($formRegister->submit) !!}
+            {!! form_row($formRegister->submit) !!}
             {!! form_rest($formRegister) !!}
-            {!! form_end($formRegister) !!}--}}
+            {!! form_end($formRegister) !!}
         </div>
     </section>
 @endsection

@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->char('status_user', 3);
             $table->string('license_user')->nullable();
             $table->string('urssaf_user')->nullable();
+            $table->boolean('cgu')->nullable();
+            $table->boolean('news_letter')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

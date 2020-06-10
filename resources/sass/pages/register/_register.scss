@@ -143,6 +143,13 @@ body[data-content="register"]{
                             }
                         }
 
+                        .passwordBox{
+                            display: flex;
+                            >*{
+                                margin-right: 50px;
+                            }
+                        }
+
                         .cguLink{
                             label{
                                 color: $deepBlue;
