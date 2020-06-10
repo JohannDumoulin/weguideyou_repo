@@ -26,7 +26,7 @@ Route::get('/parametres', function () {
 });
 
 
-Route::get('annonces', 'AdvertController@displayAdverts'); // affiche la page des annonces
+Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements'); // affiche la page des annonces
 Route::get('/advert/{id}', 'AdvertController@displayAdverts2'); // affiche les annonces sur la page
 Route::get('/annonce/{id}', 'AdvertController@displayAdvert'); // affiche les détails d'une annonce
 

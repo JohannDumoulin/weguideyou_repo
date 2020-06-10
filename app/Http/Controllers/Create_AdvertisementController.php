@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
-use App\Forms\AdvertisementForm;
+use App\Advertisement;
 
 class Create_AdvertisementController extends Controller
 {
@@ -17,11 +17,19 @@ class Create_AdvertisementController extends Controller
 	}
 
     public function store(FormBuilder $formBuilder, Request $request) {
+    	$advertisement = new Advertisement;
+
+    	$advertisement->name = $request->input('name');
+    	$advertisement->desc = $request->input('desc');
+    	$advertisement->type = $request->input('type');
+    	$advertisement->date_from = $request->input('date_from');
+    	$advertisement->date_to = $request->input('date_to');
     	// $advertisement->price_one_h = $request->input('price_one_h');
     	// $advertisement->price_two_h = $request->input('price_two_h');
     	// $advertisement->price_four_h = $request->input('price_four_h');
     	// $advertisement->price_half_day = $request->input('price_half_day');
     	// $advertisement->price_day = $request->input('price_day');
+    	$advertisement->phone_bool = $request->input('show_phone');
     	// $advertisement->premium_in_front_week = $request->input('premium_in_front_week');
     	// $advertisement->premium_in_front_month = $request->input('premium_in_front_month');
     	// $advertisement->premium_banner_week = $request->input('premium_banner_week');
@@ -32,18 +40,20 @@ class Create_AdvertisementController extends Controller
     	// $advertisement->premium_securing = $request->input('premium_securing');
     	// $advertisement->premium_insurance = $request->input('premium_insurance');
 
-    	$form = $formBuilder->create(\App\Forms\AdvertisementForm::class);
-    	$form->redirectIfNotValid();
-    	        
-    	$adForm = new AdvertisementForm();
-    	$adForm->fill($request->only([
-    		'name',
-    		'desc',
-    		'type',
-    		'date_from',
-    		'date_to',
-    		'show_phone'
-    	]))->save();
+    	$advertisement->save();
+
+    	// $form = $formBuilder->create(\App\Forms\AdvertisementForm::class);
+    	// 	$form->redirectIfNotValid();
+    		        
+    	// 	$adForm = new AdvertisementForm();
+    	// 	$adForm->fill($request->only([
+    	// 		'name',
+    	// 		'desc',
+    	// 		'type',
+    	// 		'date_from',
+    	// 		'date_to',
+    	// 		'show_phone'
+    	// 	]))->save();
 
     	return redirect()->route('advertisements');
     }
