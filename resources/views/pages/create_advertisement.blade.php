@@ -15,31 +15,15 @@
 		<div class="wrap">
 			<h1>Créer une annonce</h1>
 
-			<form action="{{ route('advertisement-send') }}" method="post" enctype="multipart/form-data" autocomplete="off">
-				@csrf
+			{!! form_start($adForm) !!}
 
 				<!-- Fonctionnalités gratuites -->
-				<div class="container">
-					<label for="ad_name">Titre de l'annonce</label>
-					<input type="text" name="name" id="ad_name">
-				</div>
-				<div class="container">
-					<label for="ad_desc">Description de l'annonce</label>
-					<textarea name="desc" id="ad_desc" cols="30" rows="10"></textarea>
-				</div>
-				<div class="container">
-					<label for="ad_type">Type de cours</label>
-					<select name="type" id="ad_type">
-						<option value="ski">Ski</option>
-						<option value="snowboard">Snowboard</option>
-					</select>
-				</div>
-				<div class="container">
-					<label for="ad_date_from">Disponibilité : du</label>
-					<input type="date" name="date_from" id="ad_date_from">
-					<label for="ad_date_to">au</label>
-					<input type="date" name="date_to" id="ad_date_to">
-				</div>
+				{!! form_row($adForm->name) !!}
+				{!! form_row($adForm->desc) !!}
+				{!! form_row($adForm->type) !!}
+				{!! form_row($adForm->date_from) !!}
+				{!! form_row($adForm->date_to) !!}
+				
 				<div class="container">
 					<label for="price_container">Prix</label>
 					<div id="price_container">
@@ -66,17 +50,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="container">
-					<label for="ad_phone">Afficher votre numéro sur l'annonce</label>
-					<input type="checkbox" id="ad_phone" name="phone_bool">
-				</div>
-				<div class="container">
-					<label for="ad_pictures">Photos</label>
-					<input type="file" id="ad_pictures" name="pictures">
-				</div>
+
+				{!! form_row($adForm->show_phone) !!}
+				{!! form_row($adForm->pictures) !!}
 
 				<!-- Fonctionnalités payantes -->
-				<h2>Fonctionnalités payantes</h2>
+				<!-- <h2>Fonctionnalités payantes</h2>
 				<div class="premium_container">
 					<p class="content_title">En tête de liste</p>
 					<p class="content_desc">Cette option vous permet de remonter automatiquement votre annonce en haut de la liste de résultats, comme si elle venait d'être mise en ligne.</p>
@@ -118,9 +97,9 @@
 					<p class="content_desc">Si le professionnel choisit cette option, il pourra annuler le cours réserve dans la plateforme et obtenir un remboursement de 50% par l’assureur sur présentation d’un certificat médical et autres justificatifs nécessaires.</p>
 					<input type="checkbox" name="premium_insurance" id="premium_insurance">
 					<label for="premium_insurance">5€</label>
-				</div>
-				<input type="submit" value="Déposer l'annonce">
-			</form>
+				</div> -->
+				{!! form_row($adForm->submit) !!}
+			{!! form_end($adForm) !!}
 		</div>
 	</section>
 	

@@ -73,10 +73,6 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 
 
 // Create Advertisement
-Route::get('/deposer-une-annonce', function() {
-	return view('pages/create_advertisement');
-});
-
-Route::post('/advertisement-send', 'Create_advertisementController@send')->name('advertisement-send');
-
+Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create');
+Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store');
 
