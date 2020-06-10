@@ -14,10 +14,22 @@
         <div class="wrap">
             <h1>Choix du type de compte</h1>
             <div class="selectTypeAccount">
-                <div><a href="particular">Professionnel indépendant</a></div>
-                <div><a href="#">Organisme non sportif</a></div>
-                <div><a href="#">Organisme sportif</a></div>
-                <div><a href="#">Particulier</a></div>
+                <div>
+                    <h2>Professionnel indépendant</h2>
+                    @include('components.buttonLink', ['link' => 'new-account/pro'], ['text' => 'Choisir'])
+                </div>
+                <div>
+                    <h2>Organisme non sportif</h2>
+                    @include('components.buttonLink', ['link' => 'new-account/nso'], ['text' => 'Choisir'])
+                </div>
+                <div>
+                    <h2>Organisme sportif</h2>
+                    @include('components.buttonLink', ['link' => 'new-account/so'], ['text' => 'Choisir'])
+                </div>
+                <div>
+                    <h2>Particulier</h2>
+                    @include('components.buttonLink', ['link' => 'new-account/par'], ['text' => 'Choisir'])
+                </div>
             </div>
         </div>
     </section>

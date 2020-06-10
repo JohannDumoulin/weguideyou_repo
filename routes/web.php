@@ -25,9 +25,11 @@ Route::get('/parametres', function () {
     return view('pages/parameter');
 });
 
+
 Route::get('annonces', 'AdvertController@displayAdverts'); // affiche la page des annonces
 Route::get('/advert/{id}', 'AdvertController@displayAdverts2'); // affiche les annonces sur la page
 Route::get('/annonce/{id}', 'AdvertController@displayAdvert'); // affiche les détails d'une annonce
+
 
 Route::get('/profil', function() {
 	return view('pages/profil');
@@ -49,8 +51,10 @@ Route::post('/report', 'NotificationController@report');
 
 /*Register*/
 Route::get('new-account', 'RegisterController@index');
-Route::resource('register','RegisterController');
-Route::get('register','RegisterController@create');
+
+Route::get('new-account/{accountType}','RegisterController@create');
+
+Route::resource('new-account','RegisterController');
 
 /*Register*/
 
