@@ -25,8 +25,10 @@ Route::get('/parametres', function () {
     return view('pages/parameter');
 });
 
-Route::get('annonces', 'AdvertController@displayAdverts');
+
+Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements');
 Route::get('/annonce/{id}', 'AdvertController@displayAdvert');
+
 
 Route::get('/profil', function() {
 	return view('pages/profil');
