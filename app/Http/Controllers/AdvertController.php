@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\AdvertCourse;
 use DB;
+use Route;
+use View;
 
 
 class AdvertController extends Controller
@@ -17,10 +18,33 @@ class AdvertController extends Controller
         return $adverts;
 	}
 
-	public function displayAdvert(Request $request) {
-        $advert = DB::select('select * from Advertisement where id ='.$request->id);
-        return $advert;
+	/*public function getCities() {
+        $cities = DB::select('select ville_nom from villes_france_free');
+		$cities = (array) $cities;
+        return $cities;
+	}*/
+
+	public function getActs() {
+        $acts = DB::table('activities')->get();
+		$acts = (array) $acts;
+		$acts = $acts["\x00*\x00items"];
+        return $acts;
 	}
+
+	public function displayAdvert($id) {
+        $advert = DB::select('select * from Advertisement where id ='.$id);
+        $advert = $advert[0];
+
+        // convertion format date
+		$advert->dateStart = date("d-m-Y", strtotime($advert->dateStart));
+		$advert->dateEnd = date("d-m-Y", strtotime($advert->dateEnd));
+		//
+		$pieces = explode(", ", $advert->locations);
+		$advert->firstLocation = $pieces[0];
+
+        return view('layout/annonce')->with('advert', $advert);
+    }
+	
 
 	public function displayAdverts() {
 		$adverts = DB::table('Advertisement')->get();
@@ -29,7 +53,6 @@ class AdvertController extends Controller
 
 	public function sortAdverts(Request $request) {
 		
-		$adverts = $request->adverts;
 		$adverts = json_decode($request->adverts);
 
 		if($request->type == "prixCroissant")
@@ -72,25 +95,7 @@ class AdvertController extends Controller
 	}
 
     
-    public function addAdvert() { /*AdvertCourse $advert*/
-
-/*
-    	DB::table('AdvertCourse')->insert(
-		    array(
-		    	'title' => $advert->title, 
-		    	'description' => $advert->description, 
-		    	'type' => $advert->type, 
-		    	'profession' => $advert->profession, 
-		    	'dateStart' => $advert->dateStart, 
-		    	'dateEnd' => $advert->dateEnd, 
-		    	'duration' => $advert->duration, 
-		    	'price' => $advert->price, 
-		    	'displayNumber' => $advert->displayNumber, 
-		    	'activities' => $advert->activities, 
-		    	'locations' => $advert->locations
-		    )
-		);
-*/
+    public function addAdvert() {
 
 			$dateS = date_create("2020-03-15");
 			$dateE = date_create("2020-05-15");

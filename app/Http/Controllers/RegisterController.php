@@ -9,7 +9,7 @@ use Kris\LaravelFormBuilder\FormBuilder;
 class RegisterController extends Controller
 {
     public function index(){
-        /*return view('pages/register');*/
+        return view('pages.register.select_account_type');
     }
 
     private $formBuilder;

@@ -25,7 +25,10 @@ Route::get('/parametres', function () {
     return view('pages/parameter');
 });
 
+
 Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements');
+Route::get('/annonce/{id}', 'AdvertController@displayAdvert');
+
 
 Route::get('/profil', function() {
 	return view('pages/profil');
@@ -39,13 +42,14 @@ Route::get('/messagerie', function() {
 	return view('pages/mailbox');
 });
 
-Route::get('annonce/report', function() {
-	return view('pages/report');
+Route::get('/report/{id}', function($id) {
+	return view('pages/report')->with('id', $id);
 });
 
 
 /*Register*/
-
+Route::get('new-account', 'RegisterController@index');
+Route::resource('register','RegisterController');
 Route::get('register','RegisterController@create');
 
 /*Register*/
@@ -57,6 +61,8 @@ Route::get('getAdverts', 'AdvertController@getAdverts');
 Route::get('displayAdvert', 'AdvertController@displayAdvert');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
+Route::get('getActs', 'AdvertController@getActs');
+//Route::get('getCities', 'AdvertController@getCities');
 
 
 

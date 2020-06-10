@@ -1,7 +1,9 @@
+
 .annonce {
 	position: fixed;
 	top:0;
 	left:0;
+	z-index: 900;
 
 	animation: openModal .5s ease forwards;
 

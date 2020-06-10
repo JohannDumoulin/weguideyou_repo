@@ -21,8 +21,6 @@
 
     @include('layout.footer')
 
-    @include('layout.annonce')
-
 <!-- Temporary -->
     @if (\Request::is('/'))
       {{--@include('layout.connexion')--}}

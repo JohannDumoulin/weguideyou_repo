@@ -15,6 +15,8 @@
 
 @section('content')
 
+	<div id="sectionContent"></div>
+
 	<section>
 		<div class="wrap">
 
@@ -23,16 +25,11 @@
 				<div class="header_filter">
 					<label for="activity">ACTIVITÉ</label>
 					<select name="activity" id="activities" class="js-filter js-example-basic-multiple" multiple>
-						<option value="ski">Ski</option>
-						<option value="snowboard">Snowboard</option>
-						<option value="randonnée">Randonnée</option>
-						<option value="escalade">Escalade</option>
 					</select>
 				</div>
 				<div class="header_filter">
 					<label for="place">LIEU</label>
-					<select name="place" id="place" class="js-filter js-example-basic-multiple" multiple>
-						<option value="courchevel">Courchevel</option>
+					<select name="place" id="place" class="js-filter js-example-basic">
 					</select>
 				</div>
 				<div class="header_filter">
@@ -146,8 +143,9 @@
 
 			<div id="advertisement_section">
 				<div class="advertisement_container all" id="js-container">
+					{{--
 <!-- 
-					@foreach ($adverts as $advert)
+					@foreach ($advertsss as $advert)
 
 
 					<div class="advertisement_content js-toggleAnnonce">
@@ -185,7 +183,7 @@
     
 
 
-					@endforeach  -->
+					@endforeach  --> --}}
 <!--
 					<div class="advertisement_content js-toggleAnnonce">
 						<div class="profil_picture_container">
@@ -360,6 +358,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 	<script type="text/javascript">
 		$('.js-example-basic-multiple').select2();
+		$('.js-example-basic').select2();
 		$("#activities").select2({
 		    placeholder: "Que voulez-vous faire ?",
 		    allowClear: true
@@ -367,7 +366,7 @@
 		$("#place").select2({
 		    placeholder: "Où voulez-vous partir ?",
 		    allowClear: true
-		});
+		}); 
 	</script>
 
     <script src="{{asset('js/app.js')}}"></script>

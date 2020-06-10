@@ -18,7 +18,7 @@ export default class AdvertisementPage {
             order_btn: $('.js-order'),
             filter_btn: $('.js-filter'),
             filter_on: {},
-            adverts: ""
+            adverts: "",
         }
     }
 
@@ -29,6 +29,8 @@ export default class AdvertisementPage {
     initEventsAdverts() {
         this.filter();
         this.getAdverts();
+        this.getCities();
+        this.getActs();
     }
 
     getAdvertisementPage(){
@@ -52,6 +54,8 @@ export default class AdvertisementPage {
             this.$els.adverts = adverts
             this.displayAdverts();
             this.changeOrder();
+
+            
         })
     }
 
@@ -62,7 +66,7 @@ export default class AdvertisementPage {
         container.innerHTML = "";
         for(let advert of adverts) {
             container.innerHTML += `
-                <div class="advertisement_content js-toggleAnnonce" id="`+advert.id+`">
+                <div class="advertisement_content js-toggleAnnonce" id='/annonce/`+advert.id+`'>
                     <div class="profil_picture_container">
                         <img src="{{ asset('img/advertisement.jpg') }}" alt="">
                     </div>
@@ -101,41 +105,32 @@ export default class AdvertisementPage {
         this.toggleAdvert();
     }
 
-    displayAdvert(id) {
-        var _this = this
-        $.ajax({
-            method: "get",
-            url: "/displayAdvert",
-            data: {id: id},
-            success: function (data) {
-                _this.display(data[0]);
-            },
-            error: function(data) {
-                console.log(data.responseJSON);
-            }
-        })
-    }
+    initMap(fLocation) {
 
-    display(advert) {
+        let x;
+        let y;
 
-        document.querySelector("#ad_title").innerHTML = advert.title;
+        //$("#js-map").innerHTML = "<div id='mapid'></div>"
 
-        /* Map */
-        let x = 45.420258;
-        let y = 6.613953
-        
-        var map = L.map('mapid').setView([x,y], 13);
+        $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q='+fLocation, function(data){
+            x = parseFloat(data[0].lat);
+            y = parseFloat(data[0].lon);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ'
-        }).addTo(map);
+            var map = L.map('mapid').setView([x,y], 6/data[0].importance);
 
-        map.invalidateSize();
+            L.marker([x, y]).addTo(map);
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ'
+            }).addTo(map);
+
+            map.invalidateSize();
+        });
     }
 
 
@@ -192,13 +187,69 @@ export default class AdvertisementPage {
 
         var _this = this;
 
-        $('.js-toggleAnnonce').on("click", function() {
+        $('.js-toggleAnnonce').on("click", function(event) {
 
-            _this.displayAdvert(this.id);
+            // toggle open / close
+            console.log($('#sectionContent')[0].innerHTML);
 
-            $(".annonce").toggleClass("hidden");
-            $("body").toggleClass("stopScrolling");
-            $(".modalAnnonce").scrollTop(0);
+            event.preventDefault(); // Avoid the link click from loading a new page
+            $('#sectionContent').load($(this).attr('id'), function(data) {
+                var location = $(data).find('.firstL')[0].id
+                _this.initMap(location);
+                $(".modalAnnonce").scrollTop(0);
+            })
+            $("body").toggleClass("stopScrolling");          
         }); 
     }
+
+    getCities() {
+        $('.select2-container').on("click", function() {
+            checkChange();
+        });
+
+        function checkChange() {
+            $('.select2-search__field:eq(1)').on("input", function() {
+                var value = this.value;
+
+                $.ajax({
+                    method: "get",
+                    url: "https://api.teleport.org/api/cities/?search="+value,
+
+                    success: function (data) {
+                        var res = Object.entries(data._embedded)[0][1]
+                        if(value != "") {
+                            $('#place')[0].innerHTML = "";
+
+                            for(var item of res){
+                                $('#place')[0].innerHTML += '<option value="e">'+item.matching_full_name+'</option>'
+                            }
+
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data.responseJSON);
+                    }
+                })
+            }); 
+        }
+    } 
+
+    getActs() {
+        $.ajax({
+            method: "get",
+            url: "/getActs",
+
+            success: function (data) {
+                $('#activities')[0].innerHTML = "";
+
+                for(var item of data){
+                    $('#activities')[0].innerHTML += '<option value="e">'+item.activity+'</option>'
+                }
+
+            },
+            error: function(data) {
+                console.log(data.responseJSON);
+            }
+        }) 
+    }      
 }
