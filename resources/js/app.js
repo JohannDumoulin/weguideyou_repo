@@ -11,6 +11,7 @@ import Nav from "./layout/nav";
 import Profil from "./pages/profil";
 import RegisterForm from "./pages/register";
 import Parameters from "./pages/parameters";
+import mAdvert from "./pages/mAdvert";
 /*Components*/
 
 class App {
@@ -36,6 +37,7 @@ class App {
         //pages
         new AdvertisementPage;
         new Parameters();
+        new mAdvert();
     }
 }
 new App();

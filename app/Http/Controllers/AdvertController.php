@@ -13,14 +13,14 @@ class AdvertController extends Controller
 
 	public function getAdverts(Request $request) {
 
-		if($request->type == "Annonces")
-        	$adverts = DB::table('advertisement')->get();
-
-        else if($request->type == "Favoris")
+        if($request->type == "Favoris") {
         	$adverts = DB::table('advertisement')
 	            ->join('favorites', 'advertisement.id', '=', 'favorites.advert_id')
 	            ->select('advertisement.*')
 	            ->get();
+        } else {
+        	$adverts = DB::table('advertisement')->get();
+        }
 
         return $adverts;
 	}
@@ -58,6 +58,12 @@ class AdvertController extends Controller
     	return view('components/advert')->with('advert', $advert);
     }
 
+    public function displayMAdvert($id) {
+    	$advert = DB::select('select * from Advertisement where id ='.$id);
+    	$advert = $advert[0];
+    	return view('components/mAdvert')->with('advert', $advert);
+    }
+
 	public function displayAdverts() {
 		$adverts = DB::table('Advertisement')->get();
 		return view('pages/advertisement')->with('adverts', $adverts);
@@ -80,10 +86,20 @@ class AdvertController extends Controller
 		return $adverts;
 	}
 
+	public function deleteAdvert(Request $request) {
+		DB::table('advertisement')
+			->where('id', $request->id)
+			->delete();
+
+		return $request->id;
+	}
+
 
 	public function filterAdverts(Request $request) {
 		
-		$adverts = $this->getAdverts();
+		$adverts = DB::table('advertisement')->get();
+		$adverts = (array) $adverts;
+		$adverts = $adverts["\x00*\x00items"];
 
 		if($request->filter_on == "") {
 			return $adverts;

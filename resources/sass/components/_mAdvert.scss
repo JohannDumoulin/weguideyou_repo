@@ -1,0 +1,19 @@
+
+
+.mAdvert, .divBtns {
+	display: flex;
+}
+
+.divBtns {
+	align-items: center;
+	margin-bottom: 20px;
+
+	div {
+		margin-left: 30px;
+	}
+
+	button {
+		margin: 10px;
+		outline: none;
+	}
+}

@@ -10,16 +10,13 @@ class FavoritesController extends Controller
 {
 
 	public function getFavorites() {
-        $favorites = DB::table('favorites')->get();
 
-		$adverts = array();
+		$favorites = DB::table('advertisement')
+			->join('favorites', 'advertisement.id', '=', 'favorites.advert_id')
+			->select('advertisement.*')
+			->get();
 
-		foreach($favorites as $key=>$value) {
-			$f = DB::select('select * from Advertisement where id ='.$value->advert_id)[0];
-			$adverts[] = $f;
-		}
-
-        return $adverts;
+        return $favorites;
 	}
 
 	public function toggleFavorite(Request $request) {

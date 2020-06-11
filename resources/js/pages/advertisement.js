@@ -6,7 +6,8 @@ export default class AdvertisementPage {
         this.initEls();
         this.initEvents();
 
-        if ($('body').data('content') === "advertisement"){
+        var c = $('body').data('content');
+        if (c == "advertisement" || c == "favorites" || c == "mes_annonces"){
             this.initEventsAdverts();
         }
     }
@@ -26,6 +27,8 @@ export default class AdvertisementPage {
         this.getAdvertisementPage();
         this.getActs();
         this.getCities();
+        this.toggleAdvert();
+        this.deleteAdvert();
     }
 
     initEventsAdverts() {
@@ -67,19 +70,23 @@ export default class AdvertisementPage {
         let _this = this;
         var adverts = this.$els.adverts;
 
-        var container = document.querySelector("#js-container");
-        container.innerHTML = "";
-
-        var c = 0
+        document.querySelector("#js-container").innerHTML = "";
+        var c = 0;
+        var url;
 
         for(let advert of adverts) {
+
+            url = "/advert/"+advert.id;
+            if($('body').data('content') == "mes_annonces") {
+                url = "/mAdvert/"+advert.id;
+            }
+
             $.ajax({ type: "GET",   
-                url: "/advert/"+advert.id,
+                url: url,
                 success : function(res) {
                     $('#js-container').append(res);
                     c++;
                     if(c === adverts.length) {
-                        _this.toggleAdvert();
                         _this.initFav();
                     }
                 }
@@ -106,14 +113,14 @@ export default class AdvertisementPage {
         });   
     }
 
-    initMap(fLocation) {
+    initMap(place) {
 
         let x;
         let y;
 
-        //$("#js-map").innerHTML = "<div id='mapid'></div>"
+        // $("#js-map").innerHTML = "<div id='mapid'></div>"
 
-        $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q='+fLocation, function(data){
+        $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q='+place, function(data){
             x = parseFloat(data[0].lat);
             y = parseFloat(data[0].lon);
 
@@ -193,14 +200,14 @@ export default class AdvertisementPage {
             // toggle open / close
             if($('#sectionContent')[0].innerHTML == "") {
                 $('#sectionContent').load($(this).attr('id'), function(data) {
-                    var location = $(data).find('.firstL')[0].id
+                    var location = $(data).find('.firstL')[0].id;
                     _this.initMap(location);
                     $(".modalAnnonce").scrollTop(0);
-
-                    //_this.toggleAdvert();
+                    _this.initFav();
                 })  
             } else {
                 $('#sectionContent')[0].innerHTML = "";
+                _this.initFav();
             }  
 
             $("body").toggleClass("stopScrolling");     
@@ -249,10 +256,10 @@ export default class AdvertisementPage {
             method: "get",
             url: "/getActs",
             success: function (data) {
-                $('#activities')[0].innerHTML = "";
+                //$('#activities')[0].innerHTML = "";
 
                 for(var item of data){
-                    $('#activities')[0].innerHTML += '<option value="e">'+item.activity+'</option>'
+                    //$('#activities')[0].innerHTML += '<option value="e">'+item.activity+'</option>'
                 }
 
             },
@@ -260,5 +267,29 @@ export default class AdvertisementPage {
                 console.log(data.responseJSON);
             }
         }) 
-    }      
+    } 
+
+    deleteAdvert() {
+        $(document).on('click', '.js-btnDeleteAdvert', function(event) {
+
+            if ( confirm( "Voulez vous vraiment supprimer cette annonce ? \n\nCette annonce sera définitivement supprimer." ) ) {
+
+                var id = this.id;
+
+                $('.mAdvert.'+this.id).remove();
+
+                $.ajax({
+                    method: "get",
+                    url: "/deleteAdvert",
+                    data: {id: id},
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function(data) {
+                        console.log(data.responseJSON);
+                    }
+                })
+            }
+        }); 
+    }     
 }

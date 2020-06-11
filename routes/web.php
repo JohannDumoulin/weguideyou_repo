@@ -25,12 +25,6 @@ Route::get('/parametres', function () {
     return view('pages/parameter');
 });
 
-
-Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements'); // affiche la page des annonces
-Route::get('/advert/{id}', 'AdvertController@displayAdverts2'); // affiche les annonces sur la page
-Route::get('/annonce/{id}', 'AdvertController@displayAdvert'); // affiche les détails d'une annonce
-
-
 Route::get('/profil', function() {
 	return view('pages/profil');
 });
@@ -74,14 +68,24 @@ Route::get('register/sport-organization','register\NewParController@create');
 
 /*Register*/
 
+/* Annonces */
+Route::get('annonces', 'AdvertController@displayAdverts')->name('advertisements'); // affiche la page des annonces
+Route::get('/advert/{id}', 'AdvertController@displayAdverts2'); // affiche les annonces sur la page
+Route::get('/mAdvert/{id}', 'AdvertController@displayMAdvert'); // affiche les annonces sur la page mes annonces
+Route::get('/annonce/{id}', 'AdvertController@displayAdvert'); // affiche les détails d'une annonce
 
-/* Advertissement */
 Route::get('getAdverts', 'AdvertController@getAdverts');
 Route::get('displayAdvert', 'AdvertController@displayAdvert');
+Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
 Route::get('getActs', 'AdvertController@getActs');
 //Route::get('getCities', 'AdvertController@getCities');
+
+Route::get('/mes_annonces', function () {
+    return view('pages/mes_annonces');
+});
+
 
 /* Favorites */
 Route::get('toggleFavorite', 'FavoritesController@toggleFavorite');

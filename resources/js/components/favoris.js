@@ -33,7 +33,7 @@ export default class Annonce{
                 url: "/toggleFavorite",
                 data: {type: value, id: id},
                 success: function (data) {
-                    console.log(data);
+                    //console.log(data);
                 },
                 error: function(data) {
                     console.log(data.responseJSON);
@@ -54,5 +54,4 @@ export default class Annonce{
             }
         })
     }
-
 }
