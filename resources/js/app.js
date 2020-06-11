@@ -10,6 +10,7 @@ import AdvertisementPage from './pages/advertisement.js'
 import Nav from "./layout/nav";
 import Profil from "./pages/profil";
 import RegisterForm from "./pages/register";
+import Parameters from "./pages/parameters";
 /*Components*/
 
 class App {
@@ -34,6 +35,7 @@ class App {
 
         //pages
         new AdvertisementPage;
+        new Parameters();
     }
 }
 new App();
