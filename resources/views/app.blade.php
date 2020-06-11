@@ -12,6 +12,7 @@
 <body data-content="@yield('attribute')">
     @include('layout.nav')
     {{--@include('layout.registration')--}}
+    @include('layout.connection')
 
     @if (\Request::is('/'))
       @include('layout.header')
@@ -23,8 +24,6 @@
 
 <!-- Temporary -->
     @if (\Request::is('/'))
-      {{--@include('layout.connexion')--}}
-
       @include('layout.modalProfil')
     @endif
 <!-- -->

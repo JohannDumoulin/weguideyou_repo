@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export default class MenuProfil {
+export default class ConnectionPanel {
     constructor() {
         this.initEls();
         this.initEvents();
@@ -8,22 +8,22 @@ export default class MenuProfil {
 
     initEls(){
         this.$els ={
-            //btn: $('.js-toggleModalProfil'),
-            back: $('.js-reste')
+            btn: $('.js-toggleConnectionContainer'),
+            back: $('.js-back')
         }
     }
 
     initEvents(){
-        //this.getMenuProfil();
+        this.getConnectionContainer();
     }
 
-    getMenuProfil(){
+    getConnectionContainer(){
         this.$els.btn.click(function(){
-            $('.js-menuProfil').toggleClass("hidden");
+            $('.js-ConnectionContainer').toggleClass("hidden");
             $('body').toggleClass("stopScrolling");
         });
         this.$els.back.click(function(){
-            $('.js-menuProfil').toggleClass("hidden");
+            $('.js-ConnectionContainer').toggleClass("hidden");
             $('body').toggleClass("stopScrolling");
         });
     }
