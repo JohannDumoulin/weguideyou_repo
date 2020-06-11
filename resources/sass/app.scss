@@ -1,8 +1,36 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//libs
+@import "libs/_cssReset.css";
 
-// Variables
-@import 'variables';
+//config
+@import "config/font-face";
+@import "config/variables";
+@import "config/global";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//components
+@import "components/buttonLink";
+@import "components/buttonFav";
+@import "components/weGuideNews";
+@import "components/loading";
+@import "components/mAdvert";
+
+//layout
+@import "layout/nav";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/modalProfil";
+@import "layout/connection";
+@import "layout/annonce";
+
+//pages
+@import "pages/home";
+@import "pages/homeIndividual";
+@import "pages/parameter";
+@import "pages/advertisement";
+@import "pages/profil";
+@import "pages/favoris";
+@import "pages/mailbox";
+@import "pages/report";
+@import "pages/_create_advertisement";
+@import "pages/register/register";
+@import "pages/register/select_account_type";
+@import "pages/mes_annonces";
