@@ -48,25 +48,25 @@ class NewParticularAccount extends Form
                 ],
             ])
             ->add('address', 'text',[
-                'babel' => 'required','string','max:100','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                'label' => 'Adresse',
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('city', 'text',[
-                'babel' => 'City',
+                'label' => 'City',
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('postcode', 'text',[
-                'babel' => 'Poste code',
+                'label' => 'Poste code',
                 'rules' => [
                     'required|numeric|digits:5'
                 ]
             ])
             ->add('phone', 'text',[
-                'babel' => 'Téléphone',
+                'label' => 'Téléphone',
                 'rules' => [
                     'required|numeric|digits_between:1,15'
                 ]

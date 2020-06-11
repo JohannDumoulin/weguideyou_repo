@@ -53,9 +53,9 @@ Route::post('/report', 'NotificationController@report');
 Route::get('register', 'RegisterController@index');
 
 Route::resource('particular-account','register\NewParController');
-Route::resource('particular-account','register\NewParController');
-Route::resource('particular-account','register\NewParController');
-Route::resource('particular-account','register\NewParController');
+Route::resource('professional-account','register\NewParController');
+/*Route::resource('particular-account','register\NewParController');
+Route::resource('particular-account','register\NewParController');*/
 
 Route::get('register/particular','register\NewParController@create');
 Route::get('register/professional','register\NewProController@create');

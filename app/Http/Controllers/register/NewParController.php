@@ -5,7 +5,9 @@ namespace App\Http\Controllers\register;
 use App\Forms\NewParticularAccount;
 use App\Http\Controllers\Controller;
 use App\Register;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Kris\LaravelFormBuilder\FormBuilder;
 
 class NewParController extends Controller
@@ -33,27 +35,25 @@ class NewParController extends Controller
         $formRegister->redirectIfNotValid();
         $values = $formRegister->getFieldValues();
 
-        /*dd($values);*/
+        User::create([
+            'name_user' => $values['name'],
+            'surname_user' => $values['surName'],
+            'email_user' => $values['mailAddress'],
+            'password_user' => Hash::make($values['password']),
+            'gender_user' => $values['gender'],
+            'birth_user' => $values['birth'],
+            'address_user' => $values['address'],
+            'city_user' => $values['city'],
+            'pc_user' => $values['postcode'],
+            'phone_user' => $values['phone'],
+            'pic_user' => null,
+            'status_user' => 'PRO',
+            'license_user' => null,
+            'urssaf_user' => null,
+            'cgu' => $values['CGU'],
+            'news_letter' => $values['newsLetter'],
 
-        $user = new Register;
-        $user-> name_user = $values['name'];
-        $user-> surname_user = $values['surName'];
-        $user-> email_user = $values['mailAddress'];
-        $user-> password_user = $values['password'];
-        $user-> gender_user = $values['gender'];
-        $user-> birth_user = $values['birth'];
-        $user-> address_user = $values['address'];
-        $user-> city_user = $values['city'];
-        $user-> pc_user = $values['postcode'];
-        $user-> phone_user = $values['phone'];
-        $user-> pic_user = null;
-        $user-> status_user = 'PRO';
-        $user-> license_user = null;
-        $user-> urssaf_user = null;
-        $user-> cgu = $values['CGU'];
-        $user-> news_letter = $values['newsLetter'];
-
-        $user->save();
+        ]);
 
         return redirect('/');
     }
