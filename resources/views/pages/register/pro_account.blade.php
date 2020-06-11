@@ -34,6 +34,14 @@
                     {!! form_row($formRegister->phone) !!}
                 </div>
             </div>
+            <div class="registration-step registration-middleStep">
+                <hr>
+                <div class="registration-answer">
+                    {!! form_row($formRegister->siret) !!}
+                    {!! form_row($formRegister->licence) !!}
+                    {!! form_row($formRegister->licenceDate) !!}
+                </div>
+            </div>
             <div class="registration-step registration-finalStep">
                 <hr>
                 <div class="registration-answer">

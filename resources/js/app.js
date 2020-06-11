@@ -4,6 +4,7 @@ require('./bootstrap');
 import MenuProfil from './components/menuProfil';
 import Advert from './components/advert';
 import Adverts from './components/advert';
+import ConnectionPanel from "./components/connectionPanel";
 import RegistrationForm from "./components/registrationForm";
 import Favoris from "./components/favoris";
 import AdvertisementPage from './pages/advertisement.js'
@@ -33,6 +34,7 @@ class App {
 
         //layout
         /*new Nav();*/
+        new ConnectionPanel;
 
         //pages
         new AdvertisementPage;

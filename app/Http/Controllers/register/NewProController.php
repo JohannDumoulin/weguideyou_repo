@@ -48,7 +48,7 @@ class NewProController extends Controller
         $user-> phone_user = $values['phone'];
         $user-> pic_user = null;
         $user-> status_user = 'PRO';
-        $user-> license_user = null;
+        $user-> license_user = $values['licence'];
         $user-> urssaf_user = null;
         $user-> cgu = $values['CGU'];
         $user-> news_letter = $values['newsLetter'];

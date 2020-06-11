@@ -48,25 +48,25 @@ class NewProfessionalAccount extends Form
                 ],
             ])
             ->add('address', 'text',[
-                'babel' => 'required','string','max:100','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                'label' => 'required','string','max:100','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('city', 'text',[
-                'babel' => 'City',
+                'label' => 'City',
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('postcode', 'text',[
-                'babel' => 'Poste code',
+                'label' => 'Post code',
                 'rules' => [
                     'required|numeric|digits:5'
                 ]
             ])
             ->add('phone', 'text',[
-                'babel' => 'Téléphone',
+                'label' => 'Téléphone',
                 'rules' => [
                     'required|numeric|digits_between:1,15'
                 ]
@@ -107,6 +107,24 @@ class NewProfessionalAccount extends Form
                 'value' => 1,
                 'label' => 'Je souhaite recevoir les dernières nouvelles de la part de We Guide You.',
                 'checked' => false
+            ])
+            ->add('siret', 'text',[
+                'label' => 'Numéro de Siret',
+                'rules' => [
+                    'required|numeric|digits:14'
+                ]
+            ])
+            ->add('licence', 'text',[
+                'label' => 'Numéro de carte pro',
+                'rules' => [
+                    'required|numeric|digits:14'
+                ]
+            ])
+            ->add('licenceDate', 'date',[
+                'label' => 'Expiration de carte pro',
+                'rules' => [
+                    'required|date'
+                ],
             ])
             ->add('submit', 'submit',[
                 'label' => 'Envoyer',

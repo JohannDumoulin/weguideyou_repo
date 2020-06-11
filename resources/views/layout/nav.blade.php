@@ -11,7 +11,7 @@
 			</a>
 			<a href="#">Poster une annonce</a>
 			<a href="/favoris">Favoris</a>
-			<a href="#" class="toggleModalProfil js-toggleModalProfil">Connexion</a>
+			<a href="#" class="toggleModalProfil js-toggleConnectionContainer">Connexion</a>
 			@include('components.buttonLink', ['newId' => 'js-registrationBtn','link' => '/register','text' => 'Inscription'])
 <!--
 			<span class="toggleModalProfil">
