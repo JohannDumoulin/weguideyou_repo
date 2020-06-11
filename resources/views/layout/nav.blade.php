@@ -13,13 +13,11 @@
 			<a href="/favoris">Favoris</a>
 			<a href="#" class="toggleModalProfil js-toggleConnectionContainer">Connexion</a>
 			@include('components.buttonLink', ['newId' => 'js-registrationBtn','link' => '/register','text' => 'Inscription'])
-<!--
-			<span class="toggleModalProfil">
+			<span class="toggleModalProfil hidden">
 				<div class="img"></div>
 				<p>Megan</p>
 				<i class="fa fa-chevron-down arrow"></i>
 			</span>
- -->
 		</div>
 	</div>
 </nav>
