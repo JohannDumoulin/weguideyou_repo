@@ -12,7 +12,7 @@ class Register extends Model
         'name_user',
         'surname_user',
         'email_user',
-        'password_user',
+        'password',
         'gender_user',
         'birth_user',
         'address_user',

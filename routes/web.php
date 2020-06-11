@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
