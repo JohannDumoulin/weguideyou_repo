@@ -11,15 +11,13 @@
 
 @section('content')
 
-	{{ $id }}
-
 	<div class="wrap report">
 
 		<form method="post" action="{{url('/report')}}"> {{ csrf_field() }}
 
 			<div>
 
-				<input type="" name="id" value={{ $id }}>
+				<input name="id" value={{ $id }} style="display:none">
 
 				<label>Motif :</label>
 				<div>

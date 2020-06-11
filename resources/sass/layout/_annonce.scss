@@ -48,12 +48,15 @@
 
 		i {
 			padding: 10px 20px;
-			margin: auto;
 			font-size: 25px;
 			transition: transform .3s;
 		}
 
-		i:hover {
+		.buttonFav {
+			margin-left: auto;
+		}
+
+		.fa-times:hover {
 			cursor: pointer;
 			transform: scale(1.3);
 		}

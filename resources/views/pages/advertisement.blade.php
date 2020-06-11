@@ -15,6 +15,12 @@
 
 @section('content')
 
+@if(session('message') != null)
+
+<div class="msgConfirm">{{session('message')}}</div>
+
+@endif
+
 	<div id="sectionContent"></div>
 
 	<section>

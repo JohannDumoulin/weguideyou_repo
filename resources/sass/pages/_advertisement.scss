@@ -1,6 +1,30 @@
 body {
-	section {
-		/*padding-top: 100px;*/
+
+	.msgConfirm {
+		background-color: lightgreen;
+		opacity: 0;
+		position: fixed;
+		top: 50px;
+		left: 50px;
+		color: white;
+		padding: 40px;
+		border-radius: 50px;
+		z-index: 999;
+		animation: hide 5s
+	}
+
+	@keyframes hide {
+		0% {
+			opacity: 1;
+		}
+
+		75% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+		}
 	}
 
 	.select2-container {

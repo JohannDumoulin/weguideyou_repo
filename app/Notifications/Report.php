@@ -7,17 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class Report extends Notification
+class Report extends Notification implements ShouldQueue 
 {
     use Queueable;
 
-    protected $content;
+    public $content;
+    public $motif;
+    public $id_advert;
 
-    public function __construct($content, $motif, $id)
+    public function __construct($content, $motif, $id_advert)
     {
         $this->content = $content;
         $this->motif = $motif;
-        $this->id = $id;
+        $this->id_advert = $id_advert;
     }
 
     /**
@@ -42,14 +44,14 @@ class Report extends Notification
 
         $content = $this->content;
         $motif = $this->motif;
-        $id = $this->id;
+        $id_advert = $this->id_advert;
 
         return (new MailMessage)
-                    ->subject("Signalement d'une Annonce")
-                    ->line('Une Annonce a été signalée')
-                    ->line('Motif : ' . $motif)
-                    ->line('Messages : ' . $content)
-                    ->action('Voir l\'annonce concernée', url('/annonce/'.$id));
+            ->subject("Signalement d'une Annonce")
+            ->line('Une Annonce a été signalée')
+            ->line('Motif : ' . $motif)
+            ->line('Messages : ' . $content)
+            ->action('Voir l\'annonce concernée', url('/annonce/'.$id_advert));
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Notifications\Alerte;
 use App\Notifications\Report;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Redirect;
 
 class NotificationController extends Controller
 {
@@ -26,13 +27,11 @@ class NotificationController extends Controller
 
         $content = $request->content;
         $motif = $request->motif;
-        $id = $request->id;
+        $id_advert = $request->id;
 
-        Notification::route('mail', 'admin@test.com')->notify(new Report($content, $motif, $id));
+        Notification::route('mail', 'admin@gmail.com')->notify(new Report($content, $motif, $id_advert));
 
-        //msg de validation
-
-        return redirect('/annonces');
+        return redirect("/annonces")->with(['message' => 'L\'annonce a bien été signalée !']);
     }
 
     public function addAlerte(Request $request) {

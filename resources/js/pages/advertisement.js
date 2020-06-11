@@ -251,22 +251,25 @@ export default class AdvertisementPage {
     } 
 
     getActs() {
+
+        if($('#activities').length == 1) {
         
-        $.ajax({
-            method: "get",
-            url: "/getActs",
-            success: function (data) {
-                //$('#activities')[0].innerHTML = "";
+            $.ajax({
+                method: "get",
+                url: "/getActs",
+                success: function (data) {
+                    $('#activities')[0].innerHTML = "";
 
-                for(var item of data){
-                    //$('#activities')[0].innerHTML += '<option value="e">'+item.activity+'</option>'
+                    for(var item of data){
+                        $('#activities')[0].innerHTML += '<option value="e">'+item.activity+'</option>'
+                    }
+
+                },
+                error: function(data) {
+                    console.log(data.responseJSON);
                 }
-
-            },
-            error: function(data) {
-                console.log(data.responseJSON);
-            }
-        }) 
+            }) 
+        }
     } 
 
     deleteAdvert() {
