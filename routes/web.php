@@ -105,3 +105,7 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create');
 Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

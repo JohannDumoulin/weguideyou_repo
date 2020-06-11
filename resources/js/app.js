@@ -1,45 +1,32 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
 require('./bootstrap');
 
-/*Components*/
-import MenuProfil from './components/menuProfil';
-import Advert from './components/advert';
-import Adverts from './components/advert';
-import ConnectionPanel from "./components/connectionPanel";
-import RegistrationForm from "./components/registrationForm";
-import Favoris from "./components/favoris";
-import AdvertisementPage from './pages/advertisement.js'
-import Nav from "./layout/nav";
-import Profil from "./pages/profil";
-import RegisterForm from "./pages/register";
-import Parameters from "./pages/parameters";
-import mAdvert from "./pages/mAdvert";
-/*Components*/
+window.Vue = require('vue');
 
-class App {
-    constructor () {
-        this.initApp();
-    }
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
-    initApp () {
-        // Start application
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-        //components
-        new MenuProfil();
-        new Advert();
-        new Adverts();
-        //new RegistrationForm();
-        new Favoris();
-        new Profil();
-        new RegisterForm();
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-        //layout
-        /*new Nav();*/
-        new ConnectionPanel;
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-        //pages
-        new AdvertisementPage;
-        new Parameters();
-        new mAdvert();
-    }
-}
-new App();
+const app = new Vue({
+    el: '#app',
+});
