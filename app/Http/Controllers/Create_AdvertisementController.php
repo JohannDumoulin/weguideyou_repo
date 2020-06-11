@@ -13,9 +13,7 @@ class Create_AdvertisementController extends Controller
 	        'method' => 'POST',
 	    ]);
 
-	    $test = \App\Advertisement::all();
-
-	    return view('pages/create_advertisement', compact('adForm', 'test'));
+	    return view('pages/create_advertisement', compact('adForm'));
 	}
 
     public function store(FormBuilder $formBuilder, Request $request) {
@@ -32,7 +30,7 @@ class Create_AdvertisementController extends Controller
     	$advertisement->price_half_day = $request->input('price_half_day');
     	$advertisement->price_day = $request->input('price_day');
     	$advertisement->phone_bool = $request->input('show_phone');
-    	$advertisement->img = $request->file('img')->store('public');
+    	$advertisement->img = $request->file('img')->store('ad_pictures', 'public');
     	// $advertisement->premium_in_front_week = $request->input('premium_in_front_week');
     	// $advertisement->premium_in_front_month = $request->input('premium_in_front_month');
     	// $advertisement->premium_banner_week = $request->input('premium_banner_week');

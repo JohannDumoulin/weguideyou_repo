@@ -78,10 +78,6 @@
 				</div> -->
 				{!! form_row($adForm->submit) !!}
 			{!! form_end($adForm) !!}
-
-			@foreach($test as $tests)
-				<img src="{{ asset($tests->img) }}" alt="">
-			@endforeach
 		</div>
 	</section>
 	
