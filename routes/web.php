@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('pages/home');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/particulier', function () {
     return view('pages/homeIndividual');
 });
@@ -104,4 +108,3 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 // Create Advertisement
 Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create');
 Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store');
-
