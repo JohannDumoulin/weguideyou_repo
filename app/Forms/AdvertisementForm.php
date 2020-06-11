@@ -80,7 +80,7 @@ class AdvertisementForm extends Form
             	'label' => 'Afficher votre numéro sur l\'annonce',
             ])
 
-            ->add('pictures', 'file', [
+            ->add('img', 'file', [
             	'label' => 'Photos',
             ])
 

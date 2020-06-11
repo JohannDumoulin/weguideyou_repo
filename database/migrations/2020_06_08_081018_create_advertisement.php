@@ -18,6 +18,7 @@ class CreateAdvertisement extends Migration
             $table->string('name');
             $table->text('desc');
             $table->string('type');
+            $table->string('place');
             $table->date('date_from');
             $table->date('date_to');
             $table->integer('price_one_h')->nullable()->default(false);

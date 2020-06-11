@@ -13,7 +13,9 @@ class Create_AdvertisementController extends Controller
 	        'method' => 'POST',
 	    ]);
 
-	    return view('pages/create_advertisement', compact('adForm'));
+	    $test = \App\Advertisement::all();
+
+	    return view('pages/create_advertisement', compact('adForm', 'test'));
 	}
 
     public function store(FormBuilder $formBuilder, Request $request) {
@@ -22,14 +24,15 @@ class Create_AdvertisementController extends Controller
     	$advertisement->name = $request->input('name');
     	$advertisement->desc = $request->input('desc');
     	$advertisement->type = $request->input('type');
+    	$advertisement->place = $request->input('place');
     	$advertisement->date_from = $request->input('date_from');
     	$advertisement->date_to = $request->input('date_to');
-    	// $advertisement->price_one_h = $request->input('price_one_h');
-    	// $advertisement->price_two_h = $request->input('price_two_h');
-    	// $advertisement->price_four_h = $request->input('price_four_h');
-    	// $advertisement->price_half_day = $request->input('price_half_day');
-    	// $advertisement->price_day = $request->input('price_day');
+    	$advertisement->price_one_h = $request->input('price_one_h');
+    	$advertisement->price_two_h = $request->input('price_two_h');
+    	$advertisement->price_half_day = $request->input('price_half_day');
+    	$advertisement->price_day = $request->input('price_day');
     	$advertisement->phone_bool = $request->input('show_phone');
+    	$advertisement->img = $request->file('img')->store('public');
     	// $advertisement->premium_in_front_week = $request->input('premium_in_front_week');
     	// $advertisement->premium_in_front_month = $request->input('premium_in_front_month');
     	// $advertisement->premium_banner_week = $request->input('premium_banner_week');

@@ -30,7 +30,7 @@
 				{!! form_row($adForm->price_half_day) !!}
 				{!! form_row($adForm->price_day) !!}
 				{!! form_row($adForm->show_phone) !!}
-				{!! form_row($adForm->pictures) !!}
+				{!! form_row($adForm->img) !!}
 
 				<!-- Fonctionnalités payantes -->
 				<!-- <h2>Fonctionnalités payantes</h2>
@@ -78,6 +78,10 @@
 				</div> -->
 				{!! form_row($adForm->submit) !!}
 			{!! form_end($adForm) !!}
+
+			@foreach($test as $tests)
+				<img src="{{ asset($tests->img) }}" alt="">
+			@endforeach
 		</div>
 	</section>
 	

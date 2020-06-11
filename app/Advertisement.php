@@ -11,6 +11,7 @@ class Advertisement extends Model
     	'name',
     	'desc',
     	'type',
+    	'place',
     	'date_from',
     	'date_to',
     	'price_one_h',
