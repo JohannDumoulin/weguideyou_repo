@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('pages/home');
-});
+});*/
+
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
 Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/particulier', function () {
     return view('pages/homeIndividual');
@@ -35,6 +35,8 @@ Route::get('/parametres', function () {
 Route::get('/profil', function() {
 	return view('pages/profil');
 });
+
+Route::get('/profil', 'ProfilController@index');
 
 Route::get('/favoris', function() {
 	return view('pages/favoris');
@@ -111,3 +113,7 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 // Create Advertisement
 Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create');
 Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store');
+
+
+//logout
+Route::get('/logout', 'LogoutController@index');

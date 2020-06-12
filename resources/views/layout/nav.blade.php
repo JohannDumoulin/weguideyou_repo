@@ -12,15 +12,17 @@
 			<a href="#">Poster une annonce</a>
 			<a href="/favoris">Favoris</a>
             @if(!Auth::check())
-                <a href="#" class="toggleModalProfil js-toggleConnectionContainer">Connexion</a>
+                <a href="#" class="js-toggleConnectionContainer">Connexion</a>
                 @include('components.buttonLink', ['newId' => 'js-registrationBtn','link' => '/register','text' => 'Inscription'])
             @endif
             @if(Auth::check())
-                <span class="toggleModalProfil hidden">
-                    <div class="img"></div>
-                    <p>Megan</p>
+                <div>
+                    <div>
+                        <img src="{{asset('img/megan1.jpg')}}" alt="Image de profil">
+                    </div>
+                    <span class="js-toggleModalProfil">{{ $user['name'] ?? 'undefined' }}</span>
                     <i class="fa fa-chevron-down arrow"></i>
-                </span>
+                </div>
             @endif
 		</div>
 	</div>

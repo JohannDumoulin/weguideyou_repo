@@ -1,4 +1,14 @@
 <header>
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{Session::get('success')}}
+        </div>
+    @endif
+    @if(Session::has('error'))
+        <div class="alert alert-success">
+            {{Session::get('error')}}
+        </div>
+    @endif
 	<h1>Des guides et moniteurs à portée de clic</h1>
 	<div id="select">
 		<a href="#">Je suis un professionnel</a>

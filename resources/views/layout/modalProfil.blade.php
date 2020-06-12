@@ -1,16 +1,15 @@
 <div class="menuProfil js-menuProfil hidden">
-
 	<div class="modal">
 
 		<div class="head">
 			<div class="img"></div>
-			<p>Megan</p>
+			<p>{{ $user['name'] ?? 'undefined' }}</p>
 		</div>
 
 		<div class="content">
             <div class="modalNav">
                 <hr>
-                <a href="#">Profil</a>
+                <a href="/profil">Profil</a>
                 <a href="#">Messagerie</a>
                 <a href="#">Mes Annonces</a>
                 <hr>
@@ -25,12 +24,10 @@
             </div>
             <div class="logout">
                 <hr>
-                <a href="#">Déconnexion</a>
+                <a href="/logout">Déconnexion</a>
                 <hr>
             </div>
 		</div>
 	</div>
-
     <div class="reste js-reste toggleModalProfil"></div>
-
 </div>

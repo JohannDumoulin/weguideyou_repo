@@ -10,7 +10,6 @@
 @section('attribute', 'home')
 
 @section('content')
-
     <section class="recruitingPro">
         <div class="wrap">
             <div><img src="{{asset('/img/nate-johnston-2gBpsNuHcyA-unsplash.jpg')}}" alt=""></div>

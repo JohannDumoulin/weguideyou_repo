@@ -39,7 +39,7 @@ class NewParController extends Controller
             'name_user' => $values['name'],
             'surname_user' => $values['surName'],
             'email_user' => $values['mailAddress'],
-            'password_user' => Hash::make($values['password']),
+            'password' => Hash::make($values['password']),
             'gender_user' => $values['gender'],
             'birth_user' => $values['birth'],
             'address_user' => $values['address'],

@@ -11,8 +11,8 @@
 </head>
 <body data-content="@yield('attribute')">
     @include('layout.nav')
-    {{--@include('layout.registration')--}}
     @include('layout.connection')
+    @include('layout.modalProfil')
 
     @if (\Request::is('/'))
       @include('layout.header')
@@ -21,12 +21,6 @@
     @yield('content')
 
     @include('layout.footer')
-
-<!-- Temporary -->
-    @if (\Request::is('/'))
-      @include('layout.modalProfil')
-    @endif
-<!-- -->
 
     @stack('script')
 </body>

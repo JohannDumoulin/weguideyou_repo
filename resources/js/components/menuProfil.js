@@ -8,13 +8,13 @@ export default class MenuProfil {
 
     initEls(){
         this.$els ={
-            //btn: $('.js-toggleModalProfil'),
+            btn: $('.js-toggleModalProfil'),
             back: $('.js-reste')
         }
     }
 
     initEvents(){
-        //this.getMenuProfil();
+        this.getMenuProfil();
     }
 
     getMenuProfil(){

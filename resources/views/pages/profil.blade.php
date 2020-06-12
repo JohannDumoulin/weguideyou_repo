@@ -41,7 +41,7 @@
                         </div>
                         <div class="profilDetails">
                             <div>
-                                <h1>Megan, <span>26 ans</span></h1>
+                                <h1>{{ $user['name'] ?? 'undefined' }}, <span>26 ans</span></h1>
                                 <i class="fas fa-pen fa-lg js-modifyProfil"></i>
                             </div>
                             <div>

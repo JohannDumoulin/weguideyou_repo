@@ -31,27 +31,39 @@ nav {
                 margin-left: 25px;
                 white-space: nowrap;
             }
-        }
 
-        .section a:hover {
-            color: rgba(255, 255, 255, .7);
-            cursor: pointer;
+            >div{
+
+                display: flex;
+                align-items: center;
+
+                >div{
+                    height: 35px;
+                    width: 35px;
+                    border-radius: 50%;
+                    margin-right: 8px;
+
+                    overflow: hidden;
+                    img{
+                        height: 35px;
+                        width: 35px;
+                        object-fit: cover;
+                    }
+                }
+                span{
+                    cursor: pointer;
+                    font-family: "Roboto", Arial, sans-serif;
+                    font-weight: 500;
+                    text-decoration: none;
+                    color: #FFFFFF;
+                    font-size: 0.8em;
+                }
+            }
         }
 
         .arrow {
             font-size: 10px;
             padding: 5px 0 0 6px;
-        }
-
-        .img {
-            height: 35px;
-            width: 35px;
-            border-radius: 50%;
-            margin-right: 8px;
-
-            background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
-            background-size: cover;
-            background-position: center;
         }
     }
 }
