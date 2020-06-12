@@ -13,6 +13,7 @@ import Profil from "./pages/profil";
 import RegisterForm from "./pages/register";
 import Parameters from "./pages/parameters";
 import mAdvert from "./pages/mAdvert";
+import CreateAdvertisementPage from './pages/create_advertisement.js'
 /*Components*/
 
 class App {
@@ -40,6 +41,7 @@ class App {
         new AdvertisementPage;
         new Parameters();
         new mAdvert();
+        new CreateAdvertisementPage;
     }
 }
 new App();
