@@ -1,6 +1,7 @@
 body[data-content="create_advertisement"] {
 	section {
 		padding: 100px 0;
+		overflow: hidden;
 
 		h1 {
 			text-align: center;
@@ -8,55 +9,90 @@ body[data-content="create_advertisement"] {
 
 		form {
 			margin-top: 100px;
+			width: 300vw;
+			display: flex;
 
-			.form-group {
-				display: flex;
-				align-items: center;
-				margin-bottom: 50px;
+			.form_container {
+				width: 100%;
+				padding: 0 100px;
 
-				label {
-					font-weight: 400;
-				}
+				.form-group {
+					display: flex;
+					align-items: center;
+					margin-bottom: 50px;
 
-				input, textarea, select {
-					border-radius: 5px;
-					border: 1px solid $lightGrey;
-					font-family: "Roboto", Arial, sans-serif;
-					margin-left: 25px;
-					outline: 0;
-					padding: 10px 15px;
-				}
-
-				input {
-					&[type="text"] {
-						font-size: 1.2em;
-						width: 50%;
+					label {
+						font-weight: 400;
 					}
 
-					&:not(input[type="text"]) {
+					input, textarea, select {
+						border-radius: 5px;
+						border: 1px solid $lightGrey;
+						font-family: "Roboto", Arial, sans-serif;
+						margin-left: 25px;
+						outline: 0;
+						padding: 10px 15px;
+					}
+
+					input {
+						&[type="text"] {
+							font-size: 1.2em;
+							width: 50%;
+						}
+
+						&:not(input[type="text"]) {
+							cursor: pointer;
+						}
+					}
+
+					textarea {
+						resize: none;
+						padding: 10px 15px;
+						width: 75%;
+					}
+
+					select {
 						cursor: pointer;
 					}
-				}
 
-				textarea {
-					resize: none;
-					padding: 10px 15px;
-					width: 75%;
-				}
-
-				select {
-					cursor: pointer;
-				}
-
-				#price_container {
-					.price_content {
-						display: flex;
+					#price_container {
+						.price_content {
+							display: flex;
+						}
 					}
+				}
+
+				.premium_container {
+					border: 1px solid black;
 				}
 			}
 
-			.premium_container {
-				border: 1px solid black;
+			&.js-second {
+				transform: translateX(-100vw);
+			}
+
+			&.js-third {
+				transform: translateX(-200vw)
+			}
+		}
+
+		#left {
+			border: 1px solid black;
+			padding: 10px;
+			background-color: red;
+
+			&.js-active {
+				background-color: white;
+			}
+		}
+
+		#right {
+			border: 1px solid black;
+			padding: 10px;
+			background-color: red;
+
+			&.js-active {
+				background-color: white;
 			}
 		}
 	}

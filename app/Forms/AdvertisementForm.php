@@ -84,6 +84,51 @@ class AdvertisementForm extends Form
             	'label' => 'Photos',
             ])
 
+            ->add('premium_in_front_week', 'checkbox', [
+            	'value' => '1',
+            	'label' => 'Chaque jour pendant 7 jours (35€)',
+            ])
+
+            ->add('premium_in_front_month', 'checkbox', [
+            	'value' => '1',
+            	'label' => 'Chaque jour pendant 30 jours (110€)',
+            ])
+
+            ->add('premium_banner_week', 'checkbox', [
+            	'value' => '1',
+            	'label' => 'Chaque jour pendant 7 jours (35€)',
+            ])
+
+            ->add('premium_banner_month', 'checkbox', [
+            	'value' => '1',
+            	'label' => 'Chaque jour pendant 30 jours (110€)',
+            ])
+
+            ->add('premium_urgent_week', 'checkbox', [
+            	'value' => '1',
+            	'label' => 'Chaque jour pendant 7 jours (35€)',
+            ])
+
+            ->add('premium_urgent_month', 'checkbox', [
+            	'value' => '1',
+            	'label' => 'Chaque jour pendant 30 jours (110€)',
+            ])
+
+            ->add('premium_booking', 'checkbox', [
+            	'value' => '1',
+            	'label' => '1€',
+            ])
+
+            ->add('premium_securing', 'checkbox', [
+            	'value' => '1',
+            	'label' => '1% du prix du cours',
+            ])
+
+            ->add('premium_insurance', 'checkbox', [
+            	'value' => '1',
+            	'label' => '5€',
+            ])
+
             ->add('submit', 'submit', [
             	'label' => 'Déposer l\'annonce',
             ]);
