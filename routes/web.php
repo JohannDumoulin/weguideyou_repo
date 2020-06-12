@@ -32,10 +32,6 @@ Route::get('/parametres', function () {
     return view('pages/parameter');
 });
 
-Route::get('/profil', function() {
-	return view('pages/profil');
-});
-
 Route::get('/profil', 'ProfilController@index');
 
 Route::get('/favoris', function() {
