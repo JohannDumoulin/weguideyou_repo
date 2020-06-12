@@ -16,11 +16,11 @@ class CreateFavoritesTable extends Migration
         Schema::create('Favorites', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('user_id')->unsigned(); 
+            $table->integer('user_id')->unsigned(); 
             $table->bigInteger('advert_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('Users');
-            $table->foreign('advert_id')->references('id')->on('Advertisement');
+            $table->foreign('advert_id')->references('id')->on('advertisement');
 
             $table->timestamps();
         });

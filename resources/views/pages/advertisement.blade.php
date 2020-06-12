@@ -103,19 +103,16 @@
 <!---------------------- Second Filters -------------------->
 			<div id="second_filter">
 				<div class="second_filter_child left">
-					<p>17 Annonces :</p>
+					<p><span class="nbrAdverts"></span> Annonces :</p>
 					<div class="advertisement all">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<rect width="24" height="24" rx="5" fill="#29ABE2"/>
-							<path d="M10.5385 16.0444L5.92308 11.1556L5 12.1333L10.5385 18L20 7.97778L19.0769 7L10.5385 16.0444Z" fill="white"/>
-						</svg>
 
+						<input type="radio" name="t" checked class="js-inpTout">
 						<p>Toutes les annonces</p>
+
 					</div>
 					<div class="advertisement urgent">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<rect x="1" y="1" width="22" height="22" rx="4" fill="white" stroke="#C4C4C4" stroke-width="2"/>
-						</svg>
+
+						<input type="radio" name="t" class="js-inpUrgent">
 						<svg id="filter_skier" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<g clip-path="url(#clip0)">
 							<path d="M19.0805 18.7104C18.7836 18.6308 18.4783 18.8071 18.3988 19.104C18.0528 20.3953 16.7207 21.1644 15.4294 20.8184L9.64724 19.2691L13.5189 16.2703C14.0197 15.8771 14.2513 15.2455 14.1233 14.6224C13.9957 13.9986 13.5344 13.5088 12.9197 13.344L12.8877 13.3355L15.5768 11.4239C16.1005 11.0504 16.3652 10.4002 16.251 9.76734C16.1367 9.13411 15.6612 8.61737 15.0397 8.45084L9.28066 6.90771C8.39124 6.66939 7.47379 7.19912 7.23547 8.08854C6.99715 8.97796 7.52688 9.89537 8.41627 10.1337L10.7518 10.7595L8.06277 12.6711C7.53865 13.0448 7.27423 13.6953 7.38903 14.3275C7.50307 14.9608 7.97832 15.4776 8.59984 15.6442L8.8144 15.7017L7.14806 16.9804C7.14647 16.9816 7.14487 16.9828 7.14326 16.9841C6.68772 17.3416 6.4686 17.8903 6.50987 18.4285L1.0317 16.9606C0.734756 16.881 0.429518 17.0572 0.349953 17.3542C0.270388 17.6511 0.446618 17.9564 0.743557 18.0359L15.1413 21.8938C17.0255 22.3987 18.9692 21.2764 19.4741 19.3922C19.5537 19.0952 19.3775 18.79 19.0805 18.7104Z" fill="#29ABE2"/>

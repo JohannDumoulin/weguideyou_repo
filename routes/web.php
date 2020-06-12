@@ -34,9 +34,7 @@ Route::get('/parametres', function () {
 
 Route::get('/profil', 'ProfilController@index');
 
-Route::get('/favoris', function() {
-	return view('pages/favoris');
-});
+Route::get('/favoris', 'FavoritesController@index');
 
 Route::get('/messagerie', function() {
 	return view('pages/mailbox');

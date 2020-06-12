@@ -27,20 +27,20 @@
 	    <section class="titres">
 	        <div class="wrap">
 	            <div class="btnResa">
-	                <h1 id="ad-title">{{ $advert->title }}</h1>
+	                <h1 id="ad-title">{{ $advert->name }}</h1>
 	                @include('components.buttonLink', ['link' => '#'], ['text' => 'Réserver'])
 	            </div>   
 	            <h2>
-	            	<span id="ad-price">{{ $advert->price }}</span>€ / h
+	            	<span id="ad-price">{{ $advert->price_one_h }}</span>€ / h
 		        </h2>
 	            <div class="item">
 					<i class="fa fa-map-marker"></i>
-					<h3 id="ad-location">{{ $advert->locations }}</h3>
+					<h3 id="ad-location">{{ $advert->place }}</h3>
 	            </div>
 	            <div class="item">
 					<i class="fa fa-calendar"></i>
 					<h3>
-						<span id="ad-dateStart">{{ $advert->dateStart }}</span> - <span id="ad-dateEnd">{{ $advert->dateEnd }}</span>
+						<span id="ad-dateStart">{{ $advert->date_from }}</span> - <span id="ad-dateEnd">{{ $advert->date_to }}</span>
 					</h3>
 	            </div>
 	        </div>
@@ -97,7 +97,7 @@
 	    <section class="description">
 	        <div class="wrap">
 	            <label>Description</label>
-	            <p id="ad-description">{{ $advert->description }}</p>
+	            <p id="ad-description">{{ $advert->desc }}</p>
 	        </div>
 	    </section>
 
@@ -140,7 +140,7 @@
 	    <section class="map">
 	    	<div class="wrap titre">
 		    	<i class="fa fa-map-marker"></i>
-		    	<label><span class="firstL" id={{ $advert->firstLocation }}>{{ $advert->firstLocation }} </span> :</label>
+		    	<label><span class="firstL" id={{ $advert->place }}>{{ $advert->place }} </span> :</label>
 	    	</div>
 	    	<div id="js-map">
 	    		<div id='mapid'></div>

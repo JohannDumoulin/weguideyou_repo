@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class FavoritesController extends Controller
 {
+
+	public function index(){
+        if (Auth::check()){
+            $user = Auth::user();
+            return view('pages/favoris', ['user'=>$user]);
+        }
+    }
 
 	public function getFavorites() {
 

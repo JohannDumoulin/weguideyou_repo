@@ -20,7 +20,7 @@ class CreateAlerteTable extends Migration
             $table->string('act');
             $table->string('place');
 
-            $table->bigInteger('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('Users');
 
             $table->timestamps();

@@ -18,6 +18,8 @@ class AdvertController extends Controller
 	            ->join('favorites', 'advertisement.id', '=', 'favorites.advert_id')
 	            ->select('advertisement.*')
 	            ->get();
+        } else if($request->type == "Urgent") {
+        	$adverts = DB::select('select * from Advertisement where premium_urgent_week =1');
         } else {
         	$adverts = DB::table('advertisement')->get();
         }
@@ -43,11 +45,8 @@ class AdvertController extends Controller
         $advert = $advert[0];
 
         // convertion format date
-		$advert->dateStart = date("d-m-Y", strtotime($advert->dateStart));
-		$advert->dateEnd = date("d-m-Y", strtotime($advert->dateEnd));
-		//
-		$pieces = explode(", ", $advert->locations);
-		$advert->firstLocation = $pieces[0];
+		$advert->date_from = date("d-m-Y", strtotime($advert->date_from));
+		$advert->date_to = date("d-m-Y", strtotime($advert->date_to));
 
         return view('layout/annonce')->with('advert', $advert);
     }
@@ -74,14 +73,13 @@ class AdvertController extends Controller
 		$adverts = json_decode($request->adverts);
 
 		if($request->type == "prixCroissant")
-			usort($adverts, function($a, $b) {return $a->price - $b->price;});
+			usort($adverts, function($a, $b) {return $a->price_one_h - $b->price_one_h;});
 		if($request->type == "prixDecroissant")
-			usort($adverts, function($a, $b) {return $b->price - $a->price;});
+			usort($adverts, function($a, $b) {return $b->price_one_h - $a->price_one_h;});
 		if($request->type == "plusRecent")
 			usort($adverts, function($a, $b) {return strtotime($a->created_at) - strtotime($b->created_at);});
-		if($request->type == "plusAncien") {
+		if($request->type == "plusAncien")
 			usort($adverts, function($a, $b) {return strtotime($b->created_at) - strtotime($a->created_at);});
-		}
 
 		return $adverts;
 	}
@@ -109,7 +107,7 @@ class AdvertController extends Controller
 		foreach ($request->filter_on as $key => $value) {
 			if($key == "date") {
 				$adverts = array_filter($adverts, function ($var) use ($value) {
-				    return ($value >= $var->dateStart && $value <= $var->dateEnd);
+				    return ($value >= $var->date_from && $value <= $var->date_to);
 				});
 			}
 			else {
@@ -129,18 +127,16 @@ class AdvertController extends Controller
 			$dateE = date_create("2020-05-15");
 
 			DB::table('Advertisement')->insert([
-		    	'type' => "cours",
-		    	'title' => "titre", 
-		    	'description' => "description", 
-		    	'nb_pers' => "individuel", 
-		    	'profession' => "profession", 
-		    	'dateStart' => $dateS, 
-		    	'dateEnd' => $dateE, 
+		    	'type' => "Cours",
+		    	'name' => "titre", 
+		    	'desc' => "description", 
+		    	'date_from' => $dateS, 
+		    	'date_to' => $dateE, 
+		    	'price_one_h' => 40,
+		    	'phone_bool' => false,  
+		    	'place' => "Courchevel",
 		    	'duration' => "journée", 
-		    	'price' => 40,
-		    	'displayNumber' => false, 
-		    	'activities' => "ski, snowboard", 
-		    	'locations' => "Courchevel, Val Thorens",
+		    	'activity' => "Ski", 
 				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
 			]);
