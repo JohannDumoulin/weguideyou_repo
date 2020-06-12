@@ -5,7 +5,9 @@ namespace App\Http\Controllers\register;
 use App\Forms\NewProfessionalAccount;
 use App\Http\Controllers\Controller;
 use App\Register;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Kris\LaravelFormBuilder\FormBuilder;
 
 class NewProController extends Controller
@@ -33,27 +35,25 @@ class NewProController extends Controller
         $formRegister->redirectIfNotValid();
         $values = $formRegister->getFieldValues();
 
-        /*dd($values);*/
+        User::create([
+            'name' => $values['name'],
+            'surname' => $values['surName'],
+            'email' => $values['mailAddress'],
+            'password' => Hash::make($values['password']),
+            'gender' => $values['gender'],
+            'birth' => $values['birth'],
+            'address' => $values['address'],
+            'city' => $values['city'],
+            'pc' => $values['postcode'],
+            'phone' => $values['phone'],
+            'pic' => null,
+            'status' => 'PRO',
+            'license' => null,
+            'urssaf' => null,
+            'cgu' => $values['CGU'],
+            'news_letter' => $values['newsLetter'],
 
-        $user = new Register;
-        $user-> name_user = $values['name'];
-        $user-> surname_user = $values['surName'];
-        $user-> email_user = $values['mailAddress'];
-        $user-> password_user = $values['password'];
-        $user-> gender_user = $values['gender'];
-        $user-> birth_user = $values['birth'];
-        $user-> address_user = $values['address'];
-        $user-> city_user = $values['city'];
-        $user-> pc_user = $values['postcode'];
-        $user-> phone_user = $values['phone'];
-        $user-> pic_user = null;
-        $user-> status_user = 'PRO';
-        $user-> license_user = $values['licence'];
-        $user-> urssaf_user = null;
-        $user-> cgu = $values['CGU'];
-        $user-> news_letter = $values['newsLetter'];
-
-        $user->save();
+        ]);
 
         return redirect('/');
     }
