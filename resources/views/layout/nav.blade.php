@@ -9,7 +9,7 @@
 				<i class="fa fa-globe"></i>
 				<i class="fa fa-chevron-down arrow"></i>
 			</a>
-			<a href="#">Poster une annonce</a>
+			<a href="{{ route('create_ad') }}">Poster une annonce</a>
 			<a href="/favoris">Favoris</a>
             @if(!Auth::check())
                 <a href="#" class="js-toggleConnectionContainer">Connexion</a>
