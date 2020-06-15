@@ -30,7 +30,19 @@ class Create_AdvertisementController extends Controller
     	$advertisement->price_half_day = $request->input('price_half_day');
     	$advertisement->price_day = $request->input('price_day');
     	$advertisement->phone_bool = $request->input('show_phone');
-    	$advertisement->img = $request->file('img')->store('ad_pictures', 'public');
+
+    	$images_url = [];
+    	    foreach($request->file('img') as $img)
+    	    {
+    	        $img->store('ad_pictures', 'public');
+    	        array_push($images_url, $img->store('ad_pictures', 'public'));          
+
+    	    }
+    	$advertisement->img = json_encode($images_url);
+
+    	// $advertisement->img = $request->file('img')->store('ad_pictures', 'public');
+
+
     	// $advertisement->premium_in_front_week = $request->input('premium_in_front_week');
     	// $advertisement->premium_in_front_month = $request->input('premium_in_front_month');
     	// $advertisement->premium_banner_week = $request->input('premium_banner_week');
