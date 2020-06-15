@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/particulier', 'HomeController@indexP')->name('homeIndividual');
 
 Auth::routes();
 
 Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
-
-Route::get('/particulier', function () {
-    return view('pages/homeIndividual');
-});
 
 Route::get('/parametres', function () {
     return view('pages/parameter');

@@ -166,6 +166,26 @@ body {
 			}
 		}
 
+		.divPage {
+
+			font-size: 130%;
+
+			span {
+				padding: 5px 13px 5px 0;
+				cursor: pointer
+			}
+
+			span:hover {
+				font-weight: 900;
+				text-decoration: underline;
+			}
+
+			.selected {
+				font-weight: 900;
+				text-decoration: underline;
+			}
+		}
+
 		.advertisement_container {
 			margin-top: 40px;
 

@@ -32,6 +32,10 @@ nav {
                 white-space: nowrap;
             }
 
+            .js-toggleModalProfil {
+                cursor: pointer;
+            }
+
             >div{
 
                 display: flex;
@@ -51,7 +55,6 @@ nav {
                     }
                 }
                 span{
-                    cursor: pointer;
                     font-family: "Roboto", Arial, sans-serif;
                     font-weight: 500;
                     text-decoration: none;

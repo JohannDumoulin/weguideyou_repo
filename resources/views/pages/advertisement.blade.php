@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> -->
 
 
 @endpush
@@ -30,29 +30,26 @@
 			<form action="" class="first_filter">
 				<div class="header_filter">
 					<label for="activity">ACTIVITÉ</label>
-					<select name="activity" id="activities" class="js-filter js-example-basic-multiple" multiple>
-					</select>
+					<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
+					<datalist id="dataActivities">
+						<option></option>
+					</datalist>
 				</div>
+
 				<div class="header_filter">
 					<label for="place">LIEU</label>
-					<select name="place" id="place" class="js-filter js-example-basic">
-					</select>
+					<input list="dataPlaces" name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter">
+					<datalist id="dataPlaces">
+						
+					</datalist>
 				</div>
+
 				<div class="header_filter">
 					<label for="dates">DATES</label>
-<!-- 					<select name="dates" id="dates" class="js-filter">
-						<option value="">Quand voulez vous partir ?</option>
-					</select> -->
 					<input type="date" id="date" class="js-filter">
 				</div>
-				<!--  
-				<div class="header_filter">
-					<label for="search">RECHERCHE</label>
-					<select name="search" id="search" class="js-filter">
-						<option value="">Que cherchez vous ?</option>
-					</select>
-				</div>-->
-				<img src="{{ asset('img/search_logo.svg') }}" alt="">
+
+				<!-- <img src="{{ asset('img/search_logo.svg') }}" alt=""> -->
 			</form>
 			
 			<div class="more_filter js-active js-more_filter">
@@ -157,6 +154,9 @@
 					</div>
 					@endif
 
+					<div class="divPage">
+
+					</div>
 				</div>
 
 				<div class="advertisement_container premium">
@@ -230,9 +230,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 	<script type="text/javascript">
-		$('.js-example-basic-multiple').select2();
 		$('.js-example-basic').select2();
 		$("#activities").select2({
 		    placeholder: "Que voulez-vous faire ?",
@@ -242,7 +241,7 @@
 		    placeholder: "Où voulez-vous partir ?",
 		    allowClear: true
 		}); 
-	</script>
+	</script> -->
 
     <script src="{{asset('js/app.js')}}"></script>
   

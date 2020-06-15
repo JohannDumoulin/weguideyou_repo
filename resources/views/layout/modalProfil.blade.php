@@ -10,8 +10,8 @@
             <div class="modalNav">
                 <hr>
                 <a href="/profil">Profil</a>
-                <a href="#">Messagerie</a>
-                <a href="#">Mes Annonces</a>
+                <a href="/messagerie">Messagerie</a>
+                <a href="/mes_annonces">Mes Annonces</a>
                 <hr>
                 <a href="#" id="premium">Premium</a>
                 <hr>
@@ -19,7 +19,7 @@
                 <a href="#">Virement en cours</a>
                 <a href="#">Payements et remboursements</a>
                 <hr>
-                <a href="#" id="parametres">Paramètres</a>
+                <a href="/parametres" id="parametres">Paramètres</a>
                 <hr>
             </div>
             <div class="logout">

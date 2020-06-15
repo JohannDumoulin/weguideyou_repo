@@ -6,10 +6,7 @@ export default class AdvertisementPage {
         this.initEls();
         this.initEvents();
 
-        var c = $('body').data('content');
-        if (c == "advertisement" || c == "favorites" || c == "mes_annonces" || c == "parameter"){
-            this.initEventsAdverts();
-        }
+        this.initEventsAdverts();
     }
 
     initEls(){
@@ -17,9 +14,11 @@ export default class AdvertisementPage {
             more_filter_btn: $('.js-more_filter'),
             less_filter_btn: $('.js-less_filter'),
             order_btn: $('.js-order'),
-            filter_btn: $('.js-filter'),
             filter_on: {},
-            adverts: "",
+            adverts: "", // every adverts
+            advertsM: "", // every adverts splited in a multidimentional array for every pages
+            sortType: "",
+            urgent: false,
         }
     }
 
@@ -28,13 +27,15 @@ export default class AdvertisementPage {
     }
 
     initEventsAdverts() {
-        this.filter();
         this.getAdverts($('title')[0].innerHTML);
         this.getActs();
         this.getCities();
         this.toggleAdvert();
         this.deleteAdvert();
         this.getUrgent();
+        this.changePage();
+        this.addEventSort();
+        this.addEventFilter();
     }
 
     getAdvertisementPage(){
@@ -52,10 +53,10 @@ export default class AdvertisementPage {
     getAdverts(type) {
         let _this = this;
 
+        // afficher qu'une seule annonce
         var url = window.location.pathname;
         if(url.includes("a/")) {
             var id = url[url.length -1];
-            console.log(id);
             type = id;
         }
 
@@ -64,9 +65,11 @@ export default class AdvertisementPage {
             url: "/getAdverts",
             data: {type: type},
             success : function(data) {
-                _this.$els.adverts = data
-                _this.displayAdverts();
-                _this.changeOrder();
+
+                _this.$els.adverts = data;
+                _this.$els.advertsM = _this.splitInPages(data)
+
+                _this.filter(data); // => changeOrder => display
             },
             error : function(data) {
                 console.log(data.responseJSON)
@@ -74,18 +77,30 @@ export default class AdvertisementPage {
         })
     }
 
-    displayAdverts() {
+    displayAdverts(page) {
+
+        if(page == undefined)
+            page = 0
+
         let _this = this;
         var adverts = this.$els.adverts;
+        var advertsM = this.$els.advertsM;
+
+        // affiche nbr total d'annonces
+        $('.nbrAdverts')[0].innerHTML = adverts.length
 
         $('#js-container')[0].innerHTML = "";
         var c = 0;
         var url;
 
-        if($('.nbrAdverts').length != 0)
-            $('.nbrAdverts')[0].innerHTML = adverts.length;
+        if(advertsM[page] === undefined) {
+            $('#js-container')[0].innerHTML = "Aucune offres ne correspond à vos critères"
+            $(".divPage")[0].innerHTML = ""
+            return 0;
+        }
 
-        for(let advert of adverts) {
+        // affiche toutes les annonces d'une page
+        for(let advert of advertsM[page]) {
 
             url = "/advert/"+advert.id;
             if($('body').data('content') == "mes_annonces") {
@@ -97,12 +112,30 @@ export default class AdvertisementPage {
                 success : function(res) {
                     $('#js-container').append(res);
                     c++;
-                    if(c === adverts.length) {
+                    if(c === advertsM[page].length) {
                         _this.initFav();
                         _this.initMapAdverts(adverts);
                     }
                 }
             });
+        }
+
+        // Display btn change page
+
+        $(".divPage")[0].innerHTML = ""
+
+        var nbPage = advertsM.length
+        if(nbPage > 1) {
+            $(".divPage")[0].innerHTML = "<p>pages</p>"
+
+            var p;
+            for (var i = 0; i < nbPage; i++) {
+                p = i+1
+                if(i == page) // page actuelle
+                    $(".divPage")[0].innerHTML += "<span class='selected' id='changePage'>"+p+"</span>"
+                else
+                    $(".divPage")[0].innerHTML += "<span id='changePage'>"+p+"</span>"
+            }             
         }
     }
 
@@ -167,53 +200,84 @@ export default class AdvertisementPage {
     }
 
 
-    changeOrder() {
+    addEventSort() {
         var _this = this;
 
         this.$els.order_btn.change(function(){
-            var value = this.value;
-
-            $.ajax({
-                method: "get",
-                url: "/sortAdverts",
-                data: {type: value, adverts: JSON.stringify(_this.$els.adverts)},
-                success: function (data) {
-                    _this.$els.adverts = data;
-                    _this.displayAdverts();
-                },
-                error: function(data) {
-                    console.log(data.responseJSON);
-                }
-            })
-        });  
+            _this.$els.sortType = this.value; 
+            _this.changeOrder();
+        }); 
     }
 
-    filter() {
+    changeOrder(adverts) {
+
+        if(adverts == undefined)
+            adverts = this.$els.adverts;
+
+        var _this = this;
+        var value = this.$els.sortType;
+
+        $.ajax({
+            method: "get",
+            url: "/sortAdverts",
+            data: {type: value, adverts: JSON.stringify(adverts)},
+            success: function (data) { 
+
+                _this.$els.adverts = data;
+                _this.$els.advertsM = _this.splitInPages(data)
+
+                _this.displayAdverts();
+            },
+            error: function(data) {
+                console.log(data.responseJSON);
+            }
+        })
+    }
+
+    addEventFilter() {
         var _this = this;
         var filter_on = this.$els.filter_on;
 
-        this.$els.filter_btn.change(function(){
+        $(document).on('change', '.js-filter', function(event) {
 
-            // recup every filter
-            filter_on[this.id] = this.value;
+            console.log("change");
+
+            filter_on[this.id] = this.value; // add filter
             if(this.value == "")
-                delete filter_on[this.id];
+                delete filter_on[this.id]; // remove filter
 
-            $.ajax({
-                method: "get",
-                url: "/filterAdverts",
-                data: {filter_on: filter_on},
-                success: function (data) {
-                    data = Object.keys(data).map(i => data[i]);
-                    _this.$els.adverts = data;
-                    _this.displayAdverts();
-                },
-                error: function(data) {
-                    console.log(data.responseJSON);
-                }
-            })
+            _this.$els.filter_on = filter_on; // save filters
 
-        });  
+            _this.filter();
+        }); 
+    }
+
+    filter(data) {
+
+        if(data == undefined)
+            data = false;
+
+        var urgent = this.$els.urgent;
+
+        var _this = this;
+        var filter_on = this.$els.filter_on;
+
+        $.ajax({
+            method: "get",
+            url: "/filterAdverts",
+            data: {filter_on: filter_on, adverts: JSON.stringify(data), urgent: urgent},
+            success: function (data) {
+                data = Object.keys(data).map(i => data[i]);
+
+                _this.$els.adverts = data;
+                _this.$els.advertsM = _this.splitInPages(data)
+
+                _this.changeOrder(data);
+            },
+            error: function(data) {
+                console.log(data.responseJSON);
+            }
+        })
     }
 
     toggleAdvert() {
@@ -238,53 +302,45 @@ export default class AdvertisementPage {
     }
 
     getCities() {
-        $('.select2-container').on("click", function() {
-            
-            if(this.parentNode.childNodes[3].id == "place") {
-                checkChange();
-            }
-        });
+/*
+        $('#place').on("input", function() {
 
-        function checkChange() {
+            var value = this.value;
 
-            $('.select2-search__field').on("input", function() {
-                var value = this.value;
+            $.ajax({
+                method: "get",
+                url: "https://api.teleport.org/api/cities/?search="+value,
 
-                $.ajax({
-                    method: "get",
-                    url: "https://api.teleport.org/api/cities/?search="+value,
+                success: function (data) {
+                    var res = Object.entries(data._embedded)[0][1]
 
-                    success: function (data) {
-                        var res = Object.entries(data._embedded)[0][1]
-                        if(value != "") {
-                            $('#place')[0].innerHTML = "";
+                    if(value != "") {
+                        $('#dataPlaces')[0].innerHTML = "";
 
-                            for(var item of res){
-                                $('#place')[0].innerHTML += '<option value="e">'+item.matching_full_name+'</option>'
-                            }
-
+                        for(var item of res){
+                            //$('#dataPlaces')[0].innerHTML += '<option value='+item.matching_full_name+'>'
+                            $('#dataPlaces')[0].innerHTML += '<option value='+item.matching_full_name+'>'+item.matching_full_name+'</option'
                         }
-                    },
-                    error: function(data) {
-                        console.log(data.responseJSON);
                     }
-                })
-            }); 
-        }
+                },
+                error: function(data) {
+                    console.log(data.responseJSON);
+                }
+            })
+        });*/ 
     } 
 
     getActs() {
 
-        if($('#activities').length == 1) {
+        if($('#activity').length == 1) {
         
             $.ajax({
                 method: "get",
                 url: "/getActs",
                 success: function (data) {
-                    $('#activities')[0].innerHTML = "";
 
                     for(var item of data){
-                        $('#activities')[0].innerHTML += '<option value="e">'+item.activity+'</option>'
+                        $('#dataActivities')[0].innerHTML += "<option value="+item.activity+">";
                     }
 
                 },
@@ -309,7 +365,7 @@ export default class AdvertisementPage {
                     url: "/deleteAdvert",
                     data: {id: id},
                     success: function (data) {
-                        console.log(data);
+                        //console.log(data);
                     },
                     error: function(data) {
                         console.log(data.responseJSON);
@@ -324,9 +380,34 @@ export default class AdvertisementPage {
         var _this = this
         $(document).on('click', '.js-inpUrgent', function(event) { 
             _this.getAdverts("Urgent");
+            _this.$els.urgent = true;
         })
         $(document).on('click', '.js-inpTout', function(event) { 
             _this.getAdverts("Annonce");
+            _this.$els.urgent = false;
         })       
-    }  
+    } 
+
+    changePage() {
+        var _this = this;
+
+        $(document).on('click', '#changePage', function(event) { 
+            var page = this.innerHTML - 1;
+            window.scrollTo(0,0);    
+            _this.displayAdverts(page);
+        })
+    } 
+
+    splitInPages(array) {
+
+        var resultat = [];
+        var i,j,temparray,chunk = 10;
+
+        for (i=0,j=array.length; i<j; i+=chunk) {
+            temparray = array.slice(i,i+chunk);
+            resultat.push(temparray);
+        }
+
+        return resultat;
+    }
 }

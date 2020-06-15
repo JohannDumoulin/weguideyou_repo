@@ -28,12 +28,24 @@ class AdvertController extends Controller
 				->select('advertisement.*')
 				->get();
         } 
-        else if($type == "Urgent")
-        	$adverts = DB::select('select * from Advertisement where premium_urgent_week =1');
-        else if(is_numeric($type))
-        	$adverts = DB::select('select * from Advertisement where id ='.$type);
-        else
+        else if($type == "Urgent") {
+        	$adverts = DB::table('Advertisement')
+				->where("premium_urgent_week", "=", 1)
+				->select('advertisement.*')
+				->get();
+        }
+        else if(is_numeric($type)) {
+        	$adverts = DB::table('Advertisement')
+				->where("id", "=", $type)
+				->select('advertisement.*')
+				->get();
+        }
+        else {
         	$adverts = DB::table('advertisement')->get();
+        }
+
+        $adverts = (array) $adverts;
+		$adverts = $adverts["\x00*\x00items"];
 
         return $adverts;
 	}
@@ -45,9 +57,7 @@ class AdvertController extends Controller
 	}*/
 
 	public function getActs() {
-        $acts = DB::table('activities')->get();
-		$acts = (array) $acts;
-		$acts = $acts["\x00*\x00items"];
+        $acts = DB::select('select * from activities');
         return $acts;
 	}
 
@@ -108,18 +118,33 @@ class AdvertController extends Controller
 
 
 	public function filterAdverts(Request $request) {
-		
-		$adverts = DB::table('advertisement')->get();
-		$adverts = (array) $adverts;
-		$adverts = $adverts["\x00*\x00items"];
+
+		$adverts = json_decode($request->adverts);
+
+		if($adverts === false) // si aucun parametre passé, on récupère tous les annonces
+			$adverts = DB::select('select * from Advertisement');
+
+		$u = $request->urgent;
+		if($u === "true") { // si la case est coché, on ne récupère que les annonces urgente
+			$adverts = DB::select('select * from Advertisement where premium_urgent_week = 1');	
+		}
 
 		if($request->filter_on == "") {
 			return $adverts;
 		}
 
+
 		// filters
 		foreach ($request->filter_on as $key => $value) {
-			if($key == "date") {
+			if($key == "activity" || $key == "place") {
+				$adverts = array_filter($adverts, function ($var) use ($value, $key){ 
+				    if(stripos($var->$key, $value) === false)
+				    	return false;
+				    else
+				    	return true;
+				});
+			}
+			else if($key == "date") {
 				$adverts = array_filter($adverts, function ($var) use ($value) {
 				    return ($value >= $var->date_from && $value <= $var->date_to);
 				});

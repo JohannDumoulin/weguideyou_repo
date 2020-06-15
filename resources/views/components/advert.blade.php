@@ -36,4 +36,6 @@
 
 
     {{ $advert->created_at }}
+    <br>
+    {{ $advert->activity }}
 </div>

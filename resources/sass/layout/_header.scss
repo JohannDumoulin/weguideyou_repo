@@ -78,3 +78,14 @@ header {
 	width: 100%;
 	clip-path: polygon(0 10%, 0% 101%, 100% 101%);
 }
+
+body[data-content="create_advertisement"] {
+
+	.first_filter {
+		background-color: $deepBlue;
+	}
+
+	label {
+		color: white;
+	}
+}

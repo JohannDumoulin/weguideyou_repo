@@ -14,4 +14,9 @@ class HomeController extends Controller
         $user = Auth::user();
         return view('pages/home', ['user'=>$user]);
     }
+    public function indexP()
+    {
+        $user = Auth::user();
+        return view('pages/homeIndividual', ['user'=>$user]);
+    }
 }

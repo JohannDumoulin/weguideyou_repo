@@ -20,6 +20,7 @@
             <a href="#notif">Notification</a>
             <a href="#alerte">Alertes</a>
             <a href="#payement">Méthodes de payement</a>
+            <a href="#infos">Infos</a>
             <a href="#sup">Supprimer mon compte</a>
         </div>
 
@@ -158,6 +159,37 @@
                             <div>
                                 <label for="">CVV</label>
                                 <input type="" name="" id="" placeholder="CVV">
+                            </div>
+                        </div>
+
+                        <div class="btn">
+                            @include('components.buttonLink', ['link' => '#'], ['text' => 'Modifier'])
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="payement" id="infos">
+                <div class="wrap">
+                    
+                    <h3>Infos</h3>
+
+                    <div class="content">
+
+                        <div class="inputs">
+                             <div>
+                                <label for="">IBAN</label>
+                                <input type="" name="" id="" placeholder="IBAN">
+                            </div>
+                            <div>
+                                <label for="">Numéro de Siret</label>
+                                <input type="" name="" id="" placeholder="Numéro de Siret">
+                            </div>
+                            <div>
+                                <label for="">Carte moniteur</label>
+                                <input type="" name="" id="" placeholder="Carte moniteur">
                             </div>
                         </div>
 
