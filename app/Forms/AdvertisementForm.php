@@ -82,7 +82,10 @@ class AdvertisementForm extends Form
 
             ->add('img', 'file', [
             	'label' => 'Photos',
+            	'attr' => ['multiple' => 'true'],
             ])
+
+            // Premium
 
             ->add('premium_in_front_week', 'checkbox', [
             	'value' => '1',

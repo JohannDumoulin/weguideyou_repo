@@ -68,7 +68,7 @@ Route::get('register/sport-organization','register\NewSoController@create');
 
 /* Annonces */
 Route::get('annonces', 'AdvertController@pageAdverts')->name('advertisements'); // affiche la page des annonces
-Route::get('a/{id}', 'AdvertController@pageAdvert')->name('advertisements'); // affiche la page des annonces avec une seule annonce
+Route::get('a/{id}', 'AdvertController@pageAdvert'); // affiche la page des annonces avec une seule annonce
 Route::get('/advert/{id}', 'AdvertController@displayAllAdverts'); // affiche les annonces sur la page
 Route::get('/mAdvert/{id}', 'AdvertController@displayMyAdverts'); // affiche les annonces sur la page mes annonces
 Route::get('/annonce/{id}', 'AdvertController@displayDetailAdvert'); // affiche les détails d'une annonce
