@@ -18,7 +18,7 @@
             @auth
                 <div>
                     <div>
-                        <img src="{{asset('img/megan1.jpg')}}" alt="Image de profil">
+                        <img src="{{Auth::user()->pic ?? asset('img/user-circle-solid-white.svg')}}" alt="Image de profil">
                     </div>
                     <span class="js-toggleModalProfil">{{ Auth::user()->name }}</span>
                     <i class="fa fa-chevron-down arrow"></i>
