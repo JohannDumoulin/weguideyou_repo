@@ -19,10 +19,14 @@ class FavoritesController extends Controller
 
 	public function getFavorites() {
 
-		$favorites = DB::table('advertisement')
-			->join('favorites', 'advertisement.id', '=', 'favorites.advert_id')
-			->select('advertisement.*')
-			->get();
+		$user = Auth::user();
+
+			$favorites = DB::table('favorites')
+				->join('advertisement', 'favorites.advert_id', '=', 'advertisement.id')
+				->join('users', 'favorites.user_id', '=', 'users.id')
+				->where("favorites.user_id", "=", $user->id)
+				->select('advertisement.*')
+				->get();
 
         return $favorites;
 	}
@@ -31,7 +35,7 @@ class FavoritesController extends Controller
 
 		if($request->type == "true") {
 			DB::table('favorites')->insert([
-		    	'user_id' => 1,
+		    	'user_id' => Auth::user()->id,
 		    	'advert_id' => $request->id, 
 				'created_at' => \Carbon\Carbon::now()->toDateTimeString()
 			]);

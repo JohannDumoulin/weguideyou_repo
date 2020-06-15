@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use Route;
 use View;
+use Illuminate\Support\Facades\Auth;
+use App\Advertisement;
+use App\User;
 
 
 class AdvertController extends Controller
@@ -13,16 +16,24 @@ class AdvertController extends Controller
 
 	public function getAdverts(Request $request) {
 
-        if($request->type == "Favoris") {
-        	$adverts = DB::table('advertisement')
-	            ->join('favorites', 'advertisement.id', '=', 'favorites.advert_id')
-	            ->select('advertisement.*')
-	            ->get();
-        } else if($request->type == "Urgent") {
+		$type = $request->type;
+
+		$user = Auth::user();
+
+        if($type == "Favoris") {
+			$adverts = DB::table('favorites')
+				->join('advertisement', 'favorites.advert_id', '=', 'advertisement.id')
+				->join('users', 'favorites.user_id', '=', 'users.id')
+				->where("favorites.user_id", "=", $user->id)
+				->select('advertisement.*')
+				->get();
+        } 
+        else if($type == "Urgent")
         	$adverts = DB::select('select * from Advertisement where premium_urgent_week =1');
-        } else {
+        else if(is_numeric($type))
+        	$adverts = DB::select('select * from Advertisement where id ='.$type);
+        else
         	$adverts = DB::table('advertisement')->get();
-        }
 
         return $adverts;
 	}
@@ -40,7 +51,7 @@ class AdvertController extends Controller
         return $acts;
 	}
 
-	public function displayAdvert($id) {
+	public function displayDetailAdvert($id) {
         $advert = DB::select('select * from Advertisement where id ='.$id);
         $advert = $advert[0];
 
@@ -51,21 +62,24 @@ class AdvertController extends Controller
         return view('layout/annonce')->with('advert', $advert);
     }
 
-    public function displayAdverts2($id) {
+    public function displayAllAdverts($id) {
     	$advert = DB::select('select * from Advertisement where id ='.$id);
     	$advert = $advert[0];
     	return view('components/advert')->with('advert', $advert);
     }
 
-    public function displayMAdvert($id) {
+    public function displayMyAdverts($id) {
     	$advert = DB::select('select * from Advertisement where id ='.$id);
     	$advert = $advert[0];
     	return view('components/mAdvert')->with('advert', $advert);
     }
 
-	public function displayAdverts() {
-		$adverts = DB::table('Advertisement')->get();
-		return view('pages/advertisement')->with('adverts', $adverts);
+	public function pageAdverts() {
+		return view('pages/advertisement');
+	}	
+
+	public function pageAdvert($id) {
+		return view('pages/advertisement');
 	}
 
 	public function sortAdverts(Request $request) {
@@ -123,23 +137,52 @@ class AdvertController extends Controller
     
     public function addAdvert() {
 
-			$dateS = date_create("2020-03-15");
-			$dateE = date_create("2020-05-15");
+		$dateS = date_create("2020-03-15");
+		$dateE = date_create("2020-05-15");
 
-			DB::table('Advertisement')->insert([
-		    	'type' => "Cours",
-		    	'name' => "titre", 
-		    	'desc' => "description", 
-		    	'date_from' => $dateS, 
-		    	'date_to' => $dateE, 
-		    	'price_one_h' => 40,
-		    	'phone_bool' => false,  
-		    	'place' => "Courchevel",
-		    	'duration' => "journée", 
-		    	'activity' => "Ski", 
-				'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
-			]);
+		$id = DB::table('Advertisement')->insertGetId([
+	    	'type' => "Cours",
+	    	'name' => "titre", 
+	    	'desc' => "description", 
+	    	'date_from' => $dateS, 
+	    	'date_to' => $dateE, 
+	    	'price_one_h' => 40,
+	    	'phone_bool' => false,  
+	    	'place' => "Courchevel",
+	    	'duration' => "journée", 
+	    	'activity' => "Ski", 
+			'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+		]);
 
+		$this->alerte($id);
+    }
+
+    public function alerte($id) {
+
+    	$advertisement = new Advertisement;
+
+    	$advertisement->type = "Cours";
+    	$advertisement->activity = "Ski";
+    	$advertisement->place = "Val Thorens, Auvergne-Rhône-Alpes, France";
+
+		$alertes = DB::table('alerte')
+			->join('users', 'alerte.user_id', '=', 'users.id')
+			->where([
+				['type', '=', $advertisement->type],
+				['act', '=', $advertisement->activity],
+				['place', '=', $advertisement->place],
+			])
+			->select('users.*', 'alerte.*')
+			->get();
+
+		$users_id = [];
+		foreach($alertes as $alerte) {
+			array_push($users_id, $alerte->user_id);
+		}
+
+		$users = User::findMany($users_id);
+
+		app('App\Http\Controllers\NotificationController')->alerte($users, $alertes, $id);
     }
 }

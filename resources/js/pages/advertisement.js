@@ -6,10 +6,8 @@ export default class AdvertisementPage {
         this.initEls();
         this.initEvents();
 
-        console.log("e");
-
         var c = $('body').data('content');
-        if (c == "advertisement" || c == "favorites" || c == "mes_annonces"){
+        if (c == "advertisement" || c == "favorites" || c == "mes_annonces" || c == "parameter"){
             this.initEventsAdverts();
         }
     }
@@ -53,6 +51,13 @@ export default class AdvertisementPage {
 
     getAdverts(type) {
         let _this = this;
+
+        var url = window.location.pathname;
+        if(url.includes("a/")) {
+            var id = url[url.length -1];
+            console.log(id);
+            type = id;
+        }
 
         $.ajax({
             method: "get",

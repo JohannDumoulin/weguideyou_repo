@@ -12,6 +12,7 @@ use App\Notifications\Report;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -34,13 +35,20 @@ class NotificationController extends Controller
         return redirect("/annonces")->with(['message' => 'L\'annonce a bien été signalée !']);
     }
 
+    public function alerte($users, $alertes, $advert_id) {
+
+        foreach($alertes as $key => $data) {
+            Notification::send($users[$key], new Alerte($data->type, $data->act, $data->place, $advert_id));
+        }
+    }
+
     public function addAlerte(Request $request) {
 
         $id = DB::table('alerte')->insertGetId([
             'type' => $request->alerte["type"],
             'act' => $request->alerte["act"], 
             'place' => $request->alerte["place"], 
-            'user_id' => 1, 
+            'user_id' => Auth::user()->id,
             'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
 
@@ -65,7 +73,15 @@ class NotificationController extends Controller
     }
 
     public function getAlertes() {
-        $alertes = DB::table('alerte')->get();
+
+        $user = Auth::user();
+
+        $alertes = DB::table('alerte')
+            ->join('users', 'alerte.user_id', '=', 'users.id')
+            ->where("alerte.user_id", "=", $user->id)
+            ->select('alerte.*')
+            ->get();
+
         return $alertes;
     }
 

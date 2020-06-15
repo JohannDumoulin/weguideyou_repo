@@ -103,7 +103,7 @@
 <!---------------------- Second Filters -------------------->
 			<div id="second_filter">
 				<div class="second_filter_child left">
-					<p><span class="nbrAdverts"></span> Annonces :</p>
+					<p><span class="nbrAdverts"></span> Annonce(s) :</p>
 					<div class="advertisement all">
 
 						<input type="radio" name="t" checked class="js-inpTout">
@@ -145,8 +145,18 @@
 
 
 			<div id="advertisement_section">
-				<div class="advertisement_container all" id="js-container">
-					@include('components.loading')
+
+				<div>
+					<div class="advertisement_container all" id="js-container">
+						@include('components.loading')
+					</div>
+
+					@if(Request::is('a/*'))
+					<div class="divAllAdvert">
+						<a class="bonjour" href="/annonces">Voir toutes les annonces</a>
+					</div>
+					@endif
+
 				</div>
 
 				<div class="advertisement_container premium">

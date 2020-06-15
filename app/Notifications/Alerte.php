@@ -11,14 +11,17 @@ class Alerte extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $type;
+    public $act;
+    public $place;
+    public $id_advert;
+
+    public function __construct($type, $act, $place, $id_advert)
     {
-        //
+        $this->type = $type;
+        $this->act = $act;
+        $this->place = $place;
+        $this->id_advert = $id_advert;
     }
 
     /**
@@ -41,10 +44,18 @@ class Alerte extends Notification
     public function toMail($notifiable)
     {
 
+        $type = $this->type;
+        $act = $this->act;
+        $place = $this->place;
+        $id_advert = $this->id_advert;
+
         return (new MailMessage)
-            ->line('The introduction to the notification. t')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application! t');
+            ->subject("Une Annonce correspond à vos critères !")
+            ->line('Une annonce correspondant à vos critères viens d\'être postée.')
+            ->line('Type : ' . $type)
+            ->line('Activité : ' . $act)
+            ->line('Lieu : ' . $place)
+            ->action('Voir l\'annonce concernée', url('/a/'.$id_advert));
     }
 
 

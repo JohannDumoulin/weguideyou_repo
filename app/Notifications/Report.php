@@ -51,7 +51,7 @@ class Report extends Notification implements ShouldQueue
             ->line('Une Annonce a été signalée')
             ->line('Motif : ' . $motif)
             ->line('Messages : ' . $content)
-            ->action('Voir l\'annonce concernée', url('/annonce/'.$id_advert));
+            ->action('Voir l\'annonce concernée', url('/a/'.$id_advert));
     }
 
     /**
