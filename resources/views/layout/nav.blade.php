@@ -11,19 +11,19 @@
 			</a>
 			<a href="{{ route('create_ad') }}">Poster une annonce</a>
 			<a href="/favoris">Favoris</a>
-            @if(!Auth::check())
+            @guest
                 <a href="#" class="js-toggleConnectionContainer">Connexion</a>
                 @include('components.buttonLink', ['newId' => 'js-registrationBtn','link' => '/register','text' => 'Inscription'])
-            @endif
-            @if(Auth::check())
+            @endguest
+            @auth
                 <div>
                     <div>
                         <img src="{{asset('img/megan1.jpg')}}" alt="Image de profil">
                     </div>
-                    <span class="js-toggleModalProfil">{{ $user['name'] ?? 'undefined' }}</span>
+                    <span class="js-toggleModalProfil">{{ Auth::user()->name }}</span>
                     <i class="fa fa-chevron-down arrow"></i>
                 </div>
-            @endif
+            @endauth
 		</div>
 	</div>
 </nav>
