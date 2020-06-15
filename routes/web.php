@@ -20,6 +20,11 @@ Auth::routes();
 
 Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
 
+Route::get('/particulier', function () {
+    return view('pages/homeIndividual');
+});
+
+
 Route::get('/parametres', function () {
     return view('pages/parameter');
 });
@@ -49,23 +54,27 @@ Route::get('/displayAlerte', 'NotificationController@displayAlerte');
 
 
 /*Register*/
-Route::get('register', 'RegisterController@index');
+Auth::routes();
+
+//Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
+
+Route::get('register', 'RegisterController@index')->name('register');
 
 Route::resource('particular-account','register\NewParController');
 Route::resource('professional-account','register\NewProController');
-//Route::resource('nso-account','register\NewNsoController');
+Route::resource('nso-account','register\NewNsoController');
 Route::resource('so-account','register\NewSoController');
 
 Route::get('register/particular','register\NewParController@create');
 Route::get('register/professional','register\NewProController@create');
-//Route::get('register/non-sport-organization','register\NewNsoController@create');
+Route::get('register/non-sport-organization','register\NewNsoController@create');
 Route::get('register/sport-organization','register\NewSoController@create');
 
 /*Register*/
 
 /* Annonces */
 Route::get('annonces', 'AdvertController@pageAdverts')->name('advertisements'); // affiche la page des annonces
-Route::get('a/{id}', 'AdvertController@pageAdvert')->name('advertisements'); // affiche la page des annonces avec une seule annonce
+Route::get('a/{id}', 'AdvertController@pageAdvert'); // affiche la page des annonces avec une seule annonce
 Route::get('/advert/{id}', 'AdvertController@displayAllAdverts'); // affiche les annonces sur la page
 Route::get('/mAdvert/{id}', 'AdvertController@displayMyAdverts'); // affiche les annonces sur la page mes annonces
 Route::get('/annonce/{id}', 'AdvertController@displayDetailAdvert'); // affiche les détails d'une annonce

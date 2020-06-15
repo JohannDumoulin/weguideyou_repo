@@ -1,28 +1,21 @@
 <div class="connectionContainer js-ConnectionContainer hidden">
     <div class="wrap">
-        <form class="connectionPanel" method="POST" action="/login/authenticate">
+        <form class="connectionPanel" method="POST" action="{{ route('login') }}">
             @csrf
-            <div>
+            <div class="loginNav">
                 <a href="" class="is-selected">Connexion</a>
-                <a href="">Inscription</a>
+                <a href="{{route('register')}}">Inscription</a>
             </div>
             <div>
                 <label>
-                    <input name="email" type="email" placeholder="Adresse mail">
-{{--
-                    <input id="email" placeholder="Adresse mail" type="email" class="form-control @error('email_user') is-invalid @enderror" name="email" value="{{ old('email_user') }}" required autocomplete="email" autofocus>
---}}
+                    <input id="email" placeholder="Adresse mail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 </label>
             </div>
             <div>
                 <label>
-                    <input name="password" type="password" placeholder="Mot de passe">
-{{--
                     <input id="password" placeholder="Mot de passe" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
---}}
                 </label>
             </div>
-            {{--@include('components.buttonLink', ['link' => '#'], ['text' => 'Se connecter'])--}}
             <button type="submit" class="buttonLink">Se connecter</button>
             <a href="#">Mot de passe oublié ?</a>
         </form>

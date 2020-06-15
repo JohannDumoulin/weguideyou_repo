@@ -8,6 +8,30 @@ body[data-content="userProfil"]{
             background-image: url("https://afh.asso.fr/wp-content/uploads/2017/09/sejour-ski.jpg");
             background-size: cover;
             background-repeat: no-repeat;
+            position: relative;
+
+            >div{
+
+                border-radius: 4px 4px 0px 0px;
+                -moz-border-radius: 4px 4px 0px 0px;
+                -webkit-border-radius: 4px 4px 0px 0px;
+                border: 0px solid #000000;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+
+                background-color: $background-fade;
+                opacity: 0;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover{
+                    transition: .2s;
+                    opacity: 1;
+                }
+            }
         }
 
         .mainContainer{
@@ -33,6 +57,7 @@ body[data-content="userProfil"]{
                         -moz-border-radius: 4px 4px 4px 4px;
                         -webkit-border-radius: 4px 4px 4px 4px;
                         border: 0px solid #000000;
+                        background-color: #FFF;
 
                         max-width: 30%;
 
@@ -56,13 +81,6 @@ body[data-content="userProfil"]{
                             opacity: .2;
                         }
 
-                        a{
-                            font-family: "Roboto", Arial, sans-serif;
-                            font-weight: 800;
-                            font-size: 1.2em;
-                            text-transform: uppercase;
-                        }
-
                         .reviewLinkContainer{
                             display: flex;
                             align-items: center;
@@ -72,20 +90,52 @@ body[data-content="userProfil"]{
                             }
                         }
 
-                        >div:first-child{
+                        .profilImg{
+                            position: relative;
+                            height: 250px;
                             img{
                                 width: 100%;
-                                height: 250px;
+                                height: 100%;
                                 object-fit: cover;
                                 border-radius: 4px 4px 0px 0px;
                                 -moz-border-radius: 4px 4px 0px 0px;
                                 -webkit-border-radius: 4px 4px 0px 0px;
                                 border: 0px solid #000000;
                             }
+
+                            >div{
+
+                                border-radius: 4px 4px 0px 0px;
+                                -moz-border-radius: 4px 4px 0px 0px;
+                                -webkit-border-radius: 4px 4px 0px 0px;
+                                border: 0px solid #000000;
+                                position: absolute;
+                                height: 100%;
+                                width: 100%;
+
+                                background-color: $background-fade;
+                                opacity: 0;
+
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                &:hover{
+                                    transition: .2s;
+                                    opacity: 1;
+                                }
+                            }
                         }
 
                         >div:last-child{
                             padding: 20px 80px 20px 20px;
+
+                            a{
+                                font-family: "Roboto", Arial, sans-serif;
+                                font-weight: 800;
+                                font-size: 1.2em;
+                                text-transform: uppercase;
+                            }
 
                             >div:not(:last-child){
                                 margin-bottom: 20px;

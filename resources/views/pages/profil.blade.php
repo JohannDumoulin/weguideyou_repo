@@ -12,14 +12,21 @@
 @section('content')
 
     <div class="content">
-        <div class="profil-Banner"></div>
+        <div class="profil-Banner">
+            <div>
+                @include('components.buttonLink', ['link' => '#'], ['text' => 'Modifier'])
+            </div>
+        </div>
         <div class="wrap">
             <div class="mainContainer">
                 <div class="mainContent">
                     <div>
                         <div class="profilOverview">
-                            <div>
-                                <img src="{{asset('/img/megan1.jpg')}}" alt="Photo de profil">
+                            <div class="profilImg">
+                                <div>
+                                    @include('components.buttonLink', ['link' => '#'], ['text' => 'Modifier'])
+                                </div>
+                                <img src="{{Auth::user()->pic ?? asset('/img/user-regular.svg')}}" alt="Image de profil">
                             </div>
                             <div>
                                 <div>
@@ -41,7 +48,7 @@
                         </div>
                         <div class="profilDetails">
                             <div>
-                                <h1>{{ $user['name'] ?? 'undefined' }}, <span>26 ans</span></h1>
+                                <h1>{{Auth::user()->name ?? 'undefined' }}, <span>{{$years ?? 'undefined'}} ans</span></h1>
                                 <i class="fas fa-pen fa-lg js-modifyProfil"></i>
                             </div>
                             <div>

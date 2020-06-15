@@ -2,8 +2,10 @@
 	<div class="modal">
 
 		<div class="head">
-			<div class="img"></div>
-			<p>{{ $user['name'] ?? 'undefined' }}</p>
+			<div class="img">
+                <img src="{{Auth::user()->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="Image de profil">
+            </div>
+			<p>{{ Auth::user()->name ?? 'undefined' }}</p>
 		</div>
 
 		<div class="content">
