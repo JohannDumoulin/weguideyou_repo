@@ -48,8 +48,10 @@ class NewProController extends Controller
             'phone' => $values['phone'],
             'pic' => null,
             'status' => 'PRO',
-            'license' => null,
-            'urssaf' => null,
+            'status_detail' => null,
+            'license' => $values['licence'],
+            'license_date' => $values['licenceDate'],
+            'siret' => $values['siret'],
             'cgu' => $values['CGU'],
             'news_letter' => $values['newsLetter'],
 

@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
-
 Route::get('/particulier', function () {
     return view('pages/homeIndividual');
 });
@@ -52,16 +48,20 @@ Route::get('/displayAlerte', 'NotificationController@displayAlerte');
 
 
 /*Register*/
-Route::get('register', 'RegisterController@index');
+Auth::routes();
+
+//Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
+
+Route::get('register', 'RegisterController@index')->name('register');
 
 Route::resource('particular-account','register\NewParController');
 Route::resource('professional-account','register\NewProController');
-//Route::resource('nso-account','register\NewNsoController');
+Route::resource('nso-account','register\NewNsoController');
 Route::resource('so-account','register\NewSoController');
 
 Route::get('register/particular','register\NewParController@create');
 Route::get('register/professional','register\NewProController@create');
-//Route::get('register/non-sport-organization','register\NewNsoController@create');
+Route::get('register/non-sport-organization','register\NewNsoController@create');
 Route::get('register/sport-organization','register\NewSoController@create');
 
 /*Register*/
