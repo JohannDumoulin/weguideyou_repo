@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/*Route::get('/', function () {
-    return view('pages/home');
-});*/
-
 Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
@@ -60,14 +55,14 @@ Route::get('/displayAlerte', 'NotificationController@displayAlerte');
 Route::get('register', 'RegisterController@index');
 
 Route::resource('particular-account','register\NewParController');
-Route::resource('professional-account','register\NewParController');
-/*Route::resource('particular-account','register\NewParController');
-Route::resource('particular-account','register\NewParController');*/
+Route::resource('professional-account','register\NewProController');
+//Route::resource('nso-account','register\NewNsoController');
+Route::resource('so-account','register\NewSoController');
 
 Route::get('register/particular','register\NewParController@create');
 Route::get('register/professional','register\NewProController@create');
-Route::get('register/non-sport-organization','register\NewParController@create');
-Route::get('register/sport-organization','register\NewParController@create');
+//Route::get('register/non-sport-organization','register\NewNsoController@create');
+Route::get('register/sport-organization','register\NewSoController@create');
 
 /*Register*/
 
