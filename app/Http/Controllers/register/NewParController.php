@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Kris\LaravelFormBuilder\FormBuilder;
+use MercurySeries\Flashy\Flashy;
 
 class NewParController extends Controller
 {
@@ -58,19 +59,14 @@ class NewParController extends Controller
             'news_letter' => $values['newsLetter'],
 
         ]);
-
         $this->guard()->login($user);
-
-        //$email = $values['mailAddress'];
-        //$password = $values['password'];
-        return redirect('/');
-        //$this->authenticate($email, $password);
-    }
-
-    /*private function authenticate($email, $password)
-    {
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::check()){
+            Flashy::success('Bienvenue chez WeGuideYou !!!');
             return redirect('/');
         }
-    }*/
+        else{
+            Flashy::error('Une erreur c\'est produite, veuillez vous connecter manuellement.');
+            return redirect('/');
+        }
+    }
 }
