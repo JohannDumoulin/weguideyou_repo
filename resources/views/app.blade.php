@@ -14,7 +14,7 @@
     @include('layout.connection')
     @include('layout.modalProfil')
 
-    @if (\Request::is('/'&&'/particulier'))
+    @if (\Request::is('/'))
       @include('layout.header')
     @endif
 
