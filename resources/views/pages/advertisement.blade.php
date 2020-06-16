@@ -27,7 +27,8 @@
 		<div class="wrap">
 
 <!---------------------- First Filters --------------------->
-			<form action="" class="first_filter">
+			<form action="/annonces" class="first_filter">
+
 				<div class="header_filter">
 					<label for="activity">ACTIVITÉ</label>
 					<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
@@ -36,25 +37,30 @@
 					</datalist>
 				</div>
 
-				<div class="header_filter">
+				<div class="header_filter autocomplete">
 					<label for="place">LIEU</label>
-					<input list="dataPlaces" name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter">
-					<datalist id="dataPlaces">
-						
-					</datalist>
+					<input name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter" type="text">
 				</div>
 
 				<div class="header_filter">
-					<label for="dates">DATES</label>
-					<input type="date" id="date" class="js-filter">
+					<label for="date">DATES</label>
+					<input name="date" type="date" id="date" class="js-filter">
+				</div>
+  
+				<div class="divSearch">
+					<i class="fa fa-search iconSearch"></i>
+					<input type="submit" name="" value="">
 				</div>
 
-				<!-- <img src="{{ asset('img/search_logo.svg') }}" alt=""> -->
 			</form>
-			
+
 			<div class="more_filter js-active js-more_filter">
 				<img src="{{ asset('img/plus_filter.svg') }}" alt="">
 				<p>Plus de filtres</p>
+			</div>
+
+			<div class="effaceFilters">
+				<a href="/annonces">Effacer tous les filtres</a>
 			</div>
 
 			<!-- More filters -->
@@ -63,7 +69,7 @@
 					<p>Choix du prestataire :</p>
 					<input type="checkbox" id="organization" name="organization" checked>
 					<label for="organization">Structure (école, ...)</label>
-					<input type="checkbox" id="freelance" name="freelance">
+					<input type="checkbox" id="freelance" name="freelance" checked>
 					<label for="freelance">Indépendant</label>
 				</div>
 				<div class="first_filter_more_content">
@@ -86,8 +92,8 @@
 						<option value="1h">1h</option>
 						<option value="2h">2h</option>
 						<option value="4h">4h</option>
-						<option value="half-day">Demi-journée</option>
-						<option value="day">Journée complète</option>
+						<option value="Demi-journée">Demi-journée</option>
+						<option value="Toute la journée">Journée</option>
 					</select>
 				</div>
 

@@ -16,6 +16,20 @@ class AdvertController extends Controller
 
 	public function getAdverts(Request $request) {
 
+		// get param url
+		$parameters = [];
+		$p = parse_url($_SERVER["HTTP_REFERER"]);
+		if(isset($p["query"])) {
+			$ps = explode("&", $p["query"]);
+			foreach ($ps as $key => $value) {
+				$r = explode("=", $value);
+				if($r[1] != "") {
+					$r[1] = str_replace("+", " ", $r[1]);
+					$parameters[$r[0]] = $r[1];
+				}
+			}
+		}
+
 		$type = $request->type;
 
 		$user = Auth::user();
@@ -47,14 +61,18 @@ class AdvertController extends Controller
         $adverts = (array) $adverts;
 		$adverts = $adverts["\x00*\x00items"];
 
+		if(count($parameters) != 0) {
+			array_push($adverts, $parameters);
+		}
+
         return $adverts;
 	}
 
-	/*public function getCities() {
+	public function getCities() {
         $cities = DB::select('select ville_nom from villes_france_free');
 		$cities = (array) $cities;
         return $cities;
-	}*/
+	}
 
 	public function getActs() {
         $acts = DB::select('select * from activities');
@@ -85,11 +103,13 @@ class AdvertController extends Controller
     }
 
 	public function pageAdverts() {
-		return view('pages/advertisement');
+		$user = Auth::user();
+		return view('pages/advertisement', ['user'=>$user]);
 	}	
 
 	public function pageAdvert($id) {
-		return view('pages/advertisement');
+		$user = Auth::user();
+		return view('pages/advertisement', ['user'=>$user]);
 	}
 
 	public function sortAdverts(Request $request) {
@@ -138,9 +158,7 @@ class AdvertController extends Controller
 		foreach ($request->filter_on as $key => $value) {
 			if($key == "activity" || $key == "place") {
 				$adverts = array_filter($adverts, function ($var) use ($value, $key){ 
-				    if(stripos($var->$key, $value) === false)
-				    	return false;
-				    else
+				    if(stripos($var->$key, $value) !== false)
 				    	return true;
 				});
 			}

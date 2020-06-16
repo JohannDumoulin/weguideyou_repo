@@ -27,23 +27,20 @@ body {
 		}
 	}
 
-	.select2-container {
-		min-width: 180px;
-		margin-right: 10px;
-	}
+	.effaceFilters {
+	    width: 100%;
+	    display: flex;
+	    margin: 20px 0;
 
-	#date {
-		background-color: white;
-		border: 1px solid #aaa;
-		border-radius: 4px;
-		cursor: text;
-		padding: 4px;
+		a {
+			color: black;
+			margin: auto;
+		}
 	}
 
 	.more_filter {
 		display: flex;
-		align-items: center;
-		width: 65%;
+		width: 150px;
 		margin: 0 auto;
 		margin-top: 20px;
 		cursor: pointer;
@@ -352,5 +349,45 @@ body {
 				}
 			}
 		}
+	}
+
+	/* autocomplete */
+
+	.autocomplete {
+		position: relative;
+		display: inline-block;
+		display: flex;
+	}
+
+	.autocomplete-items {
+		position: absolute;
+		border: 1px solid #d4d4d4;
+		border-bottom: none;
+		border-top: none;
+		z-index: 99999999999;
+		top: 100%;
+		left: 0;
+		right: 0;
+
+		width: 100%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+
+		max-height: 400px;
+		overflow: auto;
+	}
+	.autocomplete-items div {
+		padding: 10px;
+		cursor: pointer;
+		background-color: #fff;
+		border-bottom: 1px solid #d4d4d4;
+	}
+	.autocomplete-items div:hover {
+		background-color: #e9e9e9;
+	}
+	.autocomplete-active {
+		background-color: DodgerBlue !important;
+		color: #ffffff;
 	}
 }

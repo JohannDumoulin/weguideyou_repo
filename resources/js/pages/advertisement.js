@@ -19,6 +19,7 @@ export default class AdvertisementPage {
             advertsM: "", // every adverts splited in a multidimentional array for every pages
             sortType: "",
             urgent: false,
+            cities: "",
         }
     }
 
@@ -66,6 +67,21 @@ export default class AdvertisementPage {
             data: {type: type},
             success : function(data) {
 
+                var params = data[data.length-1];
+                if(params.id === undefined) {
+
+                    _this.$els.filter_on = params;
+
+                    if(params.activity)
+                        $("#activity")[0].value = params.activity;
+                    if(params.place)
+                        $("#place")[0].value = params.place;
+                    if(params.date)
+                        $("#date")[0].value = params.date;
+
+                    data.pop();
+                }
+
                 _this.$els.adverts = data;
                 _this.$els.advertsM = _this.splitInPages(data)
 
@@ -87,17 +103,18 @@ export default class AdvertisementPage {
         var advertsM = this.$els.advertsM;
 
         // affiche nbr total d'annonces
-        $('.nbrAdverts')[0].innerHTML = adverts.length
+        if($('.nbrAdverts').length > 0)
+            $('.nbrAdverts')[0].innerHTML = adverts.length
 
         $('#js-container')[0].innerHTML = "";
         var c = 0;
         var url;
-
+/*
         if(advertsM[page] === undefined) {
             $('#js-container')[0].innerHTML = "Aucune offres ne correspond à vos critères"
             $(".divPage")[0].innerHTML = ""
             return 0;
-        }
+        }*/
 
         // affiche toutes les annonces d'une page
         for(let advert of advertsM[page]) {
@@ -116,6 +133,9 @@ export default class AdvertisementPage {
                         _this.initFav();
                         _this.initMapAdverts(adverts);
                     }
+                },
+                error : function(res) {
+                    console.log(res.responseJSON);
                 }
             });
         }
@@ -236,11 +256,10 @@ export default class AdvertisementPage {
 
     addEventFilter() {
         var _this = this;
-        var filter_on = this.$els.filter_on;
 
         $(document).on('change', '.js-filter', function(event) {
 
-            console.log("change");
+            var filter_on = _this.$els.filter_on;
 
             filter_on[this.id] = this.value; // add filter
             if(this.value == "")
@@ -257,7 +276,7 @@ export default class AdvertisementPage {
         if(data == undefined)
             data = false;
 
-        var urgent = this.$els.urgent;
+        var urgent = this.$els.filter_on["urgent"];
 
         var _this = this;
         var filter_on = this.$els.filter_on;
@@ -302,32 +321,23 @@ export default class AdvertisementPage {
     }
 
     getCities() {
-/*
-        $('#place').on("input", function() {
 
-            var value = this.value;
+        var _this = this;
 
-            $.ajax({
-                method: "get",
-                url: "https://api.teleport.org/api/cities/?search="+value,
-
-                success: function (data) {
-                    var res = Object.entries(data._embedded)[0][1]
-
-                    if(value != "") {
-                        $('#dataPlaces')[0].innerHTML = "";
-
-                        for(var item of res){
-                            //$('#dataPlaces')[0].innerHTML += '<option value='+item.matching_full_name+'>'
-                            $('#dataPlaces')[0].innerHTML += '<option value='+item.matching_full_name+'>'+item.matching_full_name+'</option'
-                        }
-                    }
-                },
-                error: function(data) {
-                    console.log(data.responseJSON);
-                }
-            })
-        });*/ 
+        $.ajax({
+            method: "get",
+            url: "/getCities",
+            success: function (data) {
+                var cities = Object.keys(data).map(function(key) {
+                  return data[key].ville_nom;
+                });
+                _this.$els.cities = cities;
+                _this.autocomplete();
+            },
+            error: function(data) {
+                console.log(data.responseJSON);
+            }
+        }) 
     } 
 
     getActs() {
@@ -350,6 +360,107 @@ export default class AdvertisementPage {
             }) 
         }
     } 
+
+    autocomplete(inp, arr) {
+
+        inp = $("#place")[0];
+        arr = this.$els.cities;
+
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              var c = 0;
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    c++;
+                    if(c > 15)
+                        return 0;
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                      b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 9) { // quand on appui sur TAB
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault()
+                if (x) x[0].click() // autocomple avec le 1er element proposé
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click() // autocomple avec l'élément actulement séléctionné
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+              x[i].parentNode.removeChild(x[i]);
+            }
+          }
+        }
+    }
 
     deleteAdvert() {
         $(document).on('click', '.js-btnDeleteAdvert', function(event) {

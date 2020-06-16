@@ -85,7 +85,7 @@ Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
 Route::get('getActs', 'AdvertController@getActs');
-//Route::get('getCities', 'AdvertController@getCities');
+Route::get('getCities', 'AdvertController@getCities');
 
 Route::get('/mes_annonces', function () {
     return view('pages/mes_annonces');
