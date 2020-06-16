@@ -18,7 +18,7 @@ Route::get('/particulier', 'HomeController@indexP')->name('homeIndividual');
 
 Auth::routes();
 
-Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
+//Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
 
 Route::get('/particulier', function () {
     return view('pages/homeIndividual');
@@ -107,8 +107,8 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 
 
 // Create Advertisement
-Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create')->name('create_ad');
-Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store');
+Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create')->name('create_ad')->middleware('auth');
+Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store')->middleware('auth');
 
 
 //logout

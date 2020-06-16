@@ -4,13 +4,16 @@ namespace App\Http\Controllers\register;
 
 use App\Forms\NewParticularAccount;
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Kris\LaravelFormBuilder\FormBuilder;
 
 class NewParController extends Controller
 {
+    use AuthenticatesUsers;
     private $formBuilder;
 
     public function __construct(FormBuilder $formBuilder)
