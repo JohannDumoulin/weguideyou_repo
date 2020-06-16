@@ -35,7 +35,10 @@
     @endif
 
 
+    <!-- temporaire -->
     {{ $advert->created_at }}
     <br>
     {{ $advert->activity }}
+    <br>
+    {{ $advert->duration }}
 </div>
