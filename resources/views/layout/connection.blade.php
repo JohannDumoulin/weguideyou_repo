@@ -16,6 +16,10 @@
                     <input id="password" placeholder="Mot de passe" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                 </label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <label class="form-check-label" for="remember"><span>Rester connecté</span></label>
+            </div>
             <button type="submit" class="buttonLink">Se connecter</button>
             <a href="#">Mot de passe oublié ?</a>
         </form>

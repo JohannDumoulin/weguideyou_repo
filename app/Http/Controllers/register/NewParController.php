@@ -41,7 +41,7 @@ class NewParController extends Controller
         $user = User::create([
             'name' => $values['name'],
             'surname' => $values['surName'],
-            'email' => $values['mailAddress'],
+            'email' => $values['email'],
             'password' => Hash::make($values['password']),
             'gender' => $values['gender'],
             'birth' => $values['birth'],

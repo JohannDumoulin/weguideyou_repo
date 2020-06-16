@@ -5,12 +5,16 @@ namespace App\Http\Controllers\register;
 use App\Forms\NewNSOAccount;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Kris\LaravelFormBuilder\FormBuilder;
+use MercurySeries\Flashy\Flashy;
 
 class NewNsoController extends Controller
 {
+    use RegistersUsers;
     private $formBuilder;
 
     public function __construct(FormBuilder $formBuilder)
@@ -34,10 +38,10 @@ class NewNsoController extends Controller
         $formRegister->redirectIfNotValid();
         $values = $formRegister->getFieldValues();
 
-        User::create([
+        $user = User::create([
             'name' => $values['name'],
             'surname' => null,
-            'email' => $values['mailAddress'],
+            'email' => $values['email'],
             'password' => Hash::make($values['password']),
             'gender' => null,
             'birth' =>null,
@@ -56,6 +60,14 @@ class NewNsoController extends Controller
 
         ]);
 
-        return redirect('/');
+        $this->guard()->login($user);
+        if (Auth::check()){
+            Flashy::success('Bienvenue chez WeGuideYou !!!');
+            return redirect('/');
+        }
+        else{
+            Flashy::error('Une erreur c\'est produite, veuillez vous connecter manuellement.');
+            return redirect('/');
+        }
     }
 }
