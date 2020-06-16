@@ -14,33 +14,42 @@ body[data-content="create_advertisement"] {
 
 			.form_container {
 				width: 100%;
-				padding: 0 100px;
+				padding: 0 200px;
+				overflow: hidden;
+
+				.form_content {
+					display: flex;
+					justify-content: space-between;
+				}
 
 				.form-group {
 					display: flex;
 					align-items: center;
-					margin-bottom: 50px;
+					flex-wrap: wrap;
+					// justify-content: space-between;
 
 					label {
 						font-weight: 400;
+						color: black;
+						margin-right: 25px;
 					}
 
 					input, textarea, select {
 						border-radius: 5px;
 						border: 1px solid $lightGrey;
 						font-family: "Roboto", Arial, sans-serif;
-						margin-left: 25px;
 						outline: 0;
-						padding: 10px 15px;
+						width: auto;
+						height: auto;
 					}
 
 					input {
 						&[type="text"] {
-							font-size: 1.2em;
+							font-size: 1.5em;
 							width: 50%;
 						}
 
-						&:not(input[type="text"]) {
+						&[type="date"] {
 							cursor: pointer;
 						}
 					}
@@ -76,23 +85,23 @@ body[data-content="create_advertisement"] {
 			}
 		}
 
-		#left {
-			border: 1px solid black;
-			padding: 10px;
-			background-color: red;
+		.arrow_container {
+			width: 250px;
+			display: flex;
+			justify-content: space-between;
+			margin: 0 auto;
 
-			&.js-active {
-				background-color: white;
-			}
-		}
+			>div {
+				width: 100px;
+				text-align: center;
+				cursor: pointer;
+				border: 1px solid black;
+				padding: 10px;
+				background-color: red;
 
-		#right {
-			border: 1px solid black;
-			padding: 10px;
-			background-color: red;
-
-			&.js-active {
-				background-color: white;
+				&.js-active {
+					background-color: white;
+				}
 			}
 		}
 	}

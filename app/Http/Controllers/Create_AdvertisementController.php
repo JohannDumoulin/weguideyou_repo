@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Advertisement;
 
@@ -19,6 +20,8 @@ class Create_AdvertisementController extends Controller
     public function store(FormBuilder $formBuilder, Request $request) {
     	$advertisement = new Advertisement;
 
+    	$advertisement->user_id = Auth::id();
+
     	$advertisement->name = $request->input('name');
     	$advertisement->desc = $request->input('desc');
     	$advertisement->type = $request->input('type');
@@ -30,16 +33,17 @@ class Create_AdvertisementController extends Controller
     	$advertisement->price_half_day = $request->input('price_half_day');
     	$advertisement->price_day = $request->input('price_day');
     	$advertisement->phone_bool = $request->input('show_phone');
+    	if ($request->hasfile('img')) {
+    		$images_url = [];
+    		    foreach($request->file('img') as $img)
+    		    {
+    		        $img->store('ad_pictures', 'public');
+    		        array_push($images_url, $img->store('ad_pictures', 'public'));          
 
-    	$images_url = [];
-    	    foreach($request->file('img') as $img)
-    	    {
-    	        $img->store('ad_pictures', 'public');
-    	        array_push($images_url, $img->store('ad_pictures', 'public'));          
-
-    	    }
-    	$advertisement->img = json_encode($images_url);
-
+    		    }
+    		$advertisement->img = json_encode($images_url);
+    	}
+    	
     	// $advertisement->img = $request->file('img')->store('ad_pictures', 'public');
 
 

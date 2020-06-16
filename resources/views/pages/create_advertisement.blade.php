@@ -17,28 +17,32 @@
 			{!! form_start($adForm) !!}
 
 				<div class="form_container">
-					<h2>Page 1</h2>
-
 					<!-- Fonctionnalités gratuites -->
 					{!! form_row($adForm->name) !!}
 					{!! form_row($adForm->desc) !!}
-					{!! form_row($adForm->type) !!}
-					{!! form_row($adForm->place) !!}
-					{!! form_row($adForm->date_from) !!}
-					{!! form_row($adForm->date_to) !!}
-					<p>Laissez vide si vous ne souhaitez pas proposer de prix pour cet horaire</p>
-					{!! form_row($adForm->price_one_h) !!}
-					{!! form_row($adForm->price_two_h) !!}
-					{!! form_row($adForm->price_half_day) !!}
-					{!! form_row($adForm->price_day) !!}
-					{!! form_row($adForm->show_phone) !!}
-					{!! form_row($adForm->img) !!}
+					<div class="form_content">
+						{!! form_row($adForm->type) !!}
+						{!! form_row($adForm->place) !!}
+						{!! form_row($adForm->date_from) !!}
+						{!! form_row($adForm->date_to) !!}
+					</div>
+					<div class="form_content">
+						<p>Laissez vide si vous ne souhaitez pas proposer de prix pour cet horaire</p>
+						{!! form_row($adForm->price_one_h) !!}
+						{!! form_row($adForm->price_two_h) !!}
+						{!! form_row($adForm->price_half_day) !!}
+						{!! form_row($adForm->price_day) !!}
+					</div>
+					<div class="form_content">
+						{!! form_row($adForm->show_phone) !!}
+						{!! form_row($adForm->img) !!}
+					</div>
+					
+					
 				</div>
 
 				<!-- Fonctionnalités payantes -->
 				<div class="form_container">
-					<h2>Page 2</h2>
-
 					<h2>Fonctionnalités payantes</h2>
 
 					<div class="premium_container">
@@ -62,8 +66,6 @@
 				</div>
 
 				<div class="form_container">
-					<h2>Page 3</h2>
-
 					<h2>Fonctionnalités payantes</h2>
 
 					<div class="premium_container">
@@ -84,8 +86,14 @@
 					{!! form_row($adForm->submit) !!}
 				</div>
 			{!! form_end($adForm) !!}
-			<div id="left">left</div>
-			<div id="right" class="js-active">right</div>
+			<div class="arrow_container">
+				<div id="left">
+					<p>Précédent</p>
+				</div>
+				<div id="right" class="js-active">
+					<p>Suivant</p>
+				</div>
+			</div>
 	</section>
 	
 @endsection

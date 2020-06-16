@@ -3,6 +3,7 @@
 namespace App\Forms;
 
 use Kris\LaravelFormBuilder\Form;
+use Carbon\Carbon;
 
 class AdvertisementForm extends Form
 {
@@ -13,7 +14,9 @@ class AdvertisementForm extends Form
         		'label' => 'Titre de l\'annonce',
         		'rules' => [
         			'required',
-        		]
+        		],
+                // 'placeholder' => 'Cours de ski / Courchevel 1850',
+                // 'attr' => ['placehoder' => 'Cours de ski / Courchevel 1850'],
         	])
 
         	->add('desc', 'textarea', [
@@ -45,7 +48,8 @@ class AdvertisementForm extends Form
             	'label' => 'Disponibilité : du',
             	'rules' => [
             		'required',
-            	]
+            	],
+                'attr' => ['min' => Carbon::now()->toDateString()],
             ])
 
             ->add('date_to', 'date', [
