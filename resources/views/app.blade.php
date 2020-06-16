@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width"/>
-    <meta name="keywords" content="HTML,CSS,PHP">
+    <meta name="keywords" content="HTML,CSS,PHP,JavaScript">
     <meta name="author" content="Gwendal Lefort, Johann Dumoulin, Thomas Ghignon">
     <title>@yield('title')</title>
 
@@ -17,6 +17,8 @@
     @if (\Request::is('/'))
       @include('layout.header')
     @endif
+
+    @include('flashy::message')
 
     @yield('content')
 

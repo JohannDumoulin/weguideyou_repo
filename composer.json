@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "kris/laravel-form-builder": "^1.30",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "mercuryseries/flashy": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
