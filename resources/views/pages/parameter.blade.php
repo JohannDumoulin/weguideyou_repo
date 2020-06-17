@@ -3,13 +3,12 @@
 @section('title', 'Parametres')
 
 @push('style')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
 @endpush
 
-@section('attribute', 'parameter')
+@section('attribute', 'parameters')
 
 @section('content')
 
@@ -118,22 +117,27 @@
 
                 <h3 id="titreCritere">Critères</h3>
 
-                <div class="first_filter">
-                    <div class="header_filter">
+                <div class="first_filter ">
+
+                    <div class="divInp">
                         <label>Type d'annonce</label>
-                        <select id="inpType" class="js-example-basic">
-                            <option>Cours</option>
-                            <option>Recherche de travail</option>
-                            <option>Recherche d'employé</option>
-                        </select>
+                        <input list="dataType" name="" id="type" placeholder="Que recherchez-vous ?">
+                        <datalist id="dataType">
+                            <option>Cours</option>7
+                            <option>Recherche de travail</option>7
+                            <option>Recherche d'employé</option>7
+                        </datalist>
                     </div>
-                    <div class="header_filter">
-                        <label for="activity">Activité</label>
-                        <select id="activities" class="js-example-basic"></select>
+                    <div class="divInp">
+                        <label for="activity">ACTIVITÉ</label>
+                        <input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?">
+                        <datalist id="dataActivities">
+                            <option></option>7
+                        </datalist>
                     </div>
-                    <div class="header_filter">
-                        <label for="place">Lieu</label>
-                        <select id="place" class="js-example-basic"></select>
+                    <div class="divInp">
+                        <label for="place">LIEU</label>
+                        <input name="place" id="place" placeholder="Où voulez-vous partir ?" type="text">
                     </div>
                     <button class="btnAddAlerte">Ajouter</button>
                 </div>
@@ -216,18 +220,6 @@
 @endsection
 
 @push('script')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script type="text/javascript">
-        $('.js-example-basic').select2();
-        $('.js-example-basic').select2({
-            placeholder: "-",
-            allowClear: true
-        });
-    </script>
-
     <script src="{{asset('js/app.js')}}"></script>
 @endpush
 

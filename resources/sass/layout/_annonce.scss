@@ -52,8 +52,20 @@
 			transition: transform .3s;
 		}
 
-		.buttonFav {
+		button {
 			margin-left: auto;
+			background: none;
+			border: none;
+			font-weight: bold;
+			transition: font-size .3s;
+		}
+
+		button:hover {
+			font-size: 102%;
+		}
+
+		.buttonFav {
+			display: inline-block;
 		}
 
 		.fa-times:hover {
@@ -67,6 +79,13 @@
 
 		h1, h2, h3 {
 			padding: 5px;
+		}
+
+		#ad-title {
+			width: 80%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			margin-right: 20px;
 		}
 
 		.btnResa {
@@ -247,5 +266,18 @@
 	/* Map */
 	#mapid {
 		height: 400px;
+	}
+}
+
+.modify {
+
+	input {
+		width: 150px !important;
+		margin: 5px;
+	}
+
+	textarea {
+		width: 100%;
+		height: 150px;
 	}
 }

@@ -77,7 +77,6 @@ Route::get('/annonce/{id}', 'AdvertController@displayDetailAdvert'); // affiche 
 
 Route::get('getAdverts', 'AdvertController@getAdverts');
 Route::get('displayAdvert', 'AdvertController@displayAdvert');
-Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
 Route::get('getActs', 'AdvertController@getActs');
@@ -86,6 +85,9 @@ Route::get('getCities', 'AdvertController@getCities');
 Route::get('/mes_annonces', function () {
     return view('pages/mes_annonces');
 });
+Route::get('/modifyAnnonce/{id}', 'AdvertController@displayModifyAdvert'); // affiche la page de modif de l'annonce
+Route::get('/saveModif', 'AdvertController@saveModif');
+Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 
 
 /* Favorites */
