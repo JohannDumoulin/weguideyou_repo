@@ -23,32 +23,37 @@
             </div>
             <div class="user_data">
                 <div class="data-categories">
-                    <ul>
-                        <li>Nom</li>
-                        <li>Genre</li>
-                        <li>Age</li>
-                        <li>Ville</li>
-                        <li>Statut</li>
+                    <div>
+                        <div><span>Nom</span></div>
+                        <div><span>Statut</span></div>
+                        <div><span>Age</span></div>
+                        <div><span>Genre</span></div>
+                        <div><span>Ville</span></div>
                         {{--<li>Création du compte</li>--}}
                         {{--<li>Email</li>
                         <li>Téléphone</li>
                         <li>Licence</li>
                         <li>siret</li>--}}
-                    </ul>
+                    </div>
                 </div>
                 <div class="data-content">
-                    <div>
-                        <ul>
-                            <li>
-                                <div><img src="{{asset('img/megan1.jpg')}}" alt="photo test"></div>
-                                Megan Durant
-                            </li>
-                            <li>F</li>
-                            <li>26</li>
-                            <li>Paris</li>
-                            <li>PRO</li>
-                        </ul>
+                    @foreach($users as $user)
+                       <div>
+                        <div>
+                            <img src="{{$user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
+                        </div>
+                        <div>
+                            <div><span>{{$user->name}} {{$user->surname}}</span></div>
+                            <div><span class="userStatus">{{$user->status}}</span></div>
+                            <div><span>{{$user->birth}}</span></div>
+                            <div><span>{{$user->gender}}</span></div>
+                            <div><span>{{$user->city}}</span></div>
+                        </div>
+                        <div>
+                            <i class="fas fa-ellipsis-v fa-lg"></i>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
