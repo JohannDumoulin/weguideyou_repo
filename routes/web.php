@@ -33,10 +33,6 @@ Route::get('/profil', 'ProfilController@index');
 
 Route::get('/favoris', 'FavoritesController@index');
 
-Route::get('/messagerie', function() {
-	return view('pages/mailbox');
-});
-
 
 
 /* Notifications */
@@ -95,6 +91,11 @@ Route::get('/mes_annonces', function () {
 /* Favorites */
 Route::get('toggleFavorite', 'FavoritesController@toggleFavorite');
 Route::get('getFavorites', 'FavoritesController@getFavorites');
+
+
+// Mailbox
+Route::get('/messagerie','ConversationsController@index')->name('conversations');
+Route::get('/messagerie/{id}','ConversationsController@show')->name('conversations.show');
 
 
 
