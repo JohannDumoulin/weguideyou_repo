@@ -8,10 +8,13 @@ class Advertisement extends Model
 {
     protected $table = 'advertisement';
     protected $fillable = [
+        'user_id',
     	'name',
     	'desc',
     	'type',
     	'place',
+        'duration',
+        'activity',
     	'date_from',
     	'date_to',
     	'price_one_h',
