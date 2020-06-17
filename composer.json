@@ -15,7 +15,8 @@
         "kris/laravel-form-builder": "^1.30",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "mercuryseries/flashy": "^1.0"
+        "mercuryseries/flashy": "^1.0",
+      "ext-http": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

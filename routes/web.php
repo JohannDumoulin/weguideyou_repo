@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/particulier', 'HomeController@indexP')->name('homeIndividual');
 
-Auth::routes();
-
-//Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
-
 Route::get('/particulier', function () {
     return view('pages/homeIndividual');
 });
@@ -53,22 +49,26 @@ Route::get('/displayAlerte', 'NotificationController@displayAlerte');
 
 
 
-/*Register*/
+/*Auth*/
 Auth::routes();
+Auth::routes(['register' => false]);
 
-//Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
+/*Register*/
+Route::middleware(['guest'])->group(function () {
+    Route::get('/register', 'RegisterController@index')->name('register');
 
-Route::get('register', 'RegisterController@index')->name('register');
+    Route::namespace('register')->group(function () {
+        Route::resource('particular-account','NewParController');
+        Route::resource('professional-account','NewProController');
+        Route::resource('nso-account','NewNsoController');
+        Route::resource('so-account','NewSoController');
 
-Route::resource('particular-account','register\NewParController');
-Route::resource('professional-account','register\NewProController');
-Route::resource('nso-account','register\NewNsoController');
-Route::resource('so-account','register\NewSoController');
-
-Route::get('register/particular','register\NewParController@create');
-Route::get('register/professional','register\NewProController@create');
-Route::get('register/non-sport-organization','register\NewNsoController@create');
-Route::get('register/sport-organization','register\NewSoController@create');
+        Route::get('register/particular','NewParController@create');
+        Route::get('register/professional','NewProController@create');
+        Route::get('register/non-sport-organization','NewNsoController@create');
+        Route::get('register/sport-organization','NewSoController@create');
+    });
+});
 
 /*Register*/
 
@@ -110,6 +110,10 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create')->name('create_ad')->middleware('auth');
 Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store')->middleware('auth');
 
+//Admin
+Route::middleware(['admin'])->group(function () {
+    Route::resource('admin', 'AdminController');
+});
 
 //logout
 Route::get('/logout', 'LogoutController@index');
