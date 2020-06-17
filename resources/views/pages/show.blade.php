@@ -67,7 +67,7 @@
 						<h2>Cours Snowboard / Courchevel 1850</h2>
 						<div id="mail_header_content">
 							<div id="the_mail_more">
-								<p id="seller">ESF</p>
+								<p id="seller">{{ $user->name }}</p>
 								<p id="price">450 €</p>
 							</div>
 							<img src="{{ asset('img/esf.png') }}" alt="">
@@ -75,7 +75,7 @@
 					</div>
 
 					<div id="the_mail_content">
-						<div class="msg_infos">
+						<!-- <div class="msg_infos">
 							<p class="day">20 Juin 2020</p>
 							<p class="date">17h45</p>
 						</div>
@@ -85,16 +85,25 @@
 						
 						<p class="message left">Aenean imperdiet tortor risus, id hendrerit.</p>
 						
-						<p class="message right">Aenean ac orci vehicula, cursus sapien sit amet, malesuada felis. Nulla placerat, arcu eget suscipit laoreet, turpis turpis imperdiet quam, et laoreet quam est eu libero.</p>
+						<p class="message right">Aenean ac orci vehicula, cursus sapien sit amet, malesuada felis. Nulla placerat, arcu eget suscipit laoreet, turpis turpis imperdiet quam, et laoreet quam est eu libero.</p> -->
+						@foreach($messages as $message)
+							@if ($message->from->id !== $user->id)
+							    <p class="message right">{{ $message->content }}</p>
+							@else
+							    <p class="message">{{ $message->content }}</p>
+							@endif
+						@endforeach
 					</div>
 
-					<form id="writing_area">
+					<form id="writing_area" action="" method="post">
+						{{ csrf_field() }}
+
 						<label for="file_input">
 							<img src="{{ asset('img/attach_mailbox.svg') }}" alt="">
 						</label>
 						<input type="file" id="file_input">
 					
-						<textarea name="" id="" placeholder="Écrivez votre message" required="" wrap="" rows="4"></textarea>
+						<textarea name="content" id="" placeholder="Écrivez votre message" required="" wrap="" rows="4"></textarea>
 						<input type="submit" value="Envoyer">
 					</form>
 				</div>

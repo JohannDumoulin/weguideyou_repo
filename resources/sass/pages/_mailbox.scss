@@ -134,15 +134,12 @@ body[data-content="mailbox"] {
 						border-radius: 9px;
 						padding: 15px 20px;
 						line-height: 20px;
+						background-color: $lightGrey;
 
 						&.right {
 							align-self: flex-end;
 							color: white;
 							background-color: $deepBlue;
-						}
-
-						&.left {
-							background-color: $lightGrey;
 						}
 					}
 				}
