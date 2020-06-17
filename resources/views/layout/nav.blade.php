@@ -15,7 +15,8 @@
             @endauth
             @guest
                 <a href="#" class="js-toggleConnectionContainer">Connexion</a>
-                @include('components.buttonLink', ['newId' => 'js-registrationBtn','link' => '/register','text' => 'Inscription'])
+                <a href="{{route('register')}}" id="js-registrationBtn" class="buttonLink">Inscription</a>
+                {{--@include('components.buttonLink', ['newId' => 'js-registrationBtn','link' => '/register','text' => 'Inscription'])--}}
             @endguest
             @auth
                 <div class="js-toggleModalProfil">
