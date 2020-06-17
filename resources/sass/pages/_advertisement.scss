@@ -117,6 +117,7 @@ body {
 		display: flex;
 		justify-content: space-between;
 		margin-top: 40px;
+		width: 70%;
 
 		input {
 			height: 20px;
@@ -154,12 +155,18 @@ body {
 		display: flex;
 		justify-content: space-between;
 
-		.divAllAdvert {
+		.divLeft {
+			width: 70%;
+		}
 
-			text-align: center;
+		.divRight {
+			width: 30%;
+			margin-left: 30px;
+			margin-top: 14px;
 
-			a {
-				color: black;
+			.titre {
+				text-align: center;
+				margin-bottom: 10px;	
 			}
 		}
 
@@ -186,10 +193,11 @@ body {
 		.advertisement_container {
 			margin-top: 40px;
 
-			&.all {
+			&.all, &.premium {
+
 				.advertisement_content {
 					display: flex;
-					width: 650px;
+					width: 100%;
 					box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
 					border-radius: 5px;
 					position: relative;
@@ -200,7 +208,7 @@ body {
 					.profil_picture_container {
 						overflow: hidden;
 						height: 200px;
-						width: 150px;
+						width: 25%;
 						text-align: center;
 
 						img {
@@ -210,6 +218,10 @@ body {
 						}
 					}
 
+					.content {
+						width: 75%;
+					}
+
 					.infos {
 						padding: 20px 0;
 						margin-left: 15px;
@@ -217,6 +229,9 @@ body {
 						h3 {
 							font-size: 1.4em;
 							font-family: "Roboto", Arial, sans-serif;
+							width: 80%;
+    						overflow: hidden;
+    						text-overflow: ellipsis;
 						}
 
 						.info_content {
@@ -224,15 +239,17 @@ body {
 							margin-top: 10px;
 
 							.more {
-								width: 100px;
+								min-width: 90px;
+								max-width: 90px;
 
 								>p {
 									color: white;
 									background-color: $deepBlue;
 									text-align: center;
 									margin-bottom: 10px;
-									padding: 10px 0;
+									padding: 10px 10px;
 									border-radius: 9px;
+									display: inline-flex;
 								}
 								
 								.seller_infos {
@@ -243,10 +260,13 @@ body {
 							}
 
 							.desc {
+								/*width: 100%;*/
 								font-weight: 300;
-								margin-left: 35px;
-								width: 200px;
+								margin: 0 20px;
 								line-height: 18px;
+								height: 100px;
+								overflow: hidden;
+								font-size: 90%;
 							}
 						}
 					}
@@ -260,8 +280,8 @@ body {
 						}
 
 						&.urgent {
-							top: 60px;
-							right: 20px;
+							top: 20px;
+							right: 60px;
 						}
 					}
 				}
@@ -272,9 +292,12 @@ body {
 			}
 
 			&.premium {
-				.advertisement_content_premium {
-					display: flex;
-					width: 500px;
+				margin-left: 0;
+				margin-top: 0;
+				
+				.advertisement_content {
+					display: block;
+					width: 100%;
 					box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
 					border-radius: 5px;
 					position: relative;
@@ -282,20 +305,22 @@ body {
 					margin-bottom: 20px;
 					overflow: hidden;
 
-					.profil_picture_container_premium {
+					.profil_picture_container {
 						overflow: hidden;
-						height: 275px;
-						width: 150px;
+						height: auto;
+						width: 100%;
 						text-align: center;
 
 						img {
-							height: 100%;
-							margin-left: 50%;
-							transform: translateX(-50%);
+							width: 100%;
 						}
 					}
 
-					.infos_premium {
+					.content {
+						width: 100%;
+					}
+
+					.infos {
 						padding: 20px 0;
 						margin-left: 15px;
 
@@ -305,12 +330,11 @@ body {
 							width: 300px;
 						}
 
-						.info_content_premium {
+						.info_content {
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
 							margin-top: 10px;
-							width: 225px;
 
 							.price {
 								color: white;
@@ -326,20 +350,6 @@ body {
 							width: 200px;
 							line-height: 18px;
 							margin-top: 20px;
-						}
-					}
-
-					.picto {
-						position: absolute;
-
-						&.like {
-							top: 20px;
-							right: 20px;
-						}
-
-						&.urgent {
-							top: 60px;
-							right: 20px;
 						}
 					}
 				}
