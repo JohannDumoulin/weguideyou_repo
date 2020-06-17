@@ -184,20 +184,6 @@
 @push('script')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!-- 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-	<script type="text/javascript">
-		$('.js-example-basic').select2();
-		$("#activities").select2({
-		    placeholder: "Que voulez-vous faire ?",
-		    allowClear: true
-		});
-		$("#place").select2({
-		    placeholder: "Où voulez-vous partir ?",
-		    allowClear: true
-		}); 
-	</script> -->
-
     <script src="{{asset('js/app.js')}}"></script>
   
 @endpush

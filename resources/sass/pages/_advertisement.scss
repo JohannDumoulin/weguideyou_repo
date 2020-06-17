@@ -10,7 +10,8 @@ body {
 		padding: 40px;
 		border-radius: 50px;
 		z-index: 999;
-		animation: hide 5s
+		animation: hide 5s;
+		pointer-events: none;
 	}
 
 	@keyframes hide {

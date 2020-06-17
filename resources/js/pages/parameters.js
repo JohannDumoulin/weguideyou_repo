@@ -22,9 +22,9 @@ export default class Parameters {
 
             var alerte = {};
 
-            alerte.type = $('#inpType :selected')[0].value;
-            alerte.act = $('#activities :selected')[0].innerText;
-            alerte.place = $('#place :selected')[0].innerText;
+            alerte.type = $('#type')[0].value;
+            alerte.act = $('#activity')[0].value;
+            alerte.place = $('#place')[0].value;
 
             $.ajax({ type: "GET",   
                 url: "/addAlerte",

@@ -22,6 +22,10 @@ body[data-content="mes_annonces"] {
 		width: 20px;
 	}
 
+	.js-btnSaveModif {
+		cursor: pointer;
+	}
+
 	.divOnglet {
 		display: flex;
 		border-bottom: 1px solid black;

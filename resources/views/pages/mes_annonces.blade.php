@@ -12,11 +12,27 @@
 
 @section('content')
 
+	@if(session('message') != null)
+
+	<div class="msgConfirm">{{session('message')}}</div>
+
+	@endif
+
 	<div id="sectionContent"></div>
 
 	<div class="wrap contentFavoris">
 
 		<h3 class="titre">Mes Annonces</h3>
+
+		<div class="second_filter_child right sort">					
+			<p>Trier par :</p>
+			<select name="" id="" class="js-order">
+				<option value="plusRecent">Plus récentes</option>
+				<option value="plusAncien">Plus anciennes</option>
+				<option value="prixCroissant">Prix croissants</option>
+				<option value="prixDecroissant">Prix décroissants</option>
+			</select>
+		</div>
 
 		<div class="divOnglet">
 			<div class="js-toggleOnglet selected">
@@ -36,8 +52,12 @@
 		</div>
 
 		<div id="advertisement_section">
-			<div class="advertisement_container all" id="js-container">
-				@include('components.loading')
+			<div>
+				<div class="advertisement_container all" id="js-container">
+					@include('components.loading')
+				</div>
+
+				<div class="divPage"></div>
 			</div>
 		</div>
 

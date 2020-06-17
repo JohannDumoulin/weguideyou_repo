@@ -95,6 +95,32 @@ class AdvertController extends Controller
         return view('layout/annonce')->with('advert', $advert);
     }
 
+	public function displayModifyAdvert($id) {
+        $advert = DB::select('select * from Advertisement where id ='.$id);
+        $advert = $advert[0];
+
+        // convertion format date
+		$advert->date_from = date("d-m-Y", strtotime($advert->date_from));
+		$advert->date_to = date("d-m-Y", strtotime($advert->date_to));
+
+        return view('layout/modifyAnnonce')->with('advert', $advert);
+    }
+
+    public function saveModif(Request $request) {
+
+    	$advert = $request->advert;
+
+    	$advert["date_from"] = date("Y-m-d", strtotime($advert["date_from"]));
+		$advert["date_to"] = date("Y-m-d", strtotime($advert["date_to"]));
+	
+		$affected = DB::table('advertisement')
+			          ->where('id', $advert["id"])
+			          ->update($advert);
+
+    	redirect('/')->with(['message' => 'L\'annonce a bien été modifiée !']);
+    	return 1;
+    }
+
     public function displayAllAdverts($id) {
     	$advert = DB::select('select * from Advertisement where id ='.$id);
     	$advert = $advert[0];
@@ -210,10 +236,9 @@ class AdvertController extends Controller
     public function alerte($id) {
 
     	$advertisement = new Advertisement;
-
     	$advertisement->type = "Cours";
     	$advertisement->activity = "Ski";
-    	$advertisement->place = "Val Thorens, Auvergne-Rhône-Alpes, France";
+    	$advertisement->place = "Courchevel";
 
 		$alertes = DB::table('alerte')
 			->join('users', 'alerte.user_id', '=', 'users.id')

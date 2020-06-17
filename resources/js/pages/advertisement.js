@@ -31,14 +31,13 @@ export default class AdvertisementPage {
         this.getAdverts($('title')[0].innerHTML);
         this.getActs();
         this.toggleAdvert();
-        this.deleteAdvert();
         this.getUrgent();
         this.changePage();
         this.addEventSort();
         this.addEventFilter();
 
         var c = $('body').data('content')
-        if(c == "annonces" || c == "home")
+        if(c == "annonces" || c == "home" || c == "parameters")
             this.getCities();
     }
 
@@ -384,8 +383,10 @@ export default class AdvertisementPage {
 
         $(document).on('click', '.js-toggleAnnonce', function(event) {
 
+            var url = $(this).attr('id');
+
             if($('#sectionContent')[0].innerHTML == "") {
-                $('#sectionContent').load($(this).attr('id'), function(data) {
+                $('#sectionContent').load(url, function(data) {
                     var location = $(data).find('.firstL')[0].id;
                     _this.initMap(location);
                     _this.initFav();
@@ -540,31 +541,6 @@ export default class AdvertisementPage {
           }
         }
     }
-
-    deleteAdvert() {
-        $(document).on('click', '.js-btnDeleteAdvert', function(event) {
-
-            if ( confirm( "Voulez vous vraiment supprimer cette annonce ? \n\nCette annonce sera définitivement supprimer." ) ) {
-
-                var id = this.id;
-
-                $('.mAdvert.'+this.id).remove();
-
-                $.ajax({
-                    method: "get",
-                    url: "/deleteAdvert",
-                    data: {id: id},
-                    success: function (data) {
-                        //console.log(data);
-                    },
-                    error: function(data) {
-                        console.log(data.responseJSON);
-                    }
-                })
-            }
-        }); 
-    } 
-
     
     getUrgent() {
         var _this = this

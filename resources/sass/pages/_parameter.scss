@@ -2,7 +2,7 @@ html {
 	scroll-behavior: smooth;
 }
 
-body[data-content="parameter"]{
+body[data-content="parameters"]{
     background: $background;
     
     .content {
@@ -110,8 +110,9 @@ body[data-content="parameter"]{
             margin: 0;
             box-shadow: none;
 
-            div {
-                padding-bottom: 20px;
+            .divInp {
+                position: relative;
+                margin-bottom: 20px;
 
                 label {
                     padding-bottom: 5px;
