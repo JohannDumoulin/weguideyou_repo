@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Admin')
+@section('title', 'Administrateur')
 
 @push('style')
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -10,7 +10,36 @@
 @section('attribute', 'admin')
 
 @section('content')
+    <section class="main-admin">
+        <div class="wrap">
+            <h1>Page d'administration</h1>
+            <div class="nav-admin">
+                <a href="#" class="is-selected">Utilisateurs</a>
+                <a href="#">Annonces</a>
+                <a href="#">Reviews</a>
+                <a href="#">Signalements</a>
+                <a href="#">Questions</a>
+                <a href="#">Emails</a>
+            </div>
+            <div class="user_data">
+                <div class="data-categories">
+                    <span>Nom</span>
+                    <span>Email</span>
+                    <span>Téléphone</span>
+                    <span>Genre</span>
+                    <span>Naissance</span>
+                    <span>Adresse</span>
+                    <span>Statut</span>
+                    <span>Licence</span>
+                    <span>siret</span>
+                    <span>Création du compte</span>
+                </div>
+                <div class="data-content">
 
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
 
 @push('script')
