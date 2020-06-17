@@ -95,7 +95,8 @@ Route::get('getFavorites', 'FavoritesController@getFavorites');
 
 // Mailbox
 Route::get('/messagerie','ConversationsController@index')->name('conversations');
-Route::get('/messagerie/{id}','ConversationsController@show')->name('conversations.show');
+Route::get('/messagerie/{user}','ConversationsController@show')->name('conversations.show');
+Route::post('/messagerie/{user}','ConversationsController@store');
 
 
 
