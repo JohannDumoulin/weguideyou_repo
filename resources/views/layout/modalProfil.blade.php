@@ -9,26 +9,33 @@
 		</div>
 
 		<div class="content">
-            <div class="modalNav">
-                <hr>
-                <a href="/profil">Profil</a>
-                <a href="/messagerie">Messagerie</a>
-                <a href="/mes_annonces">Mes Annonces</a>
-                <hr>
-                <a href="#" id="premium">Premium</a>
-                <hr>
-                <a href="#">Historique des cours effectués</a>
-                <a href="#">Virement en cours</a>
-                <a href="#">Payements et remboursements</a>
-                <hr>
-                <a href="/parametres" id="parametres">Paramètres</a>
-                <hr>
-            </div>
-            <div class="logout">
-                <hr>
-                <a href="/logout">Déconnexion</a>
-                <hr>
-            </div>
+            @auth
+                <div class="modalNav">
+                    <hr>
+                    @if(Auth::user()->admin===1)
+                        <a href="{{route('admin.index')}}">Administration</a>
+                    @endif
+                    <a href="/profil">Profil</a>
+                    <a href="/messagerie">Messagerie</a>
+                    @if(Auth::user()->admin!==1)
+                        <a href="/mes_annonces">Mes Annonces</a>
+                        <hr>
+                        <a href="#" id="premium">Premium</a>
+                        <hr>
+                        <a href="#">Historique des cours effectués</a>
+                        <a href="#">Virement en cours</a>
+                        <a href="#">Payements et remboursements</a>
+                    @endif
+                    <hr>
+                    <a href="/parametres" id="parametres">Paramètres</a>
+                    <hr>
+                </div>
+                <div class="logout">
+                    <hr>
+                    <a href="/logout">Déconnexion</a>
+                    <hr>
+                </div>
+            @endauth
 		</div>
 	</div>
     <div class="reste js-reste toggleModalProfil"></div>

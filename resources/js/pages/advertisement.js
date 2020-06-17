@@ -30,13 +30,16 @@ export default class AdvertisementPage {
     initEventsAdverts() {
         this.getAdverts($('title')[0].innerHTML);
         this.getActs();
-        this.getCities();
         this.toggleAdvert();
         this.deleteAdvert();
         this.getUrgent();
         this.changePage();
         this.addEventSort();
         this.addEventFilter();
+
+        var c = $('body').data('content')
+        if(c == "annonces" || c == "home")
+            this.getCities();
     }
 
     getAdvertisementPage(){
@@ -67,6 +70,12 @@ export default class AdvertisementPage {
             data: {type: type},
             success : function(data) {
 
+                if(data.length == 0){
+                    $('#js-container')[0].innerHTML = "Aucune offres à afficher"
+                    $(".divPage")[0].innerHTML = ""
+                    return 0;
+                }
+
                 var params = data[data.length-1];
                 if(params.id === undefined) {
 
@@ -88,7 +97,7 @@ export default class AdvertisementPage {
                 _this.filter(data); // => changeOrder => display
             },
             error : function(data) {
-                console.log(data.responseJSON)
+                console.log(data);
             }
         })
     }
@@ -106,32 +115,94 @@ export default class AdvertisementPage {
         if($('.nbrAdverts').length > 0)
             $('.nbrAdverts')[0].innerHTML = adverts.length
 
-        $('#js-container')[0].innerHTML = "";
-        var c = 0;
-        var url;
-/*
-        if(advertsM[page] === undefined) {
+        //
+        if($('#js-container').length > 0)
+            $('#js-container')[0].innerHTML = "";
+        if($('#js-container-premium').length > 0)
+            $('#js-container-premium')[0].innerHTML = "";
+
+        //
+        if(advertsM[page] === undefined){
             $('#js-container')[0].innerHTML = "Aucune offres ne correspond à vos critères"
             $(".divPage")[0].innerHTML = ""
             return 0;
-        }*/
+        }
 
-        // affiche toutes les annonces d'une page
+        var c = 0;
+        var url;
+
+        // Bannière A la une
+
+        if($('body').data('content') == "advertisement") {
+            var tempBanner = [];
+            var banner = [];
+            var r
+
+            // récup les annonces premium
+            adverts.forEach(function (advert, index) {
+                if(advert.premium_banner_week) {
+                    tempBanner.push(advert);  
+                }
+            })
+            // en choisir au hasard
+            var l = 2;
+            if(tempBanner.length < l) 
+                l = tempBanner.length;
+
+            for (var i = 0; i < l; i++) {
+                r = Math.floor(Math.random() * tempBanner.length); 
+                tempBanner[r].dBanner = 1;
+                banner.push(tempBanner[r]);
+                tempBanner.splice(r, 1);
+            }
+            // les delete de leur position innitial
+            advertsM[page].forEach(function (advert, index) {
+                banner.forEach(function (b, i) {
+                    if(advert == b) {
+                        advertsM[page].splice(index, 1);
+                    }
+                })
+            })
+
+            c == 0;
+            // Afficher les annonces en avant
+            for(let b of banner) {
+
+                $.ajax({ type: "GET",   
+                    url: "/advert/"+b.id,
+                    success : function(res) {
+
+                        $('#js-container-premium').append(res)
+
+                        c++;
+                        if(c === banner.length) {
+                            _this.initFav();
+                        }
+                    },
+                    error : function(res) {
+                        console.log(res.responseJSON);
+                    }
+                });
+            }
+        }
+
+            
+        // affiche les annonces
         for(let advert of advertsM[page]) {
 
             url = "/advert/"+advert.id;
-            if($('body').data('content') == "mes_annonces") {
+            if($('body').data('content') == "mes_annonces")
                 url = "/mAdvert/"+advert.id;
-            }
 
             $.ajax({ type: "GET",   
                 url: url,
                 success : function(res) {
-                    $('#js-container').append(res);
+
+                    $('#js-container').append(res)
+
                     c++;
                     if(c === advertsM[page].length) {
                         _this.initFav();
-                        _this.initMapAdverts(adverts);
                     }
                 },
                 error : function(res) {
@@ -280,6 +351,14 @@ export default class AdvertisementPage {
 
         var _this = this;
         var filter_on = this.$els.filter_on;
+
+        if(data != false) {
+            var desc = [];
+            for(var item of data) {
+                desc.push(item.desc);
+                delete item.desc;
+            }
+        }
 
         $.ajax({
             method: "get",

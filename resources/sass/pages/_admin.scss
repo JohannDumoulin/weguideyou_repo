@@ -1,0 +1,59 @@
+body[data-content="admin"]{
+    background-color: $lightGrey;
+
+    .main-admin{
+        width: 100%;
+        height: 100vh;
+        padding: 50px 0;
+
+        h1{
+            font-size: 1.3em;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .nav-admin{
+            display: flex;
+            width: 100%;
+            position: relative;
+
+            &:after{
+                content: "";
+                display: block;
+                width: 100%;
+                background-color: rgba(0,0,0,.1);
+                height: 1px;
+
+                position: absolute;
+                bottom: -20px;
+
+                z-index: 5;
+            }
+
+            .is-selected{
+                color: rgba(0,0,0,.9);
+                position: relative;
+
+                &::after{
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    background-color: $deepBlue;
+                    height: 3px;
+
+                    position: absolute;
+                    bottom: -20px;
+
+                    z-index: 10;
+                }
+            }
+
+            a{
+                font-size: 1em;
+                font-weight: 400;
+                color: rgba(0,0,0,.2);
+                margin-right: 40px;
+            }
+        }
+    }
+}
