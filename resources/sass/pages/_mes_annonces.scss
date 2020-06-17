@@ -6,7 +6,6 @@ body[data-content="mes_annonces"] {
 		justify-content: center;
 
 		button, input {
-			/*margin: auto;*/
 			margin: 0 20px;
 			outline: none;
 		}
@@ -30,8 +29,13 @@ body[data-content="mes_annonces"] {
 		font-size: 110%;
 
 		div {
-			padding: 5px 20px;
+			padding-bottom: 1px;
 			cursor: pointer;
+
+			span {
+				padding: 5px 20px;
+				display: block;
+			}
 		}
 
 		.selected {

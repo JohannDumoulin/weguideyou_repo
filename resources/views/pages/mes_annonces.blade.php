@@ -19,8 +19,12 @@
 		<h3 class="titre">Mes Annonces</h3>
 
 		<div class="divOnglet">
-			<div class="js-toggleOnglet selected">Annonces en ligne</div>
-			<div class="js-toggleOnglet">Annonces expirée</div>
+			<div class="js-toggleOnglet selected">
+				<span>Annonces en ligne</span>
+			</div>
+			<div class="js-toggleOnglet">
+				<span>Annonces expirée</span>
+			</div>
 		</div>
 
 		<div class="divHead">

@@ -39,6 +39,13 @@ class AdvertController extends Controller
 				->where("favorites.user_id", "=", Auth::user()->id)
 				->select('advertisement.*')
 				->get();
+        }
+        else if($type == "Mes Annonces") {
+			$adverts = DB::table('advertisement')
+				->join('users', 'advertisement.user_id', '=', 'users.id')
+				->where("advertisement.user_id", "=", Auth::user()->id)
+				->select('advertisement.*')
+				->get();
         } 
         else if($type == "Urgent") {
         	$adverts = DB::table('Advertisement')
@@ -182,6 +189,7 @@ class AdvertController extends Controller
 		$dateE = date_create("2020-05-15");
 
 		$id = DB::table('Advertisement')->insertGetId([
+			'user_id' => 1,
 	    	'type' => "Cours",
 	    	'name' => "titre", 
 	    	'desc' => "description", 
