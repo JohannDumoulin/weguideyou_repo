@@ -23,19 +23,32 @@
             </div>
             <div class="user_data">
                 <div class="data-categories">
-                    <span>Nom</span>
-                    <span>Email</span>
-                    <span>Téléphone</span>
-                    <span>Genre</span>
-                    <span>Naissance</span>
-                    <span>Adresse</span>
-                    <span>Statut</span>
-                    <span>Licence</span>
-                    <span>siret</span>
-                    <span>Création du compte</span>
+                    <ul>
+                        <li>Nom</li>
+                        <li>Genre</li>
+                        <li>Age</li>
+                        <li>Ville</li>
+                        <li>Statut</li>
+                        {{--<li>Création du compte</li>--}}
+                        {{--<li>Email</li>
+                        <li>Téléphone</li>
+                        <li>Licence</li>
+                        <li>siret</li>--}}
+                    </ul>
                 </div>
                 <div class="data-content">
-
+                    <div>
+                        <ul>
+                            <li>
+                                <div><img src="{{asset('img/megan1.jpg')}}" alt="photo test"></div>
+                                Megan Durant
+                            </li>
+                            <li>F</li>
+                            <li>26</li>
+                            <li>Paris</li>
+                            <li>PRO</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

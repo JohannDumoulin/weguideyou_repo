@@ -1,5 +1,5 @@
 body[data-content="admin"]{
-    background-color: $lightGrey;
+    background-color: $adminLightGrey;
 
     .main-admin{
         width: 100%;
@@ -16,6 +16,7 @@ body[data-content="admin"]{
             display: flex;
             width: 100%;
             position: relative;
+            margin-bottom: 50px;
 
             &:after{
                 content: "";
@@ -55,5 +56,92 @@ body[data-content="admin"]{
                 margin-right: 40px;
             }
         }
+
+        .user_data{
+
+            background-color: $deepBlue;
+            height: 50vh;
+
+            .data-categories{
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                box-sizing: border-box;
+                padding: 30px 50px;
+
+                background-color: #FFF;
+
+                border-radius: 4px 4px 0px 0px;
+                -moz-border-radius: 4px 4px 0px 0px;
+                -webkit-border-radius: 4px 4px 0px 0px;
+                border: 0px solid #000000;
+
+                -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
+                -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
+                box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
+
+                ul{
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    li{
+                        font-size: 0.9em;
+                        font-weight: 500;
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+
+                        text-transform: uppercase;
+                        opacity: .5;
+                    }
+                }
+            }
+
+            .data-content{
+                >div{
+
+                    box-sizing: border-box;
+                    padding: 30px 50px;
+
+                    background-color: $adminDeepGrey;
+
+                    -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
+                    -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
+                    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
+
+                    ul{
+
+                        display: flex;
+                        justify-content: space-between;
+
+                        li{
+
+                            display: flex;
+                            align-items: center;
+
+                            >div{
+                                height: 45px;
+                                width: 45px;
+                                overflow: hidden;
+
+                                margin-right: 10px;
+
+                                border-radius: 50%;
+
+                                img{
+                                    height: 100%;
+                                    width: 100%;
+                                    object-fit: cover;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ;
     }
 }
