@@ -118,6 +118,7 @@ class AdvertController extends Controller
 			          ->update($advert);
 
     	redirect('/')->with(['message' => 'L\'annonce a bien été modifiée !']);
+
     	return 1;
     }
 
@@ -235,17 +236,14 @@ class AdvertController extends Controller
 
     public function alerte($id) {
 
-    	$advertisement = new Advertisement;
-    	$advertisement->type = "Cours";
-    	$advertisement->activity = "Ski";
-    	$advertisement->place = "Courchevel";
+    	$advert = DB::select('select * from Advertisement where id ='.$id)[0];
 
 		$alertes = DB::table('alerte')
 			->join('users', 'alerte.user_id', '=', 'users.id')
 			->where([
-				['type', '=', $advertisement->type],
-				['act', '=', $advertisement->activity],
-				['place', '=', $advertisement->place],
+				['type', '=', $advert->type],
+				['act', '=', $advert->activity],
+				['place', '=', $advert->place],
 			])
 			->select('users.*', 'alerte.*')
 			->get();
