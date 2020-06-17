@@ -8,16 +8,16 @@
             <img src="{{ asset('img/advertisement.jpg') }}" alt="">
         </div>
         <div class="infos">
-            <h3> {{ $advert->title }}</h3>
+            <h3> {{ $advert->name }}</h3>
             <div class="info_content">
                 <div class="more">
-                    <p> {{ $advert->price }} €</p>
+                    <p> {{ $advert->price_one_h }} €</p>
                     <div class="seller_infos">
                         <p>ESF</p>
                         <img src="{{ asset('img/esf.png') }}" alt="">
                     </div>
                 </div>
-                <p class="desc"> {{ $advert->description }}</p>
+                <p class="desc"> {{ $advert->desc }}</p>
             </div>
         </div>
         @include('components.buttonFav', ['id' => $advert->id ])

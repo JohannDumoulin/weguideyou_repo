@@ -71,10 +71,10 @@ class NewProfessionalAccount extends Form
                     'required|numeric|digits_between:1,15'
                 ]
             ])
-            ->add('mailAddress', 'email',[
+            ->add('email', 'email',[
                 'label' => 'Adresse mail',
                 'rules' => [
-                    'required|string|email|max:255',
+                    'required|string|email|max:255|unique:users',
                 ],
             ])
             ->add('password', 'repeated', [

@@ -18,7 +18,7 @@ Route::get('/particulier', 'HomeController@indexP')->name('homeIndividual');
 
 Auth::routes();
 
-Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
+//Route::post('/login/authenticate', 'Auth\LoginController@authenticate')->name('authenticate');
 
 Route::get('/particulier', function () {
     return view('pages/homeIndividual');
@@ -85,7 +85,7 @@ Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 Route::get('sortAdverts', 'AdvertController@sortAdverts');
 Route::get('filterAdverts', 'AdvertController@filterAdverts');
 Route::get('getActs', 'AdvertController@getActs');
-//Route::get('getCities', 'AdvertController@getCities');
+Route::get('getCities', 'AdvertController@getCities');
 
 Route::get('/mes_annonces', function () {
     return view('pages/mes_annonces');
@@ -107,8 +107,8 @@ Route::get('addAdvert', 'AdvertController@addAdvert');
 
 
 // Create Advertisement
-Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create')->name('create_ad');
-Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store');
+Route::get('/deposer-une-annonce', 'Create_AdvertisementController@create')->name('create_ad')->middleware('auth');
+Route::post('/deposer-une-annonce', 'Create_AdvertisementController@store')->middleware('auth');
 
 
 //logout

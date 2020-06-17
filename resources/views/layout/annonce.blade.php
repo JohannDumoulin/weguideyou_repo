@@ -112,8 +112,8 @@
 
 	            <div>
 					<i class="fa fa-calendar"></i>
-	                <label>Période de la journée</label>
-	                <p id="ad-duration">Toute la journée</p>
+	                <label>Durée</label>
+	                <p id="ad-duration">{{ $advert->duration }}</p>
 	            </div>
 
 	        </div>

@@ -42,7 +42,7 @@
                 <hr>
                 <div class="registration-answer">
                     <div>
-                        {!! form_row($formRegister->mailAddress) !!}
+                        {!! form_row($formRegister->email) !!}
                         {!! form_row($formRegister->password) !!}
                     </div>
                     {!! form_row($formRegister->CGU)!!}

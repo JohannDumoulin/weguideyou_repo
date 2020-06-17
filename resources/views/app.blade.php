@@ -18,6 +18,8 @@
       @include('layout.header')
     @endif
 
+    @include('flashy::message')
+
     @yield('content')
 
     @include('layout.footer')

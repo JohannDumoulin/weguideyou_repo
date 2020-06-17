@@ -51,21 +51,45 @@ header {
 		display: flex;
 		flex-direction: column;
 
-		select {
+		input {
 			margin-top: 10px;
 			border: none;
 			outline: 0;
 			margin-left: -4px;
-			cursor: pointer;
-
-			option {
-
-			}
 		}
 	}
 
-	>img {
-		cursor: pointer;
+	.divSearch {
+		align-items: center;
+		justify-content: center;
+		display: flex;
+		margin-left: 15px;
+
+		i {
+			font-size: 110%;
+			position: absolute;
+			pointer-events: none;
+			color: white;
+			z-index: 500;
+		}
+
+		input {
+			height: 40px;
+			width: 40px;
+			border: none;
+			background-color: $clearBlue;
+			border-radius: 50%;
+			padding-bottom: 2px;
+    		padding-right: 1px;
+    		box-shadow: 2px 2px 3px #0000008c;
+    		transition: transform .3s;
+    		outline: none;
+		}
+
+		input:hover {
+			transform: scale(1.1);
+		}
+
 	}
 }
 
