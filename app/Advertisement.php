@@ -27,6 +27,6 @@ class Advertisement extends Model
     	'premium_urgent_month',
     	'premium_booking',
     	'premium_securing',
-    	'premium_insurance'
+    	'premium_insurance',
     ];
 }

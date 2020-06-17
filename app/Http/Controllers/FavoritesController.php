@@ -19,14 +19,14 @@ class FavoritesController extends Controller
 
 	public function getFavorites() {
 
-		$user = Auth::user();
-
+		if(Auth::user()) {
 			$favorites = DB::table('favorites')
 				->join('advertisement', 'favorites.advert_id', '=', 'advertisement.id')
 				->join('users', 'favorites.user_id', '=', 'users.id')
-				->where("favorites.user_id", "=", $user->id)
+				->where("favorites.user_id", "=", Auth::user()->id)
 				->select('advertisement.*')
 				->get();
+		} 
 
         return $favorites;
 	}

@@ -74,13 +74,14 @@ class NotificationController extends Controller
 
     public function getAlertes() {
 
-        $user = Auth::user();
 
-        $alertes = DB::table('alerte')
-            ->join('users', 'alerte.user_id', '=', 'users.id')
-            ->where("alerte.user_id", "=", $user->id)
-            ->select('alerte.*')
-            ->get();
+        if(Auth::user()) {
+            $alertes = DB::table('alerte')
+                ->join('users', 'alerte.user_id', '=', 'users.id')
+                ->where("alerte.user_id", "=", Auth::user()->id)
+                ->select('alerte.*')
+                ->get();
+        }
 
         return $alertes;
     }

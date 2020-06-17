@@ -32,13 +32,11 @@ class AdvertController extends Controller
 
 		$type = $request->type;
 
-		$user = Auth::user();
-
         if($type == "Favoris") {
 			$adverts = DB::table('favorites')
 				->join('advertisement', 'favorites.advert_id', '=', 'advertisement.id')
 				->join('users', 'favorites.user_id', '=', 'users.id')
-				->where("favorites.user_id", "=", $user->id)
+				->where("favorites.user_id", "=", Auth::user()->id)
 				->select('advertisement.*')
 				->get();
         } 
