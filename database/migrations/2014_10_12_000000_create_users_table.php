@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->boolean('cgu')->nullable();
             $table->boolean('news_letter')->nullable();
             $table->rememberToken();
+            $table->boolean('admin')->nullable();
             $table->timestamps();
         });
     }
