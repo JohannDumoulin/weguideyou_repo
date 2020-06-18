@@ -127,9 +127,6 @@ export default class AdvertisementPage {
             return 0;
         }
 
-        var c = 0;
-        var url;
-
         // Bannière A la une
 
         if($('body').data('content') == "advertisement") {
@@ -163,20 +160,13 @@ export default class AdvertisementPage {
                 })
             })
 
-            c == 0;
             // Afficher les annonces en avant
             for(let b of banner) {
 
                 $.ajax({ type: "GET",   
                     url: "/advert/"+b.id,
                     success : function(res) {
-
                         $('#js-container-premium').append(res)
-
-                        c++;
-                        if(c === banner.length) {
-                            _this.initFav();
-                        }
                     },
                     error : function(res) {
                         console.log(res.responseJSON);
@@ -185,7 +175,9 @@ export default class AdvertisementPage {
             }
         }
 
-            
+        var c = 0;
+        var url;
+        
         // affiche les annonces
         for(let advert of advertsM[page]) {
 

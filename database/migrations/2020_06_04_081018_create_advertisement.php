@@ -23,6 +23,7 @@ class CreateAdvertisement extends Migration
             $table->string('place');
             $table->string('duration');
             $table->string('activity');
+            $table->string('nbPers');
             $table->date('date_from');
             $table->date('date_to');
             $table->integer('price_one_h')->nullable()->default(false);

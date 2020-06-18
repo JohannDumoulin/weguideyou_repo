@@ -220,6 +220,7 @@ class AdvertController extends Controller
 	    	'type' => "Cours",
 	    	'name' => "titre", 
 	    	'desc' => "description", 
+	    	'nbPers' => "2",
 	    	'date_from' => $dateS, 
 	    	'date_to' => $dateE, 
 	    	'price_one_h' => 40,

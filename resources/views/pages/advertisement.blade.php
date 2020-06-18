@@ -74,7 +74,7 @@
 				</div>
 				<div class="first_filter_more_content">
 					<p>Nombre de personne(s) :</p>
-					<select name="nb_pers" id="nb_pers" class="js-filter">
+					<select name="nbPers" id="nbPers" class="js-filter">
 						<option value="">-</option>
 						<option value="1">1</option>
 						<option value="2">2</option>

@@ -30,6 +30,22 @@ body[data-content="parameters"]{
     	border-bottom: 1px solid black;
 	}
 
+    .password {
+        padding-top: 10px;
+
+        .divMdp {
+            align-items: center;
+            justify-content: flex-end;
+            display: flex;
+
+            i {
+                position: absolute;
+                cursor: pointer;
+                padding: 2px;
+            }
+        }
+    }
+
     .password, .payement {	
 
 	    .wrap {
@@ -39,9 +55,10 @@ body[data-content="parameters"]{
 	    		width: 40%;
 	    		margin: 0;
 
-	    		.mdp {
-	    			margin-top: 50px;
-	    		}
+                div {
+                    margin-top: 50px;
+                }
+                
 	    	}
 
 		    div {
@@ -61,7 +78,7 @@ body[data-content="parameters"]{
 
     		div {
     			display: grid;
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: repeat(2, 1fr);
 				justify-items: center;
 
     			:nth-child(1) {

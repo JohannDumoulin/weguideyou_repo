@@ -17,7 +17,6 @@
 	    <section class="icons">
 	        <div class="wrap">
 	        	<button class="js-btnSaveModif">Enregister les modifications</button>
-	            @include('components.buttonFav', ['id' => $advert->id ])
 	            <i class="fa fa-times js-toggleAnnonce"></i>
 	        </div>
 	    </section>

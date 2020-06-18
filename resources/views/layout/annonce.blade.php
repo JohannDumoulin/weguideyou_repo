@@ -18,8 +18,6 @@
 	    <section class="icons">
 	        <div class="wrap">
 	            @include('components.buttonFav', ['id' => $advert->id ])
-<!-- 	            <i class="fa fa-chevron-left"></i>
-	            <i class="fa fa-chevron-right"></i> -->
 	            <i class="fa fa-times js-toggleAnnonce"></i>
 	        </div>
 	    </section>

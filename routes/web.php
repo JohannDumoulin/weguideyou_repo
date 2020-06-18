@@ -90,6 +90,11 @@ Route::get('/saveModif', 'AdvertController@saveModif');
 Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 
 
+/* Parameters */
+Route::get('/getInfos', 'ParametersController@getInfos');
+Route::get('/changeInfos', 'ParametersController@changeInfos');
+
+
 /* Favorites */
 Route::get('toggleFavorite', 'FavoritesController@toggleFavorite');
 Route::get('getFavorites', 'FavoritesController@getFavorites');

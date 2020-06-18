@@ -1,11 +1,11 @@
-/*@keyframes openModalP {
+@keyframes openModalP {
     0% {
         right: -100%;
     }
     100% {
         right: 0%;
     }
-}*/
+}
 
 .menuProfil {
 
@@ -26,7 +26,7 @@
         flex-direction: column;
         justify-content: space-between;
 
-        /*animation: openModalP .5s ease forwards;*/
+        animation: openModalP .5s ease forwards;
 
         hr {
             opacity: 0.1;
