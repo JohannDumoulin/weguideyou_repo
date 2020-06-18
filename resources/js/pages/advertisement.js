@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Flickity from "flickity";
 
 
 export default class AdvertisementPage {
@@ -246,6 +247,7 @@ export default class AdvertisementPage {
         let y;
 
         $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q='+place, function(data){
+
             x = parseFloat(data[0].lat);
             y = parseFloat(data[0].lon);
 
@@ -382,6 +384,17 @@ export default class AdvertisementPage {
                     var location = $(data).find('.firstL')[0].id;
                     _this.initMap(location);
                     _this.initFav();
+
+                    flkyProfil: new Flickity('.main-carousel', {
+                        autoPlay: true,
+                        wrapAround: true,
+                        contain: true,
+                        cellAlign: 'center',
+                        pageDots: true,
+                        pauseAutoPlayOnHover: true,
+                        autoPlay: 5000,
+                        prevNextButtons: false,
+                    })
                 })  
             } else {
                 $('#sectionContent')[0].innerHTML = "";

@@ -21,7 +21,7 @@
     <div class="content">
 
         <div class="menu">
-            <a href="#password">Informations de connexion</a>
+            <a href="#infosLogin">Informations de connexion</a>
             <a href="#notif">Notification</a>
             <a href="#alerte">Alertes</a>
             <a href="#payement">Méthodes de payement</a>
@@ -31,7 +31,7 @@
 
         <div>
 
-            <section class="password" id="password">
+            <section class="password" id="infosLogin">
                 <div class="wrap">
 
                     <div class="inputs">

@@ -30,7 +30,7 @@ class NotificationController extends Controller
         $motif = $request->motif;
         $id_advert = $request->id;
 
-        Notification::route('mail', 'admin@gmail.com')->notify(new Report($content, $motif, $id_advert));
+        Notification::route('mail', 'noreply.wgy@gmail.com')->notify(new Report($content, $motif, $id_advert));
 
         return redirect("/annonces")->with(['message' => 'L\'annonce a bien été signalée !']);
     }
