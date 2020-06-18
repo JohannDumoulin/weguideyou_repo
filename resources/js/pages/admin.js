@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-export default class Profil {
+export default class Admin {
     constructor() {
         if ($('body').data('content') === "admin"){
             this.initEls();
@@ -19,6 +19,16 @@ export default class Profil {
     }
 
     adminNav(){
-        $('.nav-admin>')
+        let length = $('.admin-nav').children();
+        console.log(length);
+        $('.admin-nav>span').click(function(){
+            let position = $(this).index();
+
+            $('.admin-nav>span').removeClass('is-selected');
+            $(this).addClass('is-selected');
+
+            $('.admin-data').addClass('hidden');
+            $('.data-nth-'+position).removeClass('hidden');
+        });
     }
 }
