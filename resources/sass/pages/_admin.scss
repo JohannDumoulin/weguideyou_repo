@@ -12,11 +12,13 @@ body[data-content="admin"]{
             margin-bottom: 30px;
         }
 
-        .nav-admin{
+        .admin-nav{
             display: flex;
             width: 100%;
             position: relative;
             margin-bottom: 50px;
+
+            user-select: none;
 
             &:after{
                 content: "";
@@ -31,9 +33,39 @@ body[data-content="admin"]{
                 z-index: 5;
             }
 
+            span{
+                font-family: "Roboto", Arial, sans-serif;
+                font-size: 1em;
+                font-weight: 400;
+                color: rgba(0,0,0,.2);
+                margin-right: 40px;
+
+                cursor:pointer;
+
+                position: relative;
+
+                transition: .2s;
+
+                &::after{
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    background-color: $deepBlue;
+                    height: 0;
+
+                    position: absolute;
+                    bottom: -20px;
+
+                    z-index: 10;
+
+                    transition: .2s;
+                }
+            }
+
             .is-selected{
                 color: rgba(0,0,0,.9);
-                position: relative;
+
+                transition: .2s;
 
                 &::after{
                     content: "";
@@ -46,23 +78,16 @@ body[data-content="admin"]{
                     bottom: -20px;
 
                     z-index: 10;
-                }
-            }
 
-            a{
-                font-size: 1em;
-                font-weight: 400;
-                color: rgba(0,0,0,.2);
-                margin-right: 40px;
+                    transition: .2s;
+                }
             }
         }
 
-        .user_data{
-
-            height: 50vh;
+        .admin-data{
+            max-height: 60vh;
 
             .data-categories{
-
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -80,6 +105,43 @@ body[data-content="admin"]{
                 -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
                 -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
                 box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
+
+                span{
+                    text-transform: uppercase;
+                }
+            }
+
+             .data-content{
+
+                 >div {
+                     display: flex;
+                     align-items: center;
+                     justify-content: space-between;
+                     box-sizing: border-box;
+                     padding: 15px 50px;
+
+                     background-color: #FFF;
+
+                     -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.08);
+                     -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.08);
+                     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.08);
+
+                     &:nth-of-type(2n+1){
+                         background-color: $adminLightGrey;
+                     }
+                 }
+            }
+
+            span{
+                font-family: "Roboto", Arial, sans-serif;
+                font-size: 0.9em;
+                font-weight: 500;
+                opacity: .5;
+            }
+        }
+
+        .user_data{
+            .data-categories{
 
                 >div{
                     width: 100%;
@@ -100,29 +162,10 @@ body[data-content="admin"]{
                         margin-right: 20px;
                     }
                 }
-
-                span{
-                    text-transform: uppercase;
-                }
             }
 
             .data-content{
                 >div{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    box-sizing: border-box;
-                    padding: 15px 50px;
-
-                    background-color: #FFF;
-
-                    -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
-                    -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
-                    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.08);
-
-                    &:nth-of-type(2n+1){
-                        background-color: $adminLightGrey;
-                    }
 
                     >div:first-child{
                         display: flex;
@@ -163,16 +206,7 @@ body[data-content="admin"]{
                             cursor: pointer;
                         }
                     }
-
-
                 }
-            }
-
-            span{
-                font-family: "Roboto", Arial, sans-serif;
-                font-size: 0.9em;
-                font-weight: 500;
-                opacity: .5;
             }
         }
     }

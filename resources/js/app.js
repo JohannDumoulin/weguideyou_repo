@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 /*Components*/
+import Admin from "./pages/admin";
 import MenuProfil from './components/menuProfil';
 import ConnectionPanel from "./components/connectionPanel";
 import RegistrationForm from "./components/registrationForm";
@@ -38,6 +39,9 @@ class App {
         new Parameters();
         new mAdvert();
         new CreateAdvertisementPage;
+
+        //admin
+        new Admin;
     }
 }
 new App();
