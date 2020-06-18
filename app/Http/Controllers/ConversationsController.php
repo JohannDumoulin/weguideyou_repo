@@ -7,6 +7,7 @@ use Illuminate\Auth\AuthManager;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreMessageRequest;
 
 class ConversationsController extends Controller
 {
@@ -30,11 +31,11 @@ class ConversationsController extends Controller
     	return view('pages/show', [
     		'users' => $this->conversationRepository->getConversations($this->auth->user()->id),
     		'user' => $user,
-    		'messages' => $this->conversationRepository->getMessagesFor($this->auth->user()->id, $user->id)->get()->reverse()
+    		'messages' => $this->conversationRepository->getMessagesFor($this->auth->user()->id, $user->id)->paginate(50)
     	]);
     }
 
-    public function store (User $user, Request $request) {
+    public function store (User $user, StoreMessageRequest $request) {
     	$this->conversationRepository->createMessage(
     		$request->get('content'),
     		$this->auth->user()->id,

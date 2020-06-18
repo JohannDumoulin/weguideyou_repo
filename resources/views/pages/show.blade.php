@@ -86,13 +86,23 @@
 						<p class="message left">Aenean imperdiet tortor risus, id hendrerit.</p>
 						
 						<p class="message right">Aenean ac orci vehicula, cursus sapien sit amet, malesuada felis. Nulla placerat, arcu eget suscipit laoreet, turpis turpis imperdiet quam, et laoreet quam est eu libero.</p> -->
+						@if($messages->hasmorePages())
+							<div>
+								<a href="{{ $messages->nextPageUrl() }}">Voir les messages précédents</a>
+							</div>
+						@endif
 						@foreach($messages as $message)
-							@if ($message->from->id !== $user->id)
-							    <p class="message right">{{ $message->content }}</p>
+							@if($message->from->id !== $user->id)
+							    <p class="message right">{!! nl2br(e($message->content)) !!}</p>
 							@else
-							    <p class="message">{{ $message->content }}</p>
+							    <p class="message">{!! nl2br(e($message->content)) !!}</p>
 							@endif
 						@endforeach
+						@if($messages->previousPageUrl())
+							<div>
+								<a href="{{ $messages->previousPageUrl() }}">Voir les messages suivants</a>
+							</div>
+						@endif
 					</div>
 
 					<form id="writing_area" action="" method="post">
