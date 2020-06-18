@@ -41,7 +41,7 @@ export default class Annonce{
     deleteAdvert() {
         $(document).on('click', '.js-btnDeleteAdvert', function(event) {
 
-            if ( confirm( "Voulez vous vraiment supprimer cette annonce ? \n\nCette annonce sera définitivement supprimer." ) ) {
+            if ( confirm( "\nVoulez vous vraiment supprimer cette annonce ? \n\nCette annonce sera définitivement supprimer.\n" ) ) {
 
                 var id = this.id;
 

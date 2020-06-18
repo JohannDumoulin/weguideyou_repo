@@ -93,6 +93,7 @@ Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 /* Parameters */
 Route::get('/getInfos', 'ParametersController@getInfos');
 Route::get('/changeInfos', 'ParametersController@changeInfos');
+Route::get('/deleteAccount', 'ParametersController@deleteAccount');
 
 
 /* Favorites */

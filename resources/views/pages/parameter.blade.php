@@ -35,11 +35,6 @@
                 <div class="wrap">
 
                     <div class="inputs">
-                        <div class="">
-                            <label for="">Ancien Mot de passe</label>
-                            <input type="password" name="" id="oldMdp" placeholder="Confirmer votre mot de passe">
-                        </div>
-                        <p class="msgErreurOld"></p>
                          <div>
                             <label for="">Adresse E-mail</label>
                             <input type="text" name="" id="mail" placeholder="Adresse E-mail">
@@ -52,6 +47,11 @@
                             </div>
                             <p class="msgErreurNew"></p>
                         </div>
+                        <div class="">
+                            <label for="">Ancien Mot de passe</label>
+                            <input type="password" name="" id="oldMdp" placeholder="Confirmer votre mot de passe">
+                        </div>
+                        <p class="msgErreurOld"></p>
                     </div>
 
                     <div class="btn">
@@ -67,7 +67,6 @@
                     <div class="titles">
                         <h3>Notifications</h3>
                         <h4>Mail</h4>
-                        <!-- <h4>Site</h4> -->
                     </div>
 
                     <div class="elem">
@@ -76,10 +75,6 @@
                             <input type="checkbox" id="showOffline">
                             <span class="slider round"></span>
                         </label>
-<!--                         <label class="switch">
-                            <input type="checkbox" id="showOffline">
-                            <span class="slider round"></span>
-                        </label> -->
                     </div>
 
                     <div class="elem">
@@ -88,10 +83,6 @@
                             <input type="checkbox" id="showOffline">
                             <span class="slider round"></span>
                         </label>
-<!--                         <label class="switch">
-                            <input type="checkbox" id="showOffline">
-                            <span class="slider round"></span>
-                        </label> -->
                     </div>            
 
                     <div class="elem">
@@ -100,10 +91,6 @@
                             <input type="checkbox" id="showOffline">
                             <span class="slider round"></span>
                         </label>
-<!--                         <label class="switch">
-                            <input type="checkbox" id="showOffline">
-                            <span class="slider round"></span>
-                        </label> -->
                     </div>            
 
                     <div class="elem">
@@ -112,10 +99,6 @@
                             <input type="checkbox" id="showOffline">
                             <span class="slider round"></span>
                         </label>
-<!--                         <label class="switch">
-                            <input type="checkbox" id="showOffline">
-                            <span class="slider round"></span>
-                        </label> -->
                     </div>
                     
                 </div>
@@ -224,7 +207,7 @@
             <section class="sup" id="sup">
                 <div class="wrap">
                     
-                    <button>Supprimer mon compte</button>
+                    <button class="js-btnDeleteAccount">Supprimer mon compte</button>
 
                 </div>  
             </section>

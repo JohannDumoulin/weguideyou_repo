@@ -19,8 +19,8 @@ class CreateFavoritesTable extends Migration
             $table->integer('user_id')->unsigned(); 
             $table->bigInteger('advert_id')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('Users');
-            $table->foreign('advert_id')->references('id')->on('advertisement');
+            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreign('advert_id')->references('id')->on('advertisement')->onDelete('cascade');
 
             $table->timestamps();
         });

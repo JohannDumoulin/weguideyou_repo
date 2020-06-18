@@ -40,4 +40,16 @@ class ParametersController extends Controller
         return 1;
     }
 
+     public function deleteAccount(Request $request) {
+        $user = Auth::user();
+
+        DB::table('users')
+            ->where('id', $user->id)
+            ->delete();
+
+        redirect('/')->with(['message' => 'Votre compte a bien été supprimé !']);
+
+        return 1;
+    }
+
 }

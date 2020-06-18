@@ -21,7 +21,7 @@ class CreateAlerteTable extends Migration
             $table->string('place');
 
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('Users');
+            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade');
 
             $table->timestamps();
         });

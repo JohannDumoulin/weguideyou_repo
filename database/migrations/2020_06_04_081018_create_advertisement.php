@@ -23,7 +23,8 @@ class CreateAdvertisement extends Migration
             $table->string('place');
             $table->string('duration');
             $table->string('activity');
-            $table->string('nbPers');
+            $table->integer('nbPersMin');
+            $table->integer('nbPersMax');
             $table->date('date_from');
             $table->date('date_to');
             $table->integer('price_one_h')->nullable()->default(false);
@@ -42,7 +43,7 @@ class CreateAdvertisement extends Migration
             $table->boolean('premium_securing')->nullable()->default(false);
             $table->boolean('premium_insurance')->nullable()->default(false);
 
-            $table->foreign('user_id')->references('id')->on('Users');
+            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ export default class Parameters {
         this.modifInfos();
         this.setInfos();
         this.toggleVisibilityPassword();
+        this.deleteAccount();
     }
 
     addAlerte() {
@@ -33,7 +34,6 @@ export default class Parameters {
                 url: "/addAlerte",
                 data: {alerte: alerte},
                 success : function(res) {
-                    console.log(res);
                     $('.divElemAlertes').append(res);
                 },
                 error : function(res) {
@@ -54,7 +54,10 @@ export default class Parameters {
                 url: "/removeAlerte",
                 data: {id: id},
                 success : function(res) {
-                    console.log(res);
+
+                },
+                error : function(res) {
+                    console.log(res.responseJSON);
                 }
             });
         });
@@ -148,5 +151,26 @@ export default class Parameters {
 
             this.classList.toggle("fa-eye-slash");
         });
+    }
+
+    deleteAccount() {
+        $(document).on('click', '.js-btnDeleteAccount', function(event) {
+
+            if ( confirm( `
+Voulez vous vraiment supprimer votre compte ? \n
+Votre compte sera définitivement supprimer ainsi que toutes les données lui étant liées (annonces, favoris, commentaires...).\n` ) ) {
+
+                $.ajax({
+                    method: "get",
+                    url: "/deleteAccount",
+                    success: function (data) {
+                       window.location.href = "/";
+                    },
+                    error: function(data) {
+                        console.log(data.responseJSON);
+                    }
+                })
+            }
+        });     
     }
 }
