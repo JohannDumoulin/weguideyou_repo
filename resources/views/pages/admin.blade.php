@@ -14,12 +14,12 @@
         <div class="wrap">
             <h1>Page d'administration</h1>
             <div class="nav-admin">
-                <a href="#" class="is-selected">Utilisateurs</a>
-                <a href="#">Annonces</a>
-                <a href="#">Reviews</a>
-                <a href="#">Signalements</a>
-                <a href="#">Questions</a>
-                <a href="#">Emails</a>
+                <span class="is-selected">Utilisateurs</span>
+                <span>Annonces</span>
+                <span>Reviews</span>
+                <span>Signalements</span>
+                <span>Questions</span>
+                <span>Emails</span>
             </div>
             <div class="user_data">
                 <div class="data-categories">
