@@ -97,8 +97,10 @@ Route::get('getFavorites', 'FavoritesController@getFavorites');
 
 // Mailbox
 Route::get('/messagerie','ConversationsController@index')->name('conversations');
-Route::get('/messagerie/{user}','ConversationsController@show')->name('conversations.show');
-Route::post('/messagerie/{user}','ConversationsController@store');
+Route::get('/messagerie/{user}','ConversationsController@show')
+	->middleware('can:talkTo,user')
+	->name('conversations.show');
+Route::post('/messagerie/{user}','ConversationsController@store')->middleware('can:talkTo,user');
 
 
 
