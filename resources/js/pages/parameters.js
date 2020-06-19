@@ -3,7 +3,10 @@ import $ from 'jquery';
 export default class Parameters {
     constructor() {
         this.initEls();
-        this.initEvents();
+
+        if ($('body').data('content') == "parameters"){
+            this.initEvents();
+        }
     }
 
     initEls(){

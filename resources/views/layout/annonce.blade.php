@@ -132,6 +132,8 @@
 
 	</div>
 
+	{{ $advert->created_at }}
+
 	<div class="reste js-toggleAnnonce"></div>
 
 </div>

@@ -71,7 +71,7 @@ export default class AdvertisementPage {
             success : function(data) {
 
                 if(data.length == 0){
-                    $('#js-container')[0].innerHTML = "Aucune offres à afficher"
+                    $('.js-divLoading')[0].innerHTML = "Aucune offres à afficher"
                     $(".divPage")[0].innerHTML = ""
                     return 0;
                 }
@@ -104,6 +104,11 @@ export default class AdvertisementPage {
 
     displayAdverts(page) {
 
+        if($('#js-container').length > 0)
+            $('#js-container')[0].innerHTML = "";
+        if($('#js-container-premium').length > 0)
+            $('#js-container-premium')[0].innerHTML = "";
+
         if(page == undefined)
             page = 0
 
@@ -115,15 +120,10 @@ export default class AdvertisementPage {
         if($('.nbrAdverts').length > 0)
             $('.nbrAdverts')[0].innerHTML = adverts.length
 
-        //
-        if($('#js-container').length > 0)
-            $('#js-container')[0].innerHTML = "";
-        if($('#js-container-premium').length > 0)
-            $('#js-container-premium')[0].innerHTML = "";
-
-        //
+        // aucune offres
         if(advertsM[page] === undefined){
             $('#js-container')[0].innerHTML = "Aucune offres ne correspond à vos critères"
+            $('.js-divLoading')[0].innerHTML = "";
             $(".divPage")[0].innerHTML = ""
             return 0;
         }
@@ -161,41 +161,12 @@ export default class AdvertisementPage {
                 })
             })
 
-            // Afficher les annonces en avant
-            for(let b of banner) {
-
-                $.ajax({ type: "GET",   
-                    url: "/advert/"+b.id,
-                    success : function(res) {
-                        $('#js-container-premium').append(res)
-                    },
-                    error : function(res) {
-                        console.log(res.responseJSON);
-                    }
-                });
-            }
-        }
-
-        var c = 0;
-        var url;
-        
-        // affiche les annonces
-        for(let advert of advertsM[page]) {
-
-            url = "/advert/"+advert.id;
-            if($('body').data('content') == "mes_annonces")
-                url = "/mAdvert/"+advert.id;
-
+            //Afficher les annonces en avant
             $.ajax({ type: "GET",   
-                url: url,
+                url: "adverts",
+                data: {adverts : banner},
                 success : function(res) {
-
-                    $('#js-container').append(res)
-
-                    c++;
-                    if(c === advertsM[page].length) {
-                        _this.initFav();
-                    }
+                    $('#js-container-premium').append(res)
                 },
                 error : function(res) {
                     console.log(res.responseJSON);
@@ -203,7 +174,26 @@ export default class AdvertisementPage {
             });
         }
 
-        // Display btn change page
+        // affiche les annonces
+        $.ajax({ type: "GET",   
+            url: "/adverts",
+            data: {adverts : advertsM[page]},
+            success : function(res) {
+
+                $('.js-divLoading')[0].innerHTML = "";
+
+                $('#js-container').append(res)
+
+                if($('.divPage').length > 0)
+                    _this.displayBtnPage(advertsM, page)
+            },
+            error : function(res) {
+                console.log(res.responseJSON);
+            }
+        });
+    }
+
+    displayBtnPage(advertsM, page) {
 
         $(".divPage")[0].innerHTML = ""
 
@@ -299,23 +289,24 @@ export default class AdvertisementPage {
             adverts = this.$els.adverts;
 
         var _this = this;
-        var value = this.$els.sortType;
+        var sortType = this.$els.sortType;
+        if(sortType == "")
+            sortType = "plusRecent";
 
-        $.ajax({
-            method: "get",
-            url: "/sortAdverts",
-            data: {type: value, adverts: JSON.stringify(adverts)},
-            success: function (data) { 
+        // sort
+        if(sortType == "prixCroissant")
+            adverts.sort((a,b) => (a.price_one_h > b.price_one_h) ? 1 : ((b.price_one_h > a.price_one_h) ? -1 : 0));
+        else if(sortType == "prixDecroissant")
+            adverts.sort((a,b) => (a.price_one_h > b.price_one_h) ? -1 : ((b.price_one_h > a.price_one_h) ? 0 : 0));
+        else if(sortType == "plusRecent")
+            adverts.sort((a,b) => (a.created_at > b.created_at) ? -1 : ((b.created_at > a.created_at) ? -1 : 0));
+        else if(sortType == "plusAncien")
+            adverts.sort((a,b) => (a.created_at > b.created_at) ? 0 : ((b.created_at > a.created_at) ? 0 : 0));
 
-                _this.$els.adverts = data;
-                _this.$els.advertsM = _this.splitInPages(data)
 
-                _this.displayAdverts();
-            },
-            error: function(data) {
-                console.log(data.responseJSON);
-            }
-        })
+        this.$els.adverts = adverts;
+        this.$els.advertsM = _this.splitInPages(adverts)
+        this.displayAdverts();
     }
 
     addEventFilter() {
@@ -331,44 +322,57 @@ export default class AdvertisementPage {
 
             _this.$els.filter_on = filter_on; // save filters
 
-            _this.filter();
+            _this.getAdverts($('title')[0].innerHTML);
         }); 
     }
 
-    filter(data) {
+    filter(adverts) {
 
-        if(data == undefined)
-            data = false;
+        if(adverts == false || adverts == undefined)
+            adverts = this.$els.adverts;
+
+        // reduce the description length
+        for(let d of adverts) {
+            d.desc = d.desc.substring(0, 350) + "...";
+        }
+
+        if(adverts == undefined)
+            adverts = false;
 
         var urgent = this.$els.filter_on["urgent"];
 
         var _this = this;
         var filter_on = this.$els.filter_on;
 
-        if(data != false) {
-            var desc = [];
-            for(var item of data) {
-                desc.push(item.desc);
-                delete item.desc;
+        filter_on = Object.entries(filter_on); // convertion en array
+
+        var value;
+        var key;
+
+        // filters
+        for ([key, value] of filter_on) {
+            if(key == "activity" || key == "place") {
+                adverts = adverts.filter(function(v){
+                    var a = v[key].toLowerCase()
+                    var b = value.toLowerCase()
+                    return a.includes(b)
+                });
+            }
+            else if(key == "date") {
+                adverts = adverts.filter(function(v){
+                    return (value >= v["date_from"] && value <= v["date_to"]);
+                });
+            }
+            else {
+                adverts = adverts.filter(function(v){
+                    return (value == v[key]);
+                });   
             }
         }
 
-        $.ajax({
-            method: "get",
-            url: "/filterAdverts",
-            data: {filter_on: filter_on, adverts: JSON.stringify(data), urgent: urgent},
-            success: function (data) {
-                data = Object.keys(data).map(i => data[i]);
-
-                _this.$els.adverts = data;
-                _this.$els.advertsM = _this.splitInPages(data)
-
-                _this.changeOrder(data);
-            },
-            error: function(data) {
-                console.log(data.responseJSON);
-            }
-        })
+        this.$els.adverts = adverts;
+        this.$els.advertsM = _this.splitInPages(adverts)
+        this.changeOrder(adverts);
     }
 
     toggleAdvert() {

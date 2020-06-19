@@ -70,15 +70,12 @@ Route::middleware(['guest'])->group(function () {
 
 /* Annonces */
 Route::get('annonces', 'AdvertController@pageAdverts')->name('advertisements'); // affiche la page des annonces
+Route::get('/adverts', 'AdvertController@displayAdverts'); // affiche les annonces sur la page
 Route::get('a/{id}', 'AdvertController@pageAdvert'); // affiche la page des annonces avec une seule annonce
-Route::get('/advert/{id}', 'AdvertController@displayAllAdverts'); // affiche les annonces sur la page
 Route::get('/mAdvert/{id}', 'AdvertController@displayMyAdverts'); // affiche les annonces sur la page mes annonces
 Route::get('/annonce/{id}', 'AdvertController@displayDetailAdvert'); // affiche les détails d'une annonce
 
 Route::get('getAdverts', 'AdvertController@getAdverts');
-Route::get('displayAdvert', 'AdvertController@displayAdvert');
-Route::get('sortAdverts', 'AdvertController@sortAdverts');
-Route::get('filterAdverts', 'AdvertController@filterAdverts');
 Route::get('getActs', 'AdvertController@getActs');
 Route::get('getCities', 'AdvertController@getCities');
 
@@ -113,7 +110,6 @@ Route::post('/messagerie/{user}','ConversationsController@store')->middleware('c
 
 // Temporary route
 Route::get('getnotifs', 'NotificationController@recupNotif');
-Route::get('addAdvert', 'AdvertController@addAdvert');
 
 
 // Create Advertisement

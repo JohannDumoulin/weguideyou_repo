@@ -33,7 +33,7 @@ $factory->define(Advertisement::class, function (Faker $faker) {
         'price_one_h' => random_int (30, 500),
         'phone_bool' => false,  
         'place' => "Courchevel",
-        'duration' => "journée", 
+        'duration' => "Toute la journée", 
         'activity' => "Ski", 
         'premium_urgent_week' => random_int (0, 1), 
         'premium_banner_week' => random_int (0, 1), 

@@ -105,6 +105,10 @@ class AdvertController extends Controller
         return view('layout/annonce', ['advert' => $advert, 'user' => $user]);
     }
 
+    public function displayAdverts(Request $request) {
+    	return view('components/advert')->with('adverts', $request->adverts);
+    }
+
 	public function displayModifyAdvert($id) {
         $advert = DB::select('select * from Advertisement where id ='.$id);
         $advert = $advert[0];
@@ -132,12 +136,6 @@ class AdvertController extends Controller
     	return 1;
     }
 
-    public function displayAllAdverts($id) {
-    	$advert = DB::select('select * from Advertisement where id ='.$id);
-    	$advert = $advert[0];
-    	return view('components/advert')->with('advert', $advert);
-    }
-
     public function displayMyAdverts($id) {
     	$advert = DB::select('select * from Advertisement where id ='.$id);
     	$advert = $advert[0];
@@ -152,71 +150,6 @@ class AdvertController extends Controller
 	public function pageAdvert($id) {
 		$user = Auth::user();
 		return view('pages/advertisement', ['user'=>$user]);
-	}
-
-	public function sortAdverts(Request $request) {
-		
-		$adverts = json_decode($request->adverts);
-
-		if($request->type == "prixCroissant")
-			usort($adverts, function($a, $b) {return $a->price_one_h - $b->price_one_h;});
-		if($request->type == "prixDecroissant")
-			usort($adverts, function($a, $b) {return $b->price_one_h - $a->price_one_h;});
-		if($request->type == "plusRecent")
-			usort($adverts, function($a, $b) {return strtotime($a->created_at) - strtotime($b->created_at);});
-		if($request->type == "plusAncien")
-			usort($adverts, function($a, $b) {return strtotime($b->created_at) - strtotime($a->created_at);});
-
-		return $adverts;
-	}
-
-	public function deleteAdvert(Request $request) {
-		DB::table('advertisement')
-			->where('id', $request->id)
-			->delete();
-
-		return $request->id;
-	}
-
-
-	public function filterAdverts(Request $request) {
-
-		$adverts = json_decode($request->adverts);
-
-		if($adverts === false) // si aucun parametre passé, on récupère tous les annonces
-			$adverts = DB::select('select * from Advertisement');
-
-		$u = $request->urgent;
-		if($u === "true") { // si la case est coché, on ne récupère que les annonces urgente
-			$adverts = DB::select('select * from Advertisement where premium_urgent_week = 1');	
-		}
-
-		if($request->filter_on == "") {
-			return $adverts;
-		}
-
-
-		// filters
-		foreach ($request->filter_on as $key => $value) {
-			if($key == "activity" || $key == "place") {
-				$adverts = array_filter($adverts, function ($var) use ($value, $key){ 
-				    if(stripos($var->$key, $value) !== false)
-				    	return true;
-				});
-			}
-			else if($key == "date") {
-				$adverts = array_filter($adverts, function ($var) use ($value) {
-				    return ($value >= $var->date_from && $value <= $var->date_to);
-				});
-			}
-			else {
-				$adverts = array_filter($adverts, function ($var) use ($value, $key){
-				    return ($value == $var->$key);
-				});
-			}
-		}
-
-		return $adverts;
 	}
 
 	public function alerte($id) {
@@ -241,32 +174,5 @@ class AdvertController extends Controller
 		$users = User::findMany($users_id);
 
 		app('App\Http\Controllers\NotificationController')->alerte($users, $alertes, $id);
-    }
-
-
-	// Temporaire    
-    public function addAdvert() {
-
-		$dateS = date_create("2020-03-15");
-		$dateE = date_create("2020-05-15");
-
-		$id = DB::table('Advertisement')->insertGetId([
-			'user_id' => 1,
-	    	'type' => "Cours",
-	    	'name' => "titre", 
-	    	'desc' => "description", 
-	    	'nbPers' => "Collectif",
-	    	'date_from' => $dateS, 
-	    	'date_to' => $dateE, 
-	    	'price_one_h' => 40,
-	    	'phone_bool' => false,  
-	    	'place' => "Courchevel",
-	    	'duration' => "journée", 
-	    	'activity' => "Ski", 
-			'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
-		]);
-
-		$this->alerte($id);
     }
 }

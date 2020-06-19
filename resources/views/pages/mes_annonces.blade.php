@@ -53,6 +53,9 @@
 		<div id="advertisement_section">
 			<div>
 				<div class="advertisement_container all" id="js-container">
+					
+				</div>
+				<div class="js-divLoading">
 					@include('components.loading')
 				</div>
 
