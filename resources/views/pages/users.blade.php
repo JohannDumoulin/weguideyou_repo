@@ -5,7 +5,12 @@
 		</div>
 		<div class="advertisement_content">
 			<div class="seller_infos">
-				<a href="{{ route('conversations.show', $user->id) }}">{{ $user->name }}</a>
+				<a href="{{ route('conversations.show', $user->id) }}">
+					{{ $user->name }}
+					@if(isset($unread[$user->id]))
+						({{ $unread[$user->id] }})
+					@endif
+				</a>
 				<img src="{{ asset('img/esf.png') }}" alt="">
 			</div>
 			<p class="title">Cours Snowboard / Courchevel 1850</p>
