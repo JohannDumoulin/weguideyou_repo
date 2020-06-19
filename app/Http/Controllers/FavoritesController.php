@@ -19,6 +19,8 @@ class FavoritesController extends Controller
 
 	public function getFavorites() {
 
+		$favorites;
+
 		if(Auth::user()) {
 			$favorites = DB::table('favorites')
 				->join('advertisement', 'favorites.advert_id', '=', 'advertisement.id')

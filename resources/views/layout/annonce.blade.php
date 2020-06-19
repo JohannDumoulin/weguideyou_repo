@@ -77,7 +77,7 @@
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>Type de cours</label>
-	                <p id="ad-nb_pers">Collectif</p>
+	                <p id="ad-nb_pers">{{ $advert->nbPers }}</p>
 	            </div>                
 
 	            <div>
@@ -91,18 +91,27 @@
 
 	    <section class="profil">
 	    	<div class="wrap">
-	    		<div class="img"></div>
+
+	    		<div class="img" style="background-image: url('img/user-circle-solid-white.svg');"></div>
+
 	    		<div class="txt">
 	        		<p>
-	        			<span class="nom">Megan</span>, <span>26</span> ans.
+	        			<span class="nom">{{ $user->name }}</span>, <span>{{ $user->age }}</span> ans.
 	        		</p>      
 	          		<p>
-	        			<span>Guide de haute montagne</span> - <span>Val Thorens</span>
+	        			<span>{{ $user->job }}</span> - <span>{{ $user->city }}</span>
 	        		</p>
 	          		<p>
 	        			<i class="fa fa-globe"></i>
-	        			<span>Francais</span> - <span>Anglais</span>
+	        			<span>{{ $user->language }}</span>
 	        		</p>
+	        		@if($advert->phone_bool == 1)
+		        	<p>
+		    			<i class="fa fa-phone"></i>
+		    			<span>{{ $user->phone }}</span>
+		    		</p>
+					@endif
+
 	    		</div>
 	    	</div>
 	    </section>

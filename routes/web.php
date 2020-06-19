@@ -111,11 +111,9 @@ Route::post('/messagerie/{user}','ConversationsController@store')->middleware('c
 
 
 
-
 // Temporary route
 Route::get('getnotifs', 'NotificationController@recupNotif');
 Route::get('addAdvert', 'AdvertController@addAdvert');
-
 
 
 // Create Advertisement
