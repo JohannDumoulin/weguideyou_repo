@@ -14,10 +14,6 @@
     @include('layout.connection')
     @include('layout.modalProfil')
 
-    @if (\Request::is('/'))
-      @include('layout.header')
-    @endif
-
     @include('flashy::message')
 
     @yield('content')

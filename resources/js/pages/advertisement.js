@@ -38,7 +38,7 @@ export default class AdvertisementPage {
         this.addEventFilter();
 
         var c = $('body').data('content')
-        if(c == "annonces" || c == "home" || c == "parameters")
+        if(c == "annonces" || c == "home" || c == "parameters" || c == "homeIndividual")
             this.getCities();
     }
 
@@ -180,7 +180,8 @@ export default class AdvertisementPage {
             data: {adverts : advertsM[page]},
             success : function(res) {
 
-                $('.js-divLoading')[0].innerHTML = "";
+                if($('.js-divLoading').length > 0)
+                    $('.js-divLoading')[0].innerHTML = "";
 
                 $('#js-container').append(res)
 

@@ -11,6 +11,8 @@
 
 @section('content')
 
+@include('layout.header')
+
 @if(session('message') != null)
 
 <div class="msgConfirm">{{session('message')}}</div>

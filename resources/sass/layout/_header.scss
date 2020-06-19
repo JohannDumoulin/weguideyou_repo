@@ -10,6 +10,14 @@ header {
 		text-align: center;
 	}
 
+	input[type="date"] {
+        cursor: text;
+    }
+
+	input[type="date"]::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+    }
+
 	#select {
 		display: flex;
 		justify-content: space-between;
@@ -51,11 +59,21 @@ header {
 		display: flex;
 		flex-direction: column;
 
-		input {
+		input, select {
 			margin-top: 10px;
 			border: none;
 			outline: 0;
 			margin-left: -4px;
+		}
+
+		select {
+			background-color: $deepBlue;
+			color: white;
+
+			option {
+				background-color: white;
+				color: black;
+			}
 		}
 	}
 
@@ -84,9 +102,10 @@ header {
     		box-shadow: 2px 2px 3px #0000008c;
     		transition: transform .3s;
     		outline: none;
+    		cursor: pointer;
 		}
 
-		input:hover {
+		input:hover,  {
 			transform: scale(1.1);
 		}
 

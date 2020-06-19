@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endpush
 
-@section('attribute', 'advertisement')
+@section('attribute', 'advertisementPro')
 
 @section('content')
 
@@ -26,11 +26,11 @@
 			<form action="/annonces" class="first_filter">
 
 				<div class="header_filter">
-					<label for="activity">ACTIVITÉ</label>
-					<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
-					<datalist id="dataActivities">
-						<option></option>
-					</datalist>
+					<label>Type</label>
+					<select name="type">
+						<option value="LookForJob">Recherche de travail</option>
+						<option value="LookForPeople">Recherche d'employé</option>
+					</select>
 				</div>
 
 				<div class="header_filter autocomplete">
@@ -56,7 +56,7 @@
 			</div>
 
 			<div class="effaceFilters">
-				<a href="/annonces">Effacer tous les filtres</a>
+				<a href="/annonces?type=LookForJob">Effacer tous les filtres</a>
 			</div>
 
 			<!-- More filters -->
@@ -69,27 +69,19 @@
 					<label for="freelance">Indépendant</label>
 				</div>
 				<div class="first_filter_more_content">
-					<p>Nombre de personne(s) :</p>
-					<select name="nbPers" id="nbPers" class="js-filter">
-						<option value="">-</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7+">7+</option>
-					</select>
+					<p>Profession :</p>
+					<input list="dataJob" name="job" id="job" class="js-filter">
+					<datalist id="dataJob">
+						<option>Guide</option>
+						<option>Moniteur</option>
+					</datalist>
 				</div>
 				<div class="first_filter_more_content">
-					<p>Durée :</p>
-					<select name="duration" id="duration" class="js-filter">
-						<option value="">-</option>
-						<option value="1h">1h</option>
-						<option value="2h">2h</option>
-						<option value="4h">4h</option>
-						<option value="half-day">Demi-journée</option>
-						<option value="day">Journée</option>
+					<p>Poste logé</p>
+					<select name="loge" id="loge" class="js-filter">
+						<option>-</option>
+						<option>Oui</option>
+						<option>Non</option>
 					</select>
 				</div>
 

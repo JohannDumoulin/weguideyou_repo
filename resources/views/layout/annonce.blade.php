@@ -73,6 +73,12 @@
 
 	    <section class="detail">
 	        <div class="wrap">
+
+		        <div>
+	                <i class="fa fa-users"></i>
+	                <label>Activité</label>
+	                <p id="ad-nb_pers">{{ $advert->activity }}</p>
+	            </div>  
 	            
 	            <div>
 	                <i class="fa fa-users"></i>

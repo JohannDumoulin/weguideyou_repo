@@ -15,19 +15,21 @@
 		<a href="/">Je suis un professionnel</a>
 		<a href="/particulier">Je suis un particulier</a>
 	</div>
-	<form action="/annoncesPro" class="first_filter">
+	<form action="/annonces" class="first_filter">
+
+		<input name="type" value="Cours" style="display: none">
 
 		<div class="header_filter">
-			<label>Type</label>
-			<select name="type">
-				<option value="LookForJob">Recherche de travail</option>
-				<option value="LookForPeople">Recherche d'employé</option>
-			</select>
+			<label for="activity">ACTIVITÉ</label>
+			<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
+			<datalist id="dataActivities">
+				<option></option>
+			</datalist>
 		</div>
 
 		<div class="header_filter autocomplete">
 			<label for="place">LIEU</label>
-			<input list="dataPlaces" name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter">
+			<input list="dataPlaces" name="place" id="place" placeholder="Où rechercher-vous ?" class="js-filter">
 		</div>
 
 		<div class="header_filter">

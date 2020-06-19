@@ -11,6 +11,8 @@
 
 @section('content')
 
+    @include('layout.headerPar')
+
     <section class="topPro">
         <div class="wrap">
             <h2>Redécouvrez le <span>sport</span> aux côtés de <span>professionnels qualifiés.</span></h2>

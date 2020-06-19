@@ -1,0 +1,32 @@
+
+body[data-content="home"], body[data-content="advertisementPro"] {
+    
+    .first_filter {
+        background-color: $deepBlue;
+        color: white;
+
+        input {
+            background-color: $deepBlue;
+            color:white;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            color: white;
+        }
+
+        input::placeholder {
+            color:white;
+        }
+
+        .divSearch {
+
+            input {
+                background-color: $background;
+            }
+
+            i {
+                color: $deepBlue;
+            }
+        }
+    }
+}

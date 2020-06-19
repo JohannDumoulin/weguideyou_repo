@@ -147,6 +147,11 @@ class AdvertController extends Controller
 		return view('pages/advertisement', ['user'=>$user]);
 	}	
 
+	public function pageAdvertsPro() {
+		$user = Auth::user();
+		return view('pages/advertisementPro', ['user'=>$user]);
+	}	
+
 	public function pageAdvert($id) {
 		$user = Auth::user();
 		return view('pages/advertisement', ['user'=>$user]);

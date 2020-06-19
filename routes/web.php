@@ -70,6 +70,8 @@ Route::middleware(['guest'])->group(function () {
 
 /* Annonces */
 Route::get('annonces', 'AdvertController@pageAdverts')->name('advertisements'); // affiche la page des annonces
+Route::get('annoncesPro', 'AdvertController@pageAdvertsPro')->name('advertisements'); // affiche la page des annonces pro
+
 Route::get('/adverts', 'AdvertController@displayAdverts'); // affiche les annonces sur la page
 Route::get('a/{id}', 'AdvertController@pageAdvert'); // affiche la page des annonces avec une seule annonce
 Route::get('/mAdvert/{id}', 'AdvertController@displayMyAdverts'); // affiche les annonces sur la page mes annonces
