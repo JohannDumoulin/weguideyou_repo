@@ -18,7 +18,7 @@
 			<div id="mail_container">
 <!---------------------- All mails -------------------------->
 				<div id="all_mails">
-					@include('pages.users', ['users' => $users]);
+					@include('pages.users', ['users' => $users, 'unread' => $unread]);
 					
 					<div class="mail_content">
 						<div class="advertisement_picture_container">
@@ -91,7 +91,7 @@
 								<a href="{{ $messages->nextPageUrl() }}">Voir les messages précédents</a>
 							</div>
 						@endif
-						@foreach($messages as $message)
+						@foreach(array_reverse($messages->items()) as $message)
 							@if($message->from->id !== $user->id)
 							    <p class="message right">{!! nl2br(e($message->content)) !!}</p>
 							@else

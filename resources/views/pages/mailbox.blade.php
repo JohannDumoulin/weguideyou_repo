@@ -17,7 +17,7 @@
 			<div id="mail_container">
 <!---------------------- All mails -------------------------->
 				<div id="all_mails">
-					@include('pages.users', ['users' => $users]);
+					@include('pages.users', ['users' => $users, 'unread' => $unread]);
 					
 					<div class="mail_content">
 						<div class="advertisement_picture_container">
