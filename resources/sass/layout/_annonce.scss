@@ -65,6 +65,7 @@
 		}
 
 		.buttonFav {
+			margin-left: auto;
 			display: inline-block;
 		}
 
@@ -105,6 +106,80 @@
 				font-size: 125%;
 				margin-right: 5px;
 			}
+		}
+	}
+
+	.images {
+
+		display: flex;
+		justify-content: center;
+
+		.main-carousel {
+			width: 80%;
+			overflow: hidden;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			position: absolute;
+		}
+
+		* { box-sizing: border-box; }
+
+		ol {
+			display: flex;
+			justify-content: center;
+		    position: absolute;
+		    right: 50%;
+
+			li {
+				border: 2px solid black;
+				border-radius: 50%;
+				width: 15px;
+   				height: 15px;
+   				margin: 5px;
+   				cursor: pointer;
+			}
+
+			.is-selected {
+				background-color: black;
+			}
+		}
+
+		.main-carousel {
+			background: #EEE;
+			outline: none;
+		}
+
+		.flickity-viewport {
+			position: relative;
+			cursor: grab;
+		}
+
+		.flickity-button {
+			position: absolute;
+		}
+
+		.carousel-cell {
+			width: 100%;
+			height: 300px;
+			margin-right: 10px;
+			border-radius: 5px;
+			counter-increment: carousel-cell;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.carousel-cell:before {
+		  display: block;
+		  text-align: center;
+		  content: counter(carousel-cell);
+		  line-height: 200px;
+		  font-size: 80px;
+		  color: white;
 		}
 	}
 
@@ -157,13 +232,13 @@
 			}
 		}
 
-		.img {
-			height: 100px;
+	    .img {
+		    height: 100px;
 	        width: 100px;
 	        border-radius: 50%;
 	        margin-right: 15px;
-
-	        background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+	        background-color: $deepBlue;
+		    background-repeat: no-repeat;
 	        background-size: cover;
 	        background-position: center;
 		}

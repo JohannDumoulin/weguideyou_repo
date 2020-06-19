@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Flickity from "flickity";
 
 
 export default class AdvertisementPage {
@@ -127,9 +128,6 @@ export default class AdvertisementPage {
             return 0;
         }
 
-        var c = 0;
-        var url;
-
         // Bannière A la une
 
         if($('body').data('content') == "advertisement") {
@@ -163,20 +161,13 @@ export default class AdvertisementPage {
                 })
             })
 
-            c == 0;
             // Afficher les annonces en avant
             for(let b of banner) {
 
                 $.ajax({ type: "GET",   
                     url: "/advert/"+b.id,
                     success : function(res) {
-
                         $('#js-container-premium').append(res)
-
-                        c++;
-                        if(c === banner.length) {
-                            _this.initFav();
-                        }
                     },
                     error : function(res) {
                         console.log(res.responseJSON);
@@ -185,7 +176,9 @@ export default class AdvertisementPage {
             }
         }
 
-            
+        var c = 0;
+        var url;
+        
         // affiche les annonces
         for(let advert of advertsM[page]) {
 
@@ -254,6 +247,7 @@ export default class AdvertisementPage {
         let y;
 
         $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q='+place, function(data){
+
             x = parseFloat(data[0].lat);
             y = parseFloat(data[0].lon);
 
@@ -390,6 +384,17 @@ export default class AdvertisementPage {
                     var location = $(data).find('.firstL')[0].id;
                     _this.initMap(location);
                     _this.initFav();
+
+                    flkyProfil: new Flickity('.main-carousel', {
+                        autoPlay: true,
+                        wrapAround: true,
+                        contain: true,
+                        cellAlign: 'center',
+                        pageDots: true,
+                        pauseAutoPlayOnHover: true,
+                        autoPlay: 5000,
+                        prevNextButtons: false,
+                    })
                 })  
             } else {
                 $('#sectionContent')[0].innerHTML = "";

@@ -14,6 +14,10 @@ export default class Parameters {
         this.addAlerte();
         this.removeAlerte();
         this.getAlertes();
+        this.modifInfos();
+        this.setInfos();
+        this.toggleVisibilityPassword();
+        this.deleteAccount();
     }
 
     addAlerte() {
@@ -30,7 +34,6 @@ export default class Parameters {
                 url: "/addAlerte",
                 data: {alerte: alerte},
                 success : function(res) {
-                    console.log(res);
                     $('.divElemAlertes').append(res);
                 },
                 error : function(res) {
@@ -51,7 +54,10 @@ export default class Parameters {
                 url: "/removeAlerte",
                 data: {id: id},
                 success : function(res) {
-                    console.log(res);
+
+                },
+                error : function(res) {
+                    console.log(res.responseJSON);
                 }
             });
         });
@@ -86,5 +92,85 @@ export default class Parameters {
                 console.log(res.responseJSON);
             }
         });
+    }
+
+    setInfos() {
+
+        $.ajax({ type: "GET",   
+            url: "/getInfos",
+            success : function(res) {
+                $("#mail")[0].value = res.email;
+            },
+            error : function(res) {
+                console.log(res.responseJSON);
+            }
+        });
+
+    }
+
+    modifInfos() {
+        $(document).on('click', '.js-btnModifyInfos', function(event) {
+            
+            var infos = {}
+            infos.oldMdp = $("#oldMdp")[0].value;
+            infos.mail = $("#mail")[0].value;
+            infos.mdp = $("#mdp")[0].value;
+
+            $(".msgErreurOld")[0].innerHTML = "";
+            $(".msgErreurNew")[0].innerHTML = "";
+
+            $.ajax({ type: "GET",   
+                url: "/changeInfos",
+                data: {infos: infos},
+                success : function(res) {
+                    if(res == 0)
+                        $(".msgErreurOld")[0].innerHTML = "Mot de passe incorrect";
+                    else if(res == "c")
+                        $(".msgErreurNew")[0].innerHTML = "Mot de passe trop court (minimum 6 caractères)";
+                    else
+                        window.location.href = "/parametres";
+                },
+                error : function(res) {
+                    console.log(res.responseJSON);
+                }
+            });
+
+        });
+    }
+
+    toggleVisibilityPassword() {
+        $(document).on('click', '.js-visiPassword', function(event) {
+
+            var inp = $("#mdp")[0];
+
+            if (inp.type === "password") {
+                inp.type = "text";
+            } else {
+                inp.type = "password";
+            }
+
+            this.classList.toggle("fa-eye-slash");
+        });
+    }
+
+    deleteAccount() {
+        $(document).on('click', '.js-btnDeleteAccount', function(event) {
+
+            if ( confirm( `
+Voulez vous vraiment supprimer votre compte ? \n
+Votre compte sera définitivement supprimer ainsi que toutes les données lui étant liées (annonces, favoris, commentaires...).\n` ) ) {
+
+                $.ajax({
+                    method: "get",
+                    url: "/deleteAccount",
+                    success: function (data) {
+                       window.location.href = "/";
+                    },
+                    error: function(data) {
+                        console.log(data.responseJSON);
+                    }
+                })
+            }
+        });     
     }
 }

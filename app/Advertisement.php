@@ -15,6 +15,7 @@ class Advertisement extends Model
     	'place',
         'duration',
         'activity',
+        'nbPers',
     	'date_from',
     	'date_to',
     	'price_one_h',

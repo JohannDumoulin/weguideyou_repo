@@ -87,12 +87,22 @@ class AdvertController extends Controller
 	public function displayDetailAdvert($id) {
         $advert = DB::select('select * from Advertisement where id ='.$id);
         $advert = $advert[0];
+        $user = DB::select('select * from users where id ='.$advert->user_id);
+        $user = $user[0];
 
         // convertion format date
-		$advert->date_from = date("d-m-Y", strtotime($advert->date_from));
-		$advert->date_to = date("d-m-Y", strtotime($advert->date_to));
+		$advert->date_from = date("d/m/Y", strtotime($advert->date_from));
+		$advert->date_to = date("d/m/Y", strtotime($advert->date_to));
 
-        return view('layout/annonce')->with('advert', $advert);
+        // get age
+        $birthDate = date("d/m/Y", strtotime($user->birth));
+		$birthDate = explode("/", $birthDate);
+		$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+		? ((date("Y") - $birthDate[2]) - 1)
+		: (date("Y") - $birthDate[2]));
+		$user->age = $age;
+
+        return view('layout/annonce', ['advert' => $advert, 'user' => $user]);
     }
 
 	public function displayModifyAdvert($id) {
@@ -209,32 +219,7 @@ class AdvertController extends Controller
 		return $adverts;
 	}
 
-    
-    public function addAdvert() {
-
-		$dateS = date_create("2020-03-15");
-		$dateE = date_create("2020-05-15");
-
-		$id = DB::table('Advertisement')->insertGetId([
-			'user_id' => 1,
-	    	'type' => "Cours",
-	    	'name' => "titre", 
-	    	'desc' => "description", 
-	    	'date_from' => $dateS, 
-	    	'date_to' => $dateE, 
-	    	'price_one_h' => 40,
-	    	'phone_bool' => false,  
-	    	'place' => "Courchevel",
-	    	'duration' => "journée", 
-	    	'activity' => "Ski", 
-			'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
-		]);
-
-		$this->alerte($id);
-    }
-
-    public function alerte($id) {
+	public function alerte($id) {
 
     	$advert = DB::select('select * from Advertisement where id ='.$id)[0];
 
@@ -256,5 +241,32 @@ class AdvertController extends Controller
 		$users = User::findMany($users_id);
 
 		app('App\Http\Controllers\NotificationController')->alerte($users, $alertes, $id);
+    }
+
+
+	// Temporaire    
+    public function addAdvert() {
+
+		$dateS = date_create("2020-03-15");
+		$dateE = date_create("2020-05-15");
+
+		$id = DB::table('Advertisement')->insertGetId([
+			'user_id' => 1,
+	    	'type' => "Cours",
+	    	'name' => "titre", 
+	    	'desc' => "description", 
+	    	'nbPers' => "Collectif",
+	    	'date_from' => $dateS, 
+	    	'date_to' => $dateE, 
+	    	'price_one_h' => 40,
+	    	'phone_bool' => false,  
+	    	'place' => "Courchevel",
+	    	'duration' => "journée", 
+	    	'activity' => "Ski", 
+			'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
+		]);
+
+		$this->alerte($id);
     }
 }

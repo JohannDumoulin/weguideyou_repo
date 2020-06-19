@@ -17,7 +17,6 @@
 	    <section class="icons">
 	        <div class="wrap">
 	        	<button class="js-btnSaveModif">Enregister les modifications</button>
-	            @include('components.buttonFav', ['id' => $advert->id ])
 	            <i class="fa fa-times js-toggleAnnonce"></i>
 	        </div>
 	    </section>
@@ -44,51 +43,22 @@
 	    </section>
 
 	    <section class="images">
-	        <div class="wrap">
-	            <div class="container">
-				  <br>
-				  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-				    <!-- Indicators -->
-				    <ol class="carousel-indicators">
-				      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				      <li data-target="#myCarousel" data-slide-to="1"></li>
-				      <li data-target="#myCarousel" data-slide-to="2"></li>
-				      <li data-target="#myCarousel" data-slide-to="3"></li>
-				    </ol>
 
-				    <!-- Wrapper for slides -->
-				    <div class="carousel-inner" role="listbox">
+            <div class="main-carousel">
+                <div class="carousel-cell">
+                	<img src="https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg">
+                </div>
+                <div class="carousel-cell">
+                	<img src="https://img.redbull.com/images/c_crop,x_2235,y_0,h_3777,w_3022/c_fill,w_860,h_1075/q_auto,f_auto/redbullcom/2015/09/28/1331750334543_6/construire-piste-ski-val-disere-france">
+                </div>
+                <div class="carousel-cell">
+                	<img src="https://www.canalvie.com/polopoly_fs/1.1360456.1389029380!/image/comment_choisir_son_equipement_de_ski_670.jpg_gen/derivatives/cvlandscape_670_377/comment_choisir_son_equipement_de_ski_670.jpg">
+                </div>
+                <div class="carousel-cell">
+                	<img src="https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg">
+                </div>
+            </div>
 
-				      <div class="item active">
-				        <img src="https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg">
-				      </div>
-
-				      <div class="item">
-				        <img src="https://img.redbull.com/images/c_crop,x_2235,y_0,h_3777,w_3022/c_fill,w_860,h_1075/q_auto,f_auto/redbullcom/2015/09/28/1331750334543_6/construire-piste-ski-val-disere-france">
-				      </div>
-				    
-				      <div class="item">
-				        <img src="https://www.canalvie.com/polopoly_fs/1.1360456.1389029380!/image/comment_choisir_son_equipement_de_ski_670.jpg_gen/derivatives/cvlandscape_670_377/comment_choisir_son_equipement_de_ski_670.jpg">
-				      </div>
-
-				      <div class="item">
-				        <img src="https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg">
-				      </div>
-				  
-				    </div>
-
-				    <!-- Left and right controls -->
-				    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-				      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				      <span class="sr-only">Previous</span>
-				    </a>
-				    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-				      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				      <span class="sr-only">Next</span>
-				    </a>
-				  </div>
-				</div>
-	        </div>
 	    </section>
 
 	    <section class="description">
@@ -122,12 +92,19 @@
 
 	        </div>
 	    </section>
+
+	    <section class="map">
+	    	<div class="wrap titre">
+		    	<i class="fa fa-map-marker"></i>
+		    	<label><span class="firstL" id={{ $advert->place }}>{{ $advert->place }} </span> :</label>
+	    	</div>
+	    	<div id="js-map">
+	    		<div id='mapid'></div>
+	    	</div>
+	    </section>
+
 	</div>
 
 	<div class="reste js-toggleAnnonce"></div>
 
 </div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

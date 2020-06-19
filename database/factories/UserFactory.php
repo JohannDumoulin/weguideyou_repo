@@ -21,8 +21,23 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'password' => Hash::make("123456"),
+        'surname' => "surname",
+        'gender' => "H",
+        'birth' => date_create("1990-05-15"),
+        'address' => "a",
+        'city' => "Paris",
+        'pc' => 00000,
+        'phone' => 0606060606,
+        'pic' => null,
+        'status' => 'PAR',
+        'status_detail' => null,
+         'language' => "Francais - Anglais",
+        'job' => "guide de haute montagne",
+        'license' => null,
+        'license_date' => null,
+        'siret' => null,
+        'cgu' => 0,
+        'news_letter' => 0,
     ];
 });

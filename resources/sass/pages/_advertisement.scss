@@ -362,6 +362,15 @@ body {
 		}
 	}
 
+	.divAllAdvert {
+		display: flex;
+		justify-content: center;
+
+		a {
+			color: black;
+		}
+	}
+
 	/* autocomplete */
 
 	.autocomplete {

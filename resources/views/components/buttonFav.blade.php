@@ -2,7 +2,7 @@
 
 
 @auth
-	<div class="buttonFav picto like" id="{{ $id }}">
+	<div class="buttonFav picto like" id="{{ $id }}" title="Ajouter aux Favoris">
 		<i class="fa fa-heart"></i>
 	</div>
 @endauth

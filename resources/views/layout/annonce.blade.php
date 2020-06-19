@@ -6,9 +6,10 @@
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{asset('css/app.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
+
 
 
 <div class="annonce">
@@ -18,8 +19,6 @@
 	    <section class="icons">
 	        <div class="wrap">
 	            @include('components.buttonFav', ['id' => $advert->id ])
-<!-- 	            <i class="fa fa-chevron-left"></i>
-	            <i class="fa fa-chevron-right"></i> -->
 	            <i class="fa fa-times js-toggleAnnonce"></i>
 	        </div>
 	    </section>
@@ -47,51 +46,22 @@
 	    </section>
 
 	    <section class="images">
-	        <div class="wrap">
-	            <div class="container">
-				  <br>
-				  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-				    <!-- Indicators -->
-				    <ol class="carousel-indicators">
-				      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				      <li data-target="#myCarousel" data-slide-to="1"></li>
-				      <li data-target="#myCarousel" data-slide-to="2"></li>
-				      <li data-target="#myCarousel" data-slide-to="3"></li>
-				    </ol>
 
-				    <!-- Wrapper for slides -->
-				    <div class="carousel-inner" role="listbox">
-
-				      <div class="item active">
-				        <img src="https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg">
-				      </div>
-
-				      <div class="item">
-				        <img src="https://img.redbull.com/images/c_crop,x_2235,y_0,h_3777,w_3022/c_fill,w_860,h_1075/q_auto,f_auto/redbullcom/2015/09/28/1331750334543_6/construire-piste-ski-val-disere-france">
-				      </div>
-				    
-				      <div class="item">
-				        <img src="https://www.canalvie.com/polopoly_fs/1.1360456.1389029380!/image/comment_choisir_son_equipement_de_ski_670.jpg_gen/derivatives/cvlandscape_670_377/comment_choisir_son_equipement_de_ski_670.jpg">
-				      </div>
-
-				      <div class="item">
-				        <img src="https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg">
-				      </div>
-				  
-				    </div>
-
-				    <!-- Left and right controls -->
-				    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-				      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				      <span class="sr-only">Previous</span>
-				    </a>
-				    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-				      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				      <span class="sr-only">Next</span>
-				    </a>
-				  </div>
-				</div>
-	        </div>
+            <div class="main-carousel">
+                <div class="carousel-cell">
+                	<img src="https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg">
+                </div>
+                <div class="carousel-cell">
+                	<img src="https://img.redbull.com/images/c_crop,x_2235,y_0,h_3777,w_3022/c_fill,w_860,h_1075/q_auto,f_auto/redbullcom/2015/09/28/1331750334543_6/construire-piste-ski-val-disere-france">
+                </div>
+                <div class="carousel-cell">
+                	<img src="https://www.canalvie.com/polopoly_fs/1.1360456.1389029380!/image/comment_choisir_son_equipement_de_ski_670.jpg_gen/derivatives/cvlandscape_670_377/comment_choisir_son_equipement_de_ski_670.jpg">
+                </div>
+                <div class="carousel-cell">
+                	<img src="https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg">
+                </div>
+            </div>
+            
 	    </section>
 
 	    <section class="description">
@@ -107,7 +77,7 @@
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>Type de cours</label>
-	                <p id="ad-nb_pers">Collectif</p>
+	                <p id="ad-nb_pers">{{ $advert->nbPers }}</p>
 	            </div>                
 
 	            <div>
@@ -121,18 +91,27 @@
 
 	    <section class="profil">
 	    	<div class="wrap">
-	    		<div class="img"></div>
+
+	    		<div class="img" style="background-image: url('img/user-circle-solid-white.svg');"></div>
+
 	    		<div class="txt">
 	        		<p>
-	        			<span class="nom">Megan</span>, <span>26</span> ans.
+	        			<span class="nom">{{ $user->name }}</span>, <span>{{ $user->age }}</span> ans.
 	        		</p>      
 	          		<p>
-	        			<span>Guide de haute montagne</span> - <span>Val Thorens</span>
+	        			<span>{{ $user->job }}</span> - <span>{{ $user->city }}</span>
 	        		</p>
 	          		<p>
 	        			<i class="fa fa-globe"></i>
-	        			<span>Francais</span> - <span>Anglais</span>
+	        			<span>{{ $user->language }}</span>
 	        		</p>
+	        		@if($advert->phone_bool == 1)
+		        	<p>
+		    			<i class="fa fa-phone"></i>
+		    			<span>{{ $user->phone }}</span>
+		    		</p>
+					@endif
+
 	    		</div>
 	    	</div>
 	    </section>
@@ -156,7 +135,3 @@
 	<div class="reste js-toggleAnnonce"></div>
 
 </div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

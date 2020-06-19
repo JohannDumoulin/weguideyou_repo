@@ -10,6 +10,13 @@
 @section('attribute', 'home')
 
 @section('content')
+
+@if(session('message') != null)
+
+<div class="msgConfirm">{{session('message')}}</div>
+
+@endif
+
     <section class="recruitingPro">
         <div class="wrap">
             <div><img src="{{asset('/img/nate-johnston-2gBpsNuHcyA-unsplash.jpg')}}" alt=""></div>

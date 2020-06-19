@@ -12,10 +12,16 @@
 
 @section('content')
 
+@if(session('message') != null)
+
+<div class="msgConfirm">{{session('message')}}</div>
+
+@endif
+
     <div class="content">
 
         <div class="menu">
-            <a href="#password">Informations de connexion</a>
+            <a href="#infosLogin">Informations de connexion</a>
             <a href="#notif">Notification</a>
             <a href="#alerte">Alertes</a>
             <a href="#payement">Méthodes de payement</a>
@@ -25,22 +31,31 @@
 
         <div>
 
-            <section class="password" id="password">
+            <section class="password" id="infosLogin">
                 <div class="wrap">
 
                     <div class="inputs">
                          <div>
                             <label for="">Adresse E-mail</label>
-                            <input type="text" name="" id placeholder="Adresse E-mail">
+                            <input type="text" name="" id="mail" placeholder="Adresse E-mail">
                         </div>
-                        <div class="mdp">
+                        <div class="">
                             <label for="">Mot de passe</label>
-                            <input type="password" name="" id="" placeholder="Mot de passe">
+                            <div class="divMdp">
+                                <i class="fa fa-eye js-visiPassword"></i>
+                                <input type="password" name="" id="mdp" placeholder="Mot de passe">
+                            </div>
+                            <p class="msgErreurNew"></p>
                         </div>
+                        <div class="">
+                            <label for="">Ancien Mot de passe</label>
+                            <input type="password" name="" id="oldMdp" placeholder="Confirmer votre mot de passe">
+                        </div>
+                        <p class="msgErreurOld"></p>
                     </div>
 
                     <div class="btn">
-                        @include('components.buttonLink', ['link' => '#'], ['text' => 'Modifier'])
+                        <button class="js-btnModifyInfos buttonLink">Modifier</button>
                     </div>
 
                 </div>
@@ -52,15 +67,10 @@
                     <div class="titles">
                         <h3>Notifications</h3>
                         <h4>Mail</h4>
-                        <h4>Site</h4>
                     </div>
 
                     <div class="elem">
                         <p>Alerte</p>
-                        <label class="switch">
-                            <input type="checkbox" id="showOffline">
-                            <span class="slider round"></span>
-                        </label>
                         <label class="switch">
                             <input type="checkbox" id="showOffline">
                             <span class="slider round"></span>
@@ -73,10 +83,6 @@
                             <input type="checkbox" id="showOffline">
                             <span class="slider round"></span>
                         </label>
-                        <label class="switch">
-                            <input type="checkbox" id="showOffline">
-                            <span class="slider round"></span>
-                        </label>
                     </div>            
 
                     <div class="elem">
@@ -85,18 +91,10 @@
                             <input type="checkbox" id="showOffline">
                             <span class="slider round"></span>
                         </label>
-                        <label class="switch">
-                            <input type="checkbox" id="showOffline">
-                            <span class="slider round"></span>
-                        </label>
                     </div>            
 
                     <div class="elem">
                         <p>Quand une utilisateur réserve un de mes offres</p>
-                        <label class="switch">
-                            <input type="checkbox" id="showOffline">
-                            <span class="slider round"></span>
-                        </label>
                         <label class="switch">
                             <input type="checkbox" id="showOffline">
                             <span class="slider round"></span>
@@ -209,7 +207,7 @@
             <section class="sup" id="sup">
                 <div class="wrap">
                     
-                    <button>Supprimer mon compte</button>
+                    <button class="js-btnDeleteAccount">Supprimer mon compte</button>
 
                 </div>  
             </section>
