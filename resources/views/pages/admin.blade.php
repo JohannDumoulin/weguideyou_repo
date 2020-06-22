@@ -16,17 +16,17 @@
             <div class="admin-nav">
                 <span class="is-selected">Utilisateurs</span>
                 <span>Annonces</span>
-                <span>Reviews</span>
+                {{--<span>Reviews</span>
                 <span>Signalements</span>
                 <span>Questions</span>
-                <span>Emails</span>
+                <span>Emails</span>--}}
             </div>
             <div class="admin-data user_data data-nth-0">
                 <div class="data-categories">
                     <div>
                         <div><span>Nom</span></div>
                         <div><span>Statut</span></div>
-                        <div><span>Age</span></div>
+                        <div><span>Naissance</span></div>
                         <div><span>Genre</span></div>
                         <div><span>Ville</span></div>
                         {{--<li>Création du compte</li>--}}
@@ -38,7 +38,7 @@
                 </div>
                 <div class="data-content">
                     @foreach($users as $user)
-                       <div>
+                        <div class="data-content-main">
                             <div>
                                 <img src="{{$user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
                             </div>
@@ -52,33 +52,57 @@
                             <div>
                                 <i class="fas fa-ellipsis-v fa-lg"></i>
                             </div>
-                       </div>
+                        </div>
+                        <div class="data-content-hidden js-dataDetail is-hidden">
+                            <div><span>{{$user->name}} {{$user->surname}}</span></div>
+                        </div>
                     @endforeach
+
+                        {{--@foreach($users as $user)
+                        <div class="data-content-main">
+                            <div>
+                                <img src="{{$user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
+                            </div>
+                            <div>
+                                <div><span>{{$user->name}} {{$user->surname}}</span></div>
+                                <div><span class="userStatus">{{$user->status}}</span></div>
+                                <div><span>{{$user->birth}}</span></div>
+                                <div><span>{{$user->gender}}</span></div>
+                                <div><span>{{$user->city}}</span></div>
+                            </div>
+                            <div>
+                                <i class="fas fa-ellipsis-v fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="data-content-hidden js-dataDetail is-hidden">
+                            <div><span>{{$user->name}} {{$user->surname}}</span></div>
+                        </div>
+                    @endforeach--}}
                 </div>
             </div>
             <div class="admin-data advertisement_data data-nth-1 hidden">
                 <div class="data-categories">
                     <div>
                         <div><span>Annonceur</span></div>
+                        <div><span>Type</span></div>
                         <div><span>Titre</span></div>
-                        <div><span>Description</span></div>
                         <div><span>Activité</span></div>
-                        <div><span>Ville</span></div>
+                        <div><span>Lieu</span></div>
                     </div>
                 </div>
                 <div class="data-content">
                     @foreach($ads as $ad)
                         <div>
-                            {{--<div>
-                                <img src="{{$user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
-                            </div>--}}
-                            {{--<div>--}}
-                                <div><span>{{$ad->user->name}}</span></div>
-                                {{--<div><span class="userStatus">{{$user->status}}</span></div>
-                                <div><span>{{$user->birth}}</span></div>
-                                <div><span>{{$user->gender}}</span></div>
-                                <div><span>{{$user->city}}</span></div>
-                            </div>--}}
+                            <div>
+                                <img src="{{$ad->user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
+                            </div>
+                            <div>
+                                <div><span>{{$ad->user->name}} {{$ad->user->surname}}</span></div>
+                                <div><span>{{$ad->type}}</span></div>
+                                <div><span>{{$ad->name}}</span></div>
+                                <div><span>{{$ad->activity}}</span></div>
+                                <div><span>{{$ad->place}}</span></div>
+                            </div>
                             <div>
                                 <i class="fas fa-ellipsis-v fa-lg"></i>
                             </div>

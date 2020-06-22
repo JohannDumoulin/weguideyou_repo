@@ -16,6 +16,7 @@ export default class Admin {
 
     initEvents(){
         this.adminNav();
+        this.dataDetails();
     }
 
     adminNav(){
@@ -29,6 +30,12 @@ export default class Admin {
 
             $('.admin-data').addClass('hidden');
             $('.data-nth-'+position).removeClass('hidden');
+        });
+    }
+
+    dataDetails(){
+        $('.data-content-main').click(function(){
+            $('.js-dataDetail').siblings().removeClass("is-hidden");
         });
     }
 }

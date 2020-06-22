@@ -11,7 +11,6 @@ class AdminController extends Controller
     public function index(){
         $users = User::all();
         $ads = Advertisement::all();
-        //dd($ad);
         return view('pages/admin', compact('users', 'ads'));
     }
 }
