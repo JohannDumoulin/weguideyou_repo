@@ -20,8 +20,6 @@ export default class Admin {
     }
 
     adminNav(){
-        let length = $('.admin-nav').children();
-        console.log(length);
         $('.admin-nav>span').click(function(){
             let position = $(this).index();
 
@@ -35,7 +33,12 @@ export default class Admin {
 
     dataDetails(){
         $('.data-content-main').click(function(){
-            $('.js-dataDetail').siblings().removeClass("is-hidden");
+            if ($(this).siblings('.js-dataDetail').hasClass("is-hidden")){
+                $('.js-dataDetail').addClass("is-hidden");
+                $(this).siblings('.js-dataDetail').removeClass("is-hidden");
+            } else{
+                $('.js-dataDetail').addClass("is-hidden");
+            }
         });
     }
 }

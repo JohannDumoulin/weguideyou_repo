@@ -123,4 +123,4 @@ Route::middleware(['admin'])->group(function () {
 });
 
 //logout
-Route::get('/logout', 'LogoutController@index');
+Route::get('/logout', 'LogoutController@index')->middleware('auth');
