@@ -18,14 +18,16 @@ class AdvertController extends Controller
 
 		// get param url
 		$parameters = [];
-		$p = parse_url($_SERVER["HTTP_REFERER"]);
-		if(isset($p["query"])) {
-			$ps = explode("&", $p["query"]);
-			foreach ($ps as $key => $value) {
-				$r = explode("=", $value);
-				if($r[1] != "") {
-					$r[1] = str_replace("+", " ", $r[1]);
-					$parameters[$r[0]] = $r[1];
+		if($request->filterUrl == true) {
+			$p = parse_url($_SERVER["HTTP_REFERER"]);
+			if(isset($p["query"])) {
+				$ps = explode("&", $p["query"]);
+				foreach ($ps as $key => $value) {
+					$r = explode("=", $value);
+					if($r[1] != "") {
+						$r[1] = str_replace("+", " ", $r[1]);
+						$parameters[$r[0]] = $r[1];
+					}
 				}
 			}
 		}
@@ -66,7 +68,7 @@ class AdvertController extends Controller
         $adverts = (array) $adverts;
 		$adverts = $adverts["\x00*\x00items"];
 
-		if(count($parameters) != 0) {
+		if($request->filterUrl == true) {
 			array_push($adverts, $parameters);
 		}
 
@@ -106,7 +108,16 @@ class AdvertController extends Controller
     }
 
     public function displayAdverts(Request $request) {
-    	return view('components/advert')->with('adverts', $request->adverts);
+
+    	$comp = 'components/advert';
+    	if($request->type == "mes_annonces")
+    		$comp = 'components/mAdvert';
+
+    	return view($comp)->with('adverts', $request->adverts);
+    }
+
+    public function displayMyAdverts(Request $request) {
+    	return view('components/mAdvert')->with('adverts', $request->adverts);
     }
 
 	public function displayModifyAdvert($id) {
@@ -134,12 +145,6 @@ class AdvertController extends Controller
     	redirect('/')->with(['message' => 'L\'annonce a bien été modifiée !']);
 
     	return 1;
-    }
-
-    public function displayMyAdverts($id) {
-    	$advert = DB::select('select * from Advertisement where id ='.$id);
-    	$advert = $advert[0];
-    	return view('components/mAdvert')->with('advert', $advert);
     }
 
 	public function pageAdverts() {

@@ -1,29 +1,31 @@
 
-<div class="mAdvert {{ $advert->id }}">
+@foreach ($adverts as $advert)
+
+<div class="mAdvert {{ $advert['id'] }}">
 
 <hr>
 
-    <div class="advertisement_content js-toggleAnnonce" id=/annonce/{{ $advert->id }}>
+    <div class="advertisement_content js-toggleAnnonce" id=/annonce/{{ $advert['id'] }}>
         <div class="profil_picture_container">
             <img src="{{ asset('img/advertisement.jpg') }}" alt="">
         </div>
         <div class="content">
             <div class="infos">
-                <h3> {{ $advert->name }}</h3>
+                <h3> {{ $advert['name'] }}</h3>
                 <div class="info_content">
                     <div class="more">
-                        <p> {{ $advert->price_one_h }} €</p>
+                        <p> {{ $advert['price_one_h'] }} €</p>
                         <div class="seller_infos">
                             <p>ESF</p>
                             <img src="{{ asset('img/esf.png') }}" alt="">
                         </div>
                     </div>
-                    <p class="desc"> {{ $advert->desc }}</p>
+                    <p class="desc"> {{ $advert['desc'] }}</p>
                 </div>
             </div>
-            @include('components.buttonFav', ['id' => $advert->id ])
+            @include('components.buttonFav', ['id' => $advert['id'] ])
 
-            @if($advert->premium_urgent_week == 1)
+            @if($advert['premium_urgent_week'] == 1)
 
             <svg class="picto urgent" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" title="Urgent">
                 <g clip-path="url(#clip0)">
@@ -45,8 +47,8 @@
     <div class="divBtns">
 
         <div>
-            <button class="buttonLink js-btnModifyAdvert js-toggleAnnonce" id=/modifyAnnonce/{{ $advert->id }}>Modifier</button>
-            <button class="buttonLink js-btnDeleteAdvert" id={{ $advert->id }}>Supprimer</button>
+            <button class="buttonLink js-btnModifyAdvert js-toggleAnnonce" id=/modifyAnnonce/{{ $advert['id'] }}>Modifier</button>
+            <button class="buttonLink js-btnDeleteAdvert" id={{ $advert['id'] }}>Supprimer</button>
         </div>
         <div>
             <input type="checkbox" name="">
@@ -54,3 +56,5 @@
         
     </div>
 </div>
+
+@endforeach

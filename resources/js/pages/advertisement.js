@@ -37,8 +37,8 @@ export default class AdvertisementPage {
         this.addEventSort();
         this.addEventFilter();
 
-        var c = $('body').data('content')
-        if(c == "annonces" || c == "home" || c == "parameters" || c == "homeIndividual")
+        var c = $('body').data('content') 
+        if(c == "advertisement" || c == "advertisementPro" || c == "home" || c == "parameters" || c == "homeIndividual")
             this.getCities();
     }
 
@@ -54,20 +54,24 @@ export default class AdvertisementPage {
         });
     }
 
-    getAdverts(type) {
+    getAdverts(type, filterUrl) {
         let _this = this;
+
+        if(filterUrl == undefined)
+            filterUrl = true;
 
         // afficher qu'une seule annonce
         var url = window.location.pathname;
         if(url.includes("a/")) {
-            var id = url[url.length -1];
+            var id = url.split('/')[2];
             type = id;
+            filterUrl = false;
         }
 
         $.ajax({
             method: "get",
             url: "/getAdverts",
-            data: {type: type},
+            data: {type: type, filterUrl : filterUrl},
             success : function(data) {
 
                 if(data.length == 0){
@@ -76,20 +80,23 @@ export default class AdvertisementPage {
                     return 0;
                 }
 
-                var params = data[data.length-1];
-                if(params.id === undefined) {
+                if(filterUrl) {
 
+                    var params = data[data.length-1];
                     _this.$els.filter_on = params;
 
+                    // Fill input
                     if(params.activity)
                         $("#activity")[0].value = params.activity;
                     if(params.place)
                         $("#place")[0].value = params.place;
                     if(params.date)
                         $("#date")[0].value = params.date;
-
-                    data.pop();
+                    if(params.type)
+                        $("#type")[0].value = params.type;
                 }
+
+                data.pop();
 
                 _this.$els.adverts = data;
                 _this.$els.advertsM = _this.splitInPages(data)
@@ -163,10 +170,13 @@ export default class AdvertisementPage {
 
             //Afficher les annonces en avant
             $.ajax({ type: "GET",   
-                url: "adverts",
+                url: "/adverts",
                 data: {adverts : banner},
                 success : function(res) {
                     $('#js-container-premium').append(res)
+
+                    if($('.js-divLoading').length > 0)
+                        $('.js-divLoading')[0].innerHTML = "";
                 },
                 error : function(res) {
                     console.log(res.responseJSON);
@@ -177,7 +187,7 @@ export default class AdvertisementPage {
         // affiche les annonces
         $.ajax({ type: "GET",   
             url: "/adverts",
-            data: {adverts : advertsM[page]},
+            data: {adverts : advertsM[page], type : $('body').data('content')},
             success : function(res) {
 
                 if($('.js-divLoading').length > 0)
@@ -187,6 +197,8 @@ export default class AdvertisementPage {
 
                 if($('.divPage').length > 0)
                     _this.displayBtnPage(advertsM, page)
+
+                _this.initFav();
             },
             error : function(res) {
                 console.log(res.responseJSON);
@@ -323,7 +335,7 @@ export default class AdvertisementPage {
 
             _this.$els.filter_on = filter_on; // save filters
 
-            _this.getAdverts($('title')[0].innerHTML);
+            _this.getAdverts($('title')[0].innerHTML, false);
         }); 
     }
 
@@ -340,7 +352,7 @@ export default class AdvertisementPage {
         if(adverts == undefined)
             adverts = false;
 
-        var urgent = this.$els.filter_on["urgent"];
+        var urgent = this.$els.urgent;
 
         var _this = this;
         var filter_on = this.$els.filter_on;
@@ -369,6 +381,11 @@ export default class AdvertisementPage {
                     return (value == v[key]);
                 });   
             }
+            if(urgent) {
+                adverts = adverts.filter(function(v){
+                    return (v["premium_urgent_week"] == 1);
+                });  
+            }
         }
 
         this.$els.adverts = adverts;
@@ -386,9 +403,10 @@ export default class AdvertisementPage {
 
             if($('#sectionContent')[0].innerHTML == "") {
                 $('#sectionContent').load(url, function(data) {
-                    var location = $(data).find('.firstL')[0].id;
+                    var location = $(data).find('.location')[0].innerHTML;
                     _this.initMap(location);
                     _this.initFav();
+                    $("body").toggleClass("stopScrolling");
 
                     flkyProfil: new Flickity('.main-carousel', {
                         autoPlay: true,
@@ -404,9 +422,8 @@ export default class AdvertisementPage {
             } else {
                 $('#sectionContent')[0].innerHTML = "";
                 _this.initFav();
-            }  
-
-            $("body").toggleClass("stopScrolling");     
+                $("body").toggleClass("stopScrolling");
+            }       
         }); 
     }
 

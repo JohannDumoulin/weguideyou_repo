@@ -23,11 +23,11 @@
 		<div class="wrap">
 
 <!---------------------- First Filters --------------------->
-			<form action="/annonces" class="first_filter">
+			<form action="/annoncesPro" class="first_filter">
 
 				<div class="header_filter">
 					<label>Type</label>
-					<select name="type">
+					<select name="type" id="type" class="js-filter">
 						<option value="LookForJob">Recherche de travail</option>
 						<option value="LookForPeople">Recherche d'employé</option>
 					</select>
@@ -35,7 +35,7 @@
 
 				<div class="header_filter autocomplete">
 					<label for="place">LIEU</label>
-					<input name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter" type="text">
+					<input name="place" id="place" placeholder="Où rechercher-vous ?" class="js-filter" type="text">
 				</div>
 
 				<div class="header_filter">
@@ -56,7 +56,7 @@
 			</div>
 
 			<div class="effaceFilters">
-				<a href="/annonces?type=LookForJob">Effacer tous les filtres</a>
+				<a href="/annoncesPro?type=LookForJob">Effacer tous les filtres</a>
 			</div>
 
 			<!-- More filters -->

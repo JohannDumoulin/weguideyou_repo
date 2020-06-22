@@ -25,6 +25,8 @@
 <!---------------------- First Filters --------------------->
 			<form action="/annonces" class="first_filter">
 
+				<input name="type" value="Cours" id="type" style="display: none">
+
 				<div class="header_filter">
 					<label for="activity">ACTIVITÉ</label>
 					<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
@@ -56,7 +58,7 @@
 			</div>
 
 			<div class="effaceFilters">
-				<a href="/annonces">Effacer tous les filtres</a>
+				<a href="/annonces?type=Cours">Effacer tous les filtres</a>
 			</div>
 
 			<!-- More filters -->
@@ -158,7 +160,7 @@
 
 					@if(Request::is('a/*'))
 					<div class="divAllAdvert">
-						<a href="/annonces">Voir toutes les annonces</a>
+						<a href="/annonces?type=Cours">Voir toutes les annonces</a>
 					</div>
 					@endif
 

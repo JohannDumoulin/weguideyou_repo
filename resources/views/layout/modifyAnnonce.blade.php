@@ -96,7 +96,7 @@
 	    <section class="map">
 	    	<div class="wrap titre">
 		    	<i class="fa fa-map-marker"></i>
-		    	<label><span class="firstL" id={{ $advert->place }}>{{ $advert->place }} </span> :</label>
+		    	<label><span class="location">{{ $advert->place }} </span> :</label>
 	    	</div>
 	    	<div id="js-map">
 	    		<div id='mapid'></div>
