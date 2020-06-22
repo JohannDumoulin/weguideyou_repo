@@ -33,4 +33,9 @@ class Advertisement extends Model
     	'premium_securing',
     	'premium_insurance',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

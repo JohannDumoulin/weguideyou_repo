@@ -3,7 +3,6 @@ body[data-content="admin"]{
 
     .main-admin{
         width: 100%;
-        height: 100vh;
         padding: 50px 0;
 
         h1{
@@ -85,7 +84,6 @@ body[data-content="admin"]{
         }
 
         .admin-data{
-            max-height: 60vh;
 
             .data-categories{
                 display: flex;
@@ -93,7 +91,6 @@ body[data-content="admin"]{
                 align-items: center;
 
                 box-sizing: border-box;
-                padding: 40px 60px 40px 105px;
 
                 background-color: #FFF;
 
@@ -112,6 +109,9 @@ body[data-content="admin"]{
             }
 
              .data-content{
+
+                 max-height: 60vh;
+                 overflow: auto;
 
                  >div {
                      display: flex;
@@ -143,6 +143,8 @@ body[data-content="admin"]{
         .user_data{
             .data-categories{
 
+                padding: 40px 60px 40px 105px;
+
                 >div{
                     width: 100%;
 
@@ -165,6 +167,7 @@ body[data-content="admin"]{
             }
 
             .data-content{
+
                 >div{
 
                     >div:first-child{
@@ -206,6 +209,89 @@ body[data-content="admin"]{
                             cursor: pointer;
                         }
                     }
+                }
+            }
+        }
+
+        .advertisement_data{
+            .data-categories{
+
+                padding: 40px 60px 40px 60px;
+
+                >div{
+                    width: 100%;
+
+                    display: flex;
+
+                    >div:first-child{
+                        width: calc((100%/5 - 20px) + 80px);
+                        overflow-x: hidden;
+                        white-space: nowrap;
+                        margin-right: 20px;
+                    }
+
+                    div:not(first-child){
+                        width: calc((100%/5 - 20px) - 20px);
+                        overflow-x: hidden;
+                        white-space: nowrap;
+                        margin-right: 20px;
+                    }
+                }
+            }
+
+            .data-content{
+
+                >div{
+
+                    >div:first-child{
+                        display: flex;
+
+                        >div{
+                            box-sizing: border-box;
+                            padding-right: 20px;
+                        }
+                    }
+
+
+                    >div:last-child{
+                        i{
+                            width: 10px;
+                            color: #c4c4c4;
+                            cursor: pointer;
+                        }
+                    }
+
+                    /*>div:first-child{
+                        display: flex;
+                        margin-right: 10px;
+
+                        img{
+                            height: 45px;
+                            width: 45px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }*/
+
+                    /*>div:nth-of-type(2){
+                        width: 100%;
+
+                        display: flex;
+
+                        >div:first-child{
+                            width: calc((100%/5 - 20px) + 80px);
+                            overflow-x: hidden;
+                            white-space: nowrap;
+                            margin-right: 20px;
+                        }
+
+                        div:not(first-child){
+                            width: calc((100%/5 - 20px) - 20px);
+                            overflow-x: hidden;
+                            white-space: nowrap;
+                            margin-right: 20px;
+                        }
+                    }*/
                 }
             }
         }
