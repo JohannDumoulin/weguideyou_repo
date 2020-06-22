@@ -38,46 +38,36 @@
                 </div>
                 <div class="data-content">
                     @foreach($users as $user)
-                        <div class="data-content-main">
-                            <div>
-                                <img src="{{$user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
+                        <div class="data-content-container">
+                            <div class="data-content-main">
+                                <div>
+                                    <img src="{{$user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
+                                </div>
+                                <div>
+                                    <div><span>{{$user->name}} {{$user->surname}}</span></div>
+                                    <div><span class="userStatus">{{$user->status}}</span></div>
+                                    <div><span>{{$user->birth}}</span></div>
+                                    <div><span>{{$user->gender}}</span></div>
+                                    <div><span>{{$user->city}}</span></div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-ellipsis-v fa-lg"></i>
+                                </div>
                             </div>
-                            <div>
-                                <div><span>{{$user->name}} {{$user->surname}}</span></div>
-                                <div><span class="userStatus">{{$user->status}}</span></div>
-                                <div><span>{{$user->birth}}</span></div>
-                                <div><span>{{$user->gender}}</span></div>
-                                <div><span>{{$user->city}}</span></div>
+                            <div class="data-content-hidden js-dataDetail is-hidden">
+                                <div>
+                                    <div><span>Téléphone :</span> <span>{{$user->phone}}</span></div>
+                                    <div><span>Email :</span> <span>{{$user->email}}</span></div>
+                                    <div><span>Adresse :</span> <span>{{$user->address}}  {{$user->pc}} {{$user->city}}</span></div>
+                                    <div><span>Siret :</span> <span>{{$user->siret ?? 'Inconnu'}}</span></div>
+                                    <div><span>Licence :</span> <span>{{$user->licence ?? 'Inconnu'}}</span></div>
+                                </div>
+                                <div>
+                                    <div><span>Description :</span> <span>{{$user->desc ?? 'Inconnu'}}</span></div>
+                                </div>
                             </div>
-                            <div>
-                                <i class="fas fa-ellipsis-v fa-lg"></i>
-                            </div>
-                        </div>
-                        <div class="data-content-hidden js-dataDetail is-hidden">
-                            <div><span>{{$user->name}} {{$user->surname}}</span></div>
                         </div>
                     @endforeach
-
-                        {{--@foreach($users as $user)
-                        <div class="data-content-main">
-                            <div>
-                                <img src="{{$user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
-                            </div>
-                            <div>
-                                <div><span>{{$user->name}} {{$user->surname}}</span></div>
-                                <div><span class="userStatus">{{$user->status}}</span></div>
-                                <div><span>{{$user->birth}}</span></div>
-                                <div><span>{{$user->gender}}</span></div>
-                                <div><span>{{$user->city}}</span></div>
-                            </div>
-                            <div>
-                                <i class="fas fa-ellipsis-v fa-lg"></i>
-                            </div>
-                        </div>
-                        <div class="data-content-hidden js-dataDetail is-hidden">
-                            <div><span>{{$user->name}} {{$user->surname}}</span></div>
-                        </div>
-                    @endforeach--}}
                 </div>
             </div>
             <div class="admin-data advertisement_data data-nth-1 hidden">
