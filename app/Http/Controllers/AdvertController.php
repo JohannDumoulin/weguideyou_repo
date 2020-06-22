@@ -104,7 +104,10 @@ class AdvertController extends Controller
 		: (date("Y") - $birthDate[2]));
 		$user->age = $age;
 
-        return view('layout/annonce', ['advert' => $advert, 'user' => $user]);
+		// get images
+		$imgs = explode(", ", $advert->img);
+
+        return view('layout/annonce', ['advert' => $advert, 'user' => $user, 'imgs' => $imgs]);
     }
 
     public function displayAdverts(Request $request) {

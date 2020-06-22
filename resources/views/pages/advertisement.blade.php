@@ -5,6 +5,9 @@
 @push('style')
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 @endpush
 
 @section('attribute', 'advertisement')
@@ -35,9 +38,15 @@
 					</datalist>
 				</div>
 
-				<div class="header_filter autocomplete">
+				<div class="header_filter">
 					<label for="place">LIEU</label>
 					<input name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter" type="text">
+					<div>
+						<div class="loader searchCity" id="hidden"></div>
+					</div>
+					<div>
+						<div class="suggestions"></div>
+					</div>
 				</div>
 
 				<div class="header_filter">
@@ -62,7 +71,7 @@
 			</div>
 
 			<!-- More filters -->
-			<form action="" class="first_filter_more js-first_filter_more">
+			<form action="" class="first_filter_more js-first_filter_more"> 
 				<div class="first_filter_more_content">
 					<p>Choix du prestataire :</p>
 					<input type="checkbox" id="organization" name="organization" checked>
@@ -74,13 +83,9 @@
 					<p>Nombre de personne(s) :</p>
 					<select name="nbPers" id="nbPers" class="js-filter">
 						<option value="">-</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7+">7+</option>
+						<option value="Collectif">Collectif</option>
+						<option value="Individuel">Individuel</option>
+
 					</select>
 				</div>
 				<div class="first_filter_more_content">
@@ -185,4 +190,5 @@
 
 @push('script')
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @endpush

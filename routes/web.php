@@ -26,6 +26,7 @@ Route::get('/parametres', function () {
 });
 
 Route::get('/profil', 'ProfilController@index');
+Route::get('/profil/{id}', 'ProfilController@profilPublic');
 
 Route::get('/favoris', 'FavoritesController@index');
 

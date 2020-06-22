@@ -28,7 +28,7 @@ $factory->define(User::class, function (Faker $faker) {
         'address' => "a",
         'city' => "Paris",
         'pc' => 00000,
-        'phone' => 0606060606,
+        'phone' => "0606060606",
         'pic' => null,
         'status' => 'PAR',
         'status_detail' => null,

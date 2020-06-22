@@ -33,9 +33,13 @@
 					</select>
 				</div>
 
-				<div class="header_filter autocomplete">
+				<div class="header_filter">
 					<label for="place">LIEU</label>
-					<input name="place" id="place" placeholder="Où rechercher-vous ?" class="js-filter" type="text">
+					<input name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter" type="text">
+					<div class="loader searchCity" id="hidden"></div>
+					<div>
+						<div class="suggestions"></div>
+					</div>
 				</div>
 
 				<div class="header_filter">
@@ -72,16 +76,16 @@
 					<p>Profession :</p>
 					<input list="dataJob" name="job" id="job" class="js-filter">
 					<datalist id="dataJob">
-						<option>Guide</option>
-						<option>Moniteur</option>
+						<option value="">Guide</option>
+						<option value="">Moniteur</option>
 					</datalist>
 				</div>
 				<div class="first_filter_more_content">
 					<p>Poste logé</p>
 					<select name="loge" id="loge" class="js-filter">
-						<option>-</option>
-						<option>Oui</option>
-						<option>Non</option>
+						<option value="">-</option>
+						<option value="1">Oui</option>
+						<option value="0">Non</option>
 					</select>
 				</div>
 

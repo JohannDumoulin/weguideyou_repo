@@ -32,6 +32,7 @@ class CreateAdvertisement extends Migration
             $table->integer('price_day')->nullable()->default(false);
             $table->boolean('phone_bool')->nullable()->default(false);
             $table->string('img')->nullable()->default(false);
+            $table->integer('loge')->nullable()->default(false);
             $table->boolean('premium_in_front_week')->nullable()->default(false);
             $table->boolean('premium_in_front_month')->nullable()->default(false);
             $table->boolean('premium_banner_week')->nullable()->default(false);

@@ -48,18 +48,15 @@
 	    <section class="images">
 
             <div class="main-carousel">
+
+            	@foreach ($imgs as $img)
+
                 <div class="carousel-cell">
-                	<img src="https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg">
+                	<img src={{ $img }}>
                 </div>
-                <div class="carousel-cell">
-                	<img src="https://img.redbull.com/images/c_crop,x_2235,y_0,h_3777,w_3022/c_fill,w_860,h_1075/q_auto,f_auto/redbullcom/2015/09/28/1331750334543_6/construire-piste-ski-val-disere-france">
-                </div>
-                <div class="carousel-cell">
-                	<img src="https://www.canalvie.com/polopoly_fs/1.1360456.1389029380!/image/comment_choisir_son_equipement_de_ski_670.jpg_gen/derivatives/cvlandscape_670_377/comment_choisir_son_equipement_de_ski_670.jpg">
-                </div>
-                <div class="carousel-cell">
-                	<img src="https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg">
-                </div>
+
+                @endforeach
+
             </div>
             
 	    </section>
@@ -92,6 +89,16 @@
 	                <p id="ad-duration">{{ $advert->duration }}</p>
 	            </div>
 
+		        <div>
+	                <i class="fa fa-users"></i>
+	                <label>Poste logé</label>
+	                @if($advert->loge == 1)
+	                	<p id="ad-nb_pers">Oui</p>
+	                @else
+						<p id="ad-nb_pers">Oui</p>
+					@endif
+	            </div> 
+
 	        </div>
 	    </section>
 
@@ -102,7 +109,7 @@
 
 	    		<div class="txt">
 	        		<p>
-	        			<span class="nom">{{ $user->name }}</span>, <span>{{ $user->age }}</span> ans.
+	        			<a href=/profil/{{ $user->id }} class="nom">{{ $user->name }}</a>, <span>{{ $user->age }}</span> ans.
 	        		</p>      
 	          		<p>
 	        			<span>{{ $user->job }}</span> - <span>{{ $user->city }}</span>
