@@ -1,0 +1,365 @@
+body[data-content="userProfile"]{
+
+    .content{
+        background-color: $background;
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .profile-updatePanel{
+            width: 100%;
+            height: 100vh;
+            background-color: $background-fade;
+            z-index: 999;
+            position: fixed;
+            top: 0;
+
+            .wrap{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+
+                position: relative;
+                .updatePanel-main{
+                    background-color: $background;
+                    padding: 80px;
+                    box-sizing: border-box;
+
+                    width: 80%;
+                    max-height: 90vh;
+
+                    overflow-x: hidden;
+                    overflow-y: auto;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: flex-start;
+
+                    >div{
+                        width: 100%;
+                        margin-bottom: 80px;
+                    }
+
+                    .buttonLink{
+                        margin: 0 auto;
+                    }
+
+                    .updatePanel-identity{
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+
+                        >div{
+                            margin: 10px 20px 10px 0;
+                        }
+                        >div:last-child{
+                            margin: 10px 0 10px 0;
+                        }
+                    }
+
+                    .updatePanel-lang{
+
+                        .updatePanel-langContainer{
+                            width: 100%;
+                            border: solid 1.5px rgba(0, 0, 0, 0.2);
+                            color: #000000;
+                            opacity: 0.5;
+
+                            box-sizing: border-box;
+                            padding: 20px;
+                        }
+
+                    }
+
+                    .updatePanel-description{
+                        label{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+
+                    label{
+                        width: 100%;
+
+                        input {
+                            display: block;
+                            border: none;
+                            padding-bottom: 10px;
+                            border-bottom: solid 1.5px rgba(0, 0, 0, 0.2);
+                            background-position: -200px 0;
+                            background-size: 200px 100%;
+                            background-repeat: no-repeat;
+                            color: #000000;
+                            opacity: 0.5;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 0.8em;
+                            &:focus,{
+                                box-shadow: none;
+                                outline: none;
+                                background-position: 0 0;
+                                transition: 0.2s;
+                                border-bottom: solid 1.5px $deepBlue;
+                                color: $deepBlue;
+                                opacity: 1;
+                                &::-webkit-input-placeholder {
+                                    color: $deepBlue;
+                                    font-size: 11px;
+                                    visibility: visible !important;
+                                }
+                            }
+                        }
+
+
+
+                        textarea{
+                            width: 100%;
+                            resize: none;
+                            border: solid 1.5px rgba(0, 0, 0, 0.2);
+                            color: #000000;
+                            opacity: 0.5;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 0.8em;
+
+                            box-sizing: border-box;
+                            padding: 20px;
+                            &:focus,{
+                                box-shadow: none;
+                                outline: none;
+                                background-position: 0 0;
+                                transition: 0.2s;
+                                border: solid 1.5px $deepBlue;
+                                color: $deepBlue;
+                                opacity: 1;
+                                &::-webkit-input-placeholder {
+                                    color: $deepBlue;
+                                    font-size: 11px;
+                                    visibility: visible !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                #close-profile-updatePanel{
+                    width: 3%;
+                    position: absolute;
+                    right: 100px;
+
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .profile-Banner {
+            width: 100%;
+            height: 50vh;
+            background-image: url("https://afh.asso.fr/wp-content/uploads/2017/09/sejour-ski.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+
+            >div{
+
+                border-radius: 4px 4px 0px 0px;
+                -moz-border-radius: 4px 4px 0px 0px;
+                -webkit-border-radius: 4px 4px 0px 0px;
+                border: 0px solid #000000;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+
+                background-color: $background-fade;
+                opacity: 0;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover{
+                    transition: .2s;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .wrap{
+
+            .mainContainer{
+                width: 100%;
+
+                a:not(.buttonLink){
+                    color: $deepBlue;
+                    font-size: 1em;
+                }
+
+                .mainContent{
+
+                    i{
+                        color: $deepBlue;
+                    }
+
+                    #js-modifyProfile{
+                        cursor: pointer;
+                    }
+
+                    >div:first-child{
+                        display: flex;
+
+                        .profileOverview{
+                            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
+                            border-radius: 4px 4px 4px 4px;
+                            -moz-border-radius: 4px 4px 4px 4px;
+                            -webkit-border-radius: 4px 4px 4px 4px;
+                            border: 0px solid #000000;
+                            background-color: #FFF;
+
+                            max-width: 30%;
+
+                            transform: translateY(-130px);
+
+                            margin-right: 50px;
+
+                            *{
+                                white-space: nowrap;
+                            }
+
+                            p{
+                                font-family: "Roboto", Arial, sans-serif;
+                                font-weight: 800;
+                                font-size: 1.2em;
+                                text-transform: uppercase;
+                                margin-bottom: 5px;
+                            }
+
+                            p:first-child{
+                                opacity: .2;
+                            }
+
+                            .reviewLinkContainer{
+                                display: flex;
+                                align-items: center;
+
+                                a{
+                                    margin-right: 20px;
+                                }
+                            }
+
+                            .profileImg{
+                                position: relative;
+                                height: 250px;
+                                img{
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    border-radius: 4px 4px 0px 0px;
+                                    -moz-border-radius: 4px 4px 0px 0px;
+                                    -webkit-border-radius: 4px 4px 0px 0px;
+                                    border: 0px solid #000000;
+                                }
+
+                                >div{
+
+                                    border-radius: 4px 4px 0px 0px;
+                                    -moz-border-radius: 4px 4px 0px 0px;
+                                    -webkit-border-radius: 4px 4px 0px 0px;
+                                    border: 0px solid #000000;
+                                    position: absolute;
+                                    height: 100%;
+                                    width: 100%;
+
+                                    background-color: $background-fade;
+                                    opacity: 0;
+
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+
+                                    &:hover{
+                                        transition: .2s;
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+
+                            >div:last-child{
+                                padding: 20px 80px 20px 20px;
+
+                                a{
+                                    font-family: "Roboto", Arial, sans-serif;
+                                    font-weight: 800;
+                                    font-size: 1.2em;
+                                    text-transform: uppercase;
+                                }
+
+                                >div:not(:last-child){
+                                    margin-bottom: 20px;
+                                }
+                            }
+                        }
+
+                        .profileDetails{
+
+                            >div{
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            >div:first-child{
+                                padding: 20px 0;
+
+                                h1{
+                                    margin-right: 30px;
+
+                                    span{
+                                        opacity: .2;
+                                    }
+                                }
+
+                                .js-modifyProfile{
+                                    margin-bottom: 10px;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .profile-lang{
+                                i{
+                                    margin-left: 10px;
+                                }
+                            }
+
+                            .profile-desc{
+                                max-width: 80%;
+                                padding: 30px 0;
+                                p{
+                                    text-align: justify;
+                                }
+                            }
+                        }
+                    }
+
+                    .profile-ad{
+                        padding-bottom: 50px;
+
+                        .profile-main-carousel{
+                            overflow: hidden;
+                        }
+
+                        .carousel-cell {
+                            width: 40%; /* full width */
+                            height: 160px; /* height of carousel */
+
+                            background-color: red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

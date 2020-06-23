@@ -15,12 +15,14 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_sender');
-            $table->foreign('id_sender')->references('id')->on('users')->onDelete('cascade');;
-            $table->unsignedInteger('id_receiver');
-            $table->foreign('id_receiver')->references('id')->on('users')->onDelete('cascade');;
+            $table->unsignedInteger('receiver_id');
+            $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('sender_id');
+            $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('description');
             $table->integer('rating');
+            $table->boolean('course_completed')->nullable();
+            $table->boolean('course_cancelled')->nullable();
             $table->timestamps();
         });
     }

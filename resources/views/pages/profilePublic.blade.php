@@ -45,14 +45,14 @@
                                 <h1>{{$user->name ?? 'undefined' }}, <span>{{$years ?? 'undefined'}} ans</span></h1>
                             </div>
                             <div>
-                                <p>{{ $user->job }} - <a href="#">{{ $user->city }}</a></p>
+                                <p>{{ Auth::user()->job}} - <a href="#">{{ Auth::user()->city}}</a></p>
                             </div>
                             <div>
                                 <p>{{ $user->language }}</p>
                                 <i class="fa fa-globe"></i>
                             </div>
                             <div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a augue turpis. Aliquam erat volutpat. Aliquam lacus neque, fermentum sit amet magna in, laoreet laoreet neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In viverra lorem eu sapien molestie volutpat.</p>
+                                <p>{{Auth::user()->status_detail ?? 'Non disponnible'}}</p>
                             </div>
                             @include('components.buttonLink', ['link' => '#'], ['text' => 'Contacter Megan'])
                         </div>

@@ -8,14 +8,14 @@
 			<p>{{ Auth::user()->name ?? 'undefined' }}</p>
 		</div>
 
-		<div class="content">
+		<div class="modal-content">
             @auth
                 <div class="modalNav">
                     <hr>
                     @if(Auth::user()->admin===1)
                         <a href="{{route('admin.index')}}">Administration</a>
                     @endif
-                    <a href="/profil">Profil</a>
+                    <a href="{{route('profile.index')}}">Profil</a>
                     <a href="/messagerie">Messagerie</a>
                     @if(Auth::user()->admin!==1)
                         <a href="/mes_annonces">Mes Annonces</a>
