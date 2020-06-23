@@ -25,9 +25,11 @@ Route::get('/parametres', function () {
     return view('pages/parameter');
 });
 
-/*Profil*/
-Route::get('/profil', 'ProfilController@index')->middleware('auth');
-Route::get('/profil/{id}', 'ProfilController@profilPublic');
+/*Profile*/
+//Route::get('/profil', 'ProfileController@index')->middleware('auth');
+//Route::post('/profile/update', 'ProfileController@update')->name('profile.update')->middleware('auth');
+Route::resource('profile','ProfileController')->middleware('auth');
+Route::get('/profil/{id}', 'ProfileController@profilPublic');
 
 
 /*Favoris*/
