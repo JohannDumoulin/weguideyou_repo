@@ -28,6 +28,5 @@ class ProfilController extends Controller
         $years = Carbon::createFromDate($dateOfBirth)->age;
 
     	return view('pages/profilPublic', ['user'=>$user, "years"=> $years]);
-
     }
 }
