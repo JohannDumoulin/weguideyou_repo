@@ -28,91 +28,123 @@ body[data-content="userProfile"]{
                     padding: 80px;
                     box-sizing: border-box;
 
+                    width: 80%;
+                    max-height: 90vh;
+
+                    overflow-x: hidden;
+                    overflow-y: auto;
+
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    align-items: center;
+                    align-items: flex-start;
 
                     >div{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-
                         width: 100%;
+                        margin-bottom: 80px;
                     }
 
-                    /*>div:nth-of-type(2){
-                        margin-bottom: 60px;
+                    .buttonLink{
+                        margin: 0 auto;
                     }
 
-                    >div:nth-of-type(3) {
-                        margin-bottom: 10px;
+                    .updatePanel-identity{
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+
+                        >div{
+                            margin: 10px 20px 10px 0;
+                        }
+                        >div:last-child{
+                            margin: 10px 0 10px 0;
+                        }
                     }
 
-                    >div:nth-of-type(2), :nth-of-type(3){
-                        label{
+                    .updatePanel-lang{
+
+                        .updatePanel-langContainer{
                             width: 100%;
+                            border: solid 1.5px rgba(0, 0, 0, 0.2);
+                            color: #000000;
+                            opacity: 0.5;
 
-                            input {
-                                width: 100%;
-                                display: block;
-                                border: none;
-                                padding-bottom: 10px;
-                                border-bottom: solid 1.5px rgba(0, 0, 0, 0.2);
-                                background-position: -200px 0;
-                                background-size: 200px 100%;
-                                background-repeat: no-repeat;
-                                color: #000000;
-                                opacity: 0.5;
-                                font-family: "Roboto", Arial, sans-serif;
-                                font-weight: 400;
-                                font-size: 0.8em;
-                                &:focus,{
-                                    box-shadow: none;
-                                    outline: none;
-                                    background-position: 0 0;
-                                    transition: 0.2s;
-                                    border-bottom: solid 1.5px $deepBlue;
+                            box-sizing: border-box;
+                            padding: 20px;
+                        }
+
+                    }
+
+                    .updatePanel-description{
+                        label{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+
+                    label{
+                        width: 100%;
+
+                        input {
+                            display: block;
+                            border: none;
+                            padding-bottom: 10px;
+                            border-bottom: solid 1.5px rgba(0, 0, 0, 0.2);
+                            background-position: -200px 0;
+                            background-size: 200px 100%;
+                            background-repeat: no-repeat;
+                            color: #000000;
+                            opacity: 0.5;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 0.8em;
+                            &:focus,{
+                                box-shadow: none;
+                                outline: none;
+                                background-position: 0 0;
+                                transition: 0.2s;
+                                border-bottom: solid 1.5px $deepBlue;
+                                color: $deepBlue;
+                                opacity: 1;
+                                &::-webkit-input-placeholder {
                                     color: $deepBlue;
-                                    opacity: 1;
-                                    &::-webkit-input-placeholder {
-                                        color: $deepBlue;
-                                        font-size: 11px;
-                                        visibility: visible !important;
-                                    }
+                                    font-size: 11px;
+                                    visibility: visible !important;
+                                }
+                            }
+                        }
+
+
+
+                        textarea{
+                            width: 100%;
+                            resize: none;
+                            border: solid 1.5px rgba(0, 0, 0, 0.2);
+                            color: #000000;
+                            opacity: 0.5;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 0.8em;
+
+                            box-sizing: border-box;
+                            padding: 20px;
+                            &:focus,{
+                                box-shadow: none;
+                                outline: none;
+                                background-position: 0 0;
+                                transition: 0.2s;
+                                border: solid 1.5px $deepBlue;
+                                color: $deepBlue;
+                                opacity: 1;
+                                &::-webkit-input-placeholder {
+                                    color: $deepBlue;
+                                    font-size: 11px;
+                                    visibility: visible !important;
                                 }
                             }
                         }
                     }
-
-                    .form-check{
-                        padding: 20px;
-                        display: flex;
-                        justify-content: flex-start;
-                        margin-bottom: 40px;
-
-                        input{
-                            margin-right: 10px;
-                        }
-
-                        label{
-                            font-family: "Roboto", Arial, sans-serif;
-                            font-weight: 400;
-                            font-size: 0.8em;
-                        }
-                    }
-
-                    a:not(.buttonLink){
-                        color: #000000;
-                    }
-
-                    .buttonLink{
-                        margin-bottom: 20px;
-                    }
-
-                    a:last-child{
-                        opacity: .2;
-                    }*/
                 }
 
                 #close-profile-updatePanel{

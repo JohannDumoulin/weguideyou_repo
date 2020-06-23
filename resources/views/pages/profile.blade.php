@@ -16,16 +16,55 @@
             <div class="wrap">
                 <form class="updatePanel-main" method="POST" action="{{--{{ route('login') }}--}}">
                     @csrf
+                    <div class="updatePanel-identity">
+                        <div>
+                            <label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" autofocus>
+                            </label>
+                        </div>
+                        @if($status === 'PAR' || $status === 'PRO')
+                            <div>
+                                <label>
+                                    <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ Auth::user()->surname }}" autofocus>
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="date" class="form-control @error('birth') is-invalid @enderror" name="birth" value="{{ Auth::user()->birth }}" autofocus>
+                                </label>
+                            </div>
+                        @endif
+                    </div>
                     @if($status === 'NSO' || $status === 'SO' || $status === 'PRO')
                         <div>
-
+                            {{--job choice--}}
                         </div>
                     @endif
-                    <div>
+                    <div class="updatePanel-lang">
+                        <div class="updatePanel-langContainer"></div>
+                    </div>
+                    {{--<div>
+                        <h3>@lang('default.field_language')</h3>
+                        <p class="sous_item" id="langueuser">
+                            --}}{{--@foreach($languages_user ?? '' as $l)
+                                {{$l->name_language}}<br/>
+                            @endforeach--}}{{--
+                        </p>
+                        <input type="hidden" id="languages" name="languages" value="">
+                        <button class="button sous_item edit_button" type="button" id="buttonlang" onclick="language()">@lang('default.adding_language_add')</button>
+                        <p id= "languep" class="sous_item">
+                            <select id="langues" name="name_language">
+                                <option value="" selected>--</option>
+                                --}}{{--@foreach ($language as $lang)
+                                    <option value="{{$lang->name_language}}">{{$lang->name_language}}</option>
+                                @endforeach--}}{{--
+                            </select>
+                            <button type="button" id="buttonajoutlang" class="button" onclick="addLanguage()">@lang('default.adding')</button>
+                        </p>
+                    </div>--}}
+                    <div class="updatePanel-description">
                         <label>
-                            Description
-                            {{--<input id="email" placeholder="Adresse mail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>--}}
-                            <textarea name="desc" class="profile-description" cols="30" rows="10"></textarea>
+                            <textarea name="desc" class="profile-description" rows="5" cols="30">{{Auth::user()->description ?? 'Aucune description'}}</textarea>
                         </label>
                     </div>
                     <button type="submit" class="buttonLink">Valider</button>

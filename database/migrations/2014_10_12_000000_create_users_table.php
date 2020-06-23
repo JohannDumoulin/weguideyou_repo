@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->integer('pc');
             $table->string('phone')->nullable();
             $table->string('pic')->nullable();
+            $table->string('description')->nullable();
             $table->char('status', 3);
             $table->char('language')->nullable();
             $table->char('job')->nullable();

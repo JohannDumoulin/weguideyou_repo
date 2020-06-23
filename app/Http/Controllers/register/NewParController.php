@@ -49,12 +49,7 @@ class NewParController extends Controller
             'city' => $values['city'],
             'pc' => $values['postcode'],
             'phone' => $values['phone'],
-            'pic' => null,
             'status' => 'PAR',
-            'status_detail' => null,
-            'license' => null,
-            'license_date' => null,
-            'siret' => null,
             'cgu' => $values['CGU'],
             'news_letter' => $values['newsLetter'],
 
