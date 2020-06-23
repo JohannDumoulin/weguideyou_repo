@@ -11,7 +11,6 @@ class ProfilController extends Controller
 {
     public function index(){
         if (Auth::check()){
-            $Carbon=  Carbon::now();
             $dateOfBirth = Auth::user()->birth;
             $years = Carbon::createFromDate($dateOfBirth)->age;
             return view('pages/profil', ['years'=>$years]);

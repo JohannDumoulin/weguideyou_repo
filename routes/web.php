@@ -25,10 +25,13 @@ Route::get('/parametres', function () {
     return view('pages/parameter');
 });
 
-Route::get('/profil', 'ProfilController@index');
+/*Profil*/
+Route::get('/profil', 'ProfilController@index')->middleware('auth');
 Route::get('/profil/{id}', 'ProfilController@profilPublic');
 
-Route::get('/favoris', 'FavoritesController@index');
+
+/*Favoris*/
+Route::get('/favoris', 'FavoritesController@index')->middleware('auth');
 
 
 
