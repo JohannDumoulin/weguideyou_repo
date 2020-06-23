@@ -152,12 +152,78 @@ body {
 		}
 	}
 
+	.sAnnonces {
+		.wrap {
+			padding-right: 0;
+			margin: 0;
+			max-width: none;
+		}
+	}
+
 	#advertisement_section {
 		display: flex;
 		justify-content: space-between;
+		padding-right: 0;
+
+		.divM, .divMap {
+			width: 300px;
+			height: 100vh;
+			position: sticky;
+			top: 0;
+			margin-left: 30px;
+		}
+
+		.divM {
+			margin-top: 20px;
+
+			i {
+				padding: 5px;
+				cursor: pointer;
+				transition: transform 1s;
+			}
+
+			.divMap {
+				width: 100%;
+				margin-left: 0;
+				height: 100%;
+			}
+		}
+
+		.mapHidden {
+			width: 25px;
+
+			.divMap {
+				display: none;
+			}
+
+			.hideMap {
+				transform: rotate(180deg);
+			}
+		}
+
+		.mapFull {
+			position: fixed;
+			width: 90vw;
+			height: 90vh;
+			z-index: 999;
+			margin: 0;
+			top: 0;
+		    left: 50%;
+		    margin-left: -45vw;
+
+			.reste {
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				position: fixed;
+				z-index: -1;
+				background-color: #00000073;
+			}
+		}
 
 		.divLeft {
-			width: 70%;
+			width:70%;
 		}
 
 		.divRight {
@@ -197,6 +263,7 @@ body {
 			&.all, &.premium {
 
 				.advertisement_content {
+					max-height: 450px;
 					display: flex;
 					width: 100%;
 					box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);

@@ -21,6 +21,8 @@ class CreateAdvertisement extends Migration
             $table->text('desc');
             $table->string('type');
             $table->string('place');
+            $table->string('place_lat');
+            $table->string('place_lng');
             $table->string('duration');
             $table->string('activity');
             $table->string('nbPers');

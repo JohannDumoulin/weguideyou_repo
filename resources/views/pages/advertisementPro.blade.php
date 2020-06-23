@@ -35,7 +35,7 @@
 
 				<div class="header_filter">
 					<label for="place">LIEU</label>
-					<input name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter" type="text">
+					<input name="place" id="place" placeholder="Où rechercher-vous ?" class="js-filter" type="text">
 					<div class="loader searchCity" id="hidden"></div>
 					<div>
 						<div class="suggestions"></div>
