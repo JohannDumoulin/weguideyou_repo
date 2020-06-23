@@ -8,4 +8,9 @@ class Languages extends Model
 {
     protected $table = "languages";
     protected $primaryKey = "language_id";
+
+    public function user()
+    {
+        return $this->belongsTo('App\UserLanguages');
+    }
 }

@@ -22,7 +22,6 @@ class ProfilController extends Controller
     	$user = DB::select('select * from users where id ='.$id);
     	$user = $user[0];
 
-	    $Carbon=  Carbon::now();
         $dateOfBirth = $user->birth;
         $years = Carbon::createFromDate($dateOfBirth)->age;
 

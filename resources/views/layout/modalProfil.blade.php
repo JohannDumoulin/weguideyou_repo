@@ -8,7 +8,7 @@
 			<p>{{ Auth::user()->name ?? 'undefined' }}</p>
 		</div>
 
-		<div class="content">
+		<div class="modal-content">
             @auth
                 <div class="modalNav">
                     <hr>
