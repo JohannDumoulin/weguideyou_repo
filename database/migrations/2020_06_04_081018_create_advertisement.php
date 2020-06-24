@@ -28,6 +28,7 @@ class CreateAdvertisement extends Migration
             $table->string('nbPers');
             $table->date('date_from');
             $table->date('date_to');
+            $table->integer('nbReport');
             $table->integer('price_one_h')->nullable()->default(false);
             $table->integer('price_two_h')->nullable()->default(false);
             $table->integer('price_half_day')->nullable()->default(false);

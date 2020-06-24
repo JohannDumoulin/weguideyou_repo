@@ -22,6 +22,7 @@ class Advertisement extends Model
     	'price_two_h',
     	'price_half_day',
     	'price_day',
+        'nbReport',
     	'phone_bool',
     	'premium_in_front_week',
     	'premium_in_front_month',

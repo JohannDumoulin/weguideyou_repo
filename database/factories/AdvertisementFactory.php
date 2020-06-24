@@ -52,6 +52,7 @@ $factory->define(Advertisement::class, function (Faker $faker) {
         'place_lng' => random_int (0, 50),
         'duration' => $duration,
         'activity' => $activity,
+        'nbReport' => 0,
         'img' => "https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg, https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg",
         'premium_urgent_week' => random_int (0, 1), 
         'premium_banner_week' => random_int (0, 1), 
