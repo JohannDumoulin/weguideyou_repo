@@ -21,6 +21,7 @@ export default class AdvertisementPage {
             sortType: "",
             urgent: false,
             cities: "",
+            fAff: true,
         }
     }
 
@@ -36,9 +37,11 @@ export default class AdvertisementPage {
         this.changePage();
         this.addEventSort();
         this.addEventFilter();
+        this.hideMap();
+        this.expandMap();
 
         var c = $('body').data('content') 
-        if(c == "advertisement" || c == "advertisementPro" || c == "home" || c == "parameters" || c == "homeIndividual")
+        if(c == "advertisement" || c == "advertisementPro" || c == "home" || c == "parameters" || c == "homeIndividual" || c == "create_advertisement")
             this.getCities();
     }
 
@@ -59,6 +62,9 @@ export default class AdvertisementPage {
 
         if(filterUrl == undefined)
             filterUrl = true;
+        if(type = undefined) {
+            type = $('title')[0].innerHTML;
+        }
 
         // afficher qu'une seule annonce
         var url = window.location.pathname;
@@ -136,11 +142,14 @@ export default class AdvertisementPage {
         }
 
         // Bannière A la une
+        if($('body').data('content') == "advertisement" || $('body').data('content') == "advertisementPro") {
+            banner()
+        }
 
-        if($('body').data('content') == "advertisement") {
+        function banner() {
             var tempBanner = [];
             var banner = [];
-            var r
+            var r;
 
             // récup les annonces premium
             adverts.forEach(function (advert, index) {
@@ -148,6 +157,12 @@ export default class AdvertisementPage {
                     tempBanner.push(advert);  
                 }
             })
+
+            if(tempBanner.length == 0 && _this.$els.fAff) {
+                $(".divRight")[0].remove();
+                return 0;
+            }
+
             // en choisir au hasard
             var l = 2;
             if(tempBanner.length < l) 
@@ -190,13 +205,18 @@ export default class AdvertisementPage {
             data: {adverts : advertsM[page], type : $('body').data('content')},
             success : function(res) {
 
+                if(_this.$els.fAff) {
+                    _this.initMapAdverts(adverts);
+                    _this.$els.fAff = false;
+                }
+
                 if($('.js-divLoading').length > 0)
                     $('.js-divLoading')[0].innerHTML = "";
 
                 $('#js-container').append(res)
 
                 if($('.divPage').length > 0)
-                    _this.displayBtnPage(advertsM, page)
+                    _this.displayBtnPage(advertsM, page);
 
                 _this.initFav();
             },
@@ -244,19 +264,19 @@ export default class AdvertisementPage {
         });   
     }
 
-    initMap(place) {
+    initMap(lat, lng) {
 
         let x;
         let y;
 
-        $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q='+place, function(data){
+        $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=france', function(data){
 
-            x = parseFloat(data[0].lat);
-            y = parseFloat(data[0].lon);
+            x = lat;
+            y = lng;
 
-            var map = L.map('mapid').setView([x,y], 6/data[0].importance);
+            var map1 = L.map('mapid').setView([x,y], 10); //6/data[0].importance
 
-            L.marker([x, y]).addTo(map);
+            L.marker([x, y]).addTo(map1);
 
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -265,23 +285,113 @@ export default class AdvertisementPage {
                 tileSize: 512,
                 zoomOffset: -1,
                 accessToken: 'pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ'
-            }).addTo(map);
+            }).addTo(map1);
 
-            map.invalidateSize();
+            map1.invalidateSize();
         });
     }
 
 
     initMapAdverts(adverts) {
-        // get every city
-        // init map
-        // set markers
-        /*
-        var group = new L.featureGroup([marker1, marker2, marker3]);
-        map.fitBounds(group.getBounds());
-        */
-        //console.log(adverts);
 
+        if(adverts == undefined)
+            adverts = this.$els.adverts;
+
+        var _this = this;
+
+        if($('#mapAdverts')[0].innerHTML != "") {
+            var div = document.createElement("div");
+            div.id = "mapAdverts";
+            div.classList = "divMap";
+            $('#mapAdverts')[0].replaceWith(div);
+        }
+
+        // get every city
+        let cities = adverts.map((node) => [node.place, node.place_lat, node.place_lng]);
+
+        // remove duplicate cities
+        cities = cities.filter(function(item, pos) {
+            return cities.indexOf(item) == pos;
+        })
+
+        // display map
+        $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=france', function(data){
+
+            var x = parseFloat(data[0].lat);
+            var y = parseFloat(data[0].lon);
+
+            var map = L.map('mapAdverts').setView([x,y], 10);
+            _this.$els.map = map;
+
+            var tileLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ'
+            }).addTo(map);
+
+            // display markers
+            var markers = []
+            for(var city of cities) {
+
+                var m = L.marker([city[1], city[2]])
+                    .bindPopup(city[0])
+                    .on('click', function() { 
+                        $("#place")[0].value = this._popup._content;
+                        _this.$els.filter_on["place"] = this._popup._content;
+                        _this.getAdverts($('title')[0].innerHTML, false);
+                    });
+
+                markers.push(m);
+            }
+
+            var group = new L.featureGroup(markers)
+                .addTo(map);
+            
+            map.fitBounds(group.getBounds());
+            map.invalidateSize();
+
+            // get cities in current map bounds
+            function getFeaturesInView() {
+
+                var features = [];
+                var layers = Object.entries(map._layers);
+
+                // teste si la ville est présente sur la carte actuelle
+                for(var layer of layers) {
+                    if(layer[1]._latlng != undefined) {
+                        if(map.getBounds().contains(layer[1]._latlng)) {
+                            features.push(layer[1]._popup._content);
+                        }
+                    }
+                }
+
+                var c = _this.$els.filter_on["place"]
+
+                if(arraysEqual(c, features) == false) {
+                    _this.$els.filter_on["place"] = features;
+                    _this.getAdverts($('title')[0].innerHTML, false);
+                }
+            }
+
+            map.on("moveend", function(e){
+                getFeaturesInView();
+            })
+
+            function arraysEqual(a, b) {
+              if (a === b) return true;
+              if (a == null || b == null) return false;
+              if (a.length !== b.length) return false;
+
+              for (var i = 0; i < a.length; ++i) {
+                if (a[i] !== b[i]) return false;
+              }
+              return true;
+            }
+
+        });
 
 
     }
@@ -364,17 +474,33 @@ export default class AdvertisementPage {
 
         // filters
         for ([key, value] of filter_on) {
-            if(key == "activity" || key == "place") {
+
+            if(key == "place" && typeof value == "object") {
                 adverts = adverts.filter(function(v){
-                    var a = v[key].toLowerCase()
-                    var b = value.toLowerCase()
-                    return a.includes(b)
+                    return value.includes(v[key]);
+                });
+            }
+            else if(key == "activity" || key == "place") {
+                adverts = adverts.filter(function(v){
+                    var a = v[key].toLowerCase();
+                    var b = value.toLowerCase();
+                    return a.includes(b);
                 });
             }
             else if(key == "date") {
                 adverts = adverts.filter(function(v){
                     return (value >= v["date_from"] && value <= v["date_to"]);
                 });
+            }
+            else if(key == "inpSalMin") {
+                adverts = adverts.filter(function(v){
+                    return (v["salaire"] >= value);
+                });
+            }
+            else if(key == "inpSalMax") {
+                adverts = adverts.filter(function(v){
+                    return (v["salaire"] <= value);
+                });      
             }
             else {
                 adverts = adverts.filter(function(v){
@@ -389,7 +515,7 @@ export default class AdvertisementPage {
         }
 
         this.$els.adverts = adverts;
-        this.$els.advertsM = _this.splitInPages(adverts)
+        this.$els.advertsM = _this.splitInPages(adverts);
         this.changeOrder(adverts);
     }
 
@@ -403,8 +529,11 @@ export default class AdvertisementPage {
 
             if($('#sectionContent')[0].innerHTML == "") {
                 $('#sectionContent').load(url, function(data) {
-                    var location = $(data).find('.location')[0].innerHTML;
-                    _this.initMap(location);
+
+                    var lat = $(data).find('.lat')[0].innerHTML;
+                    var lng = $(data).find('.lng')[0].innerHTML;
+                    _this.initMap(lat, lng);
+
                     _this.initFav();
                     $("body").toggleClass("stopScrolling");
 
@@ -487,8 +616,9 @@ export default class AdvertisementPage {
                         $('.suggestions')[0].innerHTML = "";
 
                         for (var value of data.geonames) {
+
                             if(value.countryName != undefined)
-                                $('.suggestions')[0].innerHTML += "<div class='itemSug'>"+value.name+", "+value.countryName+"</div>";
+                                $('.suggestions')[0].innerHTML += "<div class='itemSug "+value.lat+" "+value.lng+"'>"+value.name+", "+value.countryName+"</div>";
                             else
                                 $('.suggestions')[0].innerHTML += "<div class='itemSug'>"+value.name+"</div>";
                         }
@@ -503,8 +633,15 @@ export default class AdvertisementPage {
         }
 
         $(document).on('click', '.itemSug', function(event) {
-            $('#place')[0].value = this.innerHTML;
+
             $('.suggestions')[0].innerHTML = "";
+
+            if($('#place_lat').length > 0) {
+                $('#place_lat')[0].value = this.classList[1]
+                $('#place_lng')[0].value = this.classList[2]
+            }
+
+            $('#place')[0].value = this.innerHTML;
         })
 
         $(document).on("click", function(e) {
@@ -545,5 +682,27 @@ export default class AdvertisementPage {
         }
 
         return resultat;
+    }
+
+    hideMap() {
+
+        var _this = this;
+
+        $(".hideMap").on("click", function() {
+            $('.divM').removeClass("mapFull");
+            $('.divM').toggleClass("mapHidden");
+            _this.initMapAdverts();
+        })
+    }
+
+    expandMap() {
+
+        var _this = this;
+
+        $(".expandMap").on("click", function() {
+            $('.divM').removeClass("mapHidden");
+            $('.divM').toggleClass("mapFull");
+            _this.initMapAdverts();
+        })
     }
 }

@@ -24,7 +24,7 @@ class NewNSOAccount extends Form
                 ],
             ])
             ->add('address', 'text',[
-                'label' => 'required','string','max:100','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                'label' => 'Adresse',
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
@@ -84,14 +84,13 @@ class NewNSOAccount extends Form
                 'label' => 'Je souhaite recevoir les dernières nouvelles de la part de We Guide You.',
                 'checked' => false
             ])
-
-            ->add('statusDetail', 'text',[
-                'label' => 'Statut de la structure',
+            ->add('sector', 'select', [
+                'choices' => ['hotel' =>'Hôtellerie', 'agence_touristique' =>'Agence touristique', 'other' =>'Autre'],
+                'selected' => '',
+                'empty_value' => 'Choisir',
+                'label' => 'Secteur :',
                 'rules' => [
-                    'required',
-                    'string',
-                    'max:200',
-                    'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                    'required|string'
                 ],
             ])
             ->add('siret', 'text',[

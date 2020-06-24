@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import Flickity from "flickity";
 
-export default class Profil {
+export default class Profile {
     constructor() {
-        if ($('body').data('content') === "userProfil"){
+        if ($('body').data('content') === "userProfile"){
             this.initEls();
             this.initEvents();
         }
@@ -11,7 +11,7 @@ export default class Profil {
 
     initEls(){
         this.$els ={
-            flkyProfil: new Flickity( '.profil-main-carousel', {
+            flkyProfile: new Flickity( '.profile-main-carousel', {
                 freeScroll: false,
                 contain: true,
                 // disable previous & next buttons and dots
@@ -31,7 +31,7 @@ export default class Profil {
 
     bannerParallax(){
         $(window).on("scroll",function() {
-            $(".profil-Banner").css({backgroundPositionY: -window.scrollY*0.07+'px'});
+            $(".profile-Banner").css({backgroundPositionY: -window.scrollY*0.07+'px'});
         });
     }
 

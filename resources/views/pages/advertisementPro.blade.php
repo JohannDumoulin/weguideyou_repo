@@ -3,6 +3,11 @@
 @section('title', 'Annonces')
 
 @push('style')
+    <!-- Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endpush
@@ -19,7 +24,7 @@
 
 	<div id="sectionContent"></div>
 
-	<section>
+	<section class="sAnnonces">
 		<div class="wrap">
 
 <!---------------------- First Filters --------------------->
@@ -35,7 +40,7 @@
 
 				<div class="header_filter">
 					<label for="place">LIEU</label>
-					<input name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter" type="text">
+					<input name="place" id="place" placeholder="Où rechercher-vous ?" class="js-filter" type="text">
 					<div class="loader searchCity" id="hidden"></div>
 					<div>
 						<div class="suggestions"></div>
@@ -87,6 +92,17 @@
 						<option value="1">Oui</option>
 						<option value="0">Non</option>
 					</select>
+				</div>
+				<div class="first_filter_more_content">
+					<p>Salaire</p>
+					<div class="bar">
+						<span class="salaireMin">0</span> €
+						<div class="divSlider" v-on:click="filter">
+							<input id="inpSalMin" value="0" class="js-inpSalaire js-filter" min="0" max="10000" type="range" style="--low:0%; --high:100%" oninput="updateDisplay()">
+							<input id="inpSalMax" value="10000" class="js-inpSalaire js-filter" min="0" max="10000" type="range" oninput="updateDisplay()">
+						</div>
+						<span class="salaireMax">10 000</span> €
+					</div>
 				</div>
 
 				<div class="less_filter js-less_filter">
@@ -170,13 +186,67 @@
 					</div>
 					<div class="advertisement_container premium" id="js-container-premium"></div>
 				</div>
-				
 
+				<div class="divM">
+					<i class="fa fa-expand expandMap"></i>
+					<i class="fa fa-chevron-right hideMap"></i>
+					<p class="mapContainer">
+						<div id="mapAdverts" class="divMap"></div>
+					</p>
+					<div class="reste expandMap"></div>
+				</div>
+				
 			</div>
 		</div>
 	</section>
 @endsection
 
 @push('script')
+    <!-- Map -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
     <script src="{{asset('js/app.js')}}"></script>
+
+
+	<script type="text/javascript"> 
+
+		function updateDisplay() {
+
+		    var inp0s = $("#inpSalMin");
+		    var inp1s = $("#inpSalMax");
+		    var resMin = $(".salaireMin")[0];
+		    var resMax = $(".salaireMax")[0];
+		    var val0;
+		    var val1;
+
+		    for(var i = 0; i < inp0s.length; i++) {
+		    	val0 = parseInt(inp0s[i].value)
+		    	val1 = parseInt(inp1s[i].value)
+
+			    let max = inp0s[i].max
+			    let min = inp0s[i].min
+		    	
+			    if (val0 >= val1) {
+			    	if(document.activeElement.id == "inpSalMin") {
+			        	inp0s[i].value = val1;
+			        	if(!inp0s[i].classList.contains("inpTop"))
+			        		inp0s[i].className += " inpTop";
+			        	inp1s[i].classList.remove("inpTop");
+			    	}
+			        else if(document.activeElement.id == "inpSalMax") {
+			        	inp1s[i].value = val0;
+			        	if(!inp1s[i].classList.contains("inpTop"))
+			        		inp1s[i].className += " inpTop";
+			        	inp0s[i].classList.remove("inpTop");
+			        }
+			    }
+
+			    resMin.innerHTML = inp0s[i].value;
+		    	resMax.innerHTML = inp1s[i].value;
+		    }
+		}
+
+	</script>
 @endpush

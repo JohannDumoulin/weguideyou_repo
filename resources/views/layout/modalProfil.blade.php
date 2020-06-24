@@ -15,7 +15,7 @@
                     @if(Auth::user()->admin===1)
                         <a href="{{route('admin.index')}}">Administration</a>
                     @endif
-                    <a href="/profil">Profil</a>
+                    <a href="{{route('profile.index')}}">Profil</a>
                     <a href="/messagerie">Messagerie</a>
                     @if(Auth::user()->admin!==1)
                         <a href="/mes_annonces">Mes Annonces</a>

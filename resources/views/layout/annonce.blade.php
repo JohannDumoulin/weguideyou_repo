@@ -35,6 +35,10 @@
 	            <div class="item">
 					<i class="fa fa-map-marker"></i>
 					<h3 id="ad-location">{{ $advert->place }}</h3>
+
+					<p class="lat" style="display: none">{{ $advert->place_lat }}</p>
+					<p class="lng" style="display: none">{{ $advert->place_lng }}</p>
+
 	            </div>
 	            <div class="item">
 					<i class="fa fa-calendar"></i>
@@ -97,6 +101,18 @@
 	                @else
 						<p id="ad-nb_pers">Oui</p>
 					@endif
+	            </div> 
+
+	            <div>
+	                <i class="fa fa-users"></i>
+	                <label>Salaire</label>
+	                <p id="ad-salaire">{{ $advert->salaire }} €</p>
+	            </div>  
+
+	            <div>
+	                <i class="fa fa-users"></i>
+	                <label>Profession</label>
+	                <p id="ad-salaire">{{ $advert->job }}</p>
 	            </div> 
 
 	        </div>

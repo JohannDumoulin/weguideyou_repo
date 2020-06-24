@@ -9,7 +9,7 @@ import Favoris from "./components/favoris";
 import AdvertisementPage from './pages/advertisement.js'
 import Annonce from './layout/annonce.js'
 import Nav from "./layout/nav";
-import Profil from "./pages/profil";
+import Profile from "./pages/profile";
 import RegisterForm from "./pages/register";
 import Parameters from "./pages/parameters";
 import mAdvert from "./pages/mAdvert";
@@ -28,7 +28,7 @@ class App {
         new MenuProfil();
         //new RegistrationForm();
         new Favoris();
-        new Profil();
+        new Profile();
         new RegisterForm();
 
         //layout
