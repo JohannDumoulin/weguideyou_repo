@@ -35,6 +35,9 @@ $factory->define(Advertisement::class, function (Faker $faker) {
     $activity = ["Ski", "Snowboard", "Escalade"];
     $activity = $activity[array_rand($activity)];
 
+    $job = ["Guide", "Moniteur"];
+    $job = $job[array_rand($job)];
+
     return [
         'user_id' => 1,
         'type' => $type,
@@ -53,6 +56,8 @@ $factory->define(Advertisement::class, function (Faker $faker) {
         'duration' => $duration,
         'activity' => $activity,
         'nbReport' => 0,
+        'job' => $job,
+        'salaire' => random_int (0, 5000),
         'img' => "https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg, https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg",
         'premium_urgent_week' => random_int (0, 1), 
         'premium_banner_week' => random_int (0, 1), 

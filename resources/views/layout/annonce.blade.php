@@ -103,6 +103,18 @@
 					@endif
 	            </div> 
 
+	            <div>
+	                <i class="fa fa-users"></i>
+	                <label>Salaire</label>
+	                <p id="ad-salaire">{{ $advert->salaire }} €</p>
+	            </div>  
+
+	            <div>
+	                <i class="fa fa-users"></i>
+	                <label>Profession</label>
+	                <p id="ad-salaire">{{ $advert->job }}</p>
+	            </div> 
+
 	        </div>
 	    </section>
 
