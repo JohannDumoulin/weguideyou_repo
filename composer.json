@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.0",
 
         "laravel/ui": "^2.0",
-        "mercuryseries/flashy": "^1.0"
+        "mercuryseries/flashy": "^1.0",
+      "ext-http": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

@@ -14,8 +14,12 @@
     <div class="content">
         <div class="profile-updatePanel js-profile-updatePanel hidden">
             <div class="wrap">
-                <form class="updatePanel-main" method="POST" action="#">
+                <form class="updatePanel-main" method="POST" action="{{route('profile.update', Auth::user()->id)}}">
                     @csrf
+                    @method('PUT')
+                    <div class="updatePanel-title">
+                        <h2>Modifier son profil</h2>
+                    </div>
                     <div class="updatePanel-identity">
                         @if($status === 'NSO' || $status === 'SO')
                             <div>
@@ -66,50 +70,19 @@
                     @endif
                     <div class="updatePanel-lang">
                         <div class="updatePanel-langContainer">
-                            <div class="container">
-                                <ul class="ks-cboxtags">
-                                    <li><input type="checkbox" id="checkboxOne" value="Rainbow Dash"><label for="checkboxOne">Rainbow Dash</label></li>
-                                    <li><input type="checkbox" id="checkboxTwo" value="Cotton Candy" checked><label for="checkboxTwo">Cotton Candy</label></li>
-                                    <li><input type="checkbox" id="checkboxThree" value="Rarity" checked><label for="checkboxThree">Rarity</label></li>
-                                    {{--<li><input type="checkbox" id="checkboxFour" value="Moondancer"><label for="checkboxFour">Moondancer</label></li>
-                                    <li><input type="checkbox" id="checkboxFive" value="Surprise"><label for="checkboxFive">Surprise</label></li>
-                                    <li><input type="checkbox" id="checkboxSix" value="Twilight Sparkle" checked><label for="checkboxSix">Twilight
-                                            Sparkle</label></li>
-                                    <li><input type="checkbox" id="checkboxSeven" value="Fluttershy"><label for="checkboxSeven">Fluttershy</label></li>
-                                    <li><input type="checkbox" id="checkboxEight" value="Derpy Hooves"><label for="checkboxEight">Derpy Hooves</label></li>
-                                    <li><input type="checkbox" id="checkboxNine" value="Princess Celestia"><label for="checkboxNine">Princess
-                                            Celestia</label></li>
-                                    <li><input type="checkbox" id="checkboxTen" value="Gusty"><label for="checkboxTen">Gusty</label></li>
-                                    <li class="ks-selected"><input type="checkbox" id="checkboxEleven" value="Discord"><label for="checkboxEleven">Discord</label></li>
-                                    <li><input type="checkbox" id="checkboxTwelve" value="Clover"><label for="checkboxTwelve">Clover</label></li>
-                                    <li><input type="checkbox" id="checkboxThirteen" value="Baby Moondancer"><label for="checkboxThirteen">Baby
-                                            Moondancer</label></li>
-                                    <li><input type="checkbox" id="checkboxFourteen" value="Medley"><label for="checkboxFourteen">Medley</label></li>
-                                    <li><input type="checkbox" id="checkboxFifteen" value="Firefly"><label for="checkboxFifteen">Firefly</label></li>--}}
+                            <div class="lang-boxContainer">
+                                <ul class="lang-box">
+                                    <li><input type="checkbox" id="checkbox-1" value="french"><label for="checkbox-1">Français</label></li>
+                                    <li><input type="checkbox" id="checkbox-2" value="english"><label for="checkbox-2">Anglais</label></li>
+                                    <li><input type="checkbox" id="checkbox-3" value="spanish"><label for="checkbox-3">Espagnole</label></li>
+                                    <li><input type="checkbox" id="checkbox-4" value="italian"><label for="checkbox-4">Italien</label></li>
+                                    <li><input type="checkbox" id="checkbox-5" value="German"><label for="checkbox-5">Allemand</label></li>
+                                    <li><input type="checkbox" id="checkbox-6" value="Russian"><label for="checkbox-6">Russe</label></li>
+                                    <li><input type="checkbox" id="checkbox-7" value="Portuguese"><label for="checkbox-7">Portugais</label></li>
                                 </ul>
-
                             </div>
                         </div>
                     </div>
-                    {{--<div>
-                        <h3>@lang('default.field_language')</h3>
-                        <p class="sous_item" id="langueuser">
-                            --}}{{--@foreach($languages_user ?? '' as $l)
-                                {{$l->name_language}}<br/>
-                            @endforeach--}}{{--
-                        </p>
-                        <input type="hidden" id="languages" name="languages" value="">
-                        <button class="button sous_item edit_button" type="button" id="buttonlang" onclick="language()">@lang('default.adding_language_add')</button>
-                        <p id= "languep" class="sous_item">
-                            <select id="langues" name="name_language">
-                                <option value="" selected>--</option>
-                                --}}{{--@foreach ($language as $lang)
-                                    <option value="{{$lang->name_language}}">{{$lang->name_language}}</option>
-                                @endforeach--}}{{--
-                            </select>
-                            <button type="button" id="buttonajoutlang" class="button" onclick="addLanguage()">@lang('default.adding')</button>
-                        </p>
-                    </div>--}}
                     <div class="updatePanel-description">
                         <label>
                             <textarea name="desc" required class="profile-description" rows="5" cols="30">{{Auth::user()->description ?? 'Aucune description'}}</textarea>
