@@ -24,7 +24,7 @@ class NewSOAccount extends Form
                 ],
             ])
             ->add('address', 'text',[
-                'label' => 'required','string','max:100','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                'label' => 'Adresse',
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
@@ -85,13 +85,13 @@ class NewSOAccount extends Form
                 'checked' => false
             ])
 
-            ->add('statusDetail', 'text',[
-                'label' => 'Statut de la structure',
+            ->add('sector', 'select', [
+                'choices' => ['club' =>'Club de sport', 'school' =>'Ecole de sport', 'other' =>'Autre'],
+                'selected' => '',
+                'empty_value' => 'Choisir',
+                'label' => 'Secteur :',
                 'rules' => [
-                    'required',
-                    'string',
-                    'max:200',
-                    'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                    'required|string'
                 ],
             ])
             ->add('siret', 'text',[

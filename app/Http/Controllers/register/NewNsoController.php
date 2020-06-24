@@ -47,7 +47,7 @@ class NewNsoController extends Controller
             'pc' => $values['postcode'],
             'phone' => $values['phone'],
             'status' => 'NSO',
-            'status_detail' => $values['statusDetail'],
+            'sector' => $values['sector'],
             'siret' => $values['siret'],
             'cgu' => $values['CGU'],
             'news_letter' => $values['newsLetter'],
