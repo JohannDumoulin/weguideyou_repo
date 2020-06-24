@@ -14,34 +14,82 @@
     <div class="content">
         <div class="profile-updatePanel js-profile-updatePanel hidden">
             <div class="wrap">
-                <form class="updatePanel-main" method="POST" action="{{--{{ route('login') }}--}}">
+                <form class="updatePanel-main" method="POST" action="#">
                     @csrf
                     <div class="updatePanel-identity">
-                        <div>
-                            <label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" autofocus>
-                            </label>
-                        </div>
+                        @if($status === 'NSO' || $status === 'SO')
+                            <div>
+                                <label>
+                                    <input type="text" required placeholder="Nom de la structure" class="form-control @error('name') is-invalid @enderror" name="name" maxlength="50" value="{{ Auth::user()->name }}" autofocus>
+                                </label>
+                            </div>
+                        @endif
                         @if($status === 'PAR' || $status === 'PRO')
                             <div>
                                 <label>
-                                    <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ Auth::user()->surname }}" autofocus>
+                                    <input name="name" required type="text" placeholder="Prénom" class="form-control @error('name') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->name }}" autofocus>
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input type="date" class="form-control @error('birth') is-invalid @enderror" name="birth" value="{{ Auth::user()->birth }}" autofocus>
+                                    <input name="surname" required type="text" placeholder="Nom" class="form-control @error('surname') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->surname }}" autofocus>
                                 </label>
                             </div>
                         @endif
                     </div>
+                    <div class="updatePanel-address">
+                        <div>
+                            <label>
+                                <input name="address" required type="text" placeholder="Adresse" class="form-control @error('address') is-invalid @enderror" maxlength="200" value="{{ Auth::user()->address }}" autofocus>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input name="pc" required type="text" placeholder="Code postal" class="form-control @error('pc') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->pc }}" autofocus>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input name="city" required type="text" placeholder="Ville" class="form-control @error('city') is-invalid @enderror" value="{{ Auth::user()->city }}" autofocus>
+                            </label>
+                        </div>
+                    </div>
                     @if($status === 'NSO' || $status === 'SO' || $status === 'PRO')
+                        <div>
+                            <label>
+                                <input name="title" required type="text" placeholder="Titre" class="form-control @error('city') is-invalid @enderror" value="{{ Auth::user()->title ?? 'Titre' }}" autofocus>
+                            </label>
+                        </div>
                         <div>
                             {{--job choice--}}
                         </div>
                     @endif
                     <div class="updatePanel-lang">
-                        <div class="updatePanel-langContainer"></div>
+                        <div class="updatePanel-langContainer">
+                            <div class="container">
+                                <ul class="ks-cboxtags">
+                                    <li><input type="checkbox" id="checkboxOne" value="Rainbow Dash"><label for="checkboxOne">Rainbow Dash</label></li>
+                                    <li><input type="checkbox" id="checkboxTwo" value="Cotton Candy" checked><label for="checkboxTwo">Cotton Candy</label></li>
+                                    <li><input type="checkbox" id="checkboxThree" value="Rarity" checked><label for="checkboxThree">Rarity</label></li>
+                                    {{--<li><input type="checkbox" id="checkboxFour" value="Moondancer"><label for="checkboxFour">Moondancer</label></li>
+                                    <li><input type="checkbox" id="checkboxFive" value="Surprise"><label for="checkboxFive">Surprise</label></li>
+                                    <li><input type="checkbox" id="checkboxSix" value="Twilight Sparkle" checked><label for="checkboxSix">Twilight
+                                            Sparkle</label></li>
+                                    <li><input type="checkbox" id="checkboxSeven" value="Fluttershy"><label for="checkboxSeven">Fluttershy</label></li>
+                                    <li><input type="checkbox" id="checkboxEight" value="Derpy Hooves"><label for="checkboxEight">Derpy Hooves</label></li>
+                                    <li><input type="checkbox" id="checkboxNine" value="Princess Celestia"><label for="checkboxNine">Princess
+                                            Celestia</label></li>
+                                    <li><input type="checkbox" id="checkboxTen" value="Gusty"><label for="checkboxTen">Gusty</label></li>
+                                    <li class="ks-selected"><input type="checkbox" id="checkboxEleven" value="Discord"><label for="checkboxEleven">Discord</label></li>
+                                    <li><input type="checkbox" id="checkboxTwelve" value="Clover"><label for="checkboxTwelve">Clover</label></li>
+                                    <li><input type="checkbox" id="checkboxThirteen" value="Baby Moondancer"><label for="checkboxThirteen">Baby
+                                            Moondancer</label></li>
+                                    <li><input type="checkbox" id="checkboxFourteen" value="Medley"><label for="checkboxFourteen">Medley</label></li>
+                                    <li><input type="checkbox" id="checkboxFifteen" value="Firefly"><label for="checkboxFifteen">Firefly</label></li>--}}
+                                </ul>
+
+                            </div>
+                        </div>
                     </div>
                     {{--<div>
                         <h3>@lang('default.field_language')</h3>
@@ -64,7 +112,7 @@
                     </div>--}}
                     <div class="updatePanel-description">
                         <label>
-                            <textarea name="desc" class="profile-description" rows="5" cols="30">{{Auth::user()->description ?? 'Aucune description'}}</textarea>
+                            <textarea name="desc" required class="profile-description" rows="5" cols="30">{{Auth::user()->description ?? 'Aucune description'}}</textarea>
                         </label>
                     </div>
                     <button type="submit" class="buttonLink">Valider</button>

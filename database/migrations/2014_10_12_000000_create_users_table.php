@@ -30,7 +30,8 @@ class CreateUsersTable extends Migration
             $table->char('status', 3);
             $table->char('language')->nullable();
             $table->char('job')->nullable();
-            $table->string('status_detail')->nullable();
+            $table->string('title')->nullable();
+            $table->string('sector')->nullable();
             $table->string('license')->nullable();
             $table->date('license_date')->nullable();
             $table->string('siret')->nullable();
