@@ -71,6 +71,12 @@ class ProfileController extends Controller
                                 'numeric',
                                 'digits:5',
                             ],
+                            'desc' => [
+                                'required',
+                                'string',
+                                'max:280',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                            ],
                         ]);
                     }else{
                         $validate = $request->validate([
@@ -106,14 +112,26 @@ class ProfileController extends Controller
                                 'numeric',
                                 'digits:5',
                             ],
+                            'desc' => [
+                                'required',
+                                'string',
+                                'max:280',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                            ],
                         ]);
                     }
 
                     if ($validate){
                         $user->name = $request['name'];
+                        $user->surname = $request['surname'];
                         $user->email = $request['email'];
+                        $user->address = $request['address'];
+                        $user->city = $request['city'];
+                        $user->pc = $request['pc'];
+                        $user->desc = $request['desc'];
 
                         $user->save();
+
                         Flashy::success('Modification enregistré');
                         return redirect()->back();
                     }else{

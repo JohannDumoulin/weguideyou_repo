@@ -49,19 +49,19 @@
                         </div>
                         <div>
                             <label>
-                                <input name="pc" required type="text" placeholder="Code postal" class="form-control @error('pc') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->pc }}" autofocus>
+                                <input name="pc" required type="text" placeholder="Code postal" class="form-control @error('pc') is-invalid @enderror" maxlength="5" value="{{ Auth::user()->pc }}" autofocus>
                             </label>
                         </div>
                         <div>
                             <label>
-                                <input name="city" required type="text" placeholder="Ville" class="form-control @error('city') is-invalid @enderror" value="{{ Auth::user()->city }}" autofocus>
+                                <input name="city" required type="text" placeholder="Ville" class="form-control @error('city') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->city }}" autofocus>
                             </label>
                         </div>
                     </div>
                     @if($status === 'NSO' || $status === 'SO' || $status === 'PRO')
                         <div>
                             <label>
-                                <input name="title" required type="text" placeholder="Titre" class="form-control @error('city') is-invalid @enderror" value="{{ Auth::user()->title ?? 'Titre' }}" autofocus>
+                                <input name="title" required type="text" placeholder="Titre" class="form-control @error('city') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->title ?? 'Titre' }}" autofocus>
                             </label>
                         </div>
                         <div>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="updatePanel-description">
                         <label>
-                            <textarea name="desc" required class="profile-description" rows="5" cols="30">{{Auth::user()->description ?? 'Aucune description'}}</textarea>
+                            <textarea name="desc" required class="profile-description" rows="5" cols="30" maxlength="280">{{Auth::user()->description ?? 'Aucune description'}}</textarea>
                         </label>
                     </div>
                     <button type="submit" class="buttonLink">Valider</button>
