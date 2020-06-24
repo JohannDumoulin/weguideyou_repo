@@ -18,47 +18,7 @@
 			<div id="mail_container">
 <!---------------------- All mails -------------------------->
 				<div id="all_mails">
-					@include('pages.users', ['users' => $users, 'unread' => $unread]);
-					
-					<div class="mail_content">
-						<div class="advertisement_picture_container">
-							<img src="{{ asset('img/advertisement.jpg') }}" alt="">
-						</div>
-						<div class="advertisement_content">
-							<div class="seller_infos">
-								<p>ESF</p>
-								<img src="{{ asset('img/esf.png') }}" alt="">
-							</div>
-							<p class="title">Cours Snowboard / Courchevel 1850</p>
-							<p class="last_msg">20h24 Vous : Oui bien sûr pas...</p>
-						</div>
-					</div>
-					<div class="mail_content">
-						<div class="advertisement_picture_container">
-							<img src="{{ asset('img/advertisement.jpg') }}" alt="">
-						</div>
-						<div class="advertisement_content">
-							<div class="seller_infos">
-								<p>ESF</p>
-								<img src="{{ asset('img/esf.png') }}" alt="">
-							</div>
-							<p class="title">Cours Snowboard / Courchevel 1850</p>
-							<p class="last_msg">20h24 Vous : Oui bien sûr pas...</p>
-						</div>
-					</div>
-					<div class="mail_content">
-						<div class="advertisement_picture_container">
-							<img src="{{ asset('img/advertisement.jpg') }}" alt="">
-						</div>
-						<div class="advertisement_content">
-							<div class="seller_infos">
-								<p>ESF</p>
-								<img src="{{ asset('img/esf.png') }}" alt="">
-							</div>
-							<p class="title">Cours Snowboard / Courchevel 1850</p>
-							<p class="last_msg">20h24 Vous : Oui bien sûr pas...</p>
-						</div>
-					</div>
+					@include('pages.mailbox_users', ['users' => $users, 'unread' => $unread]);
 				</div>
 
 <!---------------------- The mail --------------------------->

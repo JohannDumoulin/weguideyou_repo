@@ -18,15 +18,17 @@ class ConversationsController extends Controller
 
 
 	public function __construct(ConversationRepository $conversationRepository, AuthManager $auth) {
+		$this->middleware('auth');
 		$this->conversationRepository = $conversationRepository;
 		$this->auth = $auth;
 	}
 
     public function index () {
-    	return view('pages/mailbox', [
-    		'users' => $this->conversationRepository->getConversations($this->auth->user()->id),
-    		'unread' => $this->conversationRepository->unreadCount($this->auth->user()->id)
-    	]);
+    	// return view('pages/mailbox', [
+    	// 	'users' => $this->conversationRepository->getConversations($this->auth->user()->id),
+    	// 	'unread' => $this->conversationRepository->unreadCount($this->auth->user()->id)
+    	// ]);
+        return redirect(route('conversations.show', ['user' => 2]));
     }
 
     public function show (User $user) {
@@ -47,12 +49,18 @@ class ConversationsController extends Controller
     }
 
     public function store (User $user, StoreMessageRequest $request) {
-    	$message = $this->conversationRepository->createMessage(
+    	$this->conversationRepository->createMessage(
     		$request->get('content'),
     		$this->auth->user()->id,
     		$user->id
     	);
-    	$user->notify(new MessageReceived($message));
+
+    	/*
+			Send Mail : Bug
+
+			$user->notify(new MessageReceived($message));
+    	*/
+    	
 
     	return redirect(route('conversations.show', ['user' => $user->id]));
     }

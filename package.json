@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "flickity": "^2.2.1",
-        "jquery": "^3.5.1"
+        "jquery": "^3.5.1",
+        "whatwg-fetch": "^3.0.0"
     }
 }
