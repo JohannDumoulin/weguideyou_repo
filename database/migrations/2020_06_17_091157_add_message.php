@@ -14,8 +14,8 @@ class AddMessage extends Migration
     public function up()
     {
         Schema::create('messages', function(Blueprint $table) {
-            $table->increments('id');
-            $table->integer('ad_id')->unsigned();
+            $table->id();
+            $table->bigInteger('ad_id')->unsigned();
             $table->foreign('ad_id')->references('id')->on('advertisement');
             $table->integer('from_id')->unsigned();
             $table->integer('to_id')->unsigned();
