@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use MercurySeries\Flashy\Flashy;
 
 class ProfileController extends Controller
 {
@@ -29,15 +31,117 @@ class ProfileController extends Controller
         }
     }
 
-    /*public function update(Request $request){
+    public function update(Request $request){
+        if (Auth::user()){
+            $user = User::find(Auth::user()->id);
 
-        if ($validate){
+            if (Auth::user()->status === 'PAR'){
+                if ($user){
+                    if (Auth::user()->email === $request['email']){
+                        $validate = $request->validate([
+                            'name' => [
+                                'required',
+                                'string',
+                                'max:50',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                            ],
+                            'surname' => [
+                                'required',
+                                'string',
+                                'max:50',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                            ],
+                            'email' => [
+                                'required|string|email|max:255',
+                            ],
+                            'address' => [
+                                'required',
+                                'string',
+                                'max:50',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                            ],
+                            'city' => [
+                                'required',
+                                'string',
+                                'max:50',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                            ],
+                            'pc' => [
+                                'required',
+                                'numeric',
+                                'digits:5',
+                            ],
+                        ]);
+                    }else{
+                        $validate = $request->validate([
+                            'name' => [
+                                'required',
+                                'string',
+                                'max:50',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                            ],
+                            'surname' => [
+                                'required',
+                                'string',
+                                'max:50',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                            ],
+                            'email' => [
+                                'required|string|email|max:255|unique:users',
+                            ],
+                            'address' => [
+                                'required',
+                                'string',
+                                'max:50',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                            ],
+                            'city' => [
+                                'required',
+                                'string',
+                                'max:50',
+                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                            ],
+                            'pc' => [
+                                'required',
+                                'numeric',
+                                'digits:5',
+                            ],
+                        ]);
+                    }
 
+                    if ($validate){
+                        $user->name = $request['name'];
+                        $user->email = $request['email'];
+
+                        $user->save();
+                        Flashy::success('Modification enregistré');
+                        return redirect()->back();
+                    }else{
+                        Flashy::error('Modification non valide');
+                        return redirect()->back();
+                    }
+                }else{
+                    Flashy::error('Modification non valide');
+                    return redirect()->back();
+                }
+            }
+            if (Auth::user()->status === 'PRO'){
+
+            }
+            if (Auth::user()->status === 'NSO'){
+
+            }
+            if (Auth::user()->status === 'SO'){
+
+            }
+
+            Flashy::error('Modification non valide');
             return redirect()->back();
         }else{
-            return redirect()->back();
+            Flashy::error('Vous devez d\'abord vous connecter');
+            return redirect('login');
         }
-    }*/
+    }
 
     public function profilePublic($id) {
 

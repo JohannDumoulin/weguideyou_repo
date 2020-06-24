@@ -41,7 +41,7 @@ body[data-content="userProfile"]{
 
                     >div{
                         width: 100%;
-                        margin-bottom: 80px;
+                        margin-bottom: 40px;
                     }
 
                     .buttonLink{
@@ -60,6 +60,7 @@ body[data-content="userProfile"]{
                             margin: 10px 0 10px 0;
                         }
                     }
+
                     .updatePanel-address{
                         display: flex;
                         justify-content: flex-start;
@@ -77,36 +78,39 @@ body[data-content="userProfile"]{
 
                         .updatePanel-langContainer{
                             width: 100%;
-                            border: solid 1.5px rgba(0, 0, 0, 0.2);
+                            background-color: $adminDeepGrey;
                             color: #000000;
-                            opacity: 0.5;
+                            opacity: 1;
 
                             box-sizing: border-box;
                             padding: 20px;
 
-                            .container {
+                            .lang-boxContainer {
                                 width: 100%;
                                 font-family: $font-family;
-                                font-size: 13px;
+                                font-size: 10px;
                             }
 
-                            ul.ks-cboxtags {
+                            ul.lang-box {
                                 list-style: none;
                                 padding: 20px;
                                 display: flex;
                                 justify-content: flex-start;
+                                flex-wrap: wrap;
 
                                 li{
                                     display: inline;
 
+                                    margin-right: 10px;
+
                                     label{
                                         display: inline-block;
-                                        background-color: rgba(255, 255, 255, .9);
+                                        background-color: rgba(255, 255, 255, 1);
                                         border: 2px solid rgba(139, 139, 139, .3);
                                         color: #adadad;
                                         border-radius: 25px;
                                         white-space: nowrap;
-                                        margin: 3px 0px;
+                                        margin: 5px 0px;
                                         -webkit-touch-callout: none;
                                         -webkit-user-select: none;
                                         -moz-user-select: none;
@@ -119,6 +123,9 @@ body[data-content="userProfile"]{
                                         cursor: pointer;
 
                                         box-sizing: border-box;
+
+
+                                        font-weight: 600;
 
                                         &::before {
                                             display: inline-block;
@@ -142,8 +149,8 @@ body[data-content="userProfile"]{
                                     }
 
                                     input[type="checkbox"]:checked + label {
-                                        border: 2px solid #1bdbf8;
-                                        background-color: #12bbd4;
+                                        border: 2px solid $clearBlue;
+                                        background-color: $deepBlue;
                                         color: #fff;
                                         transition: all .2s;
                                     }
@@ -152,7 +159,7 @@ body[data-content="userProfile"]{
                                         opacity: 0;
                                     }
                                     input[type="checkbox"]:focus + label {
-                                        border: 2px solid #e9a1ff;
+                                        border: 2px solid $clearBlue;
                                     }
                                 }
                             }

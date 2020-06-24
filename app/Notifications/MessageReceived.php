@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\User;
+use App\Message;
 
 class MessageReceived extends Notification
 {
@@ -46,7 +46,7 @@ class MessageReceived extends Notification
         return (new MailMessage)
                     ->line($this->message->from->name . 'vous a envoyé un message')
                     ->line($this->message->content)
-                    ->action('Voir le message', route('conversations.show,', $this->message->from_id));
+                    ->action('Voir le message', route('conversations.show', $this->message->from_id));
     }
 
     /**

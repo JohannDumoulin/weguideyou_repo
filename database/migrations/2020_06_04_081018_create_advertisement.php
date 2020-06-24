@@ -14,9 +14,10 @@ class CreateAdvertisement extends Migration
     public function up()
     {
         Schema::create('advertisement', function (Blueprint $table) {
-            $table->id();
 
+            $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade');
             $table->string('user_status')->nullable()->default("PAR");
             
             $table->string('name');
@@ -49,9 +50,6 @@ class CreateAdvertisement extends Migration
             $table->boolean('premium_booking')->nullable()->default(false);
             $table->boolean('premium_securing')->nullable()->default(false);
             $table->boolean('premium_insurance')->nullable()->default(false);
-
-            $table->foreign('user_id')->references('id')->on('Users')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
