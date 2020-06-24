@@ -75,24 +75,31 @@
 	    <section class="detail">
 	        <div class="wrap">
 
+	        	@if($advert->activity != false)
 		        <div>
 	                <i class="fa fa-users"></i>
 	                <label>Activité</label>
 	                <p id="ad-nb_pers">{{ $advert->activity }}</p>
-	            </div>  
+	            </div> 
+	            @endif 
 	            
+	            @if($advert->nbPers != false)
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>Type de cours</label>
 	                <p id="ad-nb_pers">{{ $advert->nbPers }}</p>
-	            </div>                
+	            </div>  
+	            @endif              
 
+				@if($advert->duration != false)
 	            <div>
 					<i class="fa fa-calendar"></i>
 	                <label>Durée</label>
 	                <p id="ad-duration">{{ $advert->duration }}</p>
 	            </div>
+	            @endif 
 
+	            @if($advert->loge != false)
 		        <div>
 	                <i class="fa fa-users"></i>
 	                <label>Poste logé</label>
@@ -102,18 +109,23 @@
 						<p id="ad-nb_pers">Oui</p>
 					@endif
 	            </div> 
+	            @endif 
 
+	            @if($advert->salaire != false)
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>Salaire</label>
 	                <p id="ad-salaire">{{ $advert->salaire }} €</p>
 	            </div>  
+	            @endif 
 
+	            @if($advert->job != false)
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>Profession</label>
 	                <p id="ad-salaire">{{ $advert->job }}</p>
 	            </div> 
+	            @endif 
 
 	        </div>
 	    </section>

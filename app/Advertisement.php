@@ -9,6 +9,7 @@ class Advertisement extends Model
     protected $table = 'advertisement';
     protected $fillable = [
         'user_id',
+        'user_status',
     	'name',
     	'desc',
     	'type',

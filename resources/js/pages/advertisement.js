@@ -439,9 +439,17 @@ export default class AdvertisementPage {
 
             var filter_on = _this.$els.filter_on;
 
-            filter_on[this.id] = this.value; // add filter
-            if(this.value == "")
-                delete filter_on[this.id]; // remove filter
+            if(this.type == "checkbox") {
+                filter_on[this.id] = this.checked;
+                if(this.checked == true) 
+                    delete filter_on[this.id];
+            } 
+            else {
+                filter_on[this.id] = this.value; // add filter
+                if(this.value == "") 
+                    delete filter_on[this.id]; // remove filter
+            }
+
 
             _this.$els.filter_on = filter_on; // save filters
 
@@ -475,9 +483,15 @@ export default class AdvertisementPage {
         // filters
         for ([key, value] of filter_on) {
 
+
             if(key == "place" && typeof value == "object") {
                 adverts = adverts.filter(function(v){
                     return value.includes(v[key]);
+                });
+            }
+            else if(key == "PAR" || key == "PRO") {
+                adverts = adverts.filter(function(v){
+                    return (v["user_status"] != key)
                 });
             }
             else if(key == "activity" || key == "place") {

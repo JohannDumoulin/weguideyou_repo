@@ -18,6 +18,10 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+
+    $type = ["PAR", "PRO"];
+    $type = $type[array_rand($type)];
+
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -30,9 +34,8 @@ $factory->define(User::class, function (Faker $faker) {
         'pc' => 00000,
         'phone' => "0606060606",
         'pic' => null,
-        'status' => 'PAR',
-        'status_detail' => null,
-         'language' => "Francais - Anglais",
+        'status' => $type,
+        'language' => "Francais - Anglais",
         'job' => "guide de haute montagne",
         'license' => null,
         'license_date' => null,

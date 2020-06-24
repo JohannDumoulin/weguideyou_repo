@@ -72,10 +72,10 @@
 			<form action="" class="first_filter_more js-first_filter_more">
 				<div class="first_filter_more_content">
 					<p>Choix du prestataire :</p>
-					<input type="checkbox" id="organization" name="organization" checked>
-					<label for="organization">Structure (école, ...)</label>
-					<input type="checkbox" id="freelance" name="freelance" checked>
-					<label for="freelance">Indépendant</label>
+					<input class="js-filter" type="checkbox" id="PRO" name="PRO" checked>
+					<label for="organization">Professionnels</label>
+					<input class="js-filter" type="checkbox" id="PAR" name="PAR" checked>
+					<label for="freelance">Particuliers</label>
 				</div>
 				<div class="first_filter_more_content">
 					<p>Profession :</p>

@@ -38,8 +38,12 @@ $factory->define(Advertisement::class, function (Faker $faker) {
     $job = ["Guide", "Moniteur"];
     $job = $job[array_rand($job)];
 
+    $status = ["PAR", "PRO"];
+    $status = $status[array_rand($status)];
+
     return [
         'user_id' => 1,
+        'user_status' => $status,
         'type' => $type,
         'name' => "titre",
 
@@ -54,7 +58,6 @@ $factory->define(Advertisement::class, function (Faker $faker) {
         'place_lat' => random_int (0, 50),
         'place_lng' => random_int (0, 50),
         'duration' => $duration,
-        'activity' => $activity,
         'nbReport' => 0,
         'job' => $job,
         'salaire' => random_int (0, 5000),

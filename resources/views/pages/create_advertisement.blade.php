@@ -36,7 +36,7 @@
 						</div>
 
 						<label for="activity">Activité</label>
-						<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
+						<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?">
 						<datalist id="dataActivities">
 							<option></option>
 						</datalist>

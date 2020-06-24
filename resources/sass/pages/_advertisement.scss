@@ -21,10 +21,11 @@ body {
 .salaireMin {
     width: 40px;
     text-align: right;
+    margin-right: 3px;
 }
 
 .salaireMax {
-    width: 40px;
+    width: 48px;
 }
 
 .divSlider input {
@@ -190,7 +191,6 @@ body {
 
 	#second_filter {
 		display: flex;
-		justify-content: space-between;
 		margin-top: 40px;
 		width: 70%;
 
@@ -224,6 +224,10 @@ body {
 				outline: 0;
 			}
 		}
+		
+		.right {
+			margin-left: 20px;
+		}
 	}
 
 	.sAnnonces {
@@ -248,12 +252,17 @@ body {
 		}
 
 		.divM {
-			margin-top: 20px;
+			margin-top: 10px;
 
 			i {
 				padding: 5px;
 				cursor: pointer;
 				transition: transform 1s;
+				font-size: 120%;
+			}
+
+			i:hover {
+				opacity: 0.5;
 			}
 
 			.divMap {
@@ -264,6 +273,7 @@ body {
 		}
 
 		.mapHidden {
+			min-width: 25px;
 			width: 25px;
 
 			.divMap {

@@ -15,7 +15,9 @@ class CreateAdvertisement extends Migration
     {
         Schema::create('advertisement', function (Blueprint $table) {
             $table->id();
+
             $table->integer('user_id')->unsigned();
+            $table->string('user_status')->nullable()->default("PAR");
             
             $table->string('name');
             $table->text('desc');

@@ -21,6 +21,7 @@ class Create_AdvertisementController extends Controller
     	$advertisement = new Advertisement;
 
     	$advertisement->user_id = Auth::id();
+        $advertisement->user_status = Auth::user()->status;
 
     	$advertisement->name = $request->input('name');
     	$advertisement->desc = $request->input('desc');
