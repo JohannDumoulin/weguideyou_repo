@@ -24,19 +24,19 @@
                         @if($status === 'NSO' || $status === 'SO')
                             <div>
                                 <label>
-                                    <input type="text" required placeholder="Nom de la structure" class="form-control @error('name') is-invalid @enderror" name="name" maxlength="50" value="{{ Auth::user()->name }}" autofocus>
+                                    <input type="text" required placeholder="Nom de la structure" class="form-control @error('name') is-invalid @enderror" name="name" maxlength="50" minlength="2" value="{{ Auth::user()->name }}" autofocus>
                                 </label>
                             </div>
                         @endif
                         @if($status === 'PAR' || $status === 'PRO')
                             <div>
                                 <label>
-                                    <input name="name" required type="text" placeholder="Prénom" class="form-control @error('name') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->name }}" autofocus>
+                                    <input name="name" required type="text" placeholder="Prénom" class="form-control @error('name') is-invalid @enderror" maxlength="50" minlength="2" value="{{ Auth::user()->name }}" autofocus>
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input name="surname" required type="text" placeholder="Nom" class="form-control @error('surname') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->surname }}" autofocus>
+                                    <input name="surname" required type="text" placeholder="Nom" class="form-control @error('surname') is-invalid @enderror" maxlength="50" minlength="2" value="{{ Auth::user()->surname }}" autofocus>
                                 </label>
                             </div>
                         @endif
@@ -85,10 +85,10 @@
                     </div>
                     <div class="updatePanel-description">
                         <label>
-                            <textarea name="desc" required class="profile-description" rows="5" cols="30" maxlength="280">{{Auth::user()->description ?? 'Aucune description'}}</textarea>
+                            <textarea name="description" required class="profile-description" rows="5" cols="30" maxlength="280">{{Auth::user()->description ?? 'Aucune description'}}</textarea>
                         </label>
                     </div>
-                    <button type="submit" class="buttonLink">Valider</button>
+                    <button type="submit" class="buttonLink js-userLangUpdate">Valider</button>
                 </form>
                 <svg id="close-profile-updatePanel" class="js-back-profile-updatePanel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px"><g><g> <g> <g> <path d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M256,490.667 C126.604,490.667,21.333,385.396,21.333,256S126.604,21.333,256,21.333S490.667,126.604,490.667,256S385.396,490.667,256,490.667 z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/> <path d="M359.542,152.458c-4.167-4.167-10.917-4.167-15.083,0L256,240.917l-88.458-88.458c-4.167-4.167-10.917-4.167-15.083,0 c-4.167,4.167-4.167,10.917,0,15.083L240.917,256l-88.458,88.458c-4.167,4.167-4.167,10.917,0,15.083 c2.083,2.083,4.813,3.125,7.542,3.125s5.458-1.042,7.542-3.125L256,271.083l88.458,88.458c2.083,2.083,4.813,3.125,7.542,3.125 c2.729,0,5.458-1.042,7.542-3.125c4.167-4.167,4.167-10.917,0-15.083L271.083,256l88.458-88.458 C363.708,163.375,363.708,156.625,359.542,152.458z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/> </g> </g> </g></g> </svg><g><g><g><path d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M256,490.667C126.604,490.667,21.333,385.396,21.333,256S126.604,21.333,256,21.333S490.667,126.604,490.667,256S385.396,490.667,256,490.667z"/><path d="M359.542,152.458c-4.167-4.167-10.917-4.167-15.083,0L256,240.917l-88.458-88.458c-4.167-4.167-10.917-4.167-15.083,0c-4.167,4.167-4.167,10.917,0,15.083L240.917,256l-88.458,88.458c-4.167,4.167-4.167,10.917,0,15.083c2.083,2.083,4.813,3.125,7.542,3.125s5.458-1.042,7.542-3.125L256,271.083l88.458,88.458c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125c4.167-4.167,4.167-10.917,0-15.083L271.083,256l88.458-88.458C363.708,163.375,363.708,156.625,359.542,152.458z"/></g></g></g></svg>
             </div>
@@ -128,18 +128,15 @@
                             </div>
                         </div>
                         <div class="profileDetails">
-                            @if($status === 'PRO' || $status === 'PAR')
-                                <div>
+                            <div>
+                                @if($status === 'PRO' || $status === 'PAR')
                                     <h1>{{Auth::user()->name ?? 'undefined' }}, <span>{{$years ?? 'undefined'}} ans</span></h1>
-                                    <i id="js-modifyProfile" class="fas fa-pen fa-lg"></i>
-                                </div>
-                            @endif
-                            @if($status === 'NSO' || $status === 'SO')
-                                <div>
+                                @endif
+                                @if($status === 'NSO' || $status === 'SO')
                                     <h1>{{Auth::user()->name ?? 'undefined' }}</h1>
-                                    <i id="js-modifyProfile" class="fas fa-pen fa-lg"></i>
-                                </div>
-                            @endif
+                                @endif
+                                <i id="js-modifyProfile" class="fas fa-pen fa-lg"></i>
+                            </div>
                             @if($status === 'NSO' || $status === 'SO' || $status === 'PRO')
                                 <div class="profile-job">
                                     <p>{{ Auth::user()->job ?? 'A compléter'}} - <a href="#">{{ Auth::user()->city ?? 'A compléter'}}</a></p>
@@ -150,7 +147,7 @@
                                 <i class="fa fa-globe"></i>
                             </div>
                             <div class="profile-desc">
-                                <p>{{Auth::user()->status_detail ?? 'A compléter'}}</p>
+                                <p>{{Auth::user()->description ?? 'A compléter'}}</p>
                             </div>
                             <a href="#" class="buttonLink">Contacter {{Auth::user()->name ?? 'undefined' }}</a>
                         </div>

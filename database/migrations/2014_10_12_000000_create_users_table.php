@@ -23,10 +23,10 @@ class CreateUsersTable extends Migration
             $table->date('birth')->nullable();
             $table->string('address');
             $table->string('city');
-            $table->integer('pc');
+            $table->char('pc', 5);
             $table->string('phone')->nullable();
             $table->string('pic')->nullable();
-            $table->string('description')->nullable();
+            $table->string('description', 280)->nullable();
             $table->char('status', 3);
             $table->char('language')->nullable();
             $table->char('job')->nullable();

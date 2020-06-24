@@ -37,101 +37,54 @@ class ProfileController extends Controller
 
             if (Auth::user()->status === 'PAR'){
                 if ($user){
-                    if (Auth::user()->email === $request['email']){
-                        $validate = $request->validate([
-                            'name' => [
-                                'required',
-                                'string',
-                                'max:50',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
-                            ],
-                            'surname' => [
-                                'required',
-                                'string',
-                                'max:50',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
-                            ],
-                            'email' => [
-                                'required|string|email|max:255',
-                            ],
-                            'address' => [
-                                'required',
-                                'string',
-                                'max:50',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
-                            ],
-                            'city' => [
-                                'required',
-                                'string',
-                                'max:50',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
-                            ],
-                            'pc' => [
-                                'required',
-                                'numeric',
-                                'digits:5',
-                            ],
-                            'desc' => [
-                                'required',
-                                'string',
-                                'max:280',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
-                            ],
-                        ]);
-                    }else{
-                        $validate = $request->validate([
-                            'name' => [
-                                'required',
-                                'string',
-                                'max:50',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
-                            ],
-                            'surname' => [
-                                'required',
-                                'string',
-                                'max:50',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
-                            ],
-                            'email' => [
-                                'required|string|email|max:255|unique:users',
-                            ],
-                            'address' => [
-                                'required',
-                                'string',
-                                'max:50',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
-                            ],
-                            'city' => [
-                                'required',
-                                'string',
-                                'max:50',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
-                            ],
-                            'pc' => [
-                                'required',
-                                'numeric',
-                                'digits:5',
-                            ],
-                            'desc' => [
-                                'required',
-                                'string',
-                                'max:280',
-                                'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
-                            ],
-                        ]);
-                    }
+                    $validate = null;
+                    $validate = $request->validate([
+                        'name' => [
+                            'required',
+                            'string',
+                            'max:50',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                        ],
+                        'surname' => [
+                            'required',
+                            'string',
+                            'max:50',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                        ],
+                        'address' => [
+                            'required',
+                            'string',
+                            'max:50',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                        ],
+                        'city' => [
+                            'required',
+                            'string',
+                            'max:50',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                        ],
+                        'pc' => [
+                            'required',
+                            'numeric',
+                            'digits:5',
+                        ],
+                        'description' => [
+                            'required',
+                            'string',
+                            'max:280',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                        ],
+                    ]);
 
                     if ($validate){
                         $user->name = $request['name'];
                         $user->surname = $request['surname'];
-                        $user->email = $request['email'];
                         $user->address = $request['address'];
                         $user->city = $request['city'];
                         $user->pc = $request['pc'];
-                        $user->desc = $request['desc'];
+                        $user->description = $request['description'];
 
                         $user->save();
-
                         Flashy::success('Modification enregistré');
                         return redirect()->back();
                     }else{
