@@ -27,7 +27,7 @@ class AdvertisementForm extends Form
         	])
 
         	->add('type', 'select', [
-                'choices' => ['ski' =>'Ski', 'snowboard' =>'Snowboard', 'other' =>'Autres'],
+                'choices' => ['Cours' =>'Cours', 'LookForJob' =>'Recherche de travail', 'LookForPeople' =>'Recherche d\'employé'],
                 'selected' => '',
                 'label' => 'Type de cours',
                 'rules' => [
@@ -35,12 +35,37 @@ class AdvertisementForm extends Form
                 ]
             ])
 
-            ->add('place', 'select', [
-                'choices' => ['courchevel' =>'Courchevel', 'tignes' =>'Tignes', 'other' =>'Autres'],
-                'selected' => '',
+            // ->add('place', 'select', [
+            //     'choices' => ['courchevel' =>'Courchevel', 'tignes' =>'Tignes', 'other' =>'Autres'],
+            //     'selected' => '',
+            //     'label' => 'Lieu',
+            //     'rules' => [
+            //     	'required',
+            //     ]
+            // ])
+
+            ->add('place', 'text', [
                 'label' => 'Lieu',
                 'rules' => [
-                	'required',
+                    'required',
+                ]
+            ])
+
+            ->add('duration', 'select', [
+                'choices' => ['1h' =>'1h', '2h' =>'2h', '4h' =>'4h', 'half-day' =>'Demi-journée', 'day' =>'Toute la journée'],
+                'selected' => '',
+                'label' => 'Durée du cours',
+                'rules' => [
+                    'required',
+                ]
+            ])
+
+            ->add('nbPers', 'select', [
+                'choices' => ['Individuel' =>'Individuel', 'Collectif' =>'Collectif'],
+                'selected' => '',
+                'label' => 'Nombre de personne',
+                'rules' => [
+                    'required',
                 ]
             ])
 

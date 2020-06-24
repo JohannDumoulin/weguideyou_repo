@@ -35,6 +35,10 @@
 	            <div class="item">
 					<i class="fa fa-map-marker"></i>
 					<h3 id="ad-location">{{ $advert->place }}</h3>
+
+					<p class="lat" style="display: none">{{ $advert->place_lat }}</p>
+					<p class="lng" style="display: none">{{ $advert->place_lng }}</p>
+
 	            </div>
 	            <div class="item">
 					<i class="fa fa-calendar"></i>

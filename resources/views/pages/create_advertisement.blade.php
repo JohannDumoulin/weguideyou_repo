@@ -21,7 +21,28 @@
 					{!! form_row($adForm->desc) !!}
 					<div class="form_content">
 						{!! form_row($adForm->type) !!}
-						{!! form_row($adForm->place) !!}
+
+						<!-- Place -->
+						<div>
+							{!! form_row($adForm->place) !!}
+							<div>
+								<div class="loader searchCity" id="hidden"></div>
+							</div>
+							<div>
+								<div class="suggestions"></div>
+							</div>
+							<input type="" name="place_lat" id="place_lat" style="display: none">
+							<input type="" name="place_lng" id="place_lng" style="display: none">
+						</div>
+
+						<label for="activity">Activité</label>
+						<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
+						<datalist id="dataActivities">
+							<option></option>
+						</datalist>
+
+						{!! form_row($adForm->nbPers) !!}
+						{!! form_row($adForm->duration) !!}
 						{!! form_row($adForm->date_from) !!}
 						{!! form_row($adForm->date_to) !!}
 					</div>

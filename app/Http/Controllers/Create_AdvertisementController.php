@@ -25,7 +25,12 @@ class Create_AdvertisementController extends Controller
     	$advertisement->name = $request->input('name');
     	$advertisement->desc = $request->input('desc');
     	$advertisement->type = $request->input('type');
+        $advertisement->nbPers = $request->input('nbPers');
+        $advertisement->duration = $request->input('duration');
+        $advertisement->activity = $request->input('activity');
     	$advertisement->place = $request->input('place');
+        $advertisement->place_lat = $request->input('place_lat');
+        $advertisement->place_lng = $request->input('place_lng');
     	$advertisement->date_from = $request->input('date_from');
     	$advertisement->date_to = $request->input('date_to');
     	$advertisement->price_one_h = $request->input('price_one_h');
@@ -33,6 +38,7 @@ class Create_AdvertisementController extends Controller
     	$advertisement->price_half_day = $request->input('price_half_day');
     	$advertisement->price_day = $request->input('price_day');
     	$advertisement->phone_bool = $request->input('show_phone');
+
     	if ($request->hasfile('img')) {
     		$images_url = [];
     		    foreach($request->file('img') as $img)

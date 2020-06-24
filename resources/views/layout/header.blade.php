@@ -27,7 +27,7 @@
 
 		<div class="header_filter autocomplete">
 			<label for="place">LIEU</label>
-			<input name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter">
+			<input name="place" id="place" placeholder="Où rechercher-vous ?" class="js-filter">
 		</div>
 
 		<div class="header_filter">

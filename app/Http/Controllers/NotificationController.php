@@ -30,9 +30,20 @@ class NotificationController extends Controller
         $motif = $request->motif;
         $id_advert = $request->id;
 
+        // augmente le nombre de signalement
+        $advert = DB::table('advertisement')
+            ->where("id", "=", $id_advert)
+            ->select('nbReport')
+            ->get();
+        $a["nbReport"] = $advert[0]->nbReport +1;
+
+        DB::table('advertisement')
+          ->where('id', $id_advert)
+          ->update($a);
+
         Notification::route('mail', 'noreply.wgy@gmail.com')->notify(new Report($content, $motif, $id_advert));
 
-        return redirect("/annonces")->with(['message' => 'L\'annonce a bien été signalée !']);
+        return redirect("/annonces?type=Cours")->with(['message' => 'L\'annonce a bien été signalée !']);
     }
 
     public function alerte($users, $alertes, $advert_id) {
