@@ -21,6 +21,7 @@ export default class AdvertisementPage {
             sortType: "",
             urgent: false,
             cities: "",
+            fAff: true,
         }
     }
 
@@ -141,11 +142,14 @@ export default class AdvertisementPage {
         }
 
         // Bannière A la une
+        if($('body').data('content') == "advertisement" || $('body').data('content') == "advertisementPro") {
+            banner()
+        }
 
-        if($('body').data('content') == "advertisement") {
+        function banner() {
             var tempBanner = [];
             var banner = [];
-            var r
+            var r;
 
             // récup les annonces premium
             adverts.forEach(function (advert, index) {
@@ -154,7 +158,10 @@ export default class AdvertisementPage {
                 }
             })
 
-            console.log(tempBanner);
+            if(tempBanner.length == 0 && _this.$els.fAff) {
+                $(".divRight")[0].remove();
+                return 0;
+            }
 
             // en choisir au hasard
             var l = 2;
@@ -198,6 +205,11 @@ export default class AdvertisementPage {
             data: {adverts : advertsM[page], type : $('body').data('content')},
             success : function(res) {
 
+                if(_this.$els.fAff) {
+                    _this.initMapAdverts(adverts);
+                    _this.$els.fAff = false;
+                }
+
                 if($('.js-divLoading').length > 0)
                     $('.js-divLoading')[0].innerHTML = "";
 
@@ -205,7 +217,6 @@ export default class AdvertisementPage {
 
                 if($('.divPage').length > 0)
                     _this.displayBtnPage(advertsM, page);
-                    _this.initMapAdverts(adverts);
 
                 _this.initFav();
             },
@@ -374,11 +385,6 @@ export default class AdvertisementPage {
               if (a == null || b == null) return false;
               if (a.length !== b.length) return false;
 
-              // If you don't care about the order of the elements inside
-              // the array, you should sort both arrays here.
-              // Please note that calling sort on an array will modify that array.
-              // you might want to clone your array first.
-
               for (var i = 0; i < a.length; ++i) {
                 if (a[i] !== b[i]) return false;
               }
@@ -485,7 +491,17 @@ export default class AdvertisementPage {
                 adverts = adverts.filter(function(v){
                     return (value >= v["date_from"] && value <= v["date_to"]);
                 });
-            } 
+            }
+            else if(key == "inpSalMin") {
+                adverts = adverts.filter(function(v){
+                    return (v["salaire"] >= value);
+                });
+            }
+            else if(key == "inpSalMax") {
+                adverts = adverts.filter(function(v){
+                    return (v["salaire"] <= value);
+                });      
+            }
             else {
                 adverts = adverts.filter(function(v){
                     return (value == v[key]);

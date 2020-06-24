@@ -14,7 +14,9 @@ class AddMessage extends Migration
     public function up()
     {
         Schema::create('messages', function(Blueprint $table) {
-            $table->increments('id');
+            $table->id();
+            $table->bigInteger('ad_id')->unsigned();
+            $table->foreign('ad_id')->references('id')->on('advertisement');
             $table->integer('from_id')->unsigned();
             $table->integer('to_id')->unsigned();
             $table->foreign('from_id', 'from')->references('id')->on('users')->onDelete('cascade');
@@ -22,6 +24,8 @@ class AddMessage extends Migration
             $table->text('content');
             $table->timestamp('created_at')->useCurrent();
             $table->dateTime('read_at')->nullable();
+
+
         });
     }
 

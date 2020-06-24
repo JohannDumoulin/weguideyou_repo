@@ -14,8 +14,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "kris/laravel-form-builder": "^1.30",
         "laravel/framework": "^7.0",
+        "laravel/passport": "^9.2",
         "laravel/tinker": "^2.0",
-
         "laravel/ui": "^2.0",
         "mercuryseries/flashy": "^1.0",
       "ext-http": "*"
