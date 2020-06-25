@@ -8,6 +8,7 @@ class UserLanguage extends Model
 {
     protected $table = 'user_languages';
     protected $primaryKey = 'user_languages_id';
+    protected $fillable = ['language_id', 'user_id'];
 
     public function language()
     {
