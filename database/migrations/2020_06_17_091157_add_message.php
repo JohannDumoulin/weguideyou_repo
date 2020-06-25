@@ -15,8 +15,8 @@ class AddMessage extends Migration
     {
         Schema::create('messages', function(Blueprint $table) {
             $table->id();
-            $table->bigInteger('ad_id')->unsigned();
-            $table->foreign('ad_id')->references('id')->on('advertisement');
+            $table->bigInteger('ad_id')->unsigned()->nullable();
+            $table->foreign('ad_id')->references('id')->on('advertisement')->onDelete('cascade');
             $table->integer('from_id')->unsigned();
             $table->integer('to_id')->unsigned();
             $table->foreign('from_id', 'from')->references('id')->on('users')->onDelete('cascade');

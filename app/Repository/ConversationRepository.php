@@ -6,6 +6,7 @@ use App\User;
 use App\Message;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 /**
  * 
@@ -22,10 +23,13 @@ class ConversationRepository {
 	}
 	
 	public function getConversations (int $userId) {
-		$conversations = $this->user->newQuery()
-			->select('name', 'id')
-			->where('id','!=', $userId)
-			->get();
+		$conversations = DB::table('users')
+		    ->join('messages', function ($join) {
+	            $join->on('users.id', '=', 'messages.to_id')->orOn('users.id', '=', 'messages.from_id');
+	        })
+		    ->select('users.name', 'users.id')
+		    ->where('users.id','!=', $userId)
+		    ->get();
 		return $conversations;
 	}
 
