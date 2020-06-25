@@ -35,23 +35,23 @@
                 <div class="wrap">
 
                     <div class="inputs">
+                        <div class="">
+                            <label for="">Mot de passe actuel</label>
+                            <input type="password" name="" id="oldMdp" placeholder="Confirmer votre mot de passe">
+                        </div>
+                        <p class="msgErreurOld"></p>
                          <div>
                             <label for="">Adresse E-mail</label>
                             <input type="text" name="" id="mail" placeholder="Adresse E-mail">
                         </div>
                         <div class="">
-                            <label for="">Mot de passe</label>
+                            <label for="">Nouveau Mot de passe</label>
                             <div class="divMdp">
                                 <i class="fa fa-eye js-visiPassword"></i>
                                 <input type="password" name="" id="mdp" placeholder="Mot de passe">
                             </div>
                             <p class="msgErreurNew"></p>
                         </div>
-                        <div class="">
-                            <label for="">Ancien Mot de passe</label>
-                            <input type="password" name="" id="oldMdp" placeholder="Confirmer votre mot de passe">
-                        </div>
-                        <p class="msgErreurOld"></p>
                     </div>
 
                     <div class="btn">
@@ -136,6 +136,12 @@
                     <div class="divInp">
                         <label for="place">LIEU</label>
                         <input name="place" id="place" placeholder="Où voulez-vous partir ?" type="text">
+                    </div>
+                    <div>
+                        <div class="loader searchCity" id="hidden"></div>
+                    </div>
+                    <div>
+                        <div class="suggestions"></div>
                     </div>
                     <button class="btnAddAlerte">Ajouter</button>
                 </div>

@@ -26,6 +26,7 @@ class AdvertController extends Controller
 					$r = explode("=", $value);
 					if($r[1] != "") {
 						$r[1] = str_replace("+", " ", $r[1]);
+						$r[1] = str_replace("%2C", ",", $r[1]);
 						$parameters[$r[0]] = $r[1];
 					}
 				}
@@ -71,6 +72,7 @@ class AdvertController extends Controller
 		if($request->filterUrl == true) {
 			array_push($adverts, $parameters);
 		}
+
 
         return $adverts;
 	}
@@ -130,8 +132,9 @@ class AdvertController extends Controller
         // convertion format date
 		$advert->date_from = date("d-m-Y", strtotime($advert->date_from));
 		$advert->date_to = date("d-m-Y", strtotime($advert->date_to));
+		$imgs = explode(", ", $advert->img);
 
-        return view('layout/modifyAnnonce')->with('advert', $advert);
+        return view('layout/modifyAnnonce', ['advert' => $advert, 'imgs' => $imgs]);
     }
 
     public function saveModif(Request $request) {

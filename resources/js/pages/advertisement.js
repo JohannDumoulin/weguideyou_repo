@@ -62,7 +62,7 @@ export default class AdvertisementPage {
 
         if(filterUrl == undefined)
             filterUrl = true;
-        if(type = undefined) {
+        if(type == undefined) {
             type = $('title')[0].innerHTML;
         }
 
@@ -205,7 +205,7 @@ export default class AdvertisementPage {
             data: {adverts : advertsM[page], type : $('body').data('content')},
             success : function(res) {
 
-                if(_this.$els.fAff) {
+                if(_this.$els.fAff && $('.mapContainer').length > 0) {
                     _this.initMapAdverts(adverts);
                     _this.$els.fAff = false;
                 }
@@ -260,6 +260,9 @@ export default class AdvertisementPage {
                         }
                     }
                 }
+            },
+            error : function(data) {
+                console.log(data.responseJSON);
             }
         });   
     }
@@ -454,6 +457,7 @@ export default class AdvertisementPage {
             _this.$els.filter_on = filter_on; // save filters
 
             _this.getAdverts($('title')[0].innerHTML, false);
+
         }); 
     }
 
@@ -464,7 +468,8 @@ export default class AdvertisementPage {
 
         // reduce the description length
         for(let d of adverts) {
-            d.desc = d.desc.substring(0, 350) + "...";
+            if(d.desc.length > 0)
+                d.desc = d.desc.substring(0, 300) + "...";
         }
 
         if(adverts == undefined)
@@ -483,7 +488,6 @@ export default class AdvertisementPage {
         // filters
         for ([key, value] of filter_on) {
 
-
             if(key == "place" && typeof value == "object") {
                 adverts = adverts.filter(function(v){
                     return value.includes(v[key]);
@@ -494,7 +498,7 @@ export default class AdvertisementPage {
                     return (v["user_status"] != key)
                 });
             }
-            else if(key == "activity" || key == "place") {
+            else if(key == "activity" || key == "place" || key == "user_language") {
                 adverts = adverts.filter(function(v){
                     var a = v[key].toLowerCase();
                     var b = value.toLowerCase();
@@ -544,9 +548,11 @@ export default class AdvertisementPage {
             if($('#sectionContent')[0].innerHTML == "") {
                 $('#sectionContent').load(url, function(data) {
 
-                    var lat = $(data).find('.lat')[0].innerHTML;
-                    var lng = $(data).find('.lng')[0].innerHTML;
-                    _this.initMap(lat, lng);
+                    if($(data).find('.lat').length > 0) {
+                        var lat = $(data).find('.lat')[0].innerHTML;
+                        var lng = $(data).find('.lng')[0].innerHTML;
+                        _this.initMap(lat, lng);
+                    }
 
                     _this.initFav();
                     $("body").toggleClass("stopScrolling");
@@ -655,7 +661,7 @@ export default class AdvertisementPage {
                 $('#place_lng')[0].value = this.classList[2]
             }
 
-            $('#place')[0].value = this.innerHTML;
+            $('#place')[0].value = this.innerHTML.split(', ')[0];
         })
 
         $(document).on("click", function(e) {
@@ -688,7 +694,7 @@ export default class AdvertisementPage {
     splitInPages(array) {
 
         var resultat = [];
-        var i,j,temparray,chunk = 10;
+        var i,j,temparray,chunk = 8;
 
         for (i=0,j=array.length; i<j; i+=chunk) {
             temparray = array.slice(i,i+chunk);

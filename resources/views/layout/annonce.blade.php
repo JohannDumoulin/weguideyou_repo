@@ -7,6 +7,7 @@
    crossorigin=""></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/d678efe89e.js" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
@@ -58,7 +59,7 @@
                 <div class="carousel-cell">
                 	<img src={{ $img }}>
                 </div>
-
+                
                 @endforeach
 
             </div>
@@ -77,9 +78,9 @@
 
 	        	@if($advert->activity != false)
 		        <div>
-	                <i class="fa fa-users"></i>
+	                <i class="fas fa-running"></i>
 	                <label>Activité</label>
-	                <p id="ad-nb_pers">{{ $advert->activity }}</p>
+	                <p id="ad-nb_act">{{ $advert->activity }}</p>
 	            </div> 
 	            @endif 
 	            
@@ -95,13 +96,19 @@
 	            <div>
 					<i class="fa fa-calendar"></i>
 	                <label>Durée</label>
-	                <p id="ad-duration">{{ $advert->duration }}</p>
+					@if($advert->duration == "day")
+	                	<p id="ad-nb_pers">Toute la journée</p>
+	                @elseif($advert->duration == "half-day")
+						<p id="ad-nb_pers">Demi-journée</p>
+					@else
+						<p id="ad-duration">{{ $advert->duration }}</p>
+					@endif
 	            </div>
 	            @endif 
 
 	            @if($advert->loge != false)
 		        <div>
-	                <i class="fa fa-users"></i>
+	                <i class="fas fa-house-user"></i>
 	                <label>Poste logé</label>
 	                @if($advert->loge == 1)
 	                	<p id="ad-nb_pers">Oui</p>
@@ -113,7 +120,7 @@
 
 	            @if($advert->salaire != false)
 	            <div>
-	                <i class="fa fa-users"></i>
+	                <i class="far fa-money-bill-alt"></i>
 	                <label>Salaire</label>
 	                <p id="ad-salaire">{{ $advert->salaire }} €</p>
 	            </div>  
@@ -121,7 +128,7 @@
 
 	            @if($advert->job != false)
 	            <div>
-	                <i class="fa fa-users"></i>
+	                <i class="fas fa-running"></i>
 	                <label>Profession</label>
 	                <p id="ad-salaire">{{ $advert->job }}</p>
 	            </div> 
@@ -152,6 +159,13 @@
 		    			<span>{{ $user->phone }}</span>
 		    		</p>
 					@endif
+
+		        	@if($user->license == 1)
+		        	<p>
+		    			<i class="fa fa-id-badge"></i>
+		    			<span>Diplome certifié</span>
+		    		</p>
+		            @endif
 
 	    		</div>
 	    	</div>

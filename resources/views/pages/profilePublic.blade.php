@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/d678efe89e.js" crossorigin="anonymous"></script>
 @endpush
 
-@section('attribute', 'userProfil')
+@section('attribute', 'userProfile')
 
 @section('content')
 

@@ -72,12 +72,8 @@
 				<p>Plus de filtres</p>
 			</div>
 
-			<div class="effaceFilters">
-				<a href="/annonces?type=Cours">Effacer tous les filtres</a>
-			</div>
-
 			<!-- More filters -->
-			<form action="" class="first_filter_more js-first_filter_more"> 
+			<div action="" class="first_filter_more js-first_filter_more"> 
 				<div class="first_filter_more_content">
 					<p>Choix du prestataire :</p>
 					<input class="js-filter" type="checkbox" id="PRO" name="PRO" checked>
@@ -105,12 +101,20 @@
 						<option value="day">Journée</option>
 					</select>
 				</div>
+				<div class="first_filter_more_content">
+					<p>Langue :</p>
+					<input name="user_language" id="user_language" class="js-filter">
+				</div>
 
 				<div class="less_filter js-less_filter">
 					<img src="{{ asset('img/minus_filter.svg') }}" alt="">
 					<p>Moins de filtres</p>
 				</div>
-			</form>
+			</div>
+
+			<div class="effaceFilters">
+				<a href="/annonces?type=Cours">Effacer tous les filtres</a>
+			</div>
 			
 <!---------------------- Second Filters -------------------->
 			<div id="second_filter">

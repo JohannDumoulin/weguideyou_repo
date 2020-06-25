@@ -10,19 +10,22 @@
 				<i class="fa fa-chevron-down arrow"></i>
 			</a>
 
-             <a href="/annonces?type=Cours">Annonces</a>
-
             @auth
 
                 @if(Auth::user()->status == "PRO")
                     <a href="/annonces?type=Cours">Annonces Particuliers</a>
                     <a href="/annoncesPro?type=LookForJob">Annonces Professionnels</a>
                 @endif
+
+                @if(Auth::user()->status == "PAR")
+                    <a href="/annonces?type=Cours">Annonces</a>
+                @endif
                 
                 <a href="{{ route('create_ad') }}">Poster une annonce</a>
                 <a href="/favoris">Favoris</a>
             @endauth
             @guest
+                <a href="/annonces?type=Cours">Annonces</a>
                 <a href="#" class="js-toggleConnectionContainer">Connexion</a>
                 <a href="{{route('register')}}" id="js-registrationBtn" class="buttonLink">Inscription</a>
                 {{--@include('components.buttonLink', ['newId' => 'js-registrationBtn','link' => '/register','text' => 'Inscription'])--}}

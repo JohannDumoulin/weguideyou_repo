@@ -3,8 +3,6 @@
 
 <div class="mAdvert {{ $advert['id'] }}">
 
-<hr>
-
     <div class="advertisement_content js-toggleAnnonce" id=/annonce/{{ $advert['id'] }}>
         <div class="profil_picture_container">
             <img src="{{ asset('img/advertisement.jpg') }}" alt="">

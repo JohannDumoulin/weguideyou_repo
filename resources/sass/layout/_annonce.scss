@@ -144,6 +144,7 @@
 
 			.is-selected {
 				background-color: black;
+				cursor: default;
 			}
 		}
 
@@ -183,6 +184,15 @@
 		}
 	}
 
+	.modifImg {
+		flex-direction: column;
+
+		input {
+			width: auto !important;
+    		margin: 5px 50px;
+		}
+	}
+
 	.description {
 
 		label {
@@ -216,9 +226,18 @@
 		padding-bottom: 20px;
 		border-bottom: 1px solid black;
 
+		.wrap {
+			align-items: center;
+		}
+
 		a {
 			color: black;
 		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
 
 		.txt {
 			display: block;
@@ -228,10 +247,14 @@
 			display: flex;
 
 			p {
-				padding-top: 10px;
+				margin: 12px 0;
 
 				.nom {
 					font-size: 150%;
+				}
+
+				i {
+					margin-right: 5px;
 				}
 			}
 		}
@@ -353,6 +376,11 @@
 	input {
 		width: 150px !important;
 		margin: 5px;
+		padding: 5px;
+		padding-bottom: 10px;
+		border: none;
+		border-bottom: 1px solid #c3c3c3;
+		outline: none;
 	}
 
 	textarea {

@@ -44,12 +44,14 @@ $factory->define(Advertisement::class, function (Faker $faker) {
     return [
         'user_id' => 1,
         'user_status' => $status,
+        'user_language' => "Francais, Anglais",
         'type' => $type,
         'name' => "titre",
 
         'desc' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus cursus fringilla. Curabitur sed neque vitae eros feugiat luctus a ut diam. Quisque malesuada orci diam, eget euismod augue tempor et. Suspendisse potenti. Donec placerat odio non est vestibulum consequat. Proin viverra lacus ut nunc dictum fermentum. Praesent tristique lorem et risus euismod, sed ornare justo convallis. Proin tellus felis, tincidunt dictum lacus at, aliquam pellentesque metus. Donec mollis, libero sed eleifend malesuada, metus risus dapibus risus, ut aliquam risus lectus ac ex. Phasellus fringilla est sed ante consequat, efficitur auctor libero ultricies. Vestibulum scelerisque convallis nibh auctor placerat. Cras eget semper tortor, sed tristique velit. Fusce ultrices dui eu turpis convallis elementum at vitae turpis.",
 
         'nbPers' => $nbPers,
+        'activity' => $activity,
         'date_from' => date_create("2020-03-15"), 
         'date_to' => date_create("2020-05-15"), 
         'price_one_h' => random_int (30, 500),
