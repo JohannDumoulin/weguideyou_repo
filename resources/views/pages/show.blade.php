@@ -18,7 +18,7 @@
 			<div id="mail_container">
 <!---------------------- All mails -------------------------->
 				<div id="all_mails">
-					@include('pages.mailbox_users', ['users' => $users, 'unread' => $unread]);
+					@include('pages.mailbox_users', ['users' => $users, 'unread' => $unread, 'messages => $messages'])
 				</div>
 
 <!---------------------- The mail --------------------------->
