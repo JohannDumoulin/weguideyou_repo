@@ -29,6 +29,7 @@ Route::get('/parametres', function () {
 //Route::get('/profil', 'ProfileController@index')->middleware('auth');
 //Route::post('/profile/update', 'ProfileController@update')->name('profile.update')->middleware('auth');
 Route::resource('profile','ProfileController')->middleware('auth');
+Route::post('/updateLang', 'UpdateUserLangController')->name('updateLang')->middleware('auth');
 Route::get('/profil/{id}', 'ProfileController@profilPublic');
 
 

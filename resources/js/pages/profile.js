@@ -52,15 +52,23 @@ export default class Profile {
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         })
 
-        $('.js-userLangUpdate').submit((e)=>{
-            let that = e.currentTarget;
-            console.log(that);
-            e.preventDefault();
+        $('.js-userLangUpdate').click(function(event){
+            event.preventDefault();
+            //let that = event.currentTarget;
+            let str = $(".data-checkbox").serialize();
             $.ajax({
-                method: $(that).attr('method'),
-                url: $(that).attr('action'),
-                data: $(that).serialize()
+                method: 'post',
+                url: '/updateLang',
+                data: str
             })
+                .done((data) => {
+                    console.log('success');
+                    console.log(data);
+                })
+                .fail((data) => {
+                    console.log('failed');
+                    console.log(data);
+                });
         });
     }
 }
