@@ -72,13 +72,25 @@
                         <div class="updatePanel-langContainer">
                             <div class="lang-boxContainer">
                                 <ul class="lang-box">
-                                    <li><input type="checkbox" id="checkbox-1" value="french"><label for="checkbox-1">Français</label></li>
-                                    <li><input type="checkbox" id="checkbox-2" value="english"><label for="checkbox-2">Anglais</label></li>
-                                    <li><input type="checkbox" id="checkbox-3" value="spanish"><label for="checkbox-3">Espagnole</label></li>
-                                    <li><input type="checkbox" id="checkbox-4" value="italian"><label for="checkbox-4">Italien</label></li>
-                                    <li><input type="checkbox" id="checkbox-5" value="German"><label for="checkbox-5">Allemand</label></li>
-                                    <li><input type="checkbox" id="checkbox-6" value="Russian"><label for="checkbox-6">Russe</label></li>
-                                    <li><input type="checkbox" id="checkbox-7" value="Portuguese"><label for="checkbox-7">Portugais</label></li>
+                                    @foreach($languages as $language)
+                                        @foreach($UserLanguages as $UserLanguage)
+                                            @if($UserLanguage->user_id === Auth::user()->id)
+                                                @php
+                                                $validate = true;
+                                                @endphp
+                                                @if($UserLanguage->language_id === $language->language_id)
+                                                    <li><input type="checkbox" checked class="data-checkbox" name="checkbox{{$language->language_id}}" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
+                                                @break;
+                                                @endif
+                                                @php
+                                                    $validate = false;
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                            @if($validate === false)
+                                                <li><input type="checkbox" class="data-checkbox" name="checkbox{{$language->language_id}}" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
+                                            @endif
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

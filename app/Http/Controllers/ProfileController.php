@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Language;
+use App\UserLanguage;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -13,21 +15,24 @@ class ProfileController extends Controller
 {
     public function index(){
         $status = Auth::user()->status;
+        $UserLanguages = UserLanguage::all();
+        $languages = Language::all();
+
         if ($status === 'PAR'){
             $dateOfBirth = Auth::user()->birth;
             $years = Carbon::createFromDate($dateOfBirth)->age;
-            return view('pages/profile', ['years'=>$years, 'status'=>$status]);
+            return view('pages/profile', ['years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages]);
         }
         if ($status === 'PRO'){
             $dateOfBirth = Auth::user()->birth;
             $years = Carbon::createFromDate($dateOfBirth)->age;
-            return view('pages/profile', ['years'=>$years, 'status'=>$status]);
+            return view('pages/profile', ['years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages]);
         }
         if ($status === 'NSO'){
-            return view('pages/profile', ['status'=>$status]);
+            return view('pages/profile', ['status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages]);
         }
         if ($status === 'SO'){
-            return view('pages/profile', ['status'=>$status]);
+            return view('pages/profile', ['status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages]);
         }
     }
 
