@@ -87,7 +87,11 @@
                                                 @endphp
                                             @endif
                                         @endforeach
-                                            @if($validate === false)
+                                            @if(isset($validate))
+                                                @if($validate === false)
+                                                    <li><input type="checkbox" class="data-checkbox" name="checkbox{{$language->language_id}}" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
+                                                @endif
+                                            @else
                                                 <li><input type="checkbox" class="data-checkbox" name="checkbox{{$language->language_id}}" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
                                             @endif
                                     @endforeach

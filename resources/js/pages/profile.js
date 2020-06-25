@@ -61,14 +61,16 @@ export default class Profile {
                 url: '/updateLang',
                 data: str
             })
-                .done((data) => {
-                    console.log('success');
-                    console.log(data);
-                })
-                .fail((data) => {
-                    console.log('failed');
-                    console.log(data);
-                });
+            /*.done((data) => {
+                console.log('success');
+                console.log(data);
+            })
+            .fail((data) => {
+                console.log('failed');
+                console.log(data);
+            });*/
+
+            //console.log(event.currentTarget);
         });
     }
 }
