@@ -19,7 +19,7 @@ class FavoritesController extends Controller
 
 	public function getFavorites() {
 
-		$favorites;
+		$favorites = "";
 
 		if(Auth::user()) {
 			$favorites = DB::table('favorites')

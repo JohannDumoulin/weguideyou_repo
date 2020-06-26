@@ -27,7 +27,7 @@ Route::get('/parametres', function () {
 
 /*Profile*/
 Route::resource('profile','ProfileController')->middleware('auth');
-Route::get('/profil/{id}', 'ProfileController@profilPublic');
+Route::get('/profil/{id}', 'ProfileController@profilePublic');
 
 
 /*Favoris*/

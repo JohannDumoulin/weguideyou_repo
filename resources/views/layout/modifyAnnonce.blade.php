@@ -25,7 +25,6 @@
 	        <div class="wrap">
 	            <div class="btnResa">
 	                <input id="ad-title" value="{{ $advert->name }}"></input>
-	                @include('components.buttonLink', ['link' => '#'], ['text' => 'Réserver'])
 	            </div>   
 
 	            <input id="ad-price" value="{{ $advert->price_one_h }}"></input>€ / h
@@ -42,24 +41,16 @@
 	        </div>
 	    </section>
 
-	    <section class="images">
+	    <section class="images modifImg">
 
-            <div class="main-carousel">
-                <div class="carousel-cell">
-                	<img src="https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg">
-                </div>
-                <div class="carousel-cell">
-                	<img src="https://img.redbull.com/images/c_crop,x_2235,y_0,h_3777,w_3022/c_fill,w_860,h_1075/q_auto,f_auto/redbullcom/2015/09/28/1331750334543_6/construire-piste-ski-val-disere-france">
-                </div>
-                <div class="carousel-cell">
-                	<img src="https://www.canalvie.com/polopoly_fs/1.1360456.1389029380!/image/comment_choisir_son_equipement_de_ski_670.jpg_gen/derivatives/cvlandscape_670_377/comment_choisir_son_equipement_de_ski_670.jpg">
-                </div>
-                <div class="carousel-cell">
-                	<img src="https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg">
-                </div>
-            </div>
+        	@foreach ($imgs as $img)
+
+			<input class="ad-img" value={{ $img }}>
+
+            @endforeach
 
 	    </section>
+
 
 	    <section class="description">
 	        <div class="wrap">
@@ -69,14 +60,25 @@
 	    </section>
 
 	    <section class="detail">
-	        <div class="wrap">
+	        <div class="wrap">              
+
+	            @if($advert->activity != false)
+		        <div>
+	                <i class="fas fa-running"></i>
+	                <label>Activité</label>
+	                <input id="ad-activity" value={{ $advert->activity }}></input>
+	            </div> 
+	            @endif 
 	            
+	            @if($advert->nbPers != false)
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>Type de cours</label>
-	                <input id="ad-nb_pers" value="Collectif"></input>
-	            </div>                
+	                <input id="ad-nbPers" value={{ $advert->nbPers }}></input>
+	            </div>  
+	            @endif              
 
+				@if($advert->duration != false)
 	            <div>
 					<i class="fa fa-calendar"></i>
 	                <label>Durée</label>
@@ -89,18 +91,41 @@
 						<option value="Toute la journée">Journée</option>
 	                </select>
 	            </div>
+	            @endif 
+
+	            @if($advert->loge != false)
+		        <div>
+	                <i class="fas fa-house-user"></i>
+	                <label>Poste logé</label>
+	                <select id="ad-loge">
+	    		     	@if($advert->loge == 1)
+		                	<option value="{{ $advert->loge }}" selected disabled hidden>Oui</option>
+		                @else
+							<option value="{{ $advert->loge }}" selected disabled hidden>Non</option>
+						@endif
+	                	<option value="1">Oui</option>
+	                	<option value="0">Non</option>
+	                </select>
+	            </div> 
+	            @endif 
+
+	            @if($advert->salaire != false)
+	            <div>
+	                <i class="far fa-money-bill-alt"></i>
+	                <label>Salaire</label>
+	                <input id="ad-salaire" value={{ $advert->salaire }}></input> €
+	            </div>  
+	            @endif 
+
+	            @if($advert->job != false)
+	            <div>
+	                <i class="fas fa-running"></i>
+	                <label>Profession</label>
+	                <input id="ad-job" value={{ $advert->job }}></input>
+	            </div> 
+	            @endif
 
 	        </div>
-	    </section>
-
-	    <section class="map">
-	    	<div class="wrap titre">
-		    	<i class="fa fa-map-marker"></i>
-		    	<label><span class="location">{{ $advert->place }} </span> :</label>
-	    	</div>
-	    	<div id="js-map">
-	    		<div id='mapid'></div>
-	    	</div>
 	    </section>
 
 	</div>

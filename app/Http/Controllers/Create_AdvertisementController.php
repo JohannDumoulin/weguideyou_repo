@@ -22,6 +22,7 @@ class Create_AdvertisementController extends Controller
 
     	$advertisement->user_id = Auth::id();
         $advertisement->user_status = Auth::user()->status;
+        $advertisement->user_language = Auth::user()->language;
 
     	$advertisement->name = $request->input('name');
     	$advertisement->desc = $request->input('desc');
@@ -78,6 +79,9 @@ class Create_AdvertisementController extends Controller
     	// 		'date_to',
     	// 		'show_phone'
     	// 	]))->save();
+
+        // Alertes
+        app('App\Http\Controllers\AdvertController')->alerte($advertisement->id);
 
     	return redirect()->route('advertisements');
     }

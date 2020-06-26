@@ -73,14 +73,31 @@ export default class Annonce{
             advert.date_from = $("#ad-dateStart")[0].value;
             advert.date_to = $("#ad-dateEnd")[0].value;
             advert.desc = $("#ad-description")[0].value;
-            advert.duration = $("#ad-duration")[0].value;
+            if($('#ad-duration').val())
+                advert.duration = $("#ad-duration")[0].value;
+            if($('#ad-job').val())
+                advert.job = $("#ad-job")[0].value;
+            if($('#ad-salaire').val())
+                advert.salaire = $("#ad-salaire")[0].value;
+            if($('#ad-loge').val())
+                advert.loge = $("#ad-loge")[0].value;
+            if($('#ad-nbPers').val())
+                advert.nbPers = $("#ad-nbPers")[0].value;
+            if($('#ad-activity').val())
+                advert.activity = $("#ad-activity")[0].value;
+
+            var imgs = "";
+            var inpImgs = $('.ad-img');
+            for(var inpImg of inpImgs) {
+                imgs +=inpImg.value + ", ";
+            }
+            advert.img = imgs;
 
             $.ajax({
                 method: "get",
                 url: "/saveModif",
                 data: {advert: advert},
                 success: function (data) {
-                    //console.log(data);
                     window.location.href = "/mes_annonces";
                 },
                 error: function(data) {

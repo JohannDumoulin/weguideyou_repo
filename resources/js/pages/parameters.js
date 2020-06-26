@@ -126,6 +126,7 @@ export default class Parameters {
                 url: "/changeInfos",
                 data: {infos: infos},
                 success : function(res) {
+
                     if(res == 0)
                         $(".msgErreurOld")[0].innerHTML = "Mot de passe incorrect";
                     else if(res == "c")
