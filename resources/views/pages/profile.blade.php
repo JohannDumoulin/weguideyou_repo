@@ -79,7 +79,7 @@
                                                 $validate = true;
                                                 @endphp
                                                 @if($UserLanguage->language_id === $language->language_id)
-                                                    <li><input type="checkbox" checked class="data-checkbox" name="checkbox{{$language->language_id}}" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
+                                                    <li><input type="checkbox" checked class="data-checkbox" name="checkbox[{{$language->language_id}}]" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
                                                 @break;
                                                 @endif
                                                 @php
@@ -89,10 +89,10 @@
                                         @endforeach
                                             @if(isset($validate))
                                                 @if($validate === false)
-                                                    <li><input type="checkbox" class="data-checkbox" name="checkbox{{$language->language_id}}" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
+                                                    <li><input type="checkbox" class="data-checkbox" name="checkbox[{{$language->language_id}}]" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
                                                 @endif
                                             @else
-                                                <li><input type="checkbox" class="data-checkbox" name="checkbox{{$language->language_id}}" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
+                                                <li><input type="checkbox" class="data-checkbox" name="checkbox[{{$language->language_id}}]" id="checkbox-{{$language->language_id}}" value="{{$language->language_id}}"><label for="checkbox-{{$language->language_id}}">{{$language->language_name}}</label></li>
                                             @endif
                                     @endforeach
                                 </ul>
@@ -154,9 +154,12 @@
                                 <i id="js-modifyProfile" class="fas fa-pen fa-lg"></i>
                             </div>
                             @if($status === 'NSO' || $status === 'SO' || $status === 'PRO')
-                                <div class="profile-job">
-                                    <p>{{ Auth::user()->job ?? 'A compléter'}} - <a href="#">{{ Auth::user()->city ?? 'A compléter'}}</a></p>
+                                <div class="profile-title">
+                                    <h2>{{ Auth::user()->title ?? 'A compléter'}}</h2>
                                 </div>
+                                {{--<div class="profile-job">
+                                    <p>{{ Auth::user()->job ?? 'A compléter'}} - <a href="#">{{ Auth::user()->city ?? 'A compléter'}}</a></p>
+                                </div>--}}
                             @endif
                             <div class="profile-lang">
                                 <p>Français - anglais</p>

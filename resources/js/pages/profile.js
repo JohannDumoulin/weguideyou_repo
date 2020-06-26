@@ -27,7 +27,6 @@ export default class Profile {
     initEvents(){
         this.bannerParallax();
         this.getUpdatePanel();
-        this.langUpdate();
     }
 
     bannerParallax(){
@@ -44,33 +43,6 @@ export default class Profile {
         this.$els.back.click(function(){
             $('.js-profile-updatePanel').toggleClass("hidden");
             $('body').toggleClass("stopScrolling");
-        });
-    }
-
-    langUpdate(){
-        $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-        })
-
-        $('.js-userLangUpdate').click(function(event){
-            event.preventDefault();
-            //let that = event.currentTarget;
-            let str = $(".data-checkbox").serialize();
-            $.ajax({
-                method: 'post',
-                url: '/updateLang',
-                data: str
-            })
-            /*.done((data) => {
-                console.log('success');
-                console.log(data);
-            })
-            .fail((data) => {
-                console.log('failed');
-                console.log(data);
-            });*/
-
-            //console.log(event.currentTarget);
         });
     }
 }
