@@ -49,7 +49,8 @@ class NotificationController extends Controller
     public function alerte($users, $alertes, $advert_id) {
 
         foreach($alertes as $key => $data) {
-            Notification::send($users[$key], new Alerte($data->type, $data->act, $data->place, $advert_id));
+            if($users[$key]->notif_alerte == 1)
+                Notification::send($users[$key], new Alerte($data->type, $data->act, $data->place, $advert_id));
         }
     }
 

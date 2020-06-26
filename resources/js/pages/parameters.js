@@ -17,7 +17,9 @@ export default class Parameters {
         this.addAlerte();
         this.removeAlerte();
         this.getAlertes();
-        this.modifInfos();
+        this.modifInfosPerso();
+        this.modifInfosA();
+        this.modifPrefNotif();
         this.setInfos();
         this.toggleVisibilityPassword();
         this.deleteAccount();
@@ -103,6 +105,10 @@ export default class Parameters {
             url: "/getInfos",
             success : function(res) {
                 $("#mail")[0].value = res.email;
+                $("#siret")[0].value = res.siret;
+                $("#num_licence")[0].value = res.num_licence;
+                $("#IBAN")[0].value = res.IBAN;
+                $("#notif_alerte")[0].checked = res.notif_alerte;
             },
             error : function(res) {
                 console.log(res.responseJSON);
@@ -111,10 +117,10 @@ export default class Parameters {
 
     }
 
-    modifInfos() {
+    modifInfosPerso() {
         $(document).on('click', '.js-btnModifyInfos', function(event) {
             
-            var infos = {}
+            let infos = {}
             infos.oldMdp = $("#oldMdp")[0].value;
             infos.mail = $("#mail")[0].value;
             infos.mdp = $("#mdp")[0].value;
@@ -123,7 +129,7 @@ export default class Parameters {
             $(".msgErreurNew")[0].innerHTML = "";
 
             $.ajax({ type: "GET",   
-                url: "/changeInfos",
+                url: "/changeInfosPerso",
                 data: {infos: infos},
                 success : function(res) {
 
@@ -140,6 +146,51 @@ export default class Parameters {
             });
 
         });
+    }
+
+    modifInfosA() {
+        $(document).on('click', '.js-btnModifyInfosA', function(event) {
+            
+            let infos = {}
+            infos.siret = $("#siret")[0].value;
+            infos.num_licence = $("#num_licence")[0].value;
+            infos.IBAN = $("#IBAN")[0].value;
+
+            $.ajax({ type: "GET",   
+                url: "/changeInfosA",
+                data: {infos: infos},
+                success : function(res) {
+                    window.location.href = "/parametres";
+                },
+                error : function(res) {
+                    console.log(res.responseJSON);
+                }
+            });
+
+        });
+    }
+
+    modifPrefNotif() {
+
+        $(document).on('change', '#notif_alerte', function(event) {
+            $('.switch_alerte')[0].style.pointerEvents = "none";
+
+            let infos = {};
+            infos.notif_alerte = this.checked;
+
+            $.ajax({
+                method: "get",
+                url: "/modifPrefNotif",
+                data: {infos : infos},
+                success: function (data) {
+                    $('.switch_alerte')[0].style.pointerEvents = "default";
+                    window.location.href = "/parametres";
+                },
+                error: function(data) {
+                    console.log(data.responseJSON);
+                }
+            })
+        })
     }
 
     toggleVisibilityPassword() {

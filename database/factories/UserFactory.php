@@ -39,7 +39,10 @@ $factory->define(User::class, function (Faker $faker) {
         'job' => "guide de haute montagne",
         'license' => null,
         'license_date' => null,
-        'siret' => null,
+        'siret' => "123456789",
+        'num_licence' => "12345678",
+        'IBAN' => "1234567",
+        'notif_alerte' => 0,
         'cgu' => 0,
         'news_letter' => 0,
     ];

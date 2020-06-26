@@ -33,8 +33,11 @@ class CreateUsersTable extends Migration
             $table->string('title')->nullable();
             $table->string('sector')->nullable();
             $table->string('license')->nullable();
+            $table->string('num_licence')->nullable();
             $table->date('license_date')->nullable();
+            $table->string('IBAN')->nullable();
             $table->string('siret')->nullable();
+            $table->boolean('notif_alerte')->nullable();
             $table->boolean('cgu')->nullable();
             $table->boolean('news_letter')->nullable();
             $table->rememberToken();

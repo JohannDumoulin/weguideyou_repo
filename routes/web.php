@@ -89,7 +89,9 @@ Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 
 /* Parameters */
 Route::get('/getInfos', 'ParametersController@getInfos');
-Route::get('/changeInfos', 'ParametersController@changeInfos');
+Route::get('/changeInfosPerso', 'ParametersController@changeInfosPerso');
+Route::get('/changeInfosA', 'ParametersController@changeInfosA');
+Route::get('/modifPrefNotif', 'ParametersController@modifPrefNotif');
 Route::get('/deleteAccount', 'ParametersController@deleteAccount');
 
 
