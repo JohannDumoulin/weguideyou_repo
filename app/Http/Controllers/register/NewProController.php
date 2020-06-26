@@ -4,7 +4,6 @@ namespace App\Http\Controllers\register;
 
 use App\Forms\NewProfessionalAccount;
 use App\Http\Controllers\Controller;
-use App\Register;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -51,6 +50,7 @@ class NewProController extends Controller
             'pc' => $values['postcode'],
             'phone' => $values['phone'],
             'status' => 'PRO',
+            'sector' => $values['sector'],
             'license' => $values['licence'],
             'license_date' => $values['licenceDate'],
             'siret' => $values['siret'],
@@ -61,7 +61,7 @@ class NewProController extends Controller
         $this->guard()->login($user);
         if (Auth::check()){
             Flashy::success('Bienvenue chez WeGuideYou !!!');
-            return redirect('/');
+            return redirect('/profile');
         }
         else{
             Flashy::error('Une erreur c\'est produite, veuillez vous connecter manuellement.');

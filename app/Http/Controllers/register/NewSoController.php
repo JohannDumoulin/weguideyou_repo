@@ -56,7 +56,7 @@ class NewSoController extends Controller
         $this->guard()->login($user);
         if (Auth::check()){
             Flashy::success('Bienvenue chez WeGuideYou !!!');
-            return redirect('/');
+            return redirect('/profile');
         }
         else{
             Flashy::error('Une erreur c\'est produite, veuillez vous connecter manuellement.');

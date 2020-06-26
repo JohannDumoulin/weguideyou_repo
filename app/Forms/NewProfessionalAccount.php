@@ -48,13 +48,13 @@ class NewProfessionalAccount extends Form
                 ],
             ])
             ->add('address', 'text',[
-                'label' => 'required','string','max:100','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                'label' => 'Adresse',
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('city', 'text',[
-                'label' => 'City',
+                'label' => 'Ville',
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
@@ -124,6 +124,15 @@ class NewProfessionalAccount extends Form
                 'label' => 'Expiration de carte pro',
                 'rules' => [
                     'required|date'
+                ],
+            ])
+            ->add('sector', 'select', [
+                'choices' => ['mountain' =>'Sport de montagne', 'aquatic' =>'Sport aquatique', 'extreme' =>'Sport extrême', 'other' =>'Autre'],
+                'selected' => '',
+                'empty_value' => 'Choisir',
+                'label' => 'Secteur :',
+                'rules' => [
+                    'required|string|min:1|max:50'
                 ],
             ])
             ->add('submit', 'submit',[
