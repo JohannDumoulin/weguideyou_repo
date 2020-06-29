@@ -22,7 +22,7 @@
 
         <div class="menu">
             <a href="#infosLogin">Informations de connexion</a>
-            <a href="#notif">Notification</a>
+            <a href="#notif">Notifications</a>
             <a href="#alerte">Alertes</a>
             <a href="#payement">Méthodes de payement</a>
             <a href="#infos">Infos</a>
@@ -71,8 +71,8 @@
 
                     <div class="elem">
                         <p>Alerte</p>
-                        <label class="switch">
-                            <input type="checkbox" id="showOffline">
+                        <label class="switch switch_alerte">
+                            <input type="checkbox" id="notif_alerte">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -80,7 +80,7 @@
                     <div class="elem">
                         <p>Quand une de mes annonces expire</p>
                         <label class="switch">
-                            <input type="checkbox" id="showOffline">
+                            <input type="checkbox" id="">
                             <span class="slider round"></span>
                         </label>
                     </div>            
@@ -88,7 +88,7 @@
                     <div class="elem">
                         <p>Quand un utilisateur m'envoie un message</p>
                         <label class="switch">
-                            <input type="checkbox" id="showOffline">
+                            <input type="checkbox" id="">
                             <span class="slider round"></span>
                         </label>
                     </div>            
@@ -136,12 +136,12 @@
                     <div class="divInp">
                         <label for="place">LIEU</label>
                         <input name="place" id="place" placeholder="Où voulez-vous partir ?" type="text">
-                    </div>
-                    <div>
-                        <div class="loader searchCity" id="hidden"></div>
-                    </div>
-                    <div>
-                        <div class="suggestions"></div>
+                        <div>
+                            <div class="loader searchCity" id="hidden"></div>
+                        </div>
+                        <div>
+                            <div class="suggestions"></div>
+                        </div>
                     </div>
                     <button class="btnAddAlerte">Ajouter</button>
                 </div>
@@ -189,20 +189,20 @@
                         <div class="inputs">
                              <div>
                                 <label for="">IBAN</label>
-                                <input type="" name="" id="" placeholder="IBAN">
+                                <input id="IBAN" placeholder="IBAN">
                             </div>
                             <div>
                                 <label for="">Numéro de Siret</label>
-                                <input type="" name="" id="" placeholder="Numéro de Siret">
+                                <input id="siret" placeholder="Numéro de Siret">
                             </div>
                             <div>
                                 <label for="">Carte moniteur</label>
-                                <input type="" name="" id="" placeholder="Carte moniteur">
+                                <input id="num_licence" placeholder="Carte moniteur">
                             </div>
                         </div>
 
                         <div class="btn">
-                            @include('components.buttonLink', ['link' => '#'], ['text' => 'Modifier'])
+                            <button class="js-btnModifyInfosA buttonLink">Modifier</button>
                         </div>
 
                     </div>

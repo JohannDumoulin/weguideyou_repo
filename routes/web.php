@@ -2,17 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/particulier', 'HomeController@indexP')->name('homeIndividual');
 
@@ -93,7 +86,9 @@ Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
 
 /* Parameters */
 Route::get('/getInfos', 'ParametersController@getInfos');
-Route::get('/changeInfos', 'ParametersController@changeInfos');
+Route::get('/changeInfosPerso', 'ParametersController@changeInfosPerso');
+Route::get('/changeInfosA', 'ParametersController@changeInfosA');
+Route::get('/modifPrefNotif', 'ParametersController@modifPrefNotif');
 Route::get('/deleteAccount', 'ParametersController@deleteAccount');
 
 
@@ -101,6 +96,26 @@ Route::get('/deleteAccount', 'ParametersController@deleteAccount');
 Route::get('toggleFavorite', 'FavoritesController@toggleFavorite');
 Route::get('getFavorites', 'FavoritesController@getFavorites');
 
+/* Payment */
+Route::get('/payment', function () {
+    return view('pages/payment');
+});
+Route::post ( '/', function (Request $request) {
+    \Stripe\Stripe::setApiKey ( 'sk_test_51GyBvvAmBYV0PzsGwvvm2Zl8BTxJrGS1nv32r3oLg9l31C0NhnAs0CztGvDySn560A7gUhCoQlJWwGE86ombBzK600YpXkNizm' );
+    try {
+        \Stripe\Charge::create ( array (
+                "amount" => 300 * 100,
+                "currency" => "usd",
+                "source" => $request->input ( 'stripeToken' ),
+                "description" => "description test payment." 
+        ) );
+        Session::flash ( 'success-message', 'Payement effectué avec succès !' );
+        return Redirect::back ();
+    } catch ( \Exception $e ) {
+        Session::flash ( 'fail-message', "Erreur ! Veuillez réessayer plus tard." );
+        return Redirect::back ();
+    }
+} );
 
 // Mailbox
 Route::get('/messagerie','ConversationsController@index')->name('conversations');
