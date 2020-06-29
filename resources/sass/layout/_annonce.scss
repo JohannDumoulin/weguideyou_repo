@@ -130,8 +130,6 @@
 		ol {
 			display: flex;
 			justify-content: center;
-		    position: absolute;
-		    right: 50%;
 
 			li {
 				border: 2px solid black;
@@ -149,7 +147,6 @@
 		}
 
 		.main-carousel {
-			background: #EEE;
 			outline: none;
 		}
 
