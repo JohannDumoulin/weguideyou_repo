@@ -171,6 +171,7 @@
                             <a href="#" class="buttonLink">Contacter {{Auth::user()->name ?? 'undefined' }}</a>
                         </div>
                     </div>
+                    @if($status === 'PRO' || $status === 'SO' || $status === 'NSO')
                     <div class="profile-ad">
                         <div>
                             <h2>Annonces</h2>
@@ -187,6 +188,7 @@
                             <div class="carousel-cell">...</div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
