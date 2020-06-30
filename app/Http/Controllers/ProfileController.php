@@ -170,7 +170,12 @@ class ProfileController extends Controller
                         ],
                     ]);
 
+
+
                     if ($validate){
+                        if (!empty($request['sector'])){
+                            $this->updateSector($request['sector'], $user);
+                        }
                         $user->name = $request['name'];
                         $user->surname = $request['surname'];
                         $user->address = $request['address'];
@@ -230,6 +235,25 @@ class ProfileController extends Controller
                         $lang->save();
                     }
                 }
+            }
+        }
+    }
+    private function updateSector($request, $user){
+
+        $sector_id_max = Sectors::max('id');
+
+        $options = array(
+            'options' => array(
+                'min_range' => 1,
+                'max_range' => $sector_id_max,
+            )
+        );
+        if (!empty($request)){
+            if (filter_var($request, FILTER_VALIDATE_INT, $options) !== FALSE) {
+                $test = Sectors::where('id',$request)->sector_name;
+                dd($test);
+                $user->sector = Sectors::where('id',$request)->sector_name;
+                $user->save();
             }
         }
     }
