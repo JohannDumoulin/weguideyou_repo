@@ -57,6 +57,8 @@ class NewProController extends Controller
             'cgu' => $values['CGU'],
             'news_letter' => $values['newsLetter'],
 
+            //dd($values['sector']),
+
         ]);
         $this->guard()->login($user);
         if (Auth::check()){

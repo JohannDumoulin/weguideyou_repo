@@ -59,13 +59,21 @@
                         </div>
                     </div>
                     @if($status === 'NSO' || $status === 'SO' || $status === 'PRO')
-                        <div>
-                            <label>
-                                <input name="title" required type="text" placeholder="Titre" class="form-control @error('city') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->title ?? 'Titre' }}" autofocus>
-                            </label>
-                        </div>
-                        <div>
-                            {{--job choice--}}
+                        <div class="updatePanel-sector">
+                            <div>
+                                <label>
+                                    <input name="title" required type="text" placeholder="Titre" class="form-control @error('city') is-invalid @enderror" maxlength="50" value="{{ Auth::user()->title ?? 'Titre' }}" autofocus>
+                                </label>
+                            </div>
+                            <div>
+                                <label for="sector" class="control-label required">Secteur :</label>
+                                <select class="form-control" required="required" id="sector" name="sector">
+                                    <option value="" selected="selected">Choisir</option>
+                                    <option value="mountain">Sport de montagne</option>
+                                    <option value="aquatic">Sport aquatique</option>
+                                    <option value="extreme">Sport extrême</option>
+                                    <option value="other">Autre</option></select>
+                            </div>
                         </div>
                     @endif
                     <div class="updatePanel-lang">
