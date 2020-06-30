@@ -13,26 +13,51 @@ use MercurySeries\Flashy\Flashy;
 
 class ProfileController extends Controller
 {
+
+    private $id;
+
     public function index(){
         $status = Auth::user()->status;
         $UserLanguages = UserLanguage::all();
         $languages = Language::all();
+        $view = "profile";
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+
+        if($this->id != null) {
+            $view = "profilePublic";
+
+            $user = DB::table('users')
+                ->where("id", "=", $this->id)
+                ->select('*')
+                ->get();
+            $user = (array) $user[0];
+
+            $user_id = $user['id'];
+        }
+
+        $adverts = DB::table('advertisement')
+            ->where("advertisement.user_id", "=", $user_id)
+            ->select('advertisement.*')
+            ->get();
+
+        //return $adverts;
 
         if ($status === 'PAR'){
-            $dateOfBirth = Auth::user()->birth;
+            $dateOfBirth = $user["birth"];
             $years = Carbon::createFromDate($dateOfBirth)->age;
-            return view('pages/profile', ['years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages]);
+            return view('pages/'.$view, ['years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'PRO'){
-            $dateOfBirth = Auth::user()->birth;
+            $dateOfBirth = $user["birth"];
             $years = Carbon::createFromDate($dateOfBirth)->age;
-            return view('pages/profile', ['years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages]);
+            return view('pages/'.$view, ['years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'NSO'){
-            return view('pages/profile', ['status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages]);
+            return view('pages/'.$view, ['status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'SO'){
-            return view('pages/profile', ['status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages]);
+            return view('pages/'.$view, ['status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
     }
 
@@ -211,17 +236,8 @@ class ProfileController extends Controller
 
 
 
-
-
-
     public function profilePublic($id) {
-
-    	$user = DB::select('select * from users where id ='.$id);
-    	$user = $user[0];
-
-        $dateOfBirth = $user->birth;
-        $years = Carbon::createFromDate($dateOfBirth)->age;
-
-    	return view('pages/profilePublic', ['user'=>$user, "years"=> $years]);
+        $this->id = $id;
+        return $this->index();
     }
 }

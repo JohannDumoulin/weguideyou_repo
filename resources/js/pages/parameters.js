@@ -160,7 +160,7 @@ export default class Parameters {
                 url: "/changeInfosA",
                 data: {infos: infos},
                 success : function(res) {
-                    window.location.href = "/parametres";
+
                 },
                 error : function(res) {
                     console.log(res.responseJSON);

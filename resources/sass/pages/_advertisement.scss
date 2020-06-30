@@ -342,175 +342,7 @@ body {
 			}
 		}
 
-		.advertisement_container {
-			margin-top: 40px;
-
-			&.all, &.premium {
-
-				.advertisement_content {
-					max-height: 450px;
-					display: flex;
-					width: 100%;
-					box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
-					border-radius: 5px;
-					position: relative;
-					cursor: pointer;
-					margin-bottom: 20px;
-					overflow: hidden;
-
-					.profil_picture_container {
-						overflow: hidden;
-						height: 200px;
-						width: 25%;
-						text-align: center;
-
-						img {
-							height: 100%;
-							margin-left: 50%;
-							transform: translateX(-50%);
-						}
-					}
-
-					.content {
-						width: 75%;
-					}
-
-					.infos {
-						padding: 20px 0;
-						margin-left: 15px;
-
-						h3 {
-							font-size: 1.4em;
-							font-family: "Roboto", Arial, sans-serif;
-							width: 80%;
-    						overflow: hidden;
-    						text-overflow: ellipsis;
-						}
-
-						.info_content {
-							display: flex;
-							margin-top: 10px;
-
-							.more {
-								min-width: 90px;
-								max-width: 90px;
-
-								>p {
-									color: white;
-									background-color: $deepBlue;
-									text-align: center;
-									margin-bottom: 10px;
-									padding: 10px 10px;
-									border-radius: 9px;
-									display: inline-flex;
-								}
-								
-								.seller_infos {
-									display: flex;
-									justify-content: space-between;
-									align-items: center;
-								}
-							}
-
-							.desc {
-								font-weight: 300;
-								margin: 0 20px;
-								line-height: 18px;
-								height: 107px;
-								overflow: hidden;
-								font-size: 90%;
-							}
-						}
-					}
-
-					.picto {
-						position: absolute;
-
-						&.like {
-							top: 20px;
-							right: 20px;
-						}
-
-						&.urgent {
-							top: 20px;
-							right: 60px;
-						}
-					}
-				}
-
-				&:last-of-type {
-					margin-bottom: 0;
-				}
-			}
-
-			&.premium {
-				margin-left: 0;
-				margin-top: 0;
-				
-				.advertisement_content {
-					display: block;
-					width: 100%;
-					box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
-					border-radius: 5px;
-					position: relative;
-					cursor: pointer;
-					margin-bottom: 20px;
-					overflow: hidden;
-
-					.profil_picture_container {
-						overflow: hidden;
-						height: auto;
-						width: 100%;
-						text-align: center;
-
-						img {
-							width: 100%;
-						}
-					}
-
-					.content {
-						width: 100%;
-					}
-
-					.infos {
-						padding: 20px 0;
-						margin-left: 15px;
-
-						h3 {
-							font-size: 1.4em;
-							font-family: "Roboto", Arial, sans-serif;
-							width: 300px;
-						}
-
-						.info_content {
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							margin-top: 10px;
-
-							.price {
-								color: white;
-								background-color: $deepBlue;
-								text-align: center;
-								padding: 10px 30px;
-								border-radius: 9px;
-							}
-						}
-
-						.desc {
-							font-weight: 300;
-							width: 200px;
-							line-height: 18px;
-							margin-top: 20px;
-						}
-					}
-				}
-
-				&:last-of-type {
-					margin-bottom: 0;
-				}
-			}
-		}
+		/*.advertisement_content*/
 	}
 
 	.divAllAdvert {
@@ -523,3 +355,96 @@ body {
 	}
 }
 
+
+
+
+.advertisement_content {
+	max-height: 450px;
+	display: flex;
+	width: 100%;
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 20px;
+	overflow: hidden;
+
+	.profil_picture_container {
+		overflow: hidden;
+		height: 200px;
+		width: 25%;
+		text-align: center;
+
+		img {
+			height: 100%;
+			margin-left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	.content {
+		width: 75%;
+	}
+
+	.infos {
+		padding: 20px 0;
+		margin-left: 15px;
+
+		h3 {
+			font-size: 1.4em;
+			font-family: "Roboto", Arial, sans-serif;
+			width: 80%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.info_content {
+			display: flex;
+			margin-top: 10px;
+
+			.more {
+				min-width: 90px;
+				max-width: 90px;
+
+				>p {
+					color: white;
+					background-color: $deepBlue;
+					text-align: center;
+					margin-bottom: 10px;
+					padding: 10px 10px;
+					border-radius: 9px;
+					display: inline-flex;
+				}
+				
+				.seller_infos {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+				}
+			}
+
+			.desc {
+				font-weight: 300;
+				margin: 0 20px;
+				line-height: 18px;
+				height: 107px;
+				overflow: hidden;
+				font-size: 90%;
+			}
+		}
+	}
+
+	.picto {
+		position: absolute;
+
+		&.like {
+			top: 20px;
+			right: 20px;
+		}
+
+		&.urgent {
+			top: 20px;
+			right: 60px;
+		}
+	}
+}

@@ -18,6 +18,7 @@ export default class Profile {
                 prevNextButtons: false,
                 groupCells: 2,
                 cellAlign: 'left',
+                pageDots: true,
             }),
             btn: $('#js-modifyProfile'),
             back: $('.js-back-profile-updatePanel')

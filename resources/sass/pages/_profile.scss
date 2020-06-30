@@ -292,10 +292,6 @@ body[data-content="userProfile"]{
 
                 .mainContent{
 
-                    i{
-                        color: $deepBlue;
-                    }
-
                     #js-modifyProfile{
                         cursor: pointer;
                     }
@@ -397,6 +393,10 @@ body[data-content="userProfile"]{
 
                         .profileDetails{
 
+                            i{
+                                color: $deepBlue;
+                            }
+
                             >div{
                                 display: flex;
                                 align-items: center;
@@ -447,13 +447,40 @@ body[data-content="userProfile"]{
 
                         .profile-main-carousel{
                             overflow: hidden;
+                            outline: none;
+                        }
+
+                        .advertisement_content, .flickity-viewport {
+                            cursor: grab;
+                        }
+
+                        .js-toggleAnnonce {
+                            cursor: pointer;
+                            padding: 0px 20px;
                         }
 
                         .carousel-cell {
                             width: 40%; /* full width */
-                            height: 160px; /* height of carousel */
+                            height: 205px; /* height of carousel */
+                        }
 
-                            background-color: red;
+                        ol {
+                            display: flex;
+                            justify-content: center;
+
+                            li {
+                                border: 2px solid black;
+                                border-radius: 50%;
+                                width: 15px;
+                                height: 15px;
+                                margin: 5px;
+                                cursor: pointer;
+                            }
+
+                            .is-selected {
+                                background-color: black;
+                                cursor: default;
+                            }
                         }
                     }
                 }
