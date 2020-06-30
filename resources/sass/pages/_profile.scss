@@ -23,220 +23,245 @@ body[data-content="userProfile"]{
                 height: 100%;
 
                 position: relative;
-                .updatePanel-main{
+
+                .updatePanel-container{
                     background-color: $background;
                     padding: 80px;
                     box-sizing: border-box;
 
-                    width: 80%;
                     max-height: 90vh;
 
                     overflow-x: hidden;
                     overflow-y: auto;
 
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: flex-start;
+                    .updatePanel-main{
 
-                    >div{
-                        width: 100%;
-                        margin-bottom: 40px;
-                    }
-
-                    .buttonLink{
-                        margin: 0 auto;
-                    }
-
-                    .updatePanel-identity{
                         display: flex;
-                        justify-content: flex-start;
-                        flex-wrap: wrap;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: flex-start;
 
                         >div{
-                            margin: 10px 20px 10px 0;
-                        }
-                        >div:last-child{
-                            margin: 10px 0 10px 0;
-                        }
-                    }
-
-                    .updatePanel-address{
-                        display: flex;
-                        justify-content: flex-start;
-                        flex-wrap: wrap;
-
-                        >div{
-                            margin: 10px 20px 10px 0;
-                        }
-                        >div:last-child{
-                            margin: 10px 0 10px 0;
-                        }
-                    }
-
-                    .updatePanel-lang{
-
-                        .updatePanel-langContainer{
                             width: 100%;
-                            background-color: $adminDeepGrey;
-                            color: #000000;
-                            opacity: 1;
+                            margin-bottom: 40px;
+                        }
 
-                            box-sizing: border-box;
-                            padding: 20px;
+                        .buttonLink{
+                            margin: 0 auto;
+                        }
 
-                            .lang-boxContainer {
-                                width: 100%;
-                                font-family: $font-family;
-                                font-size: 10px;
+                        .updatePanel-identity{
+                            display: flex;
+                            justify-content: flex-start;
+                            flex-wrap: wrap;
+
+                            >div{
+                                margin: 10px 20px 10px 0;
+                            }
+                            >div:last-child{
+                                margin: 10px 0 10px 0;
+                            }
+                        }
+
+                        .updatePanel-address{
+                            display: flex;
+                            justify-content: flex-start;
+                            flex-wrap: wrap;
+
+                            >div{
+                                margin: 10px 20px 10px 0;
+                            }
+                            >div:last-child{
+                                margin: 10px 0 10px 0;
+                            }
+                        }
+
+                        .updatePanel-sector{
+                            display: flex;
+
+                            >div{
+                                margin: 10px 20px 10px 0;
                             }
 
-                            ul.lang-box {
-                                list-style: none;
+                            >div:last-child{
+
+                                label{
+                                    color: #000000;
+                                    opacity: 0.5;
+                                    font-family: "Roboto", Arial, sans-serif;
+                                    font-weight: 400;
+                                    font-size: 1em;
+                                }
+                            }
+
+
+                        }
+
+                        .updatePanel-lang{
+
+                            .updatePanel-langContainer{
+                                width: 100%;
+                                background-color: $adminDeepGrey;
+                                color: #000000;
+                                opacity: 1;
+
+                                box-sizing: border-box;
                                 padding: 20px;
-                                display: flex;
-                                justify-content: flex-start;
-                                flex-wrap: wrap;
 
-                                li{
-                                    display: inline;
+                                .lang-boxContainer {
+                                    width: 100%;
+                                    font-family: $font-family;
+                                    font-size: 10px;
+                                }
 
-                                    margin-right: 10px;
+                                ul.lang-box {
+                                    list-style: none;
+                                    padding: 20px;
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    flex-wrap: wrap;
 
-                                    label{
-                                        display: inline-block;
-                                        background-color: rgba(255, 255, 255, 1);
-                                        border: 2px solid rgba(139, 139, 139, .3);
-                                        color: #adadad;
-                                        border-radius: 25px;
-                                        white-space: nowrap;
-                                        margin: 5px 0px;
-                                        -webkit-touch-callout: none;
-                                        -webkit-user-select: none;
-                                        -moz-user-select: none;
-                                        -ms-user-select: none;
-                                        user-select: none;
-                                        -webkit-tap-highlight-color: transparent;
-                                        transition: all .2s;
+                                    li{
+                                        display: inline;
 
-                                        padding: 8px 12px;
-                                        cursor: pointer;
+                                        margin-right: 10px;
 
-                                        box-sizing: border-box;
-
-
-                                        font-weight: 600;
-
-                                        &::before {
+                                        label{
                                             display: inline-block;
-                                            font-style: normal;
-                                            font-variant: normal;
-                                            text-rendering: auto;
-                                            -webkit-font-smoothing: antialiased;
-                                            font-family: "Font Awesome 5 Free";
-                                            font-weight: 900;
-                                            font-size: 12px;
-                                            padding: 2px 6px 2px 2px;
-                                            content: "\f067";
+                                            background-color: rgba(255, 255, 255, 1);
+                                            border: 2px solid rgba(139, 139, 139, .3);
+                                            color: #adadad;
+                                            border-radius: 25px;
+                                            white-space: nowrap;
+                                            margin: 5px 0px;
+                                            -webkit-touch-callout: none;
+                                            -webkit-user-select: none;
+                                            -moz-user-select: none;
+                                            -ms-user-select: none;
+                                            user-select: none;
+                                            -webkit-tap-highlight-color: transparent;
+                                            transition: all .2s;
+
+                                            padding: 8px 12px;
+                                            cursor: pointer;
+
+                                            box-sizing: border-box;
+
+
+                                            font-weight: 600;
+
+                                            &::before {
+                                                display: inline-block;
+                                                font-style: normal;
+                                                font-variant: normal;
+                                                text-rendering: auto;
+                                                -webkit-font-smoothing: antialiased;
+                                                font-family: "Font Awesome 5 Free";
+                                                font-weight: 900;
+                                                font-size: 12px;
+                                                padding: 2px 6px 2px 2px;
+                                                content: "\f067";
+                                                transition: transform .3s ease-in-out;
+                                            }
+                                        }
+
+                                        input[type="checkbox"]:checked + label::before {
+                                            content: "\f00c";
+                                            transform: rotate(-360deg);
                                             transition: transform .3s ease-in-out;
                                         }
-                                    }
 
-                                    input[type="checkbox"]:checked + label::before {
-                                        content: "\f00c";
-                                        transform: rotate(-360deg);
-                                        transition: transform .3s ease-in-out;
-                                    }
-
-                                    input[type="checkbox"]:checked + label {
-                                        border: 2px solid $clearBlue;
-                                        background-color: $deepBlue;
-                                        color: #fff;
-                                        transition: all .2s;
-                                    }
-                                    input[type="checkbox"] {
-                                        position: absolute;
-                                        opacity: 0;
-                                    }
-                                    input[type="checkbox"]:focus + label {
-                                        border: 2px solid $clearBlue;
+                                        input[type="checkbox"]:checked + label {
+                                            border: 2px solid $clearBlue;
+                                            background-color: $deepBlue;
+                                            color: #fff;
+                                            transition: all .2s;
+                                        }
+                                        input[type="checkbox"] {
+                                            position: absolute;
+                                            opacity: 0;
+                                        }
+                                        input[type="checkbox"]:focus + label {
+                                            border: 2px solid $clearBlue;
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
 
-                    .updatePanel-description{
+                        .updatePanel-description{
+                            label{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+
                         label{
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                        }
-                    }
+                            width: 100%;
 
-                    label{
-                        width: 100%;
-
-                        input {
-                            display: block;
-                            border: none;
-                            padding-bottom: 10px;
-                            border-bottom: solid 1.5px rgba(0, 0, 0, 0.2);
-                            background-position: -200px 0;
-                            background-size: 200px 100%;
-                            background-repeat: no-repeat;
-                            color: #000000;
-                            opacity: 0.5;
-                            font-family: "Roboto", Arial, sans-serif;
-                            font-weight: 400;
-                            font-size: 0.8em;
-                            &:focus,{
-                                box-shadow: none;
-                                outline: none;
-                                background-position: 0 0;
-                                transition: 0.2s;
-                                border-bottom: solid 1.5px $deepBlue;
-                                color: $deepBlue;
-                                opacity: 1;
-                                &::-webkit-input-placeholder {
+                            input {
+                                display: block;
+                                border: none;
+                                padding-bottom: 10px;
+                                border-bottom: solid 1.5px rgba(0, 0, 0, 0.2);
+                                background-position: -200px 0;
+                                background-size: 200px 100%;
+                                background-repeat: no-repeat;
+                                color: #000000;
+                                opacity: 0.5;
+                                font-family: "Roboto", Arial, sans-serif;
+                                font-weight: 400;
+                                font-size: 0.8em;
+                                &:focus,{
+                                    box-shadow: none;
+                                    outline: none;
+                                    background-position: 0 0;
+                                    transition: 0.2s;
+                                    border-bottom: solid 1.5px $deepBlue;
                                     color: $deepBlue;
-                                    font-size: 11px;
-                                    visibility: visible !important;
+                                    opacity: 1;
+                                    &::-webkit-input-placeholder {
+                                        color: $deepBlue;
+                                        font-size: 11px;
+                                        visibility: visible !important;
+                                    }
                                 }
                             }
-                        }
 
 
 
-                        textarea{
-                            width: 100%;
-                            resize: none;
-                            border: solid 1.5px rgba(0, 0, 0, 0.2);
-                            color: #000000;
-                            opacity: 0.5;
-                            font-family: "Roboto", Arial, sans-serif;
-                            font-weight: 400;
-                            font-size: 0.8em;
+                            textarea{
+                                width: 100%;
+                                resize: none;
+                                border: solid 1.5px rgba(0, 0, 0, 0.2);
+                                color: #000000;
+                                opacity: 0.5;
+                                font-family: "Roboto", Arial, sans-serif;
+                                font-weight: 400;
+                                font-size: 0.8em;
 
-                            box-sizing: border-box;
-                            padding: 20px;
-                            &:focus,{
-                                box-shadow: none;
-                                outline: none;
-                                background-position: 0 0;
-                                transition: 0.2s;
-                                border: solid 1.5px $deepBlue;
-                                color: $deepBlue;
-                                opacity: 1;
-                                &::-webkit-input-placeholder {
+                                box-sizing: border-box;
+                                padding: 20px;
+                                &:focus,{
+                                    box-shadow: none;
+                                    outline: none;
+                                    background-position: 0 0;
+                                    transition: 0.2s;
+                                    border: solid 1.5px $deepBlue;
                                     color: $deepBlue;
-                                    font-size: 11px;
-                                    visibility: visible !important;
+                                    opacity: 1;
+                                    &::-webkit-input-placeholder {
+                                        color: $deepBlue;
+                                        font-size: 11px;
+                                        visibility: visible !important;
+                                    }
                                 }
                             }
                         }
                     }
                 }
+
 
                 #close-profile-updatePanel{
                     width: 3%;

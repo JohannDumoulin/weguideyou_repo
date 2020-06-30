@@ -84,15 +84,6 @@ class NewNSOAccount extends Form
                 'label' => 'Je souhaite recevoir les dernières nouvelles de la part de We Guide You.',
                 'checked' => false
             ])
-            ->add('sector', 'select', [
-                'choices' => ['hotel' =>'Hôtellerie', 'agence_touristique' =>'Agence touristique', 'other' =>'Autre'],
-                'selected' => '',
-                'empty_value' => 'Choisir',
-                'label' => 'Secteur :',
-                'rules' => [
-                    'required|string'
-                ],
-            ])
             ->add('siret', 'text',[
                 'label' => 'Numéro de Siret',
                 'rules' => [

@@ -85,11 +85,11 @@ class NewSOAccount extends Form
                 'checked' => false
             ])
 
-            ->add('sector', 'select', [
+            ->add('statusDetail', 'select', [
                 'choices' => ['club' =>'Club de sport', 'school' =>'Ecole de sport', 'other' =>'Autre'],
                 'selected' => '',
                 'empty_value' => 'Choisir',
-                'label' => 'Secteur :',
+                'label' => 'Statut :',
                 'rules' => [
                     'required|string'
                 ],

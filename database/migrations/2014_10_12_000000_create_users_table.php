@@ -27,11 +27,12 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('pic')->nullable();
             $table->string('description', 280)->nullable();
-            $table->char('status', 3);
             $table->char('language')->nullable();
             $table->char('job')->nullable();
+            $table->char('status', 3);
+            $table->char('status_detail', 20)->nullable();
+            $table->char('sector', 50)->nullable();
             $table->string('title')->nullable();
-            $table->string('sector')->nullable();
             $table->string('license')->nullable();
             $table->string('num_licence')->nullable();
             $table->date('license_date')->nullable();

@@ -20,7 +20,6 @@
                 <hr>
                 <div class="registration-answer">
                     {!! form_row($formRegister->name) !!}
-                    {!! form_row($formRegister->sector) !!}
                 </div>
             </div>
             <div class="registration-step registration-middleStep">

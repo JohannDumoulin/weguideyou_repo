@@ -37,7 +37,6 @@
             <div class="registration-step registration-middleStep">
                 <hr>
                 <div class="registration-answer">
-                    {!! form_row($formRegister->sector) !!}
                     {!! form_row($formRegister->siret) !!}
                     {!! form_row($formRegister->licence) !!}
                     {!! form_row($formRegister->licenceDate) !!}

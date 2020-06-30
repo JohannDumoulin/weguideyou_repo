@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Language;
+use App\Sectors;
 use App\UserLanguage;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 use MercurySeries\Flashy\Flashy;
 
 class ProfileController extends Controller
@@ -20,6 +21,8 @@ class ProfileController extends Controller
         $status = Auth::user()->status;
         $UserLanguages = UserLanguage::all();
         $languages = Language::all();
+        $sectors = Sectors::all();
+
         $view = "profile";
         $user = Auth::user();
         $user_id = Auth::user()->id;
@@ -51,13 +54,13 @@ class ProfileController extends Controller
         if ($status === 'PRO'){
             $dateOfBirth = $user["birth"];
             $years = Carbon::createFromDate($dateOfBirth)->age;
-            return view('pages/'.$view, ['years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['sectors'=>$sectors, 'years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'NSO'){
-            return view('pages/'.$view, ['status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'SO'){
-            return view('pages/'.$view, ['status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
     }
 
@@ -98,7 +101,6 @@ class ProfileController extends Controller
                             'digits:5',
                         ],
                         'description' => [
-                            'required',
                             'string',
                             'max:280',
                             'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
@@ -157,13 +159,11 @@ class ProfileController extends Controller
                             'digits:5',
                         ],
                         'title' => [
-                            'required',
                             'string',
                             'max:50',
                             'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                         ],
                         'description' => [
-                            'required',
                             'string',
                             'max:280',
                             'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'

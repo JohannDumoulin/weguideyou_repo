@@ -8,5 +8,4 @@ class Language extends Model
 {
     protected $table = "languages";
     protected $primaryKey = "language_id";
-
 }

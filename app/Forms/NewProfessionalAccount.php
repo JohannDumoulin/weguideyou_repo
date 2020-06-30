@@ -126,15 +126,6 @@ class NewProfessionalAccount extends Form
                     'required|date'
                 ],
             ])
-            ->add('sector', 'select', [
-                'choices' => ['mountain' =>'Sport de montagne', 'aquatic' =>'Sport aquatique', 'extreme' =>'Sport extrême', 'other' =>'Autre'],
-                'selected' => '',
-                'empty_value' => 'Choisir',
-                'label' => 'Secteur :',
-                'rules' => [
-                    'required|string|min:1|max:50'
-                ],
-            ])
             ->add('submit', 'submit',[
                 'label' => 'Envoyer',
                 'attr' => ['class' => 'buttonLink'],

@@ -47,7 +47,7 @@ class NewSoController extends Controller
             'pc' => $values['postcode'],
             'phone' => $values['phone'],
             'status' => 'SO',
-            'sector' => $values['sector'],
+            'status_detail' => $values['statusDetail'],
             'siret' => $values['siret'],
             'cgu' => $values['CGU'],
             'news_letter' => $values['newsLetter'],

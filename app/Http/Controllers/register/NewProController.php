@@ -50,15 +50,11 @@ class NewProController extends Controller
             'pc' => $values['postcode'],
             'phone' => $values['phone'],
             'status' => 'PRO',
-            'sector' => $values['sector'],
             'license' => $values['licence'],
             'license_date' => $values['licenceDate'],
             'siret' => $values['siret'],
             'cgu' => $values['CGU'],
             'news_letter' => $values['newsLetter'],
-
-            //dd($values['sector']),
-
         ]);
         $this->guard()->login($user);
         if (Auth::check()){
