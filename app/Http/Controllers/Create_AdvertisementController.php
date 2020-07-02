@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Advertisement;
+use App\UserLanguage;
+use DB;
 
 class Create_AdvertisementController extends Controller
 {
@@ -18,11 +20,23 @@ class Create_AdvertisementController extends Controller
 	}
 
     public function store(FormBuilder $formBuilder, Request $request) {
+
+        $user_language = DB::table('user_languages')
+                            ->join('languages', 'user_languages.language_id', '=', 'languages.language_id')
+                            ->select('languages.language_name')
+                            ->where("user_languages.user_id", "=", "1")
+                            ->get();
+
+        $l = "";
+        foreach ($user_language as $value) {
+            $l .= $value->language_name.", ";
+        }
+
     	$advertisement = new Advertisement;
 
     	$advertisement->user_id = Auth::id();
         $advertisement->user_status = Auth::user()->status;
-        $advertisement->user_language = Auth::user()->language;
+        $advertisement->user_language = $l;
 
     	$advertisement->name = $request->input('name');
     	$advertisement->desc = $request->input('desc');

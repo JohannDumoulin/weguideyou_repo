@@ -13,7 +13,7 @@
     <section class="register">
         <div class="wrap">
             <div>
-                <h1>Inscription</h1>
+                <h1>@lang('Inscription')</h1>
             </div>
             {!! form_start($formRegister) !!}
             <div class="registration-step registration-middleStep">

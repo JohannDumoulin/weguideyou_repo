@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Forms;
+use Lang;
 
 use Kris\LaravelFormBuilder\Form;
 
@@ -15,7 +16,7 @@ class NewProfessionalAccount extends Form
 
         $this
             ->add('name', 'text',[
-                'label' => 'Prénom',
+                'label' => Lang::get('Prénom'),
                 'rules' => [
                     'required',
                     'string',
@@ -24,7 +25,7 @@ class NewProfessionalAccount extends Form
                 ],
             ])
             ->add('surName', 'text',[
-                'label' => 'Nom',
+                'label' => Lang::get('Nom'),
                 'rules' => [
                     'required',
                     'string',
@@ -33,46 +34,46 @@ class NewProfessionalAccount extends Form
                 ],
             ])
             ->add('birth', 'date',[
-                'label' => 'Birth',
+                'label' => Lang::get('Date de naissance'),
                 'rules' => [
                     'required|date'
                 ],
             ])
             ->add('gender', 'select', [
-                'choices' => ['f' =>'Femme', 'h' =>'Homme', 'o' =>'Autre'],
+                'choices' => ['f' =>Lang::get('Femme'), 'h' =>Lang::get('Homme'), 'o' =>Lang::get('Autre')],
                 'selected' => '',
-                'empty_value' => 'Choisir',
-                'label' => 'Genre : ',
+                'empty_value' => Lang::get('Choisir'),
+                'label' => Lang::get('Genre : '),
                 'rules' => [
                     'required|string|size:1'
                 ],
             ])
             ->add('address', 'text',[
-                'label' => 'Adresse',
+                'label' => Lang::get('Adresse'),
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('city', 'text',[
-                'label' => 'Ville',
+                'label' => Lang::get('Ville'),
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('postcode', 'text',[
-                'label' => 'Post code',
+                'label' => Lang::get('Code Postal'),
                 'rules' => [
                     'required|numeric|digits:5'
                 ]
             ])
             ->add('phone', 'text',[
-                'label' => 'Téléphone',
+                'label' => Lang::get('Téléphone'),
                 'rules' => [
                     'required|numeric|digits_between:1,15'
                 ]
             ])
             ->add('email', 'email',[
-                'label' => 'Adresse mail',
+                'label' => Lang::get('Adresse mail'),
                 'rules' => [
                     'required|string|email|max:255|unique:users',
                 ],
@@ -82,13 +83,13 @@ class NewProfessionalAccount extends Form
                 'type' => 'password',
                 'second_name' => 'password_confirmation',
                 'first_options' => [
-                    'label' => 'Mot de passe',
+                    'label' => Lang::get('Mot de passe'),
                     'rules' => [
                         'required|string|min:6|confirmed'
                     ],
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation mot de passe',
+                    'label' => Lang::get('Confirmation du mot de passe'),
                     'rules' => [
                         'required|string|min:6'
                     ],
@@ -97,7 +98,7 @@ class NewProfessionalAccount extends Form
             ->add('CGU', 'checkbox', [
                 'value' => 1,
                 'wrapper' => ['class' => 'form-group cguLink'],
-                'label' => 'J’accepte les Conditions Générales d\'Utilisation.',
+                'label' => Lang::get('J’accepte les Conditions Générales d\'Utilisation.'),
                 'checked' => false,
                 'rules' => [
                     'required'
@@ -105,7 +106,7 @@ class NewProfessionalAccount extends Form
             ])
             ->add('newsLetter', 'checkbox', [
                 'value' => 1,
-                'label' => 'Je souhaite recevoir les dernières nouvelles de la part de We Guide You.',
+                'label' => Lang::get('Je souhaite recevoir les dernières nouvelles de la part de We Guide You.'),
                 'checked' => false
             ])
             ->add('siret', 'text',[
@@ -115,19 +116,19 @@ class NewProfessionalAccount extends Form
                 ]
             ])
             ->add('licence', 'text',[
-                'label' => 'Numéro de carte pro',
+                'label' => Lang::get('Numéro de carte pro'),
                 'rules' => [
                     'required|numeric|digits:14'
                 ]
             ])
             ->add('licenceDate', 'date',[
-                'label' => 'Expiration de carte pro',
+                'label' => Lang::get('Expiration de carte pro'),
                 'rules' => [
                     'required|date'
                 ],
             ])
             ->add('submit', 'submit',[
-                'label' => 'Envoyer',
+                'label' => Lang::get('Envoyer'),
                 'attr' => ['class' => 'buttonLink'],
             ]);
     }

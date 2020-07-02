@@ -9,6 +9,7 @@ use View;
 use Illuminate\Support\Facades\Auth;
 use App\Advertisement;
 use App\User;
+use Kris\LaravelFormBuilder\FormBuilder;
 
 
 class AdvertController extends Controller
@@ -191,4 +192,16 @@ class AdvertController extends Controller
 
 		app('App\Http\Controllers\NotificationController')->alerte($users, $alertes, $id);
     }
+
+	public function deleteAdvert(Request $request) {
+		DB::table('advertisement')
+			->where('id', $request->id)
+			->delete();
+
+		return $request->id;
+	}
+
+	public function pageMesAnnonces(FormBuilder $formBuilder) {
+	    return view('pages/mes_annonces');
+	}
 }

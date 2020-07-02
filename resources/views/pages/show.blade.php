@@ -13,7 +13,7 @@
 @section('content')
 	<div class="wrap">
 		<section id="mailbox">
-			<h1>Votre messagerie</h1>
+			<h1>@lang('Votre messagerie')</h1>
 
 			<div id="mail_container">
 <!---------------------- All mails -------------------------->

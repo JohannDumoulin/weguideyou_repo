@@ -11,6 +11,8 @@
 
 @section('content')
 
+    <div id="sectionContent"></div>
+
     <div class="content">
         <div class="profile-updatePanel js-profile-updatePanel hidden">
             <div class="wrap">
@@ -19,7 +21,7 @@
                         @csrf
                         @method('PUT')
                         <div class="updatePanel-title">
-                            <h2>Modifier son profil</h2>
+                            <h2>@lang('Modifier son profil')</h2>
                         </div>
                         <div class="updatePanel-identity">
                             @if($status === 'NSO' || $status === 'SO')
@@ -67,9 +69,9 @@
                                     </label>
                                 </div>
                                 <div>
-                                    <label for="sector" class="control-label required">Secteur :</label>
+                                    <label for="sector" class="control-label required">@lang('Secteur :')</label>
                                     <select class="form-control" id="sector" name="sector">
-                                        <option value="" selected="selected">Choisir</option>
+                                        <option value="" selected="selected">@lang('Choisir')</option>
                                         @if($status === 'SO' || $status === 'PRO')
                                             @foreach($sectors as $sector)
                                                 @if($sector->sector_type === 'S')
@@ -123,7 +125,7 @@
                             </label>
                         </div>
                         <div>
-                            <button type="submit" class="buttonLink js-userLangUpdate">Valider</button>
+                            <button type="submit" class="buttonLink js-userLangUpdate">@lang('Valider')</button>
                         </div>
                     </form>
                 </div>
@@ -132,7 +134,7 @@
         </div>
         <div class="profile-Banner">
             <div>
-                @include('components.buttonLink', ['link' => '#'], ['text' => 'Modifier'])
+                @include('components.buttonLink', ['link' => '#'], ['text' => Lang::get('Modifier')])
             </div>
         </div>
         <div class="wrap">
@@ -142,24 +144,24 @@
                         <div class="profileOverview">
                             <div class="profileImg">
                                 <div>
-                                    @include('components.buttonLink', ['link' => '#'], ['text' => 'Modifier'])
+                                    @include('components.buttonLink', ['link' => '#'], ['text' => Lang::get('Modifier')])
                                 </div>
                                 <img src="{{Auth::user()->pic ?? asset('/img/user-regular.svg')}}" alt="Image de profil">
                             </div>
                             <div>
                                 <div>
-                                    <p>Avis (14)</p>
+                                    <p>@lang('Avis') (14)</p>
                                     <div class="reviewLinkContainer">
                                         <a href="#">4.9/5</a>
                                         <i class="fas fa-chevron-right fa-xs"></i>
                                     </div>
                                 </div>
                                 <div>
-                                    <p>cours effectués</p>
+                                    <p>@lang('cours effectués')</p>
                                     <p>21</p>
                                 </div>
                                 <div>
-                                    <p>cours annulés</p>
+                                    <p>@lang('cours annulés')</p>
                                     <p>1</p>
                                 </div>
                             </div>
@@ -167,7 +169,7 @@
                         <div class="profileDetails">
                             <div>
                                 @if($status === 'PRO' || $status === 'PAR')
-                                    <h1>{{Auth::user()->name ?? 'undefined' }}, <span>{{$years ?? 'undefined'}} ans</span></h1>
+                                    <h1>{{Auth::user()->name ?? 'undefined' }}, <span>{{$years ?? 'undefined'}} @lang('ans')</span></h1>
                                 @endif
                                 @if($status === 'NSO' || $status === 'SO')
                                     <h1>{{Auth::user()->name ?? 'undefined' }}</h1>
@@ -179,7 +181,7 @@
                                     <h2>{{ Auth::user()->title ?? 'A compléter'}}</h2>
                                 </div>
                                 {{--<div class="profile-job">
-                                    <p>{{ Auth::user()->job ?? 'A compléter'}} - <a href="#">{{ Auth::user()->city ?? 'A compléter'}}</a></p>
+                                    <p>{{ Auth::user()->job ?? Lang::get('A compléter')}} - <a href="#">{{ Auth::user()->city ?? Lang::get('A compléter')}}</a></p>
                                 </div>--}}
                             @endif
                             <div class="profile-lang">
@@ -187,15 +189,15 @@
                                 <i class="fa fa-globe"></i>
                             </div>
                             <div class="profile-desc">
-                                <p>{{Auth::user()->description ?? 'A compléter'}}</p>
+                                <p>{{Auth::user()->description ?? Lang::get('A compléter')}}</p>
                             </div>
-                            <a href="#" class="buttonLink">Contacter {{Auth::user()->name ?? 'undefined' }}</a>
+                            <a href="#" class="buttonLink">@lang('Contacter') {{Auth::user()->name ?? 'undefined' }}</a>
                         </div>
                     </div>
                     @if($status === 'PRO' || $status === 'SO' || $status === 'NSO')
                     <div class="profile-ad">
                         <div>
-                            <h2>Annonces</h2>
+                            <h2>@lang('Annonces')</h2>
                         </div>
                         <div class="profile-main-carousel">
 
@@ -221,6 +223,9 @@
                                                 <p class="desc">{{ $advert->desc }}</p>
                                             </div>
                                         </div>
+
+                                        <div class="js-toggleAnnonce" id=/annonce/{{ $advert->id }}>@lang('Ouvrir')</div>
+
                                         @include('components.buttonFav', ['id' => $advert->id ])
 
                                         @if($advert->premium_urgent_week == 1)

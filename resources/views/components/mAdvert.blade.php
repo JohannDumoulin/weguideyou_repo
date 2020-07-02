@@ -45,8 +45,8 @@
     <div class="divBtns">
 
         <div>
-            <button class="buttonLink js-btnModifyAdvert js-toggleAnnonce" id=/modifyAnnonce/{{ $advert['id'] }}>Modifier</button>
-            <button class="buttonLink js-btnDeleteAdvert" id={{ $advert['id'] }}>Supprimer</button>
+            <button class="buttonLink js-btnModifyAdvert js-toggleAnnonce" id=/modifyAnnonce/{{ $advert['id'] }}>@lang('Modifier')</button>
+            <button class="buttonLink js-btnDeleteAdvert" id={{ $advert['id'] }}>@lang('Supprimer')</button>
         </div>
         <div>
             <input type="checkbox" name="">

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Forms;
+use Lang;
 
 use Kris\LaravelFormBuilder\Form;
 use Carbon\Carbon;

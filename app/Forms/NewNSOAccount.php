@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Forms;
+use Lang;
 
 use Kris\LaravelFormBuilder\Form;
 
@@ -15,7 +16,7 @@ class NewNSOAccount extends Form
 
         $this
             ->add('name', 'text',[
-                'label' => 'Nom de la Structure',
+                'label' => Lang::get('Nom de la Structure'),
                 'rules' => [
                     'required',
                     'string',
@@ -24,31 +25,31 @@ class NewNSOAccount extends Form
                 ],
             ])
             ->add('address', 'text',[
-                'label' => 'Adresse',
+                'label' => Lang::get('Adresse'),
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('city', 'text',[
-                'label' => 'City',
+                'label' => Lang::get('Ville'),
                 'rules' => [
                     'required','string','max:50','regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
                 ]
             ])
             ->add('postcode', 'text',[
-                'label' => 'Post code',
+                'label' => Lang::get('Code Postal'),
                 'rules' => [
                     'required|numeric|digits:5'
                 ]
             ])
             ->add('phone', 'text',[
-                'label' => 'Téléphone',
+                'label' => Lang::get('Téléphone'),
                 'rules' => [
                     'required|numeric|digits_between:1,15'
                 ]
             ])
             ->add('email', 'email',[
-                'label' => 'Adresse mail',
+                'label' => Lang::get('Adresse mail'),
                 'rules' => [
                     'required|string|email|max:255|unique:users',
                 ],
@@ -58,13 +59,13 @@ class NewNSOAccount extends Form
                 'type' => 'password',
                 'second_name' => 'password_confirmation',
                 'first_options' => [
-                    'label' => 'Mot de passe',
+                    'label' => Lang::get('Mot de passe'),
                     'rules' => [
                         'required|string|min:6|confirmed'
                     ],
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation mot de passe',
+                    'label' => Lang::get('Confirmation du mot de passe'),
                     'rules' => [
                         'required|string|min:6'
                     ],
@@ -73,7 +74,7 @@ class NewNSOAccount extends Form
             ->add('CGU', 'checkbox', [
                 'value' => 1,
                 'wrapper' => ['class' => 'form-group cguLink'],
-                'label' => 'J’accepte les Conditions Générales d\'Utilisation.',
+                'label' => Lang::get('J’accepte les Conditions Générales d\'Utilisation.'),
                 'checked' => false,
                 'rules' => [
                     'required'
@@ -81,17 +82,17 @@ class NewNSOAccount extends Form
             ])
             ->add('newsLetter', 'checkbox', [
                 'value' => 1,
-                'label' => 'Je souhaite recevoir les dernières nouvelles de la part de We Guide You.',
+                'label' => Lang::get('Je souhaite recevoir les dernières nouvelles de la part de We Guide You.'),
                 'checked' => false
             ])
             ->add('siret', 'text',[
-                'label' => 'Numéro de Siret',
+                'label' => Lang::get('Numéro de SIRET'),
                 'rules' => [
                     'required|numeric|digits:14'
                 ]
             ])
             ->add('submit', 'submit',[
-                'label' => 'Envoyer',
+                'label' => Lang::get('Envoyer'),
                 'attr' => ['class' => 'buttonLink'],
             ]);
     }
