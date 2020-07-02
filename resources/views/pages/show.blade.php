@@ -18,7 +18,7 @@
 			<div id="mail_container">
 <!---------------------- All mails -------------------------->
 				<div id="all_mails">
-					@include('pages.mailbox_users', ['users' => $users, 'unread' => $unread, 'messages => $messages'])
+					@include('pages.mailbox_users', ['conversations' => $conversations, 'unread' => $unread])
 				</div>
 
 <!---------------------- The mail --------------------------->
@@ -27,7 +27,7 @@
 						<h2>Cours Snowboard / Courchevel 1850</h2>
 						<div id="mail_header_content">
 							<div id="the_mail_more">
-								<p id="seller">{{ $user->name }}</p>
+								<p id="seller">le vendeur</p>
 								<p id="price">450 €</p>
 							</div>
 							<img src="{{ asset('img/esf.png') }}" alt="">
@@ -52,7 +52,7 @@
 							</div>
 						@endif
 						@foreach(array_reverse($messages->items()) as $message)
-							@if($message->from->id !== $user->id)
+							@if($message->from->id !== $conversation->to_id)
 							    <p class="message right">{!! nl2br(e($message->content)) !!}</p>
 							@else
 							    <p class="message">{!! nl2br(e($message->content)) !!}</p>

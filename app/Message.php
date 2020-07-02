@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+	protected $table = 'messages';
+
     protected $fillable = [
-    	'content', 'from_id', 'to_id', 'read_at', 'created_at', 'ad_id'
+    	'content', 'from_id', 'to_id', 'read_at', 'created_at', 'conversation_id'
     ];
 
     protected $dates = ['created_at', 'read_at'];

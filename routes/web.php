@@ -119,10 +119,11 @@ Route::post ( '/', function (Request $request) {
 
 // Mailbox
 Route::get('/messagerie','ConversationsController@index')->name('conversations');
-Route::get('/messagerie/{user}','ConversationsController@show')
-	->middleware('can:talkTo,user')
+Route::get('/messagerie/{conversation}','ConversationsController@show')
 	->name('conversations.show');
-Route::post('/messagerie/{user}','ConversationsController@store')->middleware('can:talkTo,user');
+Route::post('/messagerie/{conversation}','ConversationsController@store')->middleware('can:talkTo,user');
+Route::get('/nouveau-message/{user}/{ad}','ConversationsController@newMessage');
+Route::post('/nouveau-message/{user}/{ad}','ConversationsController@store')->middleware('can:talkTo,user');
 
 
 
