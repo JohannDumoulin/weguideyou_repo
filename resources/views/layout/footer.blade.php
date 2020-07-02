@@ -21,9 +21,9 @@
 				<a href="mailto:contact@we-guide-you.com">contact@we-guide-you.com</a>
 				<a href="tel:+33768061295">07 68 06 12 95</a>
 				<p><span>Compte</span></p>
-				<a href="">Connexion</a>
-				<a href="">Inscription</a>
-				<a href="">Récupérer son mot de passe</a>
+				<a href="{{route('login')}}">Connexion</a>
+				<a href="{{route('register')}}">Inscription</a>
+				<a href="{{route('password.request')}}">Récupérer son mot de passe</a>
 			</div>
 			<div>
 				<p><span>Suivez nous</span></p>

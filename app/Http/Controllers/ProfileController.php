@@ -202,7 +202,7 @@ class ProfileController extends Controller
                         return redirect()->back();
                     }
                 }
-                if (Auth::user()->status === 'NSO'){
+                if (Auth::user()->status === 'NSO' || Auth::user()->status === 'SO'){
                     $validate = null;
                     $validate = $request->validate([
                         'name' => [
@@ -263,9 +263,6 @@ class ProfileController extends Controller
                         Flashy::error('Modification non valide');
                         return redirect()->back();
                     }
-                }
-                if (Auth::user()->status === 'SO'){
-
                 }
             }
 
