@@ -20,10 +20,11 @@
 				<a href="/messagerie">@lang('Messagerie')</a>
 				<a href="mailto:contact@we-guide-you.com">contact@we-guide-you.com</a>
 				<a href="tel:+33768061295">07 68 06 12 95</a>
+
 				<p><span>@lang('Compte')</span></p>
-				<a href="#" class="js-toggleConnectionContainer">@lang('Connexion')</a>
+				<a href="{{route('login')}}">@lang('Connexion')</a>
 				<a href="{{route('register')}}">@lang('Inscription')</a>
-				<a href="">@lang('Récupérer son mot de passe')</a>
+				<a href="{{route('password.request')}}">@lang('Récupérer son mot de passe')</a>
 			</div>
 			<div>
 				<p><span>@lang('Suivez nous')</span></p>

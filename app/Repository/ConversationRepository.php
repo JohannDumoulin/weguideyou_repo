@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\User;
 use App\Message;
+use App\Conversation;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
@@ -17,29 +18,80 @@ class ConversationRepository {
 
 	private $message;
 
-	public function __construct(User $user, Message $message) {
+	private $conversation;
+
+	public function __construct(User $user, Message $message, Conversation $conversation) {
 		$this->user = $user;
 		$this->message = $message;
+		$this->conversation = $conversation;
 	}
 	
 	public function getConversations (int $userId) {
-		$conversations = DB::table('users')
-		    ->join('messages', function ($join) {
-	            $join->on('users.id', '=', 'messages.to_id')->orOn('users.id', '=', 'messages.from_id');
+		    $conversations = DB::table('conversations')
+	        ->join('users', function ($join) {
+	            $join->on('conversations.to_id', '=', 'users.id')->orOn('conversations.from_id', '=', 'users.id');
 	        })
-		    ->select('users.name', 'users.id')
+	        ->join('advertisement', 'conversations.ad_id', '=', 'advertisement.id')
+		    ->select('*')
 		    ->where('users.id','!=', $userId)
 		    ->get();
 		return $conversations;
 	}
 
-	public function createMessage (string $content, int $from, int $to) {
+	public function getOneConversation (int $from, int $to, int $ad) {
+		$conversation = DB::table('conversations')
+			->join('users as u_from', 'conversations.from_id', '=', 'u_from.id')
+			->join('users as u_to', 'conversations.to_id', '=', 'u_to.id')
+			->join('advertisement', 'conversations.ad_id', '=', 'advertisement.id')
+			->select('*')
+			->where('conversations.from_id','=', $from)
+			->where('conversations.to_id','=', $to)
+			->where('conversations.ad_id','=', $ad)
+			->get();
+		return $conversation;
+	}
+
+	public function createMessage (string $content, int $from, int $to, $conversation) {
 		return $this->message->newQuery()->create([
 			'content' => $content,
 			'from_id' => $from,
 			'to_id' => $to,
+			'conversation_id' => $conversation->first()->id,
 			'created_at' => Carbon::now()
 		]);
+	}
+
+	public function createConversation (int $from, int $to, int $ad) {
+		return $this->conversation->newQuery()->create([
+			'ad_id' => $ad,
+			'from_id' => $from,
+			'to_id' => $to,
+			'created_at' => Carbon::now()
+		]);
+
+
+	}
+
+	public function checkIfConversationExist (int $from, int $to, int $ad, $conversations) {
+		$r = false;
+		// $conversations = json_decode($conversations);
+		$conversations = $conversations->first();
+
+		if ($conversations != null) {
+			foreach ($conversations as $conversation) {
+				if ($conversations->ad_id === $ad && $conversations->from_id === $from && $conversations->to_id === $to) {
+					$r = true;
+				}
+			}
+
+			if ($r === true) {
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}
 	}
 
 	public function getMessagesFor (int $from, int $to): Builder {
@@ -50,7 +102,6 @@ class ConversationRepository {
 				'from' => function ($query) { return $query->select('name', 'id'); }
 			]);
 	}
-
 
 
 	/*

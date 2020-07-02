@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserSectorTable extends Migration
+class CreateUserSectorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserSectorTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_sector', function (Blueprint $table) {
+        Schema::create('user_sectors', function (Blueprint $table) {
             $table->increments('user_sector_id');
             $table->unsignedInteger('sector_id');
             $table->foreign('sector_id')->references('language_id')->on('languages');

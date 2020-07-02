@@ -1,0 +1,90 @@
+body[data-content="email"]{
+
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .wrap{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+            position: relative;
+            .connectionPanel{
+                padding: 80px;
+                box-sizing: border-box;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+
+                >div{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: 100%;
+                }
+
+                >div:nth-of-type(1){
+                    margin-bottom: 60px;
+
+                    h1{
+                        font-size: 2em;
+                    }
+                }
+
+                >div:nth-of-type(2) {
+                    margin-bottom: 60px;
+                }
+
+                >div:nth-of-type(2){
+                    label{
+                        width: 100%;
+
+                        input {
+                            width: 100%;
+                            display: block;
+                            border: none;
+                            padding-bottom: 10px;
+                            border-bottom: solid 1.5px rgba(0, 0, 0, 0.2);
+                            background-position: -200px 0;
+                            background-size: 200px 100%;
+                            background-repeat: no-repeat;
+                            color: #000000;
+                            opacity: 0.5;
+                            font-family: "Roboto", Arial, sans-serif;
+                            font-weight: 400;
+                            font-size: 0.8em;
+                            &:focus,{
+                                box-shadow: none;
+                                outline: none;
+                                background-position: 0 0;
+                                transition: 0.2s;
+                                border-bottom: solid 1.5px $deepBlue;
+                                color: $deepBlue;
+                                opacity: 1;
+                                &::-webkit-input-placeholder {
+                                    color: $deepBlue;
+                                    font-size: 11px;
+                                    visibility: visible !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                a:not(.buttonLink){
+                    color: #000000;
+                }
+
+                .buttonLink{
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}

@@ -9,6 +9,10 @@ body[data-content="mailbox"] {
 
 		a {
 			color: black;
+
+			&:hover {
+				text-decoration: none;
+			}
 		}
 
 		#mail_container {
@@ -48,6 +52,8 @@ body[data-content="mailbox"] {
 
 					.advertisement_content {
 						margin-left: 20px;
+						display: flex;
+						flex-direction: column;
 
 						.seller_infos {
 							display: flex;

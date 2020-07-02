@@ -66,9 +66,6 @@ class Create_AdvertisementController extends Controller
     		$advertisement->img = json_encode($images_url);
     	}
     	
-    	// $advertisement->img = $request->file('img')->store('ad_pictures', 'public');
-
-
     	// $advertisement->premium_in_front_week = $request->input('premium_in_front_week');
     	// $advertisement->premium_in_front_month = $request->input('premium_in_front_month');
     	// $advertisement->premium_banner_week = $request->input('premium_banner_week');
@@ -80,19 +77,6 @@ class Create_AdvertisementController extends Controller
     	// $advertisement->premium_insurance = $request->input('premium_insurance');
 
     	$advertisement->save();
-
-    	// $form = $formBuilder->create(\App\Forms\AdvertisementForm::class);
-    	// 	$form->redirectIfNotValid();
-    		        
-    	// 	$adForm = new AdvertisementForm();
-    	// 	$adForm->fill($request->only([
-    	// 		'name',
-    	// 		'desc',
-    	// 		'type',
-    	// 		'date_from',
-    	// 		'date_to',
-    	// 		'show_phone'
-    	// 	]))->save();
 
         // Alertes
         app('App\Http\Controllers\AdvertController')->alerte($advertisement->id);
