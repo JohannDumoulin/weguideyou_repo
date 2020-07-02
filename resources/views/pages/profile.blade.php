@@ -69,19 +69,38 @@
                                 <div>
                                     <label for="sector" class="control-label required">Secteur :</label>
                                     <select class="form-control" id="sector" name="sector">
-                                        <option value="" selected="selected">Choisir</option>
+                                        @if($oldSector)
+                                            <option selected="selected" value="{{$oldSector->id}}">{{$oldSector->sector_name}}</option>
+                                            @else
+                                                <option value="" selected="selected">Choisir</option>
+                                        @endif
                                         @if($status === 'SO' || $status === 'PRO')
+                                            @if($oldSector)
+                                                @foreach($sectors as $sector)
+                                                    @if($sector->sector_type === 'S' && $sector->id !== $oldSector->id)
+                                                        <option value="{{$sector->id}}">{{$sector->sector_name}}</option>
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                @foreach($sectors as $sector)
+                                                    @if($sector->sector_type === 'S')
+                                                        <option value="{{$sector->id}}">{{$sector->sector_name}}</option>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @elseif($oldSector)
                                             @foreach($sectors as $sector)
-                                                @if($sector->sector_type === 'S')
+                                                @if($sector->sector_type === 'NS' && $sector->id !== $oldSector->id)
+                                                    <option value="{{$sector->id}}">{{$sector->sector_name}}</option>
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            @foreach($sectors as $sector)
+                                                @if($sector->sector_type === 'NS')
                                                     <option value="{{$sector->id}}">{{$sector->sector_name}}</option>
                                                 @endif
                                             @endforeach
                                         @endif
-                                        @foreach($sectors as $sector)
-                                            @if($sector->sector_type === 'SO')
-                                                <option value="{{$sector->id}}">{{$sector->sector_name}}</option>
-                                            @endif
-                                        @endforeach
                                     </select>
                                 </div>
                             </div>

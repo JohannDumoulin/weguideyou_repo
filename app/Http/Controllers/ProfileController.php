@@ -6,6 +6,7 @@ use App\Language;
 use App\Sectors;
 use App\UserLanguage;
 use App\User;
+use App\UserSector;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,12 @@ class ProfileController extends Controller
         $UserLanguages = UserLanguage::all();
         $languages = Language::all();
         $sectors = Sectors::all();
+
+        $sectorSelected = UserSector::where('user_id',Auth::user()->id)->first();
+        if ($sectorSelected !== null){
+            $searchSector = $sectorSelected->sector_id;
+            $searchSector = $sectors->where('id',$searchSector)->first();
+        }
 
         $view = "profile";
         $user = Auth::user();
@@ -54,13 +61,13 @@ class ProfileController extends Controller
         if ($status === 'PRO'){
             $dateOfBirth = $user["birth"];
             $years = Carbon::createFromDate($dateOfBirth)->age;
-            return view('pages/'.$view, ['sectors'=>$sectors, 'years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'NSO'){
-            return view('pages/'.$view, ['sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'SO'){
-            return view('pages/'.$view, ['sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
     }
 
@@ -196,7 +203,66 @@ class ProfileController extends Controller
                     }
                 }
                 if (Auth::user()->status === 'NSO'){
+                    $validate = null;
+                    $validate = $request->validate([
+                        'name' => [
+                            'required',
+                            'string',
+                            'max:50',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u',
+                        ],
+                        'address' => [
+                            'required',
+                            'string',
+                            'max:50',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                        ],
+                        'city' => [
+                            'required',
+                            'string',
+                            'max:50',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                        ],
+                        'pc' => [
+                            'required',
+                            'numeric',
+                            'digits:5',
+                        ],
+                        'title' => [
+                            'string',
+                            'max:50',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                        ],
+                        'description' => [
+                            'string',
+                            'max:280',
+                            'regex:/(^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._ -]+)/u'
+                        ],
+                    ]);
 
+
+
+                    if ($validate){
+                        if (!empty($request['sector'])){
+                            $this->updateSector($request['sector'], $user);
+                        }
+                        $user->name = $request['name'];
+                        $user->address = $request['address'];
+                        $user->city = $request['city'];
+                        $user->pc = $request['pc'];
+                        $user->title = $request['title'];
+                        $user->description = $request['description'];
+
+                        $user->save();
+
+                        $this->updateLang($request->input('checkbox'));
+
+                        Flashy::success('Modification enregistré');
+                        return redirect()->back();
+                    }else{
+                        Flashy::error('Modification non valide');
+                        return redirect()->back();
+                    }
                 }
                 if (Auth::user()->status === 'SO'){
 
@@ -250,10 +316,11 @@ class ProfileController extends Controller
         );
         if (!empty($request)){
             if (filter_var($request, FILTER_VALIDATE_INT, $options) !== FALSE) {
-                $test = Sectors::where('id',$request)->sector_name;
-                dd($test);
-                $user->sector = Sectors::where('id',$request)->sector_name;
-                $user->save();
+                UserSector::where('user_id',Auth::user()->id)->delete();
+                  $sector = new UserSector();
+                  $sector->sector_id = $request;
+                  $sector->user_id = Auth::user()->id;
+                  $sector->save();
             }
         }
     }
