@@ -2,12 +2,12 @@
     <div class="wrap">
         <div>
             <div>
-                <span>Bienvenue</span>
+                <span>@lang('Bienvenue')</span>
             </div>
             <div>
                 <div class="registrationNav">
-                    <span>connexion</span>
-                    <span class="is-selected">inscription</span>
+                    <span>@lang('connexion')</span>
+                    <span class="is-selected">@lang('inscription')</span>
                 </div>
                 <form action="" method="POST">
                     @csrf
@@ -15,33 +15,33 @@
                     <div class="main-carousel">
                         <div class="carousel-cell registration-step1">
                             <div class="registration-request">
-                                <span>Quel type de compte souhaitez vous créer ?</span>
+                                <span>@lang('Quel type de compte souhaitez vous créer ?')</span>
                             </div>
                             <div class="registration-answer">
                                 <div>
-                                    <p>Professionnel indépendant</p>
+                                    <p>@lang('Professionnel indépendant')</p>
                                     <i class="fas fa-chevron-right fa-xs"></i>
                                 </div>
                                 <div>
                                     <div>
-                                        <p>Agence</p>
-                                        <span class="registration-detail">(Immobilière, hôtellerie...)</span>
+                                        <p>@lang('Agence')</p>
+                                        <span class="registration-detail">@lang('(Immobilière, hôtellerie...)')</span>
                                     </div>
                                     <i class="fas fa-chevron-right fa-xs"></i>
                                 </div>
                                 <div>
-                                    <p>Club</p>
+                                    <p>@lang('Club')</p>
                                     <i class="fas fa-chevron-right fa-xs"></i>
                                 </div>
                                 <div>
-                                    <p>Particulier</p>
+                                    <p>@lang('Particulier')</p>
                                     <i class="fas fa-chevron-right fa-xs"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-cell registration-step2">
                             <div class="registration-request">
-                                <span>Comment devons nous vous appeller ?</span>
+                                <span>@lang('Comment devons nous vous appeller ?')</span>
                             </div>
                             <div class="registration-answer">
                                 <div>
@@ -55,18 +55,18 @@
                                 </div>
                                 <div>
                                     <select name="sex" required="">
-                                        <option value="incomplete">Sexe</option>
-                                        <option value="femme">Femme</option>
-                                        <option value="homme">Homme</option>
-                                        <option value="autre">Autre</option>
+                                        <option value="incomplete">@lang('Sexe')</option>
+                                        <option value="femme">@lang('Femme')</option>
+                                        <option value="homme">@lang('Homme')</option>
+                                        <option value="autre">@lang('Autre')</option>
                                     </select>
                                 </div>
-                                <a class="buttonLink" href="#"><span>Continuer</span></a>
+                                <a class="buttonLink" href="#"><span>@lang('Continuer')</span></a>
                             </div>
                         </div>
                         <div class="carousel-cell registration-step3 is-selected">
                             <div class="registration-request">
-                                <span>Dernière étape, vous y êtes presque !</span>
+                                <span>@lang('Dernière étape, vous y êtes presque !')</span>
                             </div>
                             <div class="registration-answer">
                                 <div>
@@ -84,13 +84,13 @@
                                 </div>
                                 <div>
                                     <input type="checkbox" id="CGU" name="CGU" required="">
-                                    <label for="CGU">J’accepte les <a href="#">Conditions Générales d'Utilisation</a>.</label>
+                                    <label for="CGU">@lang('J’accepte les ')<a href="#">@lang('Conditions Générales d'Utilisation')</a>.</label>
                                 </div>
                                 <div>
                                     <input type="checkbox" id="newsLetter" name="newsLetter">
-                                    <label for="newsLetter">Je souhaite recevoir les dernières nouvelles de la part de We Guide You.</label>
+                                    <label for="newsLetter">@lang('Je souhaite recevoir les dernières nouvelles de la part de We Guide You.')</label>
                                 </div>
-                                <button class="buttonLink">S'inscrire</button>
+                                <button class="buttonLink">@lang('S'inscrire')</button>
                             </div>
                         </div>
                     </div>

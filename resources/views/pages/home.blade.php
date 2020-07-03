@@ -24,8 +24,10 @@
             <div><img src="{{asset('/img/nate-johnston-2gBpsNuHcyA-unsplash.jpg')}}" alt=""></div>
             <div>
                 <div>
-                    <h2>Recrutez des <span>professionnels</span> à tous moment.</h2>
-                    @include('components.buttonLink', ['link' => '#'], ['text' => 'Recruter un professionnel'])
+                    <h2>
+                        @lang('default.homePro1')
+                    </h2>
+                    @include('components.buttonLink', ['link' => '/annoncesPro?type=LookForPeople'], ['text' => Lang::get('Recruter un professionnel')])
                 </div>
             </div>
         </div>
@@ -34,8 +36,10 @@
         <div class="wrap">
             <div>
                 <div>
-                    <h2>Trouvez un <span>job</span> près de chez vous qui <span>vous correspond.</span></h2>
-                    @include('components.buttonLink', ['link' => '#'], ['text' => 'Trouver un job'])
+                    <h2>
+                        @lang('default.homePro2')
+                    </h2>
+                    @include('components.buttonLink', ['link' => '/annoncesPro?type=LookForJob'], ['text' => Lang::get('Trouver un job')])
                 </div>
             </div>
             <div><img src="{{asset('/img/dmitrii-vaccinium-ByUAo3RpA6c-unsplash.jpg')}}" alt=""></div>
@@ -44,8 +48,10 @@
     <section class="catchBanner">
         <img class="backgroundBanner" src="{{asset('/img/christopher-campbell-kFCdfLbu6zA-unsplash.jpg')}}" alt="Professionnel fitness">
         <div class="wrap">
-            <h2>Partagez votre <span>passion</span> en proposant vos cours en toute <span>sécurité</span> et <span>gratuitement.</span></h2>
-            @include('components.buttonLink', ['link' => '#'], ['text' => 'Proposer un cours'])
+            <h2>
+                @lang('default.homePro3')
+            </h2>
+            @include('components.buttonLink', ['link' => '/deposer-une-annonce'], ['text' => Lang::get('Proposer un cours')])
         </div>
     </section>
     @include('components.weGuideNews')

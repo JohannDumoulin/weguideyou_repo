@@ -15,15 +15,15 @@
 
 	<div class="wrap contentFavoris">
 
-		<h3 class="titre">Favoris</h3>
+		<h3 class="titre">@lang('Favoris')</h3>
 
 		<div class="second_filter_child right sort">					
-			<p>Trier par :</p>
+			<p>@lang('Trier par :')</p>
 			<select name="" id="" class="js-order">
-				<option value="plusRecent">Plus récentes</option>
-				<option value="plusAncien">Plus anciennes</option>
-				<option value="prixCroissant">Prix croissants</option>
-				<option value="prixDecroissant">Prix décroissants</option>
+				<option value="plusRecent">@lang('Plus récentes')</option>
+				<option value="plusAncien">@lang('Plus anciennes')</option>
+				<option value="prixCroissant">@lang('Prix croissants')</option>
+				<option value="prixDecroissant">@lang('Prix décroissants')</option>
 			</select>
 		</div>
 

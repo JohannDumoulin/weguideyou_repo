@@ -13,21 +13,21 @@
 @section('content')
 	<div class="wrap">
 		<section id="mailbox">
-			<h1>Votre messagerie</h1>
+			<h1>@lang('Votre messagerie')</h1>
 
 			<div id="mail_container">
 <!---------------------- All mails -------------------------->
 				<div id="all_mails">
-					@include('pages.mailbox_users', ['conversations' => $conversations, 'unread' => $unread])
+					@include('pages.mailbox_users', ['conversations' => $conversations, 'unread' => $unread, 'last_message' => $last_message])
 				</div>
 
 <!---------------------- The mail --------------------------->
 				<div id="the_mail">
 					<div id="mail_header">
-						<h2>Cours Snowboard / Courchevel 1850</h2>
+						<h2>{{ $conversation->name_ad }}</h2>
 						<div id="mail_header_content">
 							<div id="the_mail_more">
-								<p id="seller">le vendeur</p>
+								<p id="seller">{{ $conversation->name }}</p>
 								<p id="price">450 €</p>
 							</div>
 							<img src="{{ asset('img/esf.png') }}" alt="">

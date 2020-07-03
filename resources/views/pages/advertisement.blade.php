@@ -37,16 +37,16 @@
 				<input name="type" value="Cours" id="type" style="display: none">
 
 				<div class="header_filter">
-					<label for="activity">ACTIVITÉ</label>
-					<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
+					<label for="activity">@lang('ACTIVITÉ')</label>
+					<input list="dataActivities" name="activity" id="activity" placeholder="@lang('Que voulez-vous faire ?')" class="js-filter">
 					<datalist id="dataActivities">
 						<option></option>
 					</datalist>
 				</div>
 
 				<div class="header_filter">
-					<label for="place">LIEU</label>
-					<input name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter" type="text">
+					<label for="place">@lang('LIEU')</label>
+					<input name="place" id="place" placeholder="@lang('Où voulez-vous partir ?')" class="js-filter" type="text">
 					<div>
 						<div class="loader searchCity" id="hidden"></div>
 					</div>
@@ -56,7 +56,7 @@
 				</div>
 
 				<div class="header_filter">
-					<label for="date">DATES</label>
+					<label for="date">@lang('DATES')</label>
 					<input name="date" type="date" id="date" class="js-filter">
 				</div>
   
@@ -69,61 +69,61 @@
 
 			<div class="more_filter js-active js-more_filter">
 				<img src="{{ asset('img/plus_filter.svg') }}" alt="">
-				<p>Plus de filtres</p>
+				<p>@lang('Plus de filtres')</p>
 			</div>
 
 			<!-- More filters -->
 			<div action="" class="first_filter_more js-first_filter_more"> 
 				<div class="first_filter_more_content">
-					<p>Choix du prestataire :</p>
+					<p>@lang('Choix du prestataire :')</p>
 					<input class="js-filter" type="checkbox" id="PRO" name="PRO" checked>
-					<label for="organization">Professionnels</label>
+					<label for="organization">@lang('Professionnels')</label>
 					<input class="js-filter" type="checkbox" id="PAR" name="PAR" checked>
-					<label for="freelance">Particuliers</label>
+					<label for="freelance">@lang('Particuliers')</label>
 				</div>
 				<div class="first_filter_more_content">
-					<p>Nombre de personne(s) :</p>
+					<p>@lang('Nombre de personne(s) :')</p>
 					<select name="nbPers" id="nbPers" class="js-filter">
 						<option value="">-</option>
-						<option value="Collectif">Collectif</option>
-						<option value="Individuel">Individuel</option>
+						<option value="Collectif">@lang('Collectif')</option>
+						<option value="Individuel">@lang('Individuel')</option>
 
 					</select>
 				</div>
 				<div class="first_filter_more_content">
-					<p>Durée :</p>
+					<p>@lang('Durée :')</p>
 					<select name="duration" id="duration" class="js-filter">
 						<option value="">-</option>
 						<option value="1h">1h</option>
 						<option value="2h">2h</option>
 						<option value="4h">4h</option>
-						<option value="half-day">Demi-journée</option>
-						<option value="day">Journée</option>
+						<option value="half-day">@lang('Demi-journée')</option>
+						<option value="day">@lang('Journée')</option>
 					</select>
 				</div>
 				<div class="first_filter_more_content">
-					<p>Langue :</p>
+					<p>@lang('Langue :')</p>
 					<input name="user_language" id="user_language" class="js-filter">
 				</div>
 
 				<div class="less_filter js-less_filter">
 					<img src="{{ asset('img/minus_filter.svg') }}" alt="">
-					<p>Moins de filtres</p>
+					<p>@lang('Moins de filtres')</p>
 				</div>
 			</div>
 
 			<div class="effaceFilters">
-				<a href="/annonces?type=Cours">Effacer tous les filtres</a>
+				<a href="/annonces?type=Cours">@lang('Effacer tous les filtres')</a>
 			</div>
 			
 <!---------------------- Second Filters -------------------->
 			<div id="second_filter">
 				<div class="second_filter_child left">
-					<p><span class="nbrAdverts"></span> Annonce(s) :</p>
+					<p><span class="nbrAdverts"></span> @lang('Annonce(s) :')</p>
 					<div class="advertisement all">
 
 						<input type="radio" name="t" checked class="js-inpTout">
-						<p>Toutes les annonces</p>
+						<p>@lang('Toutes les annonces')</p>
 
 					</div>
 					<div class="advertisement urgent">
@@ -142,16 +142,16 @@
 						</svg>
 
 
-						<p>Urgentes</p>
+						<p>@lang('Urgentes')</p>
 					</div>
 				</div>
 				<div class="second_filter_child right">					
-					<p>Trier par :</p>
+					<p>@lang('Trier par :')</p>
 					<select name="" id="" class="js-order">
-						<option value="plusRecent">Plus récentes</option>
-						<option value="plusAncien">Plus anciennes</option>
-						<option value="prixCroissant">Prix croissants</option>
-						<option value="prixDecroissant">Prix décroissants</option>
+						<option value="plusRecent">@lang('Plus récentes')</option>
+						<option value="plusAncien">@lang('Plus anciennes')</option>
+						<option value="prixCroissant">@lang('Prix croissants')</option>
+						<option value="prixDecroissant">@lang('Prix décroissants')</option>
 					</select>
 				</div>
 			</div>
@@ -175,7 +175,7 @@
 
 					@if(Request::is('a/*'))
 					<div class="divAllAdvert">
-						<a href="/annonces?type=Cours">Voir toutes les annonces</a>
+						<a href="/annonces?type=Cours">@lang('Voir toutes les annonces')</a>
 					</div>
 					@endif
 
@@ -187,7 +187,7 @@
 				<!-- Annonce en avant -->
 				<div class="divRight">
 					<div class="titre">
-						<span>Mise en avant</span>
+						<span>@lang('Mise en avant')</span>
 					</div>
 					<div class="advertisement_container premium" id="js-container-premium"></div>
 				</div>

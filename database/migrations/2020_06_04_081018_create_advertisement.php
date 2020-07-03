@@ -21,7 +21,7 @@ class CreateAdvertisement extends Migration
             $table->string('user_status')->nullable()->default("PAR");
             $table->string('user_language')->nullable()->default(false);
             
-            $table->string('name');
+            $table->string('name_ad');
             $table->text('desc');
             $table->string('type');
             $table->string('place');

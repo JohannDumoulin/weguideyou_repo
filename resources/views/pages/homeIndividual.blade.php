@@ -15,7 +15,9 @@
 
     <section class="topPro">
         <div class="wrap">
-            <h2>Redécouvrez le <span>sport</span> aux côtés de <span>professionnels qualifiés.</span></h2>
+            <h2>
+                @lang('default.home1')
+            </h2>
             <div>
                 <div>
                     <div class="img">
@@ -71,8 +73,10 @@
     <section class="catchBanner">
         <img class="backgroundBanner" src="{{asset('/img/christopher-campbell-kFCdfLbu6zA-unsplash.jpg')}}" alt="Professionnel fitness">
         <div class="wrap">
-            <h2>Rejoignez <span>WeGuideYou</span> et réservez vos cours en toute <span>sécurité</span> et <span>gratuitement.</span></h2>
-            @include('components.buttonLink', ['link' => '#'], ['text' => 'Trouver un cours'])
+            <h2>
+                @lang('default.home2')
+            </h2>
+            @include('components.buttonLink', ['link' => '/annonces?type=Cours'], ['text' => Lang::get('Trouver un cours')])
         </div>
     </section>
     @include('components.weGuideNews')

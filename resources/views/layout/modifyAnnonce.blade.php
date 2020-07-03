@@ -8,7 +8,9 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/d678efe89e.js" crossorigin="anonymous"></script>
 
 <div class="annonce modify">
 
@@ -16,7 +18,7 @@
 
 	    <section class="icons">
 	        <div class="wrap">
-	        	<button class="js-btnSaveModif">Enregister les modifications</button>
+	        	<button class="js-btnSaveModif">@lang('Enregister les modifications')</button>
 	            <i class="fa fa-times js-toggleAnnonce"></i>
 	        </div>
 	    </section>
@@ -41,20 +43,23 @@
 	        </div>
 	    </section>
 
-	    <section class="images modifImg">
+	    <div class="main-carousel"></div>
+
+<!-- 	    <section class="images modifImg">
 
         	@foreach ($imgs as $img)
 
-			<input class="ad-img" value={{ $img }}>
+			<img src="{{ $img }}">
+
+			<input type="file" name="" class="ad-img">
 
             @endforeach
 
-	    </section>
-
+	    </section> -->
 
 	    <section class="description">
 	        <div class="wrap">
-	            <label>Description</label>
+	            <label>@lang('Description')</label>
 	            <textarea id="ad-description">{{$advert->desc }}</textarea>
 	        </div>
 	    </section>
@@ -65,7 +70,7 @@
 	            @if($advert->activity != false)
 		        <div>
 	                <i class="fas fa-running"></i>
-	                <label>Activité</label>
+	                <label>@lang('Activité')</label>
 	                <input id="ad-activity" value={{ $advert->activity }}></input>
 	            </div> 
 	            @endif 
@@ -73,22 +78,26 @@
 	            @if($advert->nbPers != false)
 	            <div>
 	                <i class="fa fa-users"></i>
-	                <label>Type de cours</label>
-	                <input id="ad-nbPers" value={{ $advert->nbPers }}></input>
+	                <label>@lang('Nombre de personne(s)')</label>
+	                <select id="ad-nbPers">
+	                	<option value="{{ $advert->nbPers }}" selected disabled hidden>{{ $advert->nbPers }}</option>
+						<option value="Collectif">@lang('Collectif')</option>
+						<option value="Individuel">@lang('Individuel')</option>
+	                </select>
 	            </div>  
 	            @endif              
 
 				@if($advert->duration != false)
 	            <div>
 					<i class="fa fa-calendar"></i>
-	                <label>Durée</label>
+	                <label>@lang('Durée')</label>
 	                <select id="ad-duration">
 	                	<option value="{{ $advert->duration }}" selected disabled hidden>{{ $advert->duration }}</option>
 						<option value="1h">1h</option>
 						<option value="2h">2h</option>
 						<option value="4h">4h</option>
-						<option value="Demi-journée">Demi-journée</option>
-						<option value="Toute la journée">Journée</option>
+						<option value="Demi-journée">@lang('Demi-journée')</option>
+						<option value="Toute la journée">@lang('Journée')</option>
 	                </select>
 	            </div>
 	            @endif 
@@ -96,15 +105,15 @@
 	            @if($advert->loge != false)
 		        <div>
 	                <i class="fas fa-house-user"></i>
-	                <label>Poste logé</label>
+	                <label>@lang('Poste logé')</label>
 	                <select id="ad-loge">
 	    		     	@if($advert->loge == 1)
-		                	<option value="{{ $advert->loge }}" selected disabled hidden>Oui</option>
+		                	<option value="{{ $advert->loge }}" selected disabled hidden>@lang('Oui')</option>
 		                @else
-							<option value="{{ $advert->loge }}" selected disabled hidden>Non</option>
+							<option value="{{ $advert->loge }}" selected disabled hidden>@lang('Non')</option>
 						@endif
-	                	<option value="1">Oui</option>
-	                	<option value="0">Non</option>
+	                	<option value="1">@lang('Oui')</option>
+	                	<option value="0">@lang('Non')</option>
 	                </select>
 	            </div> 
 	            @endif 
@@ -112,7 +121,7 @@
 	            @if($advert->salaire != false)
 	            <div>
 	                <i class="far fa-money-bill-alt"></i>
-	                <label>Salaire</label>
+	                <label>@lang('Salaire')</label>
 	                <input id="ad-salaire" value={{ $advert->salaire }}></input> €
 	            </div>  
 	            @endif 
@@ -120,7 +129,7 @@
 	            @if($advert->job != false)
 	            <div>
 	                <i class="fas fa-running"></i>
-	                <label>Profession</label>
+	                <label>@lang('Profession')</label>
 	                <input id="ad-job" value={{ $advert->job }}></input>
 	            </div> 
 	            @endif
