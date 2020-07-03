@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use MercurySeries\Flashy\Flashy;
+use Symfony\Component\Console\Input\Input;
 
 class ProfileController extends Controller
 {
@@ -22,8 +23,16 @@ class ProfileController extends Controller
         $status = Auth::user()->status;
         $UserLanguages = UserLanguage::all();
         $languages = Language::all();
-        $sectors = Sectors::all();
+        $activeLang = UserLanguage::where('user_id',Auth::user()->id)->get();
+        if ($activeLang){
+            $userActiveLangs = [];
+            foreach ($activeLang as $key=>$values){
+                $userActiveLangs[$key] = Language::where('language_id', $values->language_id)->first();
+                $userActiveLangs[$key] = $userActiveLangs[$key]->language_name;
+            }
+        }
 
+        $sectors = Sectors::all();
         $sectorSelected = UserSector::where('user_id',Auth::user()->id)->first();
         if ($sectorSelected !== null){
             $searchSector = $sectorSelected->sector_id;
@@ -61,13 +70,13 @@ class ProfileController extends Controller
         if ($status === 'PRO'){
             $dateOfBirth = $user["birth"];
             $years = Carbon::createFromDate($dateOfBirth)->age;
-            return view('pages/'.$view, ['oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['userActiveLangs'=>$userActiveLangs ?? null,'oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'years'=>$years, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'NSO'){
-            return view('pages/'.$view, ['oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['userActiveLangs'=>$userActiveLangs ?? null,'oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($status === 'SO'){
-            return view('pages/'.$view, ['oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['userActiveLangs'=>$userActiveLangs ?? null,'oldSector'=>$searchSector ?? null,'sectors'=>$sectors, 'status'=>$status, 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
     }
 
@@ -274,9 +283,6 @@ class ProfileController extends Controller
         }
     }
 
-
-
-
     private function updateLang($request){
         UserLanguage::where('user_id',Auth::user()->id)->delete();
 
@@ -320,6 +326,23 @@ class ProfileController extends Controller
                   $sector->save();
             }
         }
+    }
+
+    public function update_img(Request $request){
+        $validator = $request->validate([
+            'userPic'=>['required','image'],
+        ]);
+
+        if ($validator){
+            $path = $request->userPic->store('userPic');
+            $user = User::find(Auth::user()->id);
+            $user->pic = $path;
+            $user->save();
+        }else{
+            Flashy::error('Erreur');
+        }
+
+        return redirect()->back();
     }
 
 

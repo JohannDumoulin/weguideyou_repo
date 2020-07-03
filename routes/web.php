@@ -20,6 +20,7 @@ Route::get('/parametres', function () {
 
 /*Profile*/
 Route::resource('profile','ProfileController')->middleware('auth');
+Route::post('profile/add-picture','ProfileController@update_img')->name('addPicture')->middleware('auth');
 Route::get('/profil/{id}', 'ProfileController@profilePublic');
 
 
@@ -107,7 +108,7 @@ Route::post ( '/', function (Request $request) {
                 "amount" => 300 * 100,
                 "currency" => "usd",
                 "source" => $request->input ( 'stripeToken' ),
-                "description" => "description test payment." 
+                "description" => "description test payment."
         ) );
         Session::flash ( 'success-message', 'Payement effectué avec succès !' );
         return Redirect::back ();

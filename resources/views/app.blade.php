@@ -15,12 +15,11 @@
     @include('layout.connection')
     @include('layout.modalProfil')
 
-    @include('flashy::message')
-
     @yield('content')
 
     @include('layout.footer')
 
     @stack('script')
+    @include('flashy::message')
 </body>
 </html>

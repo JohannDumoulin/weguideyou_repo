@@ -273,6 +273,62 @@ body[data-content="userProfile"]{
             }
         }
 
+        .img-updatePanel{
+            width: 100%;
+            height: 100vh;
+            background-color: $background-fade;
+            z-index: 999;
+            position: fixed;
+            top: 0;
+
+            .wrap {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+
+                position: relative;
+
+                .updatePanel-container {
+                    background-color: $background;
+                    padding: 80px;
+                    box-sizing: border-box;
+
+                    max-height: 90vh;
+
+                    overflow-x: hidden;
+                    overflow-y: auto;
+
+                    .updatePanel-main {
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: flex-start;
+
+                        >div{
+                            width: 100%;
+                            margin-bottom: 40px;
+
+                            &:last-child{
+                                >button{
+                                    margin: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            #close-img-updatePanel{
+                width: 3%;
+                position: absolute;
+                right: 100px;
+
+                cursor: pointer;
+            }
+        }
+
         .profile-Banner {
             width: 100%;
             height: 50vh;
@@ -445,7 +501,7 @@ body[data-content="userProfile"]{
                             }
 
                             .profile-title{
-
+                                margin-bottom: 20px;
                                 h2{
                                     font-size: 2em;
                                 }

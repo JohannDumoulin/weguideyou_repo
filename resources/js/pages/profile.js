@@ -21,13 +21,16 @@ export default class Profile {
                 pageDots: true,
             }),
             btn: $('#js-modifyProfile'),
-            back: $('.js-back-profile-updatePanel')
+            back: $('.js-back-profile-updatePanel'),
+            btn_img: $('#js-modifyImg'),
+            back_img: $('.js-back-img-updatePanel')
         }
     }
 
     initEvents(){
         this.bannerParallax();
         this.getUpdatePanel();
+        this.getUpdatePanel_img();
     }
 
     bannerParallax(){
@@ -43,6 +46,16 @@ export default class Profile {
         });
         this.$els.back.click(function(){
             $('.js-profile-updatePanel').toggleClass("hidden");
+            $('body').toggleClass("stopScrolling");
+        });
+    }
+    getUpdatePanel_img(){
+        this.$els.btn_img.click(function(){
+            $('.js-img-updatePanel').toggleClass("hidden");
+            $('body').toggleClass("stopScrolling");
+        });
+        this.$els.back_img.click(function(){
+            $('.js-img-updatePanel').toggleClass("hidden");
             $('body').toggleClass("stopScrolling");
         });
     }
