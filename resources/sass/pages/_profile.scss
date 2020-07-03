@@ -295,6 +295,7 @@ body[data-content="userProfile"]{
                     box-sizing: border-box;
 
                     max-height: 90vh;
+                    max-width: 80%;
 
                     overflow-x: hidden;
                     overflow-y: auto;
@@ -309,6 +310,10 @@ body[data-content="userProfile"]{
                         >div{
                             width: 100%;
                             margin-bottom: 40px;
+
+                            img{
+                                width: 100%;
+                            }
 
                             &:last-child{
                                 >button{

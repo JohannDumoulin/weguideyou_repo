@@ -27,7 +27,7 @@
                 @if(Auth::user()->status == "PAR")
                     <a href="/annonces?type=Cours">@lang('Annonces')</a>
                 @endif
-                
+
                 <a href="{{ route('create_ad') }}">@lang('Poster une annonce')</a>
                 <a href="/favoris">@lang('Favoris')</a>
             @endauth
@@ -40,7 +40,7 @@
             @auth
                 <div class="js-toggleModalProfil">
                     <div>
-                        <img src="{{ Auth::user()->pic ?? asset('img/user-circle-solid-white.svg')}}" alt="Image de profil">
+                        <img src="{{ asset('storage/'.Auth::user()->pic ?? asset('/img/user-regular.svg')) }}" alt="Image de profil">
                     </div>
                     <span>{{ Auth::user()->name ?? 'undefined' }}</span>
                     <i class="fa fa-chevron-down arrow"></i>

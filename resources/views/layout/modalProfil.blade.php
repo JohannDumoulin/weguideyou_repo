@@ -3,7 +3,7 @@
 
 		<div class="head">
 			<div class="img">
-                <img src="{{Auth::user()->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="Image de profil">
+                <img src="{{ asset('storage/'.Auth::user()->pic ?? asset('/img/user-regular.svg')) }}" alt="Image de profil">
             </div>
 			<p>{{ Auth::user()->name ?? 'undefined' }}</p>
 		</div>
@@ -19,7 +19,7 @@
                     <a href="/messagerie">@lang('Messagerie')</a>
                     @if(Auth::user()->admin!==1)
                         <a href="/mes_annonces">@lang('Mes Annonces')</a>
-                    <!-- 
+                    <!--
                         <hr>
                         <a href="#" id="premium">Premium</a>
                         <hr>
