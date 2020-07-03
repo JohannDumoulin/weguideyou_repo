@@ -3,7 +3,16 @@
 
 		<div class="head">
 			<div class="img">
-                <img src="{{ asset('storage/'.Auth::user()->pic ?? asset('/img/user-regular.svg')) }}" alt="Image de profil">
+                @auth
+                    @if(Auth::user()->pic)
+                        <img src="{{ asset('storage/'.Auth::user()->pic) ?? asset('/img/user-circle-solid-black.svg') }}" alt="Image de profil">
+                    @else
+                        <img src="{{ asset('/img/user-circle-solid-black.svg') }}" alt="Image de profil">
+                    @endif
+                @endauth
+                @guest
+                    <img src="{{ asset('/img/user-circle-solid-black.svg') }}" alt="Image de profil">
+                @endguest
             </div>
 			<p>{{ Auth::user()->name ?? 'undefined' }}</p>
 		</div>
@@ -34,7 +43,7 @@
                 </div>
                 <div class="logout">
                     <hr>
-                    <a href="/logout">@lang('Déconnexion')</a>
+                    <a href="{{route('logout')}}">@lang('Déconnexion')</a>
                     <hr>
                 </div>
             @endauth

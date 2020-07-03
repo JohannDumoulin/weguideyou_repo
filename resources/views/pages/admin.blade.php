@@ -42,7 +42,11 @@
                         <div class="data-content-container">
                             <div class="data-content-main">
                                 <div>
-                                    <img src="{{$user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
+                                    @if($user->pic)
+                                        <img src="{{ asset('storage/'.$user->pic) }}" alt="Image de profil">
+                                    @else
+                                        <img src="{{asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
+                                    @endif
                                 </div>
                                 <div>
                                     <div><span>{{$user->name}} {{$user->surname}}</span></div>
