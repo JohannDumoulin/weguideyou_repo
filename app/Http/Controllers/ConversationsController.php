@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreMessageRequest;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class ConversationsController extends Controller
 {
@@ -27,16 +29,16 @@ class ConversationsController extends Controller
 	}
 
     public function index () {
-    	// return view('pages/mailbox', [
-    	// 	'users' => $this->conversationRepository->getConversations($this->auth->user()->id),
-    	// 	'unread' => $this->conversationRepository->unreadCount($this->auth->user()->id)
-    	// ]);
         return redirect(route('conversations.show', ['conversation' => 1]));
     }
 
     public function show (Conversation $conversation) {
     	$me = $this->auth->user();
-    	$messages = $this->conversationRepository->getMessagesFor($me->id, $conversation->to_id)->paginate(50);
+        if ($me->id === $conversation->to_id) {
+            $messages = $this->conversationRepository->getMessagesFor($me->id, $conversation->from_id)->paginate(50);
+        }else {
+            $messages = $this->conversationRepository->getMessagesFor($me->id, $conversation->to_id)->paginate(50);
+        }
     	$unread = $this->conversationRepository->unreadCount($me->id);
     	if (isset($unread[$conversation->to_id])) {
     		$this->conversationRepository->readAllFrom($conversation->to_id, $me->id);
@@ -46,30 +48,53 @@ class ConversationsController extends Controller
     	return view('pages/show', [
     		'users' => $this->conversationRepository->getConversations($me->id),
     		'messages' => $messages,
+            'last_message' => DB::table('messages')->where('messages.conversation_id','=', $conversation->id)->orderBy('created_at', 'desc')->first(),
     		'unread' => $unread,
             'conversations' => $this->conversationRepository->getConversations($me->id),
-            'conversation' => $this->conversationRepository->getOneConversation($me->id, $conversation->to_id, $conversation->ad_id)->first()
+            'conversation' => $this->conversationRepository->getOneConversation($me->id, $conversation->ad_id)->first()
     	]);
     }
 
-    public function store (User $user, StoreMessageRequest $request, Advertisement $ad) {
+        public function store (StoreMessageRequest $request, Conversation $conversation) {
+            $me = $this->auth->user();
+
+            $this->conversationRepository->createMessage(
+                $request->get('content'),
+                $me->id,
+                $conversation->to_id,
+                $this->conversationRepository->getOneConversation($me->id, $conversation->ad_id)
+             );
+
+            /*
+                Send Mail : Bug
+
+                $user->notify(new MessageReceived($message));
+            */
+            
+
+            return redirect(route('conversations.show', ['conversation' => $conversation->id]));
+        }
+
+    public function storeNewMessage (User $user, StoreMessageRequest $request, Advertisement $ad) {
+        $me = $this->auth->user();
+
         $r = $this->conversationRepository->checkIfConversationExist(
-                $this->auth->user()->id,
+                $me->id,
                 $user->id,
                 $ad->id,
-                $this->conversationRepository->getConversations($this->auth->user()->id)
+                $this->conversationRepository->getConversations($me->id)
              );
 
         if ($r === true) {
            $this->conversationRepository->createMessage(
                 $request->get('content'),
-                $this->auth->user()->id,
+                $me->id,
                 $user->id,
-                $this->conversationRepository->getOneConversation($this->auth->user()->id, $user->id, $ad->id)                
+                $this->conversationRepository->getOneConversation($me->id, $ad->id)                
             );
         }else {
             $this->conversationRepository->createConversation(
-                $this->auth->user()->id,
+                $me->id,
                 $user->id,
                 $ad->id
              );
@@ -78,7 +103,7 @@ class ConversationsController extends Controller
                 $request->get('content'),
                 $this->auth->user()->id,
                 $user->id,
-                $this->conversationRepository->getOneConversation($this->auth->user()->id, $user->id, $ad->id)
+                $this->conversationRepository->getOneConversation($me->id, $ad->id)
              );
         }
     	
@@ -90,7 +115,7 @@ class ConversationsController extends Controller
     	*/
     	
 
-    	return redirect(route('conversations.show', ['user' => $user->id, 'ad' => $ad]));
+    	return redirect(route('conversations'));
     }
 
     public function newMessage (FormBuilder $formBuilder, User $user, Advertisement $ad) {
@@ -98,7 +123,11 @@ class ConversationsController extends Controller
             'method' => 'POST',
         ]);
 
-        return view('pages/new_message', compact('NewMessageForm', 'user', 'ad'));
+        if ($user->id === $ad->user_id) {
+           return view('pages/new_message', compact('NewMessageForm', 'user', 'ad'));
+        }else {
+            return view('pages/home');
+        }
     }
 
     public function test () {
