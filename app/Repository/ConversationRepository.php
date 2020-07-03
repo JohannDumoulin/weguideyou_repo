@@ -38,16 +38,15 @@ class ConversationRepository {
 		return $conversations;
 	}
 
-	public function getOneConversation (int $from, int $to, int $ad) {
+	public function getOneConversation (int $me, int $ad) {
 		$conversation = DB::table('conversations')
-			->join('users as u_from', 'conversations.from_id', '=', 'u_from.id')
-			->join('users as u_to', 'conversations.to_id', '=', 'u_to.id')
+			->join('users', function ($join) {
+			    $join->on('conversations.to_id', '=', 'users.id')->orOn('conversations.from_id', '=', 'users.id');
+			})
 			->join('advertisement', 'conversations.ad_id', '=', 'advertisement.id')
 			->select('*')
-			->where('conversations.from_id','=', $from)
-			->where('conversations.to_id','=', $to)
-			->where('conversations.ad_id','=', $ad)
 			->get();
+
 		return $conversation;
 	}
 
@@ -57,7 +56,7 @@ class ConversationRepository {
 			'from_id' => $from,
 			'to_id' => $to,
 			'conversation_id' => $conversation->first()->id,
-			'created_at' => Carbon::now()
+			'created_at' => Carbon::now('UTC')
 		]);
 	}
 
@@ -66,7 +65,7 @@ class ConversationRepository {
 			'ad_id' => $ad,
 			'from_id' => $from,
 			'to_id' => $to,
-			'created_at' => Carbon::now()
+			'created_at' => Carbon::now('UTC')
 		]);
 
 

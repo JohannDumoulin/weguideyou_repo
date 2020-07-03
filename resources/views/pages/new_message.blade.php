@@ -14,7 +14,7 @@
 		<section>
 			{!! form_start($NewMessageForm) !!}
 				<h1>Envoyer un message à {{ $user->name }}</h1>
-				<h2>A propos de l'annonce : {{ $ad->name }}</h2>
+				<h2>A propos de l'annonce : {{ $ad->name_ad }}</h2>
 			{!! form_end($NewMessageForm) !!}
 		</section>
 	</div>

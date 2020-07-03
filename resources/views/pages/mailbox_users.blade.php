@@ -6,15 +6,14 @@
 		</div>
 		<div class="advertisement_content">
 			<div class="seller_infos">
-				<p>{{ $conversation_item->name }}
-					@if(isset($unread[$conversation->to_id]))
-						({{ $unread[$conversation->to_id] }})
-					@endif
-				</p>
+				<p>{{ $conversation_item->name }}</p>
 				<img src="{{ asset('img/esf.png') }}" alt="">
 			</div>
-			<p class="title">Cours Snowboard / Courchevel 1850</p>
-			<p class="last_msg">20h24 Vous : Oui bien sûr pas...</p>
+			<p class="title">
+				{{ $conversation_item->name_ad }}
+				
+			</p>
+			<p class="last_msg">{{ str_replace ( ':' , 'h' , substr($last_message->created_at, 11, -3)).' : '.$last_message->content}}</p>
 		</div>
 	</div>
 </a>

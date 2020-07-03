@@ -11,7 +11,7 @@ class Advertisement extends Model
         'user_id',
         'user_status',
         'user_language',
-    	'name',
+    	'name_ad',
     	'desc',
     	'type',
     	'place',
