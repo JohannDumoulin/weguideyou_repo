@@ -12,7 +12,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use MercurySeries\Flashy\Flashy;
-use Symfony\Component\Console\Input\Input;
 
 class ProfileController extends Controller
 {

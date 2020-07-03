@@ -71,7 +71,6 @@
                                 <div>
                                     <label for="sector" class="control-label required">@lang('Secteur :')</label>
                                     <select class="form-control" id="sector" name="sector">
-
                                         @if($oldSector)
                                             <option selected="selected" value="{{$oldSector->id}}">{{$oldSector->sector_name}}</option>
                                             @else
@@ -183,8 +182,7 @@
                         <div class="profileOverview">
                             <div class="profileImg">
                                 <div>
-                                    <button class="buttonLink" id="js-modifyImg">Modifier</button>
-                                    @include('components.buttonLink', ['link' => '#'], ['text' => Lang::get('Modifier')])
+                                    <button class="buttonLink" id="js-modifyImg">{{Lang::get('Modifier')}}</button>
                                 </div>
                                 <img src="{{ asset('/img/user-regular.svg')}}" alt="Image de profil"> {{--Image du storage à rajouter avec Auth::user()->pic--}}
                             </div>

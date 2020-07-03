@@ -20,8 +20,8 @@ Route::get('/parametres', function () {
 /*Profile*/
 Route::resource('profile','ProfileController')->middleware('auth');
 Route::post('profile/add-picture','ProfileController@update_img')->name('addPicture')->middleware('auth');
-Route::get('/profil/{id}', 'ProfileController@profilePublic');
-/*Route::get('/profil/{id}', 'ProfileController@indexPublic');*/
+/*Route::get('/profil/{id}', 'ProfileController@profilePublic');*/
+Route::get('/profil/{id}', 'ProfileController@indexPublic');
 
 
 /*Favoris*/
