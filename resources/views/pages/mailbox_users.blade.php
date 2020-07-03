@@ -11,7 +11,6 @@
 			</div>
 			<p class="title">
 				{{ $conversation_item->name_ad }}
-				
 			</p>
 			<p class="last_msg">{{ str_replace ( ':' , 'h' , substr($last_message->created_at, 11, -3)).' : '.$last_message->content}}</p>
 		</div>
