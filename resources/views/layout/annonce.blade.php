@@ -28,7 +28,7 @@
 	        <div class="wrap">
 	            <div class="btnResa">
 	                <h1 id="ad-title">{{ $advert->name }}</h1>
-	                @include('components.buttonLink', ['link' => '#'], ['text' => 'Réserver'])
+	                @include('components.buttonLink', ['link' => '#'], ['text' => Lang::get('Réserver')])
 	            </div>   
 	            <h2>
 	            	<span id="ad-price">{{ $advert->price_one_h }}</span>€ / h
@@ -68,7 +68,7 @@
 
 	    <section class="description">
 	        <div class="wrap">
-	            <label>Description</label>
+	            <label>@lang('Description')</label>
 	            <p id="ad-description">{{ $advert->desc }}</p>
 	        </div>
 	    </section>
@@ -79,7 +79,7 @@
 	        	@if($advert->activity != false)
 		        <div>
 	                <i class="fas fa-running"></i>
-	                <label>Activité</label>
+	                <label>@lang('Activité')</label>
 	                <p id="ad-nb_act">{{ $advert->activity }}</p>
 	            </div> 
 	            @endif 
@@ -87,7 +87,7 @@
 	            @if($advert->nbPers != false)
 	            <div>
 	                <i class="fa fa-users"></i>
-	                <label>Type de cours</label>
+	                <label>@lang('Type de cours')</label>
 	                <p id="ad-nb_pers">{{ $advert->nbPers }}</p>
 	            </div>  
 	            @endif              
@@ -95,11 +95,11 @@
 				@if($advert->duration != false)
 	            <div>
 					<i class="fa fa-calendar"></i>
-	                <label>Durée</label>
+	                <label>@lang('Durée')</label>
 					@if($advert->duration == "day")
-	                	<p id="ad-nb_pers">Toute la journée</p>
+	                	<p id="ad-nb_pers">@lang('Journée')</p>
 	                @elseif($advert->duration == "half-day")
-						<p id="ad-nb_pers">Demi-journée</p>
+						<p id="ad-nb_pers">@lang('Demi-journée')</p>
 					@else
 						<p id="ad-duration">{{ $advert->duration }}</p>
 					@endif
@@ -109,11 +109,11 @@
 	            @if($advert->loge != false)
 		        <div>
 	                <i class="fas fa-house-user"></i>
-	                <label>Poste logé</label>
+	                <label>@lang('Poste logé')</label>
 	                @if($advert->loge == 1)
-	                	<p id="ad-nb_pers">Oui</p>
+	                	<p id="ad-nb_pers">@lang('Oui')</p>
 	                @else
-						<p id="ad-nb_pers">Oui</p>
+						<p id="ad-nb_pers">@lang('Non')</p>
 					@endif
 	            </div> 
 	            @endif 
@@ -121,7 +121,7 @@
 	            @if($advert->salaire != false)
 	            <div>
 	                <i class="far fa-money-bill-alt"></i>
-	                <label>Salaire</label>
+	                <label>@lang('Salaire')</label>
 	                <p id="ad-salaire">{{ $advert->salaire }} €</p>
 	            </div>  
 	            @endif 
@@ -129,7 +129,7 @@
 	            @if($advert->job != false)
 	            <div>
 	                <i class="fas fa-running"></i>
-	                <label>Profession</label>
+	                <label>@lang('Profession')</label>
 	                <p id="ad-salaire">{{ $advert->job }}</p>
 	            </div> 
 	            @endif 
@@ -144,7 +144,7 @@
 
 	    		<div class="txt">
 	        		<p>
-	        			<a href=/profil/{{ $user->id }} class="nom">{{ $user->name }}</a>, <span>{{ $user->age }}</span> ans.
+	        			<a href=/profil/{{ $user->id }} class="nom">{{ $user->name }}</a>, <span>{{ $user->age }}</span> @lang('ans').
 	        		</p>      
 	          		<p>
 	        			<span>{{ $user->job }}</span> - <span>{{ $user->city }}</span>
@@ -163,7 +163,7 @@
 		        	@if($user->license == 1)
 		        	<p>
 		    			<i class="fa fa-id-badge"></i>
-		    			<span>Diplome certifié</span>
+		    			<span>@lang('Diplome certifié')</span>
 		    		</p>
 		            @endif
 
@@ -182,7 +182,7 @@
 	    </section>
 
 	    <div class="signal">
-	    	<a href=/report/{{ $advert->id }} id="btnReport">Signaler l'annonce</a>
+	    	<a href=/report/{{ $advert->id }} id="btnReport">@lang('Signaler l'annonce')</a>
 	    </div>
 
 	</div>
@@ -190,5 +190,6 @@
 	{{ $advert->created_at }}
 
 	<div class="reste js-toggleAnnonce"></div>
+
 
 </div>

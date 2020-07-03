@@ -26,18 +26,18 @@
                             </div>
                             <div>
                                 <div>
-                                    <p>Avis (14)</p>
+                                    <p>@lang('Avis') (14)</p>
                                     <div class="reviewLinkContainer">
                                         <a href="#">4.9/5</a>
                                         <i class="fas fa-chevron-right fa-xs"></i>
                                     </div>
                                 </div>
                                 <div>
-                                    <p>cours effectués</p>
+                                    <p>@lang('cours effectués')</p>
                                     <p>21</p>
                                 </div>
                                 <div>
-                                    <p>cours annulés</p>
+                                    <p>@lang('cours annulés')</p>
                                     <p>1</p>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                         <div class="profileDetails">
                             <div>
                                 @if($status === 'PRO' || $status === 'PAR')
-                                    <h1>{{ $user["name"] ?? 'undefined' }}, <span>{{$years ?? 'undefined'}} ans</span></h1>
+                                    <h1>{{ $user["name"] ?? 'undefined' }}, <span>{{$years ?? 'undefined'}} @lang('ans')</span></h1>
                                 @endif
                                 @if($status === 'NSO' || $status === 'SO')
                                     <h1>{{ $user["name"] ?? 'undefined' }}</h1>
@@ -53,10 +53,10 @@
                             </div>
                             @if($status === 'NSO' || $status === 'SO' || $status === 'PRO')
                                 <div class="profile-title">
-                                    <h2>{{ $user["title"] ?? 'A compléter'}}</h2>
+                                    <h2>{{ $user["title"] ?? 'A compléter' }}</h2>
                                 </div>
                                 {{--<div class="profile-job">
-                                    <p>{{ $user["job"] ?? 'A compléter'}} - <a href="#">{{ $user["city"] ?? 'A compléter'}}</a></p>
+                                    <p>{{ $user["job"] ?? 'A compléter' }} - <a href="#">{{ $user["city"] ?? 'A compléter' }}</a></p>
                                 </div>--}}
                             @endif
                             <div class="profile-lang">
@@ -64,14 +64,14 @@
                                 <i class="fa fa-globe"></i>
                             </div>
                             <div class="profile-desc">
-                                <p>{{$user["description"] ?? 'A compléter'}}</p>
+                                <p>{{$user["description"] ?? 'A compléter' }}</p>
                             </div>
-                            <a href="#" class="buttonLink">Contacter {{$user["name"] ?? 'undefined' }}</a>
+                            <a href="#" class="buttonLink">@lang('Contacter') {{$user["name"] ?? 'undefined' }}</a>
                         </div>
                     </div>
                     <div class="profile-ad">
                         <div>
-                            <h2>Annonces</h2>
+                            <h2>@lang('Annonces')</h2>
                         </div>
 
                         <div class="profile-main-carousel">
@@ -100,7 +100,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="js-toggleAnnonce" id=/annonce/{{ $advert->id }}>Ouvrir</div>
+                                        <div class="js-toggleAnnonce" id=/annonce/{{ $advert->id }}>@lang('Ouvrir')</div>
                                         
                                         @include('components.buttonFav', ['id' => $advert->id ])
 

@@ -11,6 +11,7 @@
 
 @section('content')
 
+
 	@if(session('message') != null)
 
 	<div class="msgConfirm">{{session('message')}}</div>
@@ -21,31 +22,31 @@
 
 	<div class="wrap contentFavoris">
 
-		<h3 class="titre">Mes Annonces</h3>
+		<h3 class="titre">@lang('Mes Annonces')</h3>
 
 		<div class="second_filter_child right sort">					
-			<p>Trier par :</p>
+			<p>@lang('Trier par :')</p>
 			<select name="" id="" class="js-order">
-				<option value="plusRecent">Plus récentes</option>
-				<option value="plusAncien">Plus anciennes</option>
-				<option value="prixCroissant">Prix croissants</option>
-				<option value="prixDecroissant">Prix décroissants</option>
+				<option value="plusRecent">@lang('Plus récentes')</option>
+				<option value="plusAncien">@lang('Plus anciennes')</option>
+				<option value="prixCroissant">@lang('Prix croissants')</option>
+				<option value="prixDecroissant">@lang('Prix décroissants')</option>
 			</select>
 		</div>
 
 		<div class="divOnglet">
 			<div class="js-toggleOnglet selected">
-				<span>Annonces en ligne</span>
+				<span>@lang('Annonces en ligne')</span>
 			</div>
 			<div class="js-toggleOnglet">
-				<span>Annonces expirée</span>
+				<span>@lang('Annonces expirée')</span>
 			</div>
 		</div>
 
 		<div class="divHead">
 
-			<button class="buttonLink">Ajouter des options</button>
-			<button class="buttonLink">Augmenter la visibilité</button>
+			<button class="buttonLink">@lang('Ajouter des options')</button>
+			<button class="buttonLink">@lang('Augmenter la visibilité')</button>
 			<input class="js-checkAll" type="checkbox" title="Tout sélectionner">
 
 		</div>

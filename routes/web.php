@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 
-
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/particulier', 'HomeController@indexP')->name('homeIndividual');
 
@@ -20,7 +19,7 @@ Route::get('/parametres', function () {
 
 /*Profile*/
 Route::resource('profile','ProfileController')->middleware('auth');
-Route::get('/profil/{id}', 'ProfileController@profilePublic');
+Route::get('/profil/{id}', 'ProfileController@indexPublic');
 
 
 /*Favoris*/
@@ -76,9 +75,8 @@ Route::get('getAdverts', 'AdvertController@getAdverts');
 Route::get('getActs', 'AdvertController@getActs');
 Route::get('getCities', 'AdvertController@getCities');
 
-Route::get('/mes_annonces', function () {
-    return view('pages/mes_annonces');
-});
+Route::get('/mes_annonces', 'AdvertController@pageMesAnnonces')->middleware('auth');
+
 Route::get('/modifyAnnonce/{id}', 'AdvertController@displayModifyAdvert'); // affiche la page de modif de l'annonce
 Route::get('/saveModif', 'AdvertController@saveModif');
 Route::get('deleteAdvert', 'AdvertController@deleteAdvert');
@@ -126,10 +124,15 @@ Route::get('/nouveau-message/{user}/{ad}','ConversationsController@newMessage');
 Route::post('/nouveau-message/{user}/{ad}','ConversationsController@storeNewMessage')->middleware('can:talkTo,user');
 
 
-
-
-// Temporary route
-Route::get('getnotifs', 'NotificationController@recupNotif');
+// Language
+Route::get('setlocale/{locale}', function ($locale) {
+  if (in_array($locale, \Config::get('app.locales'))) {
+    Session::put('locale', $locale);
+  }
+  return redirect()->back();
+});
+Route::get('/getLocale','LangController@getLocale');
+Route::get('/getSession','LangController@getSession');
 
 
 // Create Advertisement

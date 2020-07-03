@@ -19,27 +19,27 @@
 
 				<input name="id" value={{ $id }} style="display:none">
 
-				<label>Motif :</label>
+				<label>@lang('Motif :')</label>
 				<div>
 					<input type="radio" name="motif" value="Fraude" required>
-					<label>Fraude</label>
+					<label>@lang('Fraude')</label>
 				</div>
 				<div>
 					<input type="radio" name="motif" value="Contenue inapproprié" required>
-					<label>Contenue inapproprié</label>
+					<label>@lang('Contenue inapproprié')</label>
 				</div>				
 				<div>
 					<input type="radio" name="motif" value="Autre" required>
-					<label>Autre</label>
+					<label>@lang('Autre')</label>
 				</div>
 			</div>
 			
 			<div class="msg">
-				<label>Message :</label>
+				<label>@lang('Message :')</label>
 				<textarea name="content"></textarea>
 			</div>
 			
-			<input type="submit" value="Signaler l'annonce">
+			<input type="submit" value="@lang('Signaler l\'annonce')">
 
 		</form>
 

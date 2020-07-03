@@ -7,11 +7,11 @@
     <script src="https://kit.fontawesome.com/d678efe89e.js" crossorigin="anonymous"></script>
 @endpush
 
-@section('attribute', 'register')
+@section('attribute', 'email')
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        {{--<div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Reset Password') }}</div>
@@ -50,7 +50,26 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>--}}
+
+        <div class="wrap">
+            <form class="connectionPanel" method="POST" action="{{ route('password.email') }}">
+                @csrf
+                <div>
+                    <h1>Reset password</h1>
+                </div>
+                <div>
+                    <label>
+                        <input id="email" placeholder="Adresse mail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    </label>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <button type="submit" class="buttonLink">Envoyer</button>
+            </form>
         </div>
     </div>
 @endsection

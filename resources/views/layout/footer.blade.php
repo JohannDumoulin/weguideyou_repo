@@ -9,24 +9,25 @@
 		<div>
 
 			<div>
-				<p><span>Assistance</span></p>
-				<a href="">A propos de nous</a>
-				<a href="">FAQ</a>
-				<a href="">Conditions Générales d'Utilisation</a>
-				<a href="">Charte de Confidentialité</a>
+				<p><span>@lang('Assistance')</span></p>
+				<a href="">@lang('A propos de nous')</a>
+				<a href="">@lang('FAQ')</a>
+				<a href="">@lang('Conditions Générales d\'Utilisation')</a>
+				<a href="">@lang('Charte de Confidentialité')</a>
 			</div>
 			<div>
-				<p><span>Nous Contacter</span></p>
-				<a href="">Messagerie</a>
+				<p><span>@lang('Nous Contacter')</span></p>
+				<a href="/messagerie">@lang('Messagerie')</a>
 				<a href="mailto:contact@we-guide-you.com">contact@we-guide-you.com</a>
 				<a href="tel:+33768061295">07 68 06 12 95</a>
-				<p><span>Compte</span></p>
-				<a href="">Connexion</a>
-				<a href="">Inscription</a>
-				<a href="">Récupérer son mot de passe</a>
+
+				<p><span>@lang('Compte')</span></p>
+				<a href="{{route('login')}}">@lang('Connexion')</a>
+				<a href="{{route('register')}}">@lang('Inscription')</a>
+				<a href="{{route('password.request')}}">@lang('Récupérer son mot de passe')</a>
 			</div>
 			<div>
-				<p><span>Suivez nous</span></p>
+				<p><span>@lang('Suivez nous')</span></p>
 				<div>
 					<a href="">
 						<i class="fa fa-facebook-f"></i>

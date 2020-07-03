@@ -27,14 +27,13 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('pic')->nullable();
             $table->string('description', 280)->nullable();
-            $table->char('language')->nullable();
-            $table->char('job')->nullable();
+            $table->char('language')->nullable();/*must be delete*/
+            $table->char('job')->nullable();/*must be delete*/
             $table->char('status', 3);
             $table->char('status_detail', 20)->nullable();
-            $table->char('sector', 50)->nullable();
             $table->string('title')->nullable();
             $table->string('license')->nullable();
-            $table->string('num_licence')->nullable();
+            $table->string('num_licence')->nullable(); /*must be delete*/
             $table->date('license_date')->nullable();
             $table->string('IBAN')->nullable();
             $table->string('siret')->nullable();

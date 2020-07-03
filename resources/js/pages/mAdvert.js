@@ -86,12 +86,14 @@ export default class Annonce{
             if($('#ad-activity').val())
                 advert.activity = $("#ad-activity")[0].value;
 
+            
+            /*
             var imgs = "";
             var inpImgs = $('.ad-img');
             for(var inpImg of inpImgs) {
                 imgs +=inpImg.value + ", ";
             }
-            advert.img = imgs;
+            advert.img = file;*/
 
             $.ajax({
                 method: "get",

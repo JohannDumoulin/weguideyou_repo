@@ -314,11 +314,10 @@ body {
 		.divRight {
 			width: 300px;
 			margin-left: 30px;
-			margin-top: 14px;
 
 			.titre {
 				text-align: center;
-				margin-bottom: 10px;	
+				height: 0px;
 			}
 		}
 
@@ -342,7 +341,18 @@ body {
 			}
 		}
 
-		/*.advertisement_content*/
+		.advertisement_container {
+			margin-top: 40px;
+			display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: center;
+		}
+
+		.advertisement_content {
+			max-width: 1100px;
+		}
+
 	}
 
 	.divAllAdvert {

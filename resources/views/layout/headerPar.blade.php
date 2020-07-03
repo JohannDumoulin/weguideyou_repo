@@ -10,17 +10,17 @@
             {{Session::get('error')}}
         </div>
     @endif
-	<h1>Des guides et moniteurs à portée de clic</h1>
+	<h1>@lang('Des guides et moniteurs à portée de clic')</h1>
 	<div id="select">
-		<a href="/">Je suis un professionnel</a>
-		<a href="/particulier">Je suis un particulier</a>
+		<a href="/">@lang('Je suis un professionnel')</a>
+		<a href="/particulier">@lang('Je suis un particulier')</a>
 	</div>
 	<form action="/annonces" class="first_filter">
 
 		<input name="type" value="Cours" style="display: none">
 
 		<div class="header_filter">
-			<label for="activity">ACTIVITÉ</label>
+			<label for="activity">@lang('ACTIVITÉ')</label>
 			<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?" class="js-filter">
 			<datalist id="dataActivities">
 				<option></option>
@@ -28,7 +28,7 @@
 		</div>
 
 		<div class="header_filter autocomplete">
-			<label for="place">LIEU</label>
+			<label for="place">@lang('LIEU')</label>
 			<input list="dataPlaces" name="place" id="place" placeholder="Où voulez-vous partir ?" class="js-filter">
 			<div>
 				<div class="loader searchCity" id="hidden"></div>
@@ -39,7 +39,7 @@
 		</div>
 
 		<div class="header_filter">
-			<label for="dates">DATES</label>
+			<label for="dates">@lang('DATES')</label>
 			<input type="date" id="date" name="date" class="js-filter">
 		</div>
 

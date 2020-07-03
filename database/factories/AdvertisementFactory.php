@@ -6,6 +6,7 @@ use App\Advertisement;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use App\UserLanguage;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,10 +42,15 @@ $factory->define(Advertisement::class, function (Faker $faker) {
     $status = ["PAR", "PRO"];
     $status = $status[array_rand($status)];
 
+    $res_l = [];
+    foreach($user_language as $l) {
+        array_push($res_l, $l->language_name);
+    }
+
     return [
         'user_id' => 1,
         'user_status' => $status,
-        'user_language' => "Francais, Anglais",
+        'user_language' => "",
         'type' => $type,
         'name' => "titre",
 

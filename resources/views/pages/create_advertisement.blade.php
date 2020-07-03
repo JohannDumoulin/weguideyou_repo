@@ -35,7 +35,7 @@
 							<input type="" name="place_lng" id="place_lng" style="display: none">
 						</div>
 
-						<label for="activity">Activité</label>
+						<label for="activity">@lang('Activité')</label>
 						<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?">
 						<datalist id="dataActivities">
 							<option></option>
