@@ -42,15 +42,21 @@ $factory->define(Advertisement::class, function (Faker $faker) {
     $status = ["PAR", "PRO"];
     $status = $status[array_rand($status)];
 
-    $res_l = [];
-    foreach($user_language as $l) {
-        array_push($res_l, $l->language_name);
+    $user_language = DB::table('user_languages')
+                        ->join('languages', 'user_languages.language_id', '=', 'languages.language_id')
+                        ->select('languages.language_name')
+                        ->where("user_languages.user_id", "=", "1")
+                        ->get();
+
+    $l = "";
+    foreach ($user_language as $value) {
+        $l .= $value->language_name.", ";
     }
 
     return [
         'user_id' => 1,
         'user_status' => $status,
-        'user_language' => "",
+        'user_language' => $l,
         'type' => $type,
         'name' => "titre",
 

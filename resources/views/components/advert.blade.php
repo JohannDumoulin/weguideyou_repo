@@ -3,7 +3,7 @@
 
 <div class="advertisement_content js-toggleAnnonce" id=/annonce/{{ $advert['id'] }}>
     <div class="profil_picture_container">
-        <img src="{{ asset('img/advertisement.jpg') }}" alt="">
+        <img src={{ asset('storage/'.$advert["img"][0]) }} />
     </div>
     <div class="content">
         <div class="infos">
@@ -12,8 +12,7 @@
                 <div class="more">
                     <p> {{ $advert['price_one_h'] }} €</p>
                     <div class="seller_infos">
-                        <p>ESF</p>
-                        <img src="{{ asset('img/esf.png') }}" alt="">
+                        <p>{{ $advert['user_name'] }}</p>
                     </div>
                 </div>
                 <p class="desc">{{ $advert['desc'] }}</p>

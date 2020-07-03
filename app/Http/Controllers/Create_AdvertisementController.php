@@ -24,7 +24,7 @@ class Create_AdvertisementController extends Controller
         $user_language = DB::table('user_languages')
                             ->join('languages', 'user_languages.language_id', '=', 'languages.language_id')
                             ->select('languages.language_name')
-                            ->where("user_languages.user_id", "=", "1")
+                            ->where("user_languages.user_id", "=", Auth::id())
                             ->get();
 
         $l = "";
@@ -36,9 +36,10 @@ class Create_AdvertisementController extends Controller
 
     	$advertisement->user_id = Auth::id();
         $advertisement->user_status = Auth::user()->status;
+        $advertisement->user_name = Auth::user()->name;
         $advertisement->user_language = $l;
 
-    	$advertisement->name_ad = $request->input('name');
+    	$advertisement->name = $request->input('name');
     	$advertisement->desc = $request->input('desc');
     	$advertisement->type = $request->input('type');
         $advertisement->nbPers = $request->input('nbPers');

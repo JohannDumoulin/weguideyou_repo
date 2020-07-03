@@ -17,24 +17,6 @@ class ProfileController extends Controller
 {
 
     public function index(){
-        $UserLanguages = UserLanguage::all();
-        $languages = Language::all();
-        $activeLang = UserLanguage::where('user_id',Auth::user()->id)->get();
-        if ($activeLang){
-            $userActiveLangs = [];
-            foreach ($activeLang as $key=>$values){
-                $userActiveLangs[$key] = Language::where('language_id', $values->language_id)->first();
-                $userActiveLangs[$key] = $userActiveLangs[$key]->language_name;
-            }
-        }
-
-        $sectors = Sectors::all();
-        $sectorSelected = UserSector::where('user_id',Auth::user()->id)->first();
-        if ($sectorSelected !== null){
-            $searchSector = $sectorSelected->sector_id;
-            $searchSector = $sectors->where('id',$searchSector)->first();
-        }
-
         $view = "profile";
         $user = Auth::user();
 
@@ -57,7 +39,21 @@ class ProfileController extends Controller
 
         $UserLanguages = UserLanguage::all();
         $languages = Language::all();
+        $activeLang = UserLanguage::where('user_id',Auth::user()->id)->get();
+        if ($activeLang){
+            $userActiveLangs = [];
+            foreach ($activeLang as $key=>$values){
+                $userActiveLangs[$key] = Language::where('language_id', $values->language_id)->first();
+                $userActiveLangs[$key] = $userActiveLangs[$key]->language_name;
+            }
+        }
+
         $sectors = Sectors::all();
+        $sectorSelected = UserSector::where('user_id',Auth::user()->id)->first();
+        if ($sectorSelected !== null){
+            $searchSector = $sectorSelected->sector_id;
+            $searchSector = $sectors->where('id',$searchSector)->first();
+        }
 
         $adverts = DB::table('advertisement')
             ->where("advertisement.user_id", "=", $user['id'])
@@ -337,7 +333,8 @@ class ProfileController extends Controller
         ]);
 
         if ($validator){
-            $path = $request->userPic->store('userPic');
+            // $path = $request->userPic->store('userPic');
+            $path = $request->userPic->store('userPic', 'public');
             $user = User::find(Auth::user()->id);
             $user->pic = $path;
             $user->save();
@@ -346,10 +343,5 @@ class ProfileController extends Controller
         }
 
         return redirect()->back();
-    }
-
-    public function profilePublic($id) {
-        $this->id = $id;
-        return $this->index();
     }
 }

@@ -108,18 +108,24 @@ class AdvertController extends Controller
 		$user->age = $age;
 
 		// get images
-		$imgs = explode(", ", $advert->img);
+		$advert->img = json_decode($advert->img);
 
-        return view('layout/annonce', ['advert' => $advert, 'user' => $user, 'imgs' => $imgs]);
+        return view('layout/annonce', ['advert' => $advert, 'user' => $user]);
     }
 
     public function displayAdverts(Request $request) {
+
+    	$adverts = $request->adverts;
 
     	$comp = 'components/advert';
     	if($request->type == "mes_annonces")
     		$comp = 'components/mAdvert';
 
-    	return view($comp)->with('adverts', $request->adverts);
+		foreach ($adverts as $key => $advert) {
+			$adverts[$key]['img'] = json_decode($adverts[$key]['img']);
+		}
+
+    	return view($comp, ['adverts' => $adverts]);
     }
 
     public function displayMyAdverts(Request $request) {

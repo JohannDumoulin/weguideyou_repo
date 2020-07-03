@@ -158,7 +158,8 @@
                     <form class="updatePanel-main" method="POST" action="{{route('addPicture', Auth::user()->id)}}" enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <img src="{{Auth::user()->pic ?? asset('/img/user-regular.svg')}}" alt="Image de profil">
+                            <!-- <img src="{{Auth::user()->pic ?? asset('/img/user-regular.svg')}}" alt="Image de profil"> -->
+                            <img src={{ asset('storage/'.Auth::user()->pic) }} />
                             <label for="form-file"></label>
                             <input type="file" name="userPic" id="form-file"/>
                         </div>
@@ -184,7 +185,7 @@
                                 <div>
                                     <button class="buttonLink" id="js-modifyImg">{{Lang::get('Modifier')}}</button>
                                 </div>
-                                <img src="{{ asset('/img/user-regular.svg')}}" alt="Image de profil"> {{--Image du storage à rajouter avec Auth::user()->pic--}}
+                                <img src={{ asset('storage/'.Auth::user()->pic) }} />
                             </div>
                             <div>
                                 <div>

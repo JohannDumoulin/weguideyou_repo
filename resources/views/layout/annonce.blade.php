@@ -54,10 +54,10 @@
 
             <div class="main-carousel">
 
-            	@foreach ($imgs as $img)
+            	@foreach ($advert->img as $img)
 
                 <div class="carousel-cell">
-                	<img src={{ $img }}>
+                	<img src={{ asset('storage/'.$img) }} />
                 </div>
                 
                 @endforeach
@@ -182,7 +182,7 @@
 	    </section>
 
 	    <div class="signal">
-	    	<a href=/report/{{ $advert->id }} id="btnReport">@lang('Signaler l'annonce')</a>
+	    	<a href=/report/{{ $advert->id }} id="btnReport">@lang('Signaler l\'annonce')</a>
 	    </div>
 
 	</div>

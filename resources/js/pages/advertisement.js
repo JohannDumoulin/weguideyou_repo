@@ -16,6 +16,7 @@ export default class AdvertisementPage {
             less_filter_btn: $('.js-less_filter'),
             order_btn: $('.js-order'),
             filter_on: {},
+            allAdverts: "",
             adverts: "", // every adverts
             advertsM: "", // every adverts splited in a multidimentional array for every pages
             sortType: "",
@@ -298,7 +299,7 @@ export default class AdvertisementPage {
     initMapAdverts(adverts) {
 
         if(adverts == undefined)
-            adverts = this.$els.adverts;
+            adverts = this.$els.allAdverts;
 
         var _this = this;
 
@@ -352,7 +353,7 @@ export default class AdvertisementPage {
 
             var group = new L.featureGroup(markers)
                 .addTo(map);
-            
+
             map.fitBounds(group.getBounds());
             map.invalidateSize();
 
@@ -468,7 +469,7 @@ export default class AdvertisementPage {
 
         // reduce the description length
         for(let d of adverts) {
-            if(d.desc.length > 0)
+            if(d.desc.length > 300)
                 d.desc = d.desc.substring(0, 300) + "...";
         }
 
@@ -488,7 +489,14 @@ export default class AdvertisementPage {
         // filters
         for ([key, value] of filter_on) {
 
-            if(key == "place" && typeof value == "object") {
+            if(key == "type") {
+                adverts = adverts.filter(function(v){
+                    return (value == v[key]);
+                }); 
+
+                _this.$els.allAdverts = adverts;  
+            }
+            else if(key == "place" && typeof value == "object") {
                 adverts = adverts.filter(function(v){
                     return value.includes(v[key]);
                 });
