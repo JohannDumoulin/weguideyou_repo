@@ -60,6 +60,10 @@ class ProfileController extends Controller
             ->select('advertisement.*')
             ->get();
 
+        foreach ($adverts as $key => $advert) {
+            $adverts[$key]->img = json_decode($adverts[$key]->img);
+        }
+
         if ($user["status"] === 'PAR'){
             $dateOfBirth = $user["birth"];
             $years = Carbon::createFromDate($dateOfBirth)->age;

@@ -5,7 +5,11 @@
 
     <div class="advertisement_content js-toggleAnnonce" id=/annonce/{{ $advert['id'] }}>
         <div class="profil_picture_container">
-            <img src="{{ asset('img/advertisement.jpg') }}" alt="">
+            @if($advert["img"] != 0)
+                <img src={{ asset('storage/'.$advert["img"][0]) }} />
+            @else
+                <img class="imgp" src={{ asset('/img/noPic.jpg')}} />
+            @endif
         </div>
         <div class="content">
             <div class="infos">
@@ -14,8 +18,7 @@
                     <div class="more">
                         <p> {{ $advert['price_one_h'] }} €</p>
                         <div class="seller_infos">
-                            <p>ESF</p>
-                            <img src="{{ asset('img/esf.png') }}" alt="">
+                            <p>{{ $advert['user_name'] }}</p>
                         </div>
                     </div>
                     <p class="desc"> {{ $advert['desc'] }}</p>
@@ -48,9 +51,9 @@
             <button class="buttonLink js-btnModifyAdvert js-toggleAnnonce" id=/modifyAnnonce/{{ $advert['id'] }}>@lang('Modifier')</button>
             <button class="buttonLink js-btnDeleteAdvert" id={{ $advert['id'] }}>@lang('Supprimer')</button>
         </div>
-        <div>
+<!--         <div>
             <input type="checkbox" name="">
-        </div>
+        </div> -->
         
     </div>
 </div>

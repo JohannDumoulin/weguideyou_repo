@@ -54,14 +54,19 @@
 
             <div class="main-carousel">
 
-            	@foreach ($advert->img as $img)
+            	@if ($advert->img != 0)
+	            	@foreach ($advert->img as $img)
 
-                <div class="carousel-cell">
-                	<img src={{ asset('storage/'.$img) }} />
-                </div>
-                
-                @endforeach
-
+	                <div class="carousel-cell">
+	                	<img src={{ asset('storage/'.$img) }} />
+	                </div>
+	                
+	                @endforeach
+		        @else
+        	        <div class="carousel-cell">
+	                	<img class="imgp" src={{ asset('/img/noPic.jpg')}} />
+	                </div>
+				@endif
             </div>
             
 	    </section>
@@ -140,7 +145,13 @@
 	    <section class="profil">
 	    	<div class="wrap">
 
-	    		<div class="img" style="background-image: url('img/user-circle-solid-white.svg');"></div>
+	    		<div class="img">
+		            @if($user->pic != null)
+	                    <img class="imgp" src={{ asset('storage/'.$user->pic)}} />
+	                @else
+	                    <img class="imgp" src={{ asset('/img/user-regular.svg')}} />
+	                @endif
+	            </div>
 
 	    		<div class="txt">
 	        		<p>

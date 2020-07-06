@@ -3,7 +3,11 @@
 
 		<div class="head">
 			<div class="img">
-                <img src="{{Auth::user()->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="Image de profil">
+                @if(Auth::user()->pic != null)
+                    <img class="imgp" src={{ asset('storage/'.Auth::user()->pic)}} />
+                @else
+                    <img class="imgp" src={{ asset('/img/user-regular.svg')}} />
+                @endif
             </div>
 			<p>{{ Auth::user()->name ?? 'undefined' }}</p>
 		</div>

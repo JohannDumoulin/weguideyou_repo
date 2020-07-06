@@ -157,9 +157,12 @@
                 <div class="updatePanel-container">
                     <form class="updatePanel-main" method="POST" action="{{route('addPicture', Auth::user()->id)}}" enctype="multipart/form-data">
                         @csrf
-                        <div>
-                            <!-- <img src="{{Auth::user()->pic ?? asset('/img/user-regular.svg')}}" alt="Image de profil"> -->
-                            <img src={{ asset('storage/'.Auth::user()->pic) }} />
+                        <div class="divUserPic">
+                            @if($user["pic"] != null)
+                                <img class="imgp" src={{ asset('storage/'.$user["pic"])}} />
+                            @else
+                                <img class="imgp" src={{ asset('/img/user-regular.svg')}} />
+                            @endif
                             <label for="form-file"></label>
                             <input type="file" name="userPic" id="form-file"/>
                         </div>
@@ -185,7 +188,11 @@
                                 <div>
                                     <button class="buttonLink" id="js-modifyImg">{{Lang::get('Modifier')}}</button>
                                 </div>
-                                <img src={{ asset('storage/'.Auth::user()->pic) }} />
+                                @if(Auth::user()->pic != null)
+                                    <img src={{ asset('storage/'.Auth::user()->pic)}} />
+                                @else
+                                    <img src={{ asset('/img/user-regular.svg')}} />
+                                @endif
                             </div>
                             <div>
                                 <div>
@@ -253,7 +260,11 @@
 
                                 <div class="advertisement_content" id=/annonce/{{ $advert->id }}>
                                     <div class="profil_picture_container">
-                                        <img src="{{ asset('img/advertisement.jpg') }}" alt="">
+                                        @if($advert->img != 0)
+                                            <img src={{ asset('storage/'.$advert->img[0]) }} />
+                                        @else
+                                            <img class="imgp" src={{ asset('/img/noPic.jpg')}} />
+                                        @endif
                                     </div>
                                     <div class="content">
                                         <div class="infos">
@@ -262,8 +273,7 @@
                                                 <div class="more">
                                                     <p> {{ $advert->price_one_h }} €</p>
                                                     <div class="seller_infos">
-                                                        <p>ESF</p>
-                                                        <img src="{{ asset('img/esf.png') }}" alt="">
+                                                        <p>{{ $advert->user_name }}</p>
                                                     </div>
                                                 </div>
                                                 <p class="desc">{{ $advert->desc }}</p>

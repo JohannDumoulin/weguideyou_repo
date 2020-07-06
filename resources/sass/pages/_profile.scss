@@ -1,5 +1,9 @@
 body[data-content="userProfile"]{
 
+    .imgp {
+        max-width: 100%;
+    }
+
     .content{
         background-color: $background;
         position: relative;

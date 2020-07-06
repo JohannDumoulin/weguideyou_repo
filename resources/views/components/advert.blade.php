@@ -3,7 +3,11 @@
 
 <div class="advertisement_content js-toggleAnnonce" id=/annonce/{{ $advert['id'] }}>
     <div class="profil_picture_container">
-        <img src={{ asset('storage/'.$advert["img"][0]) }} />
+        @if($advert["img"] != 0)
+            <img src={{ asset('storage/'.$advert["img"][0]) }} />
+        @else
+            <img class="imgp" src={{ asset('/img/noPic.jpg')}} />
+        @endif
     </div>
     <div class="content">
         <div class="infos">
@@ -36,16 +40,6 @@
 
         @endif
     </div>
-
-
-  
-<!--     {{ $advert['created_at'] }}
-    <br>
-    {{ $advert['activity'] }}
-    <br>
-    {{ $advert['duration'] }} -->
-
-
 </div>
 
 @endforeach

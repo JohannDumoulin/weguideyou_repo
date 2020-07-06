@@ -22,7 +22,11 @@
                     <div>
                         <div class="profileOverview">
                             <div class="profileImg">
-                                <img src="{{$user['pic'] ?? asset('/img/user-regular.svg')}}" alt="Image de profil">
+                                @if($user["pic"] != null)
+                                    <img src={{ asset('storage/'.$user["pic"])}} />
+                                @else
+                                    <img src={{ asset('/img/user-regular.svg')}} />
+                                @endif
                             </div>
                             <div>
                                 <div>
@@ -81,9 +85,12 @@
                             <div class="carousel-cell">
 
                                 <div class="advertisement_content"}}>
-
                                     <div class="profil_picture_container">
-                                        <img src="{{ asset('img/advertisement.jpg') }}" alt="">
+                                        @if($advert->img != 0)
+                                            <img src={{ asset('storage/'.$advert->img[0]) }} />
+                                        @else
+                                            <img class="imgp" src={{ asset('/img/noPic.jpg')}} />
+                                        @endif
                                     </div>
                                     <div class="content">
                                         <div class="infos">
@@ -92,8 +99,7 @@
                                                 <div class="more">
                                                     <p> {{ $advert->price_one_h }} €</p>
                                                     <div class="seller_infos">
-                                                        <p>ESF</p>
-                                                        <img src="{{ asset('img/esf.png') }}" alt="">
+                                                        <p>{{ $advert->user_name }}</p>
                                                     </div>
                                                 </div>
                                                 <p class="desc">{{ $advert->desc }}</p>

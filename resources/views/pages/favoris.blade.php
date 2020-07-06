@@ -31,6 +31,11 @@
 			<div class="advertisement_container all" id="js-container">
 
 			</div>
+
+			<div class="msgNoAd" style="display:none">
+				@lang('Aucune offres à afficher')
+			</div>
+					
 			<div class="js-divLoading">
 				@include('components.loading')
 			</div>

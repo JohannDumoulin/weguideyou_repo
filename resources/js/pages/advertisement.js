@@ -67,6 +67,8 @@ export default class AdvertisementPage {
             type = $('title')[0].innerHTML;
         }
 
+        $('.msgNoAd')[0].style.display = "none";
+
         // afficher qu'une seule annonce
         var url = window.location.pathname;
         if(url.includes("a/")) {
@@ -82,7 +84,7 @@ export default class AdvertisementPage {
             success : function(data) {
 
                 if(data.length == 0){
-                    $('.js-divLoading')[0].innerHTML = "Aucune offres à afficher"
+                    $('.msgNoAd')[0].style.display = "block";
                     $(".divPage")[0].innerHTML = ""
                     return 0;
                 }
@@ -136,7 +138,7 @@ export default class AdvertisementPage {
 
         // aucune offres
         if(advertsM[page] === undefined){
-            $('#js-container')[0].innerHTML = "Aucune offres ne correspond à vos critères"
+            $('.msgNoAd')[0].style.display = "block";
             $('.js-divLoading')[0].innerHTML = "";
             $(".divPage")[0].innerHTML = ""
             return 0;
@@ -424,11 +426,11 @@ export default class AdvertisementPage {
         if(sortType == "prixCroissant")
             adverts.sort((a,b) => (a.price_one_h > b.price_one_h) ? 1 : ((b.price_one_h > a.price_one_h) ? -1 : 0));
         else if(sortType == "prixDecroissant")
-            adverts.sort((a,b) => (a.price_one_h > b.price_one_h) ? -1 : ((b.price_one_h > a.price_one_h) ? 0 : 0));
+            adverts.sort((a,b) => (a.price_one_h > b.price_one_h) ? -1 : ((b.price_one_h > a.price_one_h) ? 1 : 0));
         else if(sortType == "plusRecent")
-            adverts.sort((a,b) => (a.created_at > b.created_at) ? -1 : ((b.created_at > a.created_at) ? -1 : 0));
+            adverts.sort((a,b) => (a.created_at > b.created_at) ? -1 : ((b.created_at > a.created_at) ? 1 : 0));
         else if(sortType == "plusAncien")
-            adverts.sort((a,b) => (a.created_at > b.created_at) ? 0 : ((b.created_at > a.created_at) ? 0 : 0));
+            adverts.sort((a,b) => (a.created_at > b.created_at) ? 1 : ((b.created_at > a.created_at) ? -1 : 0));
 
 
         this.$els.adverts = adverts;

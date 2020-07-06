@@ -40,7 +40,12 @@
             @auth
                 <div class="js-toggleModalProfil">
                     <div>
-                        <img src="{{ Auth::user()->pic ?? asset('img/user-circle-solid-white.svg')}}" alt="Image de profil">
+                        <!-- <img src="{{ Auth::user()->pic ?? asset('img/user-circle-solid-white.svg')}}" alt="Image de profil"> -->
+                        @if(Auth::user()->pic != null)
+                            <img class="imgp" src={{ asset('storage/'.Auth::user()->pic)}} />
+                        @else
+                            <img class="imgp" src={{ asset('/img/user-regular.svg')}} />
+                        @endif
                     </div>
                     <span>{{ Auth::user()->name ?? 'undefined' }}</span>
                     <i class="fa fa-chevron-down arrow"></i>

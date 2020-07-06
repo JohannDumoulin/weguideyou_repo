@@ -257,15 +257,18 @@
 		}
 
 	    .img {
-		    height: 100px;
-	        width: 100px;
-	        border-radius: 50%;
-	        margin-right: 15px;
-	        background-color: $deepBlue;
-		    background-repeat: no-repeat;
-	        background-size: cover;
-	        background-position: center;
-		}
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+
+            img {
+                height: 100px;
+                width: 100px;
+                object-fit: cover;
+            }
+        }
 	}
 
 	.map {

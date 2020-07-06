@@ -33,21 +33,22 @@
 				<option value="prixDecroissant">@lang('Prix décroissants')</option>
 			</select>
 		</div>
-
+  
 		<div class="divOnglet">
-			<div class="js-toggleOnglet selected">
+			<div class="selected">
 				<span>@lang('Annonces en ligne')</span>
 			</div>
-			<div class="js-toggleOnglet">
+<!-- 			<div class="js-toggleOnglet">
 				<span>@lang('Annonces expirée')</span>
-			</div>
+			</div> -->
 		</div>
 
 		<div class="divHead">
-
+<!--  
 			<button class="buttonLink">@lang('Ajouter des options')</button>
 			<button class="buttonLink">@lang('Augmenter la visibilité')</button>
 			<input class="js-checkAll" type="checkbox" title="Tout sélectionner">
+-->
 
 		</div>
 
@@ -56,6 +57,11 @@
 				<div class="advertisement_container all" id="js-container">
 					
 				</div>
+
+				<div class="msgNoAd" style="display:none">
+					@lang('Aucune offres à afficher')
+				</div>
+
 				<div class="js-divLoading">
 					@include('components.loading')
 				</div>

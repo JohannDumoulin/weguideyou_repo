@@ -6,6 +6,9 @@
     <meta name="keywords" content="HTML,CSS,PHP,JavaScript">
     <meta name="author" content="Gwendal Lefort, Johann Dumoulin, Thomas Ghignon">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="icon" href="{{ asset('/img/logo/logoWeGuideYou.png') }}">
+
     <title>@yield('title')</title>
 
     @stack('style')
