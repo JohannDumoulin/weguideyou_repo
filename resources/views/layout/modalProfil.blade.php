@@ -3,11 +3,16 @@
 
 		<div class="head">
 			<div class="img">
-                @if(Auth::user()->pic != null)
-                    <img class="imgp" src={{ asset('storage/'.Auth::user()->pic)}} />
-                @else
-                    <img class="imgp" src={{ asset('/img/user-regular.svg')}} />
-                @endif
+                @auth
+                    @if(Auth::user()->pic)
+                        <img src="{{ asset('storage/'.Auth::user()->pic) ?? asset('/img/user-circle-solid-black.svg') }}" alt="Image de profil">
+                    @else
+                        <img src="{{ asset('/img/user-circle-solid-black.svg') }}" alt="Image de profil">
+                    @endif
+                @endauth
+                @guest
+                    <img src="{{ asset('/img/user-circle-solid-black.svg') }}" alt="Image de profil">
+                @endguest
             </div>
 			<p>{{ Auth::user()->name ?? 'undefined' }}</p>
 		</div>
@@ -23,7 +28,7 @@
                     <a href="/messagerie">@lang('Messagerie')</a>
                     @if(Auth::user()->admin!==1)
                         <a href="/mes_annonces">@lang('Mes Annonces')</a>
-                    <!-- 
+                    <!--
                         <hr>
                         <a href="#" id="premium">Premium</a>
                         <hr>
@@ -38,7 +43,7 @@
                 </div>
                 <div class="logout">
                     <hr>
-                    <a href="/logout">@lang('Déconnexion')</a>
+                    <a href="{{route('logout')}}">@lang('Déconnexion')</a>
                     <hr>
                 </div>
             @endauth

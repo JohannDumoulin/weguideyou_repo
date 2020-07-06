@@ -27,7 +27,7 @@
                 @if(Auth::user()->status == "PAR")
                     <a href="/annonces?type=Cours">@lang('Annonces')</a>
                 @endif
-                
+
                 <a href="{{ route('create_ad') }}">@lang('Poster une annonce')</a>
                 <a href="/favoris">@lang('Favoris')</a>
             @endauth
@@ -40,12 +40,16 @@
             @auth
                 <div class="js-toggleModalProfil">
                     <div>
-                        <!-- <img src="{{ Auth::user()->pic ?? asset('img/user-circle-solid-white.svg')}}" alt="Image de profil"> -->
-                        @if(Auth::user()->pic != null)
-                            <img class="imgp" src={{ asset('storage/'.Auth::user()->pic)}} />
-                        @else
-                            <img class="imgp" src={{ asset('/img/user-regular.svg')}} />
-                        @endif
+                        @auth
+                            @if(Auth::user()->pic)
+                                <img src="{{ asset('storage/'.Auth::user()->pic) ?? asset('/img/user-circle-solid-white.svg') }}" alt="Image de profil">
+                            @else
+                                <img src="{{ asset('/img/user-circle-solid-white.svg') }}" alt="Image de profil">
+                            @endif
+                        @endauth
+                        @guest
+                            <img src="{{ asset('/img/user-circle-solid-white.svg') }}" alt="Image de profil">
+                        @endguest
                     </div>
                     <span>{{ Auth::user()->name ?? 'undefined' }}</span>
                     <i class="fa fa-chevron-down arrow"></i>
