@@ -39,7 +39,7 @@ class ProfileController extends Controller
 
         $UserLanguages = UserLanguage::all();
         $languages = Language::all();
-        $activeLang = UserLanguage::where('user_id',Auth::user()->id)->get();
+        $activeLang = UserLanguage::where('user_id', $user['id'])->get();
         if ($activeLang){
             $userActiveLangs = [];
             foreach ($activeLang as $key=>$values){
@@ -49,7 +49,7 @@ class ProfileController extends Controller
         }
 
         $sectors = Sectors::all();
-        $sectorSelected = UserSector::where('user_id',Auth::user()->id)->first();
+        $sectorSelected = UserSector::where('user_id', $user['id'])->first();
         if ($sectorSelected !== null){
             $searchSector = $sectorSelected->sector_id;
             $searchSector = $sectors->where('id',$searchSector)->first();
@@ -67,7 +67,7 @@ class ProfileController extends Controller
         if ($user["status"] === 'PAR'){
             $dateOfBirth = $user["birth"];
             $years = Carbon::createFromDate($dateOfBirth)->age;
-            return view('pages/'.$view, ['years'=>$years, 'status'=>$user["status"], 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
+            return view('pages/'.$view, ['userActiveLangs'=>$userActiveLangs ?? null, 'years'=>$years, 'status'=>$user["status"], 'UserLanguages'=>$UserLanguages, 'languages'=>$languages, 'user'=>$user, 'adverts'=>$adverts]);
         }
         if ($user["status"] === 'PRO'){
             $dateOfBirth = $user["birth"];
@@ -84,6 +84,7 @@ class ProfileController extends Controller
     }
 
     public function update(Request $request){
+
         if (Auth::user()){
             $user = User::find(Auth::user()->id);
             if ($user){
@@ -146,6 +147,7 @@ class ProfileController extends Controller
                     }
                 }
                 if (Auth::user()->status === 'PRO'){
+
                     $validate = null;
                     $validate = $request->validate([
                         'name' => [
@@ -190,8 +192,8 @@ class ProfileController extends Controller
                     ]);
 
 
-
                     if ($validate){
+
                         if (!empty($request['sector'])){
                             $this->updateSector($request['sector'], $user);
                         }

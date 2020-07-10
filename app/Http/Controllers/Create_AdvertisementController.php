@@ -8,6 +8,7 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use App\Advertisement;
 use App\UserLanguage;
 use DB;
+use Lang;
 
 class Create_AdvertisementController extends Controller
 {
@@ -50,20 +51,35 @@ class Create_AdvertisementController extends Controller
         $advertisement->place_lng = $request->input('place_lng');
     	$advertisement->date_from = $request->input('date_from');
     	$advertisement->date_to = $request->input('date_to');
+        $advertisement->job = $request->input('job');
+        $advertisement->sexe = $request->input('sexe');
+        $advertisement->premium_urgent_week = $request->input('urgent');
+        $advertisement->salaire = $request->input('salaire');
+        $advertisement->loge = $request->input('loge');
     	$advertisement->price_one_h = $request->input('price_one_h');
-    	$advertisement->price_two_h = $request->input('price_two_h');
-    	$advertisement->price_half_day = $request->input('price_half_day');
-    	$advertisement->price_day = $request->input('price_day');
-    	$advertisement->phone_bool = $request->input('show_phone');
+    	// $advertisement->price_two_h = $request->input('price_two_h');
+    	// $advertisement->price_half_day = $request->input('price_half_day');
+    	// $advertisement->price_day = $request->input('price_day');
+        if($request->input('show_phone') == "on")
+            $phone = true;
+        else
+            $phone = false;
+    	$advertisement->phone_bool = $phone;
 
     	if ($request->hasfile('img')) {
     		$images_url = [];
-    		    foreach($request->file('img') as $img)
-    		    {
-    		        $img->store('ad_pictures', 'public');
-    		        array_push($images_url, $img->store('ad_pictures', 'public'));          
 
-    		    }
+            if(count($request->file('img')) > 5) {
+                session()->flash('msg', Lang::get('Vous ne pouvez télécharger qu\'un maximum de 5 fichiers'));
+                return back();
+            }
+
+		    foreach($request->file('img') as $img)
+		    {
+		        $img->store('ad_pictures', 'public');
+		        array_push($images_url, $img->store('ad_pictures', 'public'));          
+
+		    }
     		$advertisement->img = json_encode($images_url);
     	}
     	
@@ -82,7 +98,7 @@ class Create_AdvertisementController extends Controller
         // Alertes
         app('App\Http\Controllers\AdvertController')->alerte($advertisement->id);
 
-    	return redirect()->route('advertisements');
+    	return redirect('/deposer-une-annonce')->with(['message' => Lang::get('L\'annonce a bien été postée !')]);
     }
 
     

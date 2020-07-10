@@ -3,7 +3,7 @@
 
 <div class="mAdvert {{ $advert['id'] }}">
 
-    <div class="advertisement_content js-toggleAnnonce" id=/annonce/{{ $advert['id'] }}>
+    <div class="advertisement_content js-toggleAnnonce" id=/annonce/{{$advert['id']}}>
         <div class="profil_picture_container">
             @if($advert["img"] != 0)
                 <img src={{ asset('storage/'.$advert["img"][0]) }} />
@@ -16,7 +16,11 @@
                 <h3> {{ $advert['name'] }}</h3>
                 <div class="info_content">
                     <div class="more">
-                        <p> {{ $advert['price_one_h'] }} €</p>
+                        @if($advert['price_one_h'] != null)
+                            <p> {{ $advert['price_one_h'] }} €</p>
+                        @elseif($advert['salaire'] != null)
+                            <p> {{ $advert['salaire'] }} €</p>
+                        @endif
                         <div class="seller_infos">
                             <p>{{ $advert['user_name'] }}</p>
                         </div>
@@ -48,8 +52,8 @@
     <div class="divBtns">
 
         <div>
-            <button class="buttonLink js-btnModifyAdvert js-toggleAnnonce" id=/modifyAnnonce/{{ $advert['id'] }}>@lang('Modifier')</button>
-            <button class="buttonLink js-btnDeleteAdvert" id={{ $advert['id'] }}>@lang('Supprimer')</button>
+            <button class="buttonLink js-btnModifyAdvert js-toggleAnnonce" id=modifyAnnonce/{{ $advert['id'] }}>@lang('Modifier')</button>
+            <button data-confirm="{{ trans('default.conf_delete_annonce') }}" class="buttonLink js-btnDeleteAdvert" id={{ $advert['id'] }}>@lang('Supprimer')</button>
         </div>
 <!--         <div>
             <input type="checkbox" name="">

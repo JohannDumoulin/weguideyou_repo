@@ -1,16 +1,42 @@
 
 
 {
-    "Des guides et moniteurs à portée de clic" : "Guides and instructors are only one click away",
+    "Des guides et moniteurs à portée de clic" : "Sports professionals are just a click away",
     "Je suis un professionnel" : "I'm a professional",
     "Je suis un particulier" : "I'm an individual",
     "Où rechercher-vous ?" : "Where are you looking?",
 
-    "Aucune offres à afficher" : "No Advert",
+    "L'annonce a bien été modifiée !" : "The advert has been edited!",
+    "L'annonce a bien été postée !" : "The advert has been posted!",
+    "L'annonce a bien été signalée !" : "The advert has been reported!",
+    
+    "Aucune conversation" : "No conversation",
 
+    "Vos informations ont a bien été modifiées !" : "Your information has been changed!",
+    "Le compte a bien été supprimé !" : "The account has been deleted!",
+
+    "Au revoir, " : "Goodbye, ",
+
+    "Vous ne pouvez télécharger qu'un maximum de 5 fichiers" : "You can only upload a maximum of 5 files.",
+
+    "Organisation Sportive" : "Sports Organization",
+    "Organisation Non Sportive" : "Non-Sports Organization",
+
+    "Aucune offres à afficher" : "No Advert",
 
     "Votre messagerie" : "Your mailbox",
 
+    "Lieu" : "Place",
+    "Du :" : "From:",
+    "Au :" : "To:",
+    "Disponibilité" : "Availability",
+    "Titre" : "Title",
+    "Prix" : "Price",
+    "Images" : "Pictures",
+    "Créer une annonce" : "Create an advert",
+    "Afficher votre numéro de téléphone sur l'annonce" : "Display your phone number on the advert",
+    "Déposer l'annonce" : "Post the advert",
+    "Veuillez sélectionner un des lieux suggéré ci-dessous." : "Please select one of the suggested locations below.  ",
 
     "Motif :" : "Reason:",
     "Fraude" : "Fraud",
@@ -40,7 +66,7 @@
     "Inscription" : "Register",
     "Annonces Particuliers" : "Individuals Adverts",
     "Annonces Professionnels" : "Professionals Adverts",
-    "Poster une annonce" : "Post an Adverts",
+    "Poster une annonce" : "Post an Advert",
 
 
     "Enregister les modifications" : "Save changes",
@@ -141,6 +167,7 @@
     "Nombre de personne(s) :" : "Number of person:",
     "Collectif" : "Collective",
     "Individuel" : "Individual",
+    "Individuel ou Collectif" : "Individual or Collective",
     "Durée :" : "Duration",
     "Demi-journée" : "Half day",
     "Journée" : "Day",

@@ -12,10 +12,10 @@
     @endif
 	<h1>@lang('Des guides et moniteurs à portée de clic')</h1>
 	<div id="select">
-		<a href="/">@lang('Je suis un professionnel')</a>
-		<a href="/particulier">@lang('Je suis un particulier')</a>
+		<a href="{{ url('/') }}">@lang('Je suis un professionnel')</a>
+		<a href="{{ url('/particulier') }}">@lang('Je suis un particulier')</a>
 	</div>
-	<form action="/annonces" class="first_filter">
+	<form action="{{ url('/annonces') }}" class="first_filter">
 
 		<input name="type" value="Cours" style="display: none">
 

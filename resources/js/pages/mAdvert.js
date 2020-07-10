@@ -8,7 +8,7 @@ export default class Annonce{
 
     initEls(){
         this.$els ={
-
+            base: "",
         }
     }
 
@@ -39,9 +39,12 @@ export default class Annonce{
     }
 
     deleteAdvert() {
+
+        var _this = this;
+        
         $(document).on('click', '.js-btnDeleteAdvert', function(event) {
 
-            if ( confirm( "\nVoulez vous vraiment supprimer cette annonce ? \n\nCette annonce sera définitivement supprimer.\n" ) ) {
+            if(confirm ($(this).data('confirm'))) {
 
                 var id = this.id;
 
@@ -49,7 +52,7 @@ export default class Annonce{
 
                 $.ajax({
                     method: "get",
-                    url: "/deleteAdvert",
+                    url: _this.$els.base + "/deleteAdvert",
                     data: {id: id},
                     success: function (data) {
                         //console.log(data);
@@ -63,16 +66,21 @@ export default class Annonce{
     }
 
     saveModif() {
+
+        var _this = this;
+
         $(document).on('click', '.js-btnSaveModif', function(event) {
 
             var advert = {};
             advert.id = $(".modalAnnonce")[0].id;
             advert.name = $("#ad-title")[0].value;
-            advert.price_one_h = $("#ad-price")[0].value;
-            advert.place = $("#ad-place")[0].value;
             advert.date_from = $("#ad-dateStart")[0].value;
             advert.date_to = $("#ad-dateEnd")[0].value;
             advert.desc = $("#ad-description")[0].value;
+            if($('#ad-price').val())
+                advert.price_one_h = $("#ad-price")[0].value;
+            if($('#ad-place').val())
+                advert.place = $("#ad-place")[0].value;
             if($('#ad-duration').val())
                 advert.duration = $("#ad-duration")[0].value;
             if($('#ad-job').val())
@@ -85,6 +93,11 @@ export default class Annonce{
                 advert.nbPers = $("#ad-nbPers")[0].value;
             if($('#ad-activity').val())
                 advert.activity = $("#ad-activity")[0].value;
+            if($('#ad-sexe').val())
+                advert.sexe = $("#ad-sexe")[0].value;
+            if($('#ad-urgent').val())
+                advert.premium_urgent_week = $("#ad-urgent")[0].value;
+
 
             
             /*
@@ -97,10 +110,10 @@ export default class Annonce{
 
             $.ajax({
                 method: "get",
-                url: "/saveModif",
+                url: _this.$els.base + "/saveModif",
                 data: {advert: advert},
                 success: function (data) {
-                    window.location.href = "/mes_annonces";
+                    window.location.href = _this.$els.base + "/mes_annonces";
                 },
                 error: function(data) {
                     console.log(data.responseJSON);

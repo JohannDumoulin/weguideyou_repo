@@ -28,10 +28,14 @@
 	        <div class="wrap">
 	            <div class="btnResa">
 	                <h1 id="ad-title">{{ $advert->name }}</h1>
-	                @include('components.buttonLink', ['link' => '#'], ['text' => Lang::get('Réserver')])
+	                <a href="nouveau-message/{{ $user->id }}/{{ $advert->id }}" class="buttonLink">Contacter</a>
 	            </div>   
 	            <h2>
-	            	<span id="ad-price">{{ $advert->price_one_h }}</span>€ / h
+	            	@if($advert->price_one_h != null)
+	            		<span id="ad-price">{{ $advert->price_one_h }}</span>€
+	            	@elseif($advert->salaire != null)
+	            		<span id="ad-price">{{ $advert->salaire }}</span>€
+	            	@endif
 		        </h2>
 	            <div class="item">
 					<i class="fa fa-map-marker"></i>
@@ -81,7 +85,7 @@
 	    <section class="detail">
 	        <div class="wrap">
 
-	        	@if($advert->activity != false)
+	        	@if($advert->activity != null)
 		        <div>
 	                <i class="fas fa-running"></i>
 	                <label>@lang('Activité')</label>
@@ -89,7 +93,7 @@
 	            </div> 
 	            @endif 
 	            
-	            @if($advert->nbPers != false)
+	            @if($advert->nbPers != null)
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>@lang('Type de cours')</label>
@@ -97,7 +101,7 @@
 	            </div>  
 	            @endif              
 
-				@if($advert->duration != false)
+				@if($advert->duration != null)
 	            <div>
 					<i class="fa fa-calendar"></i>
 	                <label>@lang('Durée')</label>
@@ -111,7 +115,7 @@
 	            </div>
 	            @endif 
 
-	            @if($advert->loge != false)
+	            @if($advert->loge != null)
 		        <div>
 	                <i class="fas fa-house-user"></i>
 	                <label>@lang('Poste logé')</label>
@@ -123,7 +127,7 @@
 	            </div> 
 	            @endif 
 
-	            @if($advert->salaire != false)
+	            @if($advert->salaire != null)
 	            <div>
 	                <i class="far fa-money-bill-alt"></i>
 	                <label>@lang('Salaire')</label>
@@ -131,11 +135,23 @@
 	            </div>  
 	            @endif 
 
-	            @if($advert->job != false)
+	            @if($advert->job != null)
 	            <div>
 	                <i class="fas fa-running"></i>
 	                <label>@lang('Profession')</label>
 	                <p id="ad-salaire">{{ $advert->job }}</p>
+	            </div> 
+	            @endif 
+
+	            @if($advert->sexe == 'f'|| $advert->sexe == 'h')
+	            <div>
+	                <i class="fas fa-user"></i>
+	                <label>@lang('Sexe')</label>
+	                @if($advert->sexe == 'f')
+	                	<p id="ad-nb_pers">@lang('Femme')</p>
+	                @else
+						<p id="ad-nb_pers">@lang('Homme')</p>
+					@endif
 	            </div> 
 	            @endif 
 
@@ -155,14 +171,24 @@
 
 	    		<div class="txt">
 	        		<p>
-	        			<a href=/profil/{{ $user->id }} class="nom">{{ $user->name }}</a>, <span>{{ $user->age }}</span> @lang('ans').
+	        			<a href=profil/{{$user->id}} class="nom">{{ $user->name }}</a>, <span>{{ $user->age }}</span> @lang('ans').
 	        		</p>      
 	          		<p>
-	        			<span>{{ $user->job }}</span> - <span>{{ $user->city }}</span>
+	        			<span>{{ $user->title }}</span> - <span>{{ $user->city }}</span>
 	        		</p>
 	          		<p>
-	        			<i class="fa fa-globe"></i>
-	        			<span>{{ $user->language }}</span>
+                        @if($userActiveLangs)
+                            <span>
+                                @foreach($userActiveLangs as $key => $userActiveLang)
+                                    @if($key === 0)
+                                        <span>{{$userActiveLang}}</span>
+                                    @else
+                                        <span> - {{$userActiveLang}}</span>
+                                    @endif
+                                @endforeach
+                            </span>
+                        @endif
+                        <i class="fa fa-globe"></i>
 	        		</p>
 	        		@if($advert->phone_bool == 1)
 		        	<p>
@@ -193,7 +219,7 @@
 	    </section>
 
 	    <div class="signal">
-	    	<a href=/report/{{ $advert->id }} id="btnReport">@lang('Signaler l\'annonce')</a>
+	    	<a href=report/{{$advert->id}} id="btnReport">@lang('Signaler l\'annonce')</a>
 	    </div>
 
 	</div>

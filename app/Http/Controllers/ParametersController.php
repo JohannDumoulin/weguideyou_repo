@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use DB;
 use App\User;
+use Lang;
 
 class ParametersController extends Controller
 {
@@ -35,7 +36,7 @@ class ParametersController extends Controller
         $obj_user->email = $req["mail"];
         $obj_user->save();
 
-        redirect('/')->with(['message' => 'Vos informations ont a bien été modifiées !']);
+        redirect('/')->with(['message' => Lang::get('Vos informations ont a bien été modifiées !')]);
 
         return 1;
     }
@@ -52,7 +53,7 @@ class ParametersController extends Controller
         $obj_user->IBAN = $req["IBAN"];
         $obj_user->save();
 
-        redirect('/')->with(['message' => 'Vos informations ont a bien été modifiées !']);
+        redirect('/')->with(['message' => Lang::get('Vos informations ont a bien été modifiées !')]);
 
         return 1; 
     }
@@ -72,13 +73,17 @@ class ParametersController extends Controller
     }
 
      public function deleteAccount(Request $request) {
-        $user = Auth::user();
+
+        if($request->id == null)
+            $id = Auth::user()->id;
+        else
+            $id = $request->id;
 
         DB::table('users')
-            ->where('id', $user->id)
+            ->where('id', $id)
             ->delete();
 
-        redirect('/')->with(['message' => 'Votre compte a bien été supprimé !']);
+        redirect('/')->with(['message' => Lang::get('Le compte a bien été supprimé !')]);
 
         return 1;
     }

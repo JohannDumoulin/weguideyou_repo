@@ -17,7 +17,7 @@
 			</div>
 			<div>
 				<p><span>@lang('Nous Contacter')</span></p>
-				<a href="/messagerie">@lang('Messagerie')</a>
+				<a href="{{ url('/messagerie') }}">@lang('Messagerie')</a>
 				<a href="mailto:contact@we-guide-you.com">contact@we-guide-you.com</a>
 				<a href="tel:+33768061295">07 68 06 12 95</a>
 

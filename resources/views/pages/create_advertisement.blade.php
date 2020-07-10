@@ -10,110 +10,172 @@
 @section('attribute', 'create_advertisement')
 
 @section('content')
-	<section>
-			<h1>Créer une annonce</h1>
+
+@if(session('message') != null)
+
+<div class="msgConfirm">{{session('message')}}</div>
+
+@endif
+
+	<section class="wrap">
+			<h1>@lang('Créer une annonce')</h1>
 
 			{!! form_start($adForm) !!}
 
 				<div class="form_container">
-					<!-- Fonctionnalités gratuites -->
-					{!! form_row($adForm->name) !!}
-					{!! form_row($adForm->desc) !!}
+
+					<div class="divType">
+						<label>Type</label>
+						<select class="inpType" name="type" id="type" required>
+
+							<option value="-">-</option>
+							@if(Auth::user()->status == "PRO" || Auth::user()->status == "SOA")
+								<option value="Cours">@lang('Cours')</option>
+							@endif
+							@if(Auth::user()->status == "PRO" || Auth::user()->status == "SOA")
+								<option value="LookForJob">@lang('Recherche de travail')</option>
+							@endif
+							<option value="LookForPeople">@lang('Recherche d\'employé')</option>
+							
+						</select>
+					</div>
+
+					<div class="form-group Cours LookForJob LookForPeople">
+						<label>@lang('Titre')</label>
+						<input type="text" class="required" name="name" id="name" required>
+					</div>
+
+					<div class="form-group Cours LookForJob LookForPeople">
+						<label>@lang('Description')</label>
+						<textarea id="desc" name="desc" class="required" maxlength="10000" required></textarea>
+					</div>
+
 					<div class="form_content">
-						{!! form_row($adForm->type) !!}
 
 						<!-- Place -->
-						<div>
-							{!! form_row($adForm->place) !!}
+						<div class="divPlace form-group Cours LookForJob LookForPeople">
+							<label>@lang('Lieu')</label>
+							<input name="place" id="place" class="required" required>
+							<span class="msgPlace">@lang('Veuillez sélectionner un des lieux suggéré ci-dessous.')</span>
 							<div>
 								<div class="loader searchCity" id="hidden"></div>
 							</div>
 							<div>
 								<div class="suggestions"></div>
 							</div>
-							<input type="" name="place_lat" id="place_lat" style="display: none">
-							<input type="" name="place_lng" id="place_lng" style="display: none">
+							<input type="" name="place_lat" id="place_lat" required>
+							<input type="" name="place_lng" id="place_lng" required>
 						</div>
 
-						<label for="activity">@lang('Activité')</label>
-						<input list="dataActivities" name="activity" id="activity" placeholder="Que voulez-vous faire ?">
-						<datalist id="dataActivities">
-							<option></option>
-						</datalist>
+						<div class="form-group Cours">
+							<label for="activity">@lang('Activité')</label>
+							<input list="dataActivities" name="activity" id="activity" class="required" required>
+							<datalist id="dataActivities">
+								<option></option>
+							</datalist>
+						</div>
 
-						{!! form_row($adForm->nbPers) !!}
-						{!! form_row($adForm->duration) !!}
-						{!! form_row($adForm->date_from) !!}
-						{!! form_row($adForm->date_to) !!}
+						<div class="form-group LookForPeople LookForJob">
+							<label for="activity">@lang('Profession')</label>
+							<input list="dataJob" name="job" id="job" class="required" required>
+							<datalist id="dataJob">
+								<option></option>
+							</datalist>
+						</div>
+
+						<div class="form-group Cours">
+							<label>@lang('Durée')</label>
+							<select name="duration" id="duration" class="required" required>
+								<option value="-">-</option>
+								<option value="1h">@lang('1h')</option>
+								<option value="2h">@lang('2h')</option>
+								<option value="4h">@lang('4h')</option>
+								<option value="half-day">@lang('Demi-journée')</option>
+								<option value="day">@lang('Journée')</option>
+							</select>
+						</div>
+
+						<div class="form-group Cours">
+							<label>@lang('Nombre de personne(s)')</label>
+							<select name="nbPers" id="nbPers" class="required" required>
+								<option value="-">-</option>
+								<option value="Individuel">@lang('Individuel')</option>
+								<option value="Collectif">@lang('Collectif')</option>
+								<option value="Individuel ou Collectif">@lang('Individuel ou Collectif')</option>
+							</select>
+						</div>
+
+						<div class="divDispo form-group Cours LookForJob LookForPeople">
+							<label>@lang('Disponibilité')</label>
+							<div class="content">
+								<div>
+									<span>@lang('Du :')</span>
+									<input type="date" name="date_from" id="date_from" class="required" required>
+								</div>
+								<div>
+									<span>@lang('Au :')</span>
+									<input type="date" name="date_to" id="date_to" class="required" required>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="form_content">
-						<p>Laissez vide si vous ne souhaitez pas proposer de prix pour cet horaire</p>
-						{!! form_row($adForm->price_one_h) !!}
-						{!! form_row($adForm->price_two_h) !!}
-						{!! form_row($adForm->price_half_day) !!}
-						{!! form_row($adForm->price_day) !!}
+
+					<div class="form-group Cours">
+						<label>@lang('Prix')</label>
+						<input type="number" name="price_one_h" id="price_one_h" class="required" required>
 					</div>
-					<div class="form_content">
-						{!! form_row($adForm->show_phone) !!}
-						{!! form_row($adForm->img) !!}
+
+					<div class="form-group LookForPeople">
+						<label>@lang('Salaire')</label>
+						<input type="number" name="salaire" id="salaire" class="required" required>
 					</div>
-					
-					
+
+					<div class="form-group LookForJob LookForPeople">
+						<label>@lang('Poste logé')</label>
+						<select name="loge" id="loge" class="required" required>
+							<option value="-">@lang('-')</option>
+							<option value="0">@lang('Non')</option>
+							<option value="1">@lang('Oui')</option>
+						</select>
+					</div>
+
+					<div class="form-group LookForJob LookForPeople">
+						<label>@lang('Sexe')</label>
+						<select name="sexe" id="sexe" class="required" required>
+							<option value="-">@lang('-')</option>
+							<option value="f">@lang('Femme')</option>
+							<option value="h">@lang('Homme')</option>
+						</select>
+					</div>
+
+					<div class="form-group LookForJob LookForPeople">
+						<label>@lang('Urgent')</label>
+						<select name="urgent" id="urgent" class="required" required>
+							<option value="-">@lang('-')</option>
+							<option value="0">@lang('Non')</option>
+							<option value="1">@lang('Oui')</option>
+						</select>
+					</div>
+
+					<div class="form-group Cours LookForJob LookForPeople">
+						<div class="divPhone">
+							<input type="checkbox" name="show_phone" id="show_phone">
+							<label>@lang('Afficher votre numéro de téléphone sur l\'annonce')</label>
+						</div>
+					</div>
+
+					{!! form_row($adForm->img) !!}
+					{!! Session::has('msg') ? Session::get("msg") : '' !!}
+					<span class="msgFiles" style="display: none">Vous ne pouvez télécharger qu'un maximum de 5 fichiers</span>
+
+					<div class="form-group Cours LookForJob LookForPeople">
+						<input type="submit" name="submit" id="submit" value="@lang('Déposer l\'annonce')"></submit>
+					</div>
+					<!-- Déposer lannonce -->
 				</div>
 
-				<!-- Fonctionnalités payantes -->
-				<div class="form_container">
-					<h2>Fonctionnalités payantes</h2>
-
-					<div class="premium_container">
-						<p class="content_title">En tête de liste</p>
-						<p class="content_desc">Cette option vous permet de remonter automatiquement votre annonce en haut de la liste de résultats, comme si elle venait d'être mise en ligne.</p>
-						{!! form_row($adForm->premium_in_front_week) !!}
-						{!! form_row($adForm->premium_in_front_month) !!}
-					</div>
-					<div class="premium_container">
-						<p class="content_title">Bannière de mise en avant</p>
-						<p class="content_desc">Le professionnel peut mettre son annonce en avant sur toutes les pages de résultats dans un emplacement privilégié à droite des listes d'annonces, pendant 7 ou 30 jours. Avec cette option, le professionnel pourra également modifier son annonce.</p>
-						{!! form_row($adForm->premium_banner_week) !!}
-						{!! form_row($adForm->premium_banner_month) !!}
-					</div>
-					<div class="premium_container">
-						<p class="content_title">Annonce urgente</p>
-						<p class="content_desc">Le professionnel peut mettre son annonce en avant sur toutes les pages de résultats dans un emplacement privilégié à droite des listes d'annonces, pendant 7 ou 30 jours. Avec cette option, le professionnel pourra également modifier son annonce.</p>
-						{!! form_row($adForm->premium_urgent_week) !!}
-						{!! form_row($adForm->premium_urgent_month) !!}
-					</div>
-				</div>
-
-				<div class="form_container">
-					<h2>Fonctionnalités payantes</h2>
-
-					<div class="premium_container">
-						<p class="content_title">Réservation immédiate</p>
-						<p class="content_desc">le client pourra directement réserver l’activité dans le site immédiatement sans passer par la messagerie.</p>
-						{!! form_row($adForm->premium_booking) !!}
-					</div>
-					<div class="premium_container">
-						<p class="content_title">Sécurisation du cours</p>
-						<p class="content_desc">le client pourra directement réserver l’activité dans le site immédiatement sans passer par la messagerie.</p>
-						{!! form_row($adForm->premium_securing) !!}
-					</div>
-					<div class="premium_container">
-						<p class="content_title">Assurance annulation</p>
-						<p class="content_desc">Si le professionnel choisit cette option, il pourra annuler le cours réserve dans la plateforme et obtenir un remboursement de 50% par l’assureur sur présentation d’un certificat médical et autres justificatifs nécessaires.</p>
-						{!! form_row($adForm->premium_insurance) !!}
-					</div>
-					{!! form_row($adForm->submit) !!}
-				</div>
 			{!! form_end($adForm) !!}
-			<div class="arrow_container">
-				<div id="left">
-					<p>Précédent</p>
-				</div>
-				<div id="right" class="js-active">
-					<p>Suivant</p>
-				</div>
-			</div>
+
 	</section>
 	
 @endsection

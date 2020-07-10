@@ -12,10 +12,17 @@
 @section('content')
 	<div class="wrap">
 		<section>
+
 			{!! form_start($NewMessageForm) !!}
-				<h1>Envoyer un message à {{ $user->name }}</h1>
-				<h2>A propos de l'annonce : {{ $ad->name_ad }}</h2>
+				<p>Envoyer un message à {{ $user->name }}</p>
+				<p>A propos de l'annonce : {{ $ad->name }}</p>
+
+				<input name="to" style="display: none" value="{{ $user->id }}">
+
+				<textarea name="content" required=""></textarea>
+				<button type="submit" class="buttonLink">Envoyer</button>
 			{!! form_end($NewMessageForm) !!}
+
 		</section>
 	</div>
 @endsection

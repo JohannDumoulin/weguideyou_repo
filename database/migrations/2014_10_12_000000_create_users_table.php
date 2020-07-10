@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('description', 280)->nullable();
             $table->char('language')->nullable();/*must be delete*/
             $table->char('job')->nullable();/*must be delete*/
-            $table->char('status', 3);
+            $table->char('status', 4);
             $table->char('status_detail', 20)->nullable();
             $table->string('title')->nullable();
             $table->string('license')->nullable();

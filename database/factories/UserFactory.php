@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
 
-    $type = ["PAR", "PRO"];
+    $type = ["PAR", "PRO", "SOA", "NSOA"];
     $type = $type[array_rand($type)];
 
     return [
@@ -35,8 +35,6 @@ $factory->define(User::class, function (Faker $faker) {
         'phone' => "0606060606",
         'pic' => null,
         'status' => $type,
-        'language' => "Francais - Anglais",
-        'job' => "guide de haute montagne",
         'license' => null,
         'license_date' => null,
         'siret' => "123456789",

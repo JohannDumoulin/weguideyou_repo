@@ -9,7 +9,7 @@ class Message extends Model
 	protected $table = 'messages';
 
     protected $fillable = [
-    	'content', 'from_id', 'to_id', 'read_at', 'created_at', 'conversation_id'
+    	'content', 'from_id', 'to_id', 'conv_id', 'read_at', 'created_at', 'conversation_id'
     ];
 
     protected $dates = ['created_at', 'read_at'];

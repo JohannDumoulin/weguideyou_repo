@@ -10,14 +10,21 @@
 @section('attribute', 'admin')
 
 @section('content')
+
+@if(session('message') != null)
+
+<div class="msgConfirm">{{session('message')}}</div>
+
+@endif
+
     <section class="main-admin">
         <div class="wrap">
             <h1>Page d'administration</h1>
             <div class="admin-nav">
                 <span class="is-selected">Utilisateurs</span>
                 <span>Annonces</span>
-                <span>WeGuideNews</span>
-                {{--<span>Reviews</span>
+                {{--<span>WeGuideNews</span>
+                <span>Reviews</span>
                 <span>Signalements</span>
                 <span>Questions</span>
                 <span>Emails</span>--}}
@@ -54,9 +61,7 @@
                                     <div><span>{{$user->birth}}</span></div>
                                     <div><span>{{$user->gender}}</span></div>
                                     <div><span>{{$user->city}}</span></div>
-                                </div>
-                                <div>
-                                    <i class="fas fa-ellipsis-v fa-lg"></i>
+                                    <button data-confirm="{{ trans('default.conf_delete_compte') }}" class="js-btnDeleteAccount" id={{$user->id}}>@lang('Supprimer')</button>
                                 </div>
                             </div>
                             <div class="data-content-hidden js-dataDetail is-hidden">
@@ -65,8 +70,8 @@
                                     <div><span>Téléphone :</span> <span>{{$user->phone}}</span></div>
                                     <div><span>Email :</span> <span>{{$user->email}}</span></div>
                                     <div><span>Adresse :</span> <span>{{$user->address}}  {{$user->pc}} {{$user->city}}</span></div>
-                                    <div><span>Siret :</span> <span>{{$user->siret ?? 'Inconnu'}}</span></div>
-                                    <div><span>Licence :</span> <span>{{$user->licence ?? 'Inconnu'}}</span></div>
+                                    {{--<div><span>Siret :</span> <span>{{$user->siret ?? 'Inconnu'}}</span></div>
+                                    <div><span>Licence :</span> <span>{{$user->licence ?? 'Inconnu'}}</span></div>--}}
                                 </div>
                                 <div>
                                     <div><span>Description :</span> <span>{{$user->desc ?? 'Inconnu'}}</span></div>
@@ -84,26 +89,10 @@
                         <div><span>Titre</span></div>
                         <div><span>Activité</span></div>
                         <div><span>Lieu</span></div>
+                        <div><span>Signalement</span></div>
                     </div>
                 </div>
                 <div class="data-content">
-                    {{--@foreach($ads as $ad)
-                        <div>
-                            <div>
-                                <img src="{{$ad->user->pic ?? asset('img/user-circle-solid-black.svg')}}" alt="photo de profil">
-                            </div>
-                            <div>
-                                <div><span>{{$ad->user->name}} {{$ad->user->surname}}</span></div>
-                                <div><span>{{$ad->type}}</span></div>
-                                <div><span>{{$ad->name}}</span></div>
-                                <div><span>{{$ad->activity}}</span></div>
-                                <div><span>{{$ad->place}}</span></div>
-                            </div>
-                            <div>
-                                <i class="fas fa-ellipsis-v fa-lg"></i>
-                            </div>
-                        </div>
-                    @endforeach--}}
                     @foreach($ads as $ad)
                         <div class="data-content-container">
                             <div class="data-content-main">
@@ -116,9 +105,8 @@
                                     <div><span>{{$ad->name}}</span></div>
                                     <div><span>{{$ad->activity}}</span></div>
                                     <div><span>{{$ad->place}}</span></div>
-                                </div>
-                                <div>
-                                    <i class="fas fa-ellipsis-v fa-lg"></i>
+                                    <div><span>{{$ad->nbReport}}</span></div>
+                                    <button test="{{ trans('default.conf_delete_annonce') }}" class="js-btnDeleteAdvert" id="{{$ad->id}}">@lang('Supprimer')</button>
                                 </div>
                             </div>
                             <div class="data-content-hidden js-dataDetail is-hidden">

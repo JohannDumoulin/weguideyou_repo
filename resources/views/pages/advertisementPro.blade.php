@@ -33,14 +33,14 @@
 				<div class="header_filter">
 					<label>@lang('Type')</label>
 					<select name="type" id="type" class="js-filter">
-						<option value="LookForJob">@lang('Recherche de travai')l</option>
+						<option value="LookForJob">@lang('Recherche de travail')</option>
 						<option value="LookForPeople">@lang('Recherche d\'employé')</option>
 					</select>
 				</div>
 
 				<div class="header_filter">
 					<label for="place">@lang('LIEU')</label>
-					<input name="place" id="place" placeholder="Où rechercher-vous ?" class="js-filter" type="text">
+					<input name="place" id="place" placeholder="@lang('Où rechercher-vous ?')" class="js-filter" type="text">
 					<div class="loader searchCity" id="hidden"></div>
 					<div>
 						<div class="suggestions"></div>
@@ -70,8 +70,10 @@
 					<p>@lang('Choix du prestataire :')</p>
 					<input class="js-filter" type="checkbox" id="PRO" name="PRO" checked>
 					<label for="organization">@lang('Professionnels')</label>
-					<input class="js-filter" type="checkbox" id="PAR" name="PAR" checked>
-					<label for="freelance">@lang('Particuliers')</label>
+					<input class="js-filter" type="checkbox" id="SO" name="SO" checked>
+					<label for="freelance">@lang('Organisation Sportive')</label>
+					<input class="js-filter" type="checkbox" id="NSO" name="NSO" checked>
+					<label for="freelance">@lang('Organisation Non Sportive')</label>
 				</div>
 				<div class="first_filter_more_content">
 					<p>@lang('Profession :')</p>
@@ -104,7 +106,7 @@
 			</div>
 
 			<div class="effaceFilters">
-				<a href="/annoncesPro?type=LookForJob">@lang('Effacer tous les filtres')</a>
+				<a href="{{ url('/annoncesPro?type=LookForJob') }}">@lang('Effacer tous les filtres')</a>
 			</div>
 			
 <!---------------------- Second Filters -------------------->
@@ -117,6 +119,7 @@
 						<p>@lang('Toutes les annonces')</p>
 
 					</div>
+
 					<div class="advertisement urgent">
 
 						<input type="radio" name="t" class="js-inpUrgent">
@@ -135,6 +138,7 @@
 
 						<p>@lang('Urgentes')</p>
 					</div>
+
 				</div>
 				<div class="second_filter_child right">					
 					<p>@lang('Trier par :')</p>
@@ -170,7 +174,7 @@
 
 					@if(Request::is('a/*'))
 					<div class="divAllAdvert">
-						<a href="/annonces">@lang('Voir toutes les annonces')</a>
+						<a href="{{ url('/annonces') }}">@lang('Voir toutes les annonces')</a>
 					</div>
 					@endif
 
@@ -182,7 +186,7 @@
 				<!-- Annonce en avant -->
 				<div class="divRight">
 					<div class="titre">
-						<span>@lang('Mise en avant')</span>
+						<span></span>
 					</div>
 					<div class="advertisement_container premium" id="js-container-premium"></div>
 				</div>

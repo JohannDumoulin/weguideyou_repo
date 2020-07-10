@@ -41056,17 +41056,21 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_menuProfil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/menuProfil */ "./resources/js/components/menuProfil.js");
-/* harmony import */ var _components_advert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/advert */ "./resources/js/components/advert.js");
+/* harmony import */ var _pages_admin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/admin */ "./resources/js/pages/admin.js");
+/* harmony import */ var _components_menuProfil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/menuProfil */ "./resources/js/components/menuProfil.js");
 /* harmony import */ var _components_connectionPanel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/connectionPanel */ "./resources/js/components/connectionPanel.js");
 /* harmony import */ var _components_registrationForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/registrationForm */ "./resources/js/components/registrationForm.js");
 /* harmony import */ var _components_favoris__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/favoris */ "./resources/js/components/favoris.js");
 /* harmony import */ var _pages_advertisement_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/advertisement.js */ "./resources/js/pages/advertisement.js");
-/* harmony import */ var _layout_nav__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./layout/nav */ "./resources/js/layout/nav.js");
-/* harmony import */ var _pages_profil__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/profil */ "./resources/js/pages/profil.js");
-/* harmony import */ var _pages_register__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/register */ "./resources/js/pages/register.js");
-/* harmony import */ var _pages_parameters__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/parameters */ "./resources/js/pages/parameters.js");
-/* harmony import */ var _pages_mAdvert__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/mAdvert */ "./resources/js/pages/mAdvert.js");
+/* harmony import */ var _layout_annonce_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./layout/annonce.js */ "./resources/js/layout/annonce.js");
+/* harmony import */ var _layout_nav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./layout/nav */ "./resources/js/layout/nav.js");
+/* harmony import */ var _pages_profile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/profile */ "./resources/js/pages/profile.js");
+/* harmony import */ var _pages_register__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/register */ "./resources/js/pages/register.js");
+/* harmony import */ var _pages_parameters__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/parameters */ "./resources/js/pages/parameters.js");
+/* harmony import */ var _pages_mAdvert__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/mAdvert */ "./resources/js/pages/mAdvert.js");
+/* harmony import */ var _pages_create_advertisement_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/create_advertisement.js */ "./resources/js/pages/create_advertisement.js");
+/* harmony import */ var _pages_payment_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/payment.js */ "./resources/js/pages/payment.js");
+/* harmony import */ var _pages_mailbox_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/mailbox.js */ "./resources/js/pages/mailbox.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -41075,6 +41079,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /*Components*/
+
+
+
 
 
 
@@ -41103,21 +41110,25 @@ var App = /*#__PURE__*/function () {
     value: function initApp() {
       // Start application
       //components
-      new _components_menuProfil__WEBPACK_IMPORTED_MODULE_0__["default"]();
-      new _components_advert__WEBPACK_IMPORTED_MODULE_1__["default"]();
-      new _components_advert__WEBPACK_IMPORTED_MODULE_1__["default"](); //new RegistrationForm();
+      new _components_menuProfil__WEBPACK_IMPORTED_MODULE_1__["default"](); //new RegistrationForm();
 
       new _components_favoris__WEBPACK_IMPORTED_MODULE_4__["default"]();
-      new _pages_profil__WEBPACK_IMPORTED_MODULE_7__["default"]();
-      new _pages_register__WEBPACK_IMPORTED_MODULE_8__["default"](); //layout
+      new _pages_profile__WEBPACK_IMPORTED_MODULE_8__["default"]();
+      new _pages_register__WEBPACK_IMPORTED_MODULE_9__["default"](); //layout
 
       /*new Nav();*/
 
-      new _components_connectionPanel__WEBPACK_IMPORTED_MODULE_2__["default"](); //pages
+      new _components_connectionPanel__WEBPACK_IMPORTED_MODULE_2__["default"]();
+      new _layout_annonce_js__WEBPACK_IMPORTED_MODULE_6__["default"](); //pages
 
       new _pages_advertisement_js__WEBPACK_IMPORTED_MODULE_5__["default"]();
-      new _pages_parameters__WEBPACK_IMPORTED_MODULE_9__["default"]();
-      new _pages_mAdvert__WEBPACK_IMPORTED_MODULE_10__["default"]();
+      new _pages_parameters__WEBPACK_IMPORTED_MODULE_10__["default"]();
+      new _pages_mAdvert__WEBPACK_IMPORTED_MODULE_11__["default"]();
+      new _pages_create_advertisement_js__WEBPACK_IMPORTED_MODULE_12__["default"]();
+      new _pages_payment_js__WEBPACK_IMPORTED_MODULE_13__["default"]();
+      new _pages_mailbox_js__WEBPACK_IMPORTED_MODULE_14__["default"](); //admin
+
+      new _pages_admin__WEBPACK_IMPORTED_MODULE_0__["default"]();
     }
   }]);
 
@@ -41170,49 +41181,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/components/advert.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/advert.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Annonce; });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var Annonce = /*#__PURE__*/function () {
-  function Annonce() {
-    _classCallCheck(this, Annonce);
-
-    this.initEls();
-    this.initEvents();
-  }
-
-  _createClass(Annonce, [{
-    key: "initEls",
-    value: function initEls() {}
-  }, {
-    key: "initEvents",
-    value: function initEvents() {}
-  }]);
-
-  return Annonce;
-}();
-
-
 
 /***/ }),
 
@@ -41309,7 +41277,9 @@ var Annonce = /*#__PURE__*/function () {
   _createClass(Annonce, [{
     key: "initEls",
     value: function initEls() {
-      this.$els = {};
+      this.$els = {
+        base: ""
+      };
     }
   }, {
     key: "initEvents",
@@ -41320,6 +41290,8 @@ var Annonce = /*#__PURE__*/function () {
   }, {
     key: "toggleFavorite",
     value: function toggleFavorite() {
+      var _this = this;
+
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("click", ".buttonFav", function (event) {
         event.stopPropagation();
         this.classList.toggle("buttonFavOn");
@@ -41328,7 +41300,7 @@ var Annonce = /*#__PURE__*/function () {
         var id = this.id;
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
           method: "get",
-          url: "/toggleFavorite",
+          url: _this.$els.base + "/toggleFavorite",
           data: {
             type: value,
             id: id
@@ -41344,9 +41316,11 @@ var Annonce = /*#__PURE__*/function () {
   }, {
     key: "getFavorites",
     value: function getFavorites() {
+      var _this = this;
+
       jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
         method: "get",
-        url: "/getFavorites",
+        url: _this.$els.base + "/getFavorites",
         success: function success(data) {//console.log(data);
         },
         error: function error(data) {
@@ -41395,13 +41369,14 @@ var MenuProfil = /*#__PURE__*/function () {
     key: "initEls",
     value: function initEls() {
       this.$els = {
-        //btn: $('.js-toggleModalProfil'),
+        btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-toggleModalProfil'),
         back: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-reste')
       };
     }
   }, {
     key: "initEvents",
-    value: function initEvents() {//this.getMenuProfil();
+    value: function initEvents() {
+      this.getMenuProfil();
     }
   }, {
     key: "getMenuProfil",
@@ -41496,6 +41471,54 @@ var RegistrationForm = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./resources/js/layout/annonce.js":
+/*!****************************************!*\
+  !*** ./resources/js/layout/annonce.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Nav; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var flickity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flickity */ "./node_modules/flickity/js/index.js");
+/* harmony import */ var flickity__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flickity__WEBPACK_IMPORTED_MODULE_1__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var Nav = /*#__PURE__*/function () {
+  function Nav() {
+    _classCallCheck(this, Nav);
+
+    this.initEls();
+    this.initEvents();
+  }
+
+  _createClass(Nav, [{
+    key: "initEls",
+    value: function initEls() {
+      this.$els = {};
+    }
+  }, {
+    key: "initEvents",
+    value: function initEvents() {}
+  }]);
+
+  return Nav;
+}();
+
+
+
+/***/ }),
+
 /***/ "./resources/js/layout/nav.js":
 /*!************************************!*\
   !*** ./resources/js/layout/nav.js ***!
@@ -41567,6 +41590,124 @@ var Nav = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./resources/js/pages/admin.js":
+/*!*************************************!*\
+  !*** ./resources/js/pages/admin.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Admin; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Admin = /*#__PURE__*/function () {
+  function Admin() {
+    _classCallCheck(this, Admin);
+
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') === "admin") {
+      this.initEls();
+      this.initEvents();
+    }
+  }
+
+  _createClass(Admin, [{
+    key: "initEls",
+    value: function initEls() {
+      this.$els = {
+        base: ""
+      };
+    }
+  }, {
+    key: "initEvents",
+    value: function initEvents() {
+      this.adminNav();
+      this.dataDetails();
+    }
+  }, {
+    key: "adminNav",
+    value: function adminNav() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.admin-nav>span').click(function () {
+        var position = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).index();
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.admin-nav>span').removeClass('is-selected');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).addClass('is-selected');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.admin-data').addClass('hidden');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.data-nth-' + position).removeClass('hidden');
+      });
+    }
+  }, {
+    key: "dataDetails",
+    value: function dataDetails() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.data-content-main').click(function (event) {
+        if (event.target.classList == "js-btnDeleteAccount") {
+          var id = event.target.id;
+
+          if (confirm("\nVoulez vous vraiment supprimer ce compte ?\n\nLe compte sera d\xE9finitivement supprimer ainsi que toutes les donn\xE9es lui \xE9tant li\xE9es (annonces, favoris, commentaires...).\n                    ")) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+              method: "get",
+              data: {
+                id: id
+              },
+              url: _this.$els.base + "/deleteAccount",
+              success: function success(data) {
+                window.location.href = "/admin";
+              },
+              error: function error(data) {
+                console.log(data.responseJSON);
+              }
+            });
+          }
+        } else if (event.target.classList == "js-btnDeleteAdvert") _this.deleteAdvert(event.target.id);else {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).siblings('.js-dataDetail').hasClass("is-hidden")) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-dataDetail').addClass("is-hidden");
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).siblings('.js-dataDetail').removeClass("is-hidden");
+          } else {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-dataDetail').addClass("is-hidden");
+          }
+        }
+      });
+    }
+  }, {
+    key: "deleteAdvert",
+    value: function deleteAdvert(id) {
+      var _this = this;
+
+      if (confirm("\nVoulez vous vraiment supprimer cette annonce ?\nCette annonce sera d\xE9finitivement supprimer.\n        ")) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+          method: "get",
+          url: _this.$els.base + "/deleteAdvert",
+          data: {
+            id: id
+          },
+          success: function success(data) {
+            window.location.href = "/admin";
+          },
+          error: function error(data) {
+            console.log(data.responseJSON);
+          }
+        });
+      }
+    }
+  }]);
+
+  return Admin;
+}();
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/advertisement.js":
 /*!*********************************************!*\
   !*** ./resources/js/pages/advertisement.js ***!
@@ -41577,6 +41718,863 @@ var Nav = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AdvertisementPage; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var flickity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flickity */ "./node_modules/flickity/js/index.js");
+/* harmony import */ var flickity__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flickity__WEBPACK_IMPORTED_MODULE_1__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var AdvertisementPage = /*#__PURE__*/function () {
+  function AdvertisementPage() {
+    _classCallCheck(this, AdvertisementPage);
+
+    this.initEls();
+    this.initEvents();
+    this.initEventsAdverts();
+  }
+
+  _createClass(AdvertisementPage, [{
+    key: "initEls",
+    value: function initEls() {
+      this.$els = {
+        more_filter_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-more_filter'),
+        less_filter_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-less_filter'),
+        order_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-order'),
+        filter_on: {},
+        allAdverts: "",
+        adverts: "",
+        // every adverts
+        advertsM: "",
+        // every adverts splited in a multidimentional array for every pages
+        sortType: "",
+        urgent: false,
+        cities: "",
+        fAff: true,
+        typeAccount: ["PRO", "SOA", "NSOA"],
+        base: ""
+      };
+    }
+  }, {
+    key: "initEvents",
+    value: function initEvents() {
+      this.getAdvertisementPage();
+    }
+  }, {
+    key: "initEventsAdverts",
+    value: function initEventsAdverts() {
+      this.getAdverts(jquery__WEBPACK_IMPORTED_MODULE_0___default()('title')[0].innerHTML);
+      this.getActs();
+      this.toggleAdvert();
+      this.getUrgent();
+      this.changePage();
+      this.addEventSort();
+      this.addEventFilter();
+      this.hideMap();
+      this.checkIfexpandMap();
+      var c = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content');
+      if (c == "advertisement" || c == "advertisementPro" || c == "home" || c == "parameters" || c == "homeIndividual" || c == "create_advertisement") this.getCities();
+    }
+  }, {
+    key: "getAdvertisementPage",
+    value: function getAdvertisementPage() {
+      this.$els.more_filter_btn.click(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).removeClass("js-active");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-first_filter_more').addClass("js-active");
+      });
+      this.$els.less_filter_btn.click(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-first_filter_more').removeClass("js-active");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-more_filter').addClass("js-active");
+      });
+    }
+  }, {
+    key: "getAdverts",
+    value: function getAdverts(type, filterUrl) {
+      var _this = this;
+
+      if (filterUrl == undefined) filterUrl = true;
+
+      if (type == undefined) {
+        type = jquery__WEBPACK_IMPORTED_MODULE_0___default()('title')[0].innerHTML;
+      }
+
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgNoAd') > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgNoAd')[0].style.display = "none"; // afficher qu'une seule annonce
+
+      var url = window.location.pathname;
+
+      if (url.includes("a/")) {
+        var id = url.split('/')[2];
+        type = id;
+        filterUrl = false;
+      }
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+        method: "get",
+        url: _this.$els.base + "/getAdverts",
+        data: {
+          type: type,
+          filterUrl: filterUrl
+        },
+        success: function success(data) {
+          if (data.length == 0 && jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgNoAd') > 0) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgNoAd')[0].style.display = "block";
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divPage")[0].innerHTML = "";
+            return 0;
+          }
+
+          if (filterUrl) {
+            var params = data[data.length - 1];
+            _this.$els.filter_on = params; // Fill input
+
+            if (params.activity) jquery__WEBPACK_IMPORTED_MODULE_0___default()("#activity")[0].value = params.activity;
+            if (params.place) jquery__WEBPACK_IMPORTED_MODULE_0___default()("#place")[0].value = params.place;
+            if (params.date) jquery__WEBPACK_IMPORTED_MODULE_0___default()("#date")[0].value = params.date;
+            if (params.type) jquery__WEBPACK_IMPORTED_MODULE_0___default()("#type")[0].value = params.type;
+          }
+
+          data.pop();
+          _this.$els.adverts = data;
+          _this.$els.advertsM = _this.splitInPages(data);
+
+          _this.filter(data); // => changeOrder => display
+
+        },
+        error: function error(data) {
+          console.log(data);
+        }
+      });
+    }
+  }, {
+    key: "displayAdverts",
+    value: function displayAdverts(page) {
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-container').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-container')[0].innerHTML = "";
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-container-premium').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-container-premium')[0].innerHTML = "";
+      if (page == undefined) page = 0;
+
+      var _this = this;
+
+      var adverts = this.$els.adverts;
+      var advertsM = this.$els.advertsM; // affiche nbr total d'annonces
+
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.nbrAdverts').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('.nbrAdverts')[0].innerHTML = adverts.length; // aucune offres
+
+      if (advertsM[page] === undefined) {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgNoAd').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgNoAd')[0].style.display = "block";
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-divLoading').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-divLoading')[0].innerHTML = "";
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.divPage').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divPage")[0].innerHTML = "";
+        return 0;
+      } // Bannière A la une
+
+
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') == "advertisement" || jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') == "advertisementPro") {
+        banner();
+      }
+
+      function banner() {
+        var tempBanner = [];
+        var banner = [];
+        var r; // récup les annonces premium
+
+        adverts.forEach(function (advert, index) {
+          if (advert.premium_banner_week) {
+            tempBanner.push(advert);
+          }
+        });
+
+        if (tempBanner.length == 0 && _this.$els.fAff) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divRight")[0].remove();
+          return 0;
+        } // en choisir au hasard
+
+
+        var l = 2;
+        if (tempBanner.length < l) l = tempBanner.length;
+
+        for (var i = 0; i < l; i++) {
+          r = Math.floor(Math.random() * tempBanner.length);
+          tempBanner[r].dBanner = 1;
+          banner.push(tempBanner[r]);
+          tempBanner.splice(r, 1);
+        } // les delete de leur position innitial
+
+
+        advertsM[page].forEach(function (advert, index) {
+          banner.forEach(function (b, i) {
+            if (advert == b) {
+              advertsM[page].splice(index, 1);
+            }
+          });
+        }); //Afficher les annonces en avant
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+          type: "GET",
+          url: _this.$els.base + "/adverts",
+          data: {
+            adverts: banner
+          },
+          success: function success(res) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-container-premium').append(res);
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-divLoading').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-divLoading')[0].innerHTML = "";
+          },
+          error: function error(res) {
+            console.log(res.responseJSON);
+          }
+        });
+      } // affiche les annonces
+
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+        type: "GET",
+        url: _this.$els.base + "/adverts",
+        data: {
+          adverts: advertsM[page],
+          type: jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content')
+        },
+        success: function success(res) {
+          if (_this.$els.fAff && jquery__WEBPACK_IMPORTED_MODULE_0___default()('.mapContainer').length > 0) {
+            _this.initMapAdverts(adverts);
+
+            _this.$els.fAff = false;
+          }
+
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-divLoading').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-divLoading')[0].innerHTML = "";
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-container').append(res);
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.divPage').length > 0) _this.displayBtnPage(advertsM, page);
+
+          _this.initFav();
+        },
+        error: function error(res) {
+          console.log(res.responseJSON);
+        }
+      });
+    }
+  }, {
+    key: "displayBtnPage",
+    value: function displayBtnPage(advertsM, page) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divPage")[0].innerHTML = "";
+      var nbPage = advertsM.length;
+
+      if (nbPage > 1) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divPage")[0].innerHTML = "<p>pages</p>";
+        var p;
+
+        for (var i = 0; i < nbPage; i++) {
+          p = i + 1;
+          if (i == page) // page actuelle
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divPage")[0].innerHTML += "<span class='selected' id='changePage'>" + p + "</span>";else jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divPage")[0].innerHTML += "<span id='changePage'>" + p + "</span>";
+        }
+      }
+    }
+  }, {
+    key: "initFav",
+    value: function initFav() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+        type: "GET",
+        url: _this.$els.base + "/getFavorites",
+        success: function success(favorites) {
+          var btnFavs = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.buttonFav');
+
+          var _iterator = _createForOfIteratorHelper(favorites),
+              _step;
+
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var favorite = _step.value;
+
+              var _iterator2 = _createForOfIteratorHelper(btnFavs),
+                  _step2;
+
+              try {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                  var btnFav = _step2.value;
+
+                  if (favorite.id == btnFav.id) {
+                    btnFav.classList.toggle("buttonFavOn");
+                  }
+                }
+              } catch (err) {
+                _iterator2.e(err);
+              } finally {
+                _iterator2.f();
+              }
+            }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
+          }
+        },
+        error: function error(data) {
+          console.log(data.responseJSON);
+        }
+      });
+    }
+  }, {
+    key: "initMap",
+    value: function initMap(lat, lng) {
+      var x;
+      var y;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=france', function (data) {
+        x = lat;
+        y = lng;
+        var map1 = L.map('mapid').setView([x, y], 10); //6/data[0].importance
+
+        L.marker([x, y]).addTo(map1);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: 'mapbox/streets-v11',
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken: 'pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ'
+        }).addTo(map1);
+        map1.invalidateSize();
+      });
+    }
+  }, {
+    key: "initMapAdverts",
+    value: function initMapAdverts(adverts) {
+      if (adverts == undefined) adverts = this.$els.allAdverts;
+
+      var _this = this;
+
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#mapAdverts')[0].innerHTML != "") {
+        var div = document.createElement("div");
+        div.id = "mapAdverts";
+        div.classList = "divMap";
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#mapAdverts')[0].replaceWith(div);
+      } // get every city
+
+
+      var cities = adverts.map(function (node) {
+        return [node.place, node.place_lat, node.place_lng];
+      }); // remove duplicate cities
+
+      cities = cities.filter(function (item, pos) {
+        return cities.indexOf(item) == pos;
+      }); // display map
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=france', function (data) {
+        var x = parseFloat(data[0].lat);
+        var y = parseFloat(data[0].lon);
+        var map = L.map('mapAdverts').setView([x, y], 10);
+        _this.$els.map = map;
+        var tileLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: 'mapbox/streets-v11',
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken: 'pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ'
+        }).addTo(map); // display markers
+
+        var markers = [];
+
+        var _iterator3 = _createForOfIteratorHelper(cities),
+            _step3;
+
+        try {
+          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+            var city = _step3.value;
+            var m = L.marker([city[1], city[2]]).bindPopup(city[0]).on('click', function () {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()("#place")[0].value = this._popup._content;
+              _this.$els.filter_on["place"] = this._popup._content;
+
+              _this.getAdverts(jquery__WEBPACK_IMPORTED_MODULE_0___default()('title')[0].innerHTML, false); // ferme la map quand elle est en fullscreen
+
+
+              if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.divM')[0].classList.contains("mapFull") === true) _this.expandMap();
+            });
+            markers.push(m);
+          }
+        } catch (err) {
+          _iterator3.e(err);
+        } finally {
+          _iterator3.f();
+        }
+
+        var group = new L.featureGroup(markers).addTo(map);
+        map.fitBounds(group.getBounds());
+        map.invalidateSize(); // get cities in current map bounds
+
+        function getFeaturesInView() {
+          var features = [];
+          var layers = Object.entries(map._layers); // teste si la ville est présente sur la carte actuelle
+
+          for (var _i = 0, _layers = layers; _i < _layers.length; _i++) {
+            var layer = _layers[_i];
+
+            if (layer[1]._latlng != undefined) {
+              if (map.getBounds().contains(layer[1]._latlng)) {
+                features.push(layer[1]._popup._content);
+              }
+            }
+          }
+
+          var c = _this.$els.filter_on["place"];
+
+          if (arraysEqual(c, features) == false) {
+            _this.$els.filter_on["place"] = features;
+
+            _this.getAdverts(jquery__WEBPACK_IMPORTED_MODULE_0___default()('title')[0].innerHTML, false);
+          }
+        }
+
+        map.on("moveend", function (e) {
+          getFeaturesInView();
+        });
+
+        function arraysEqual(a, b) {
+          if (a === b) return true;
+          if (a == null || b == null) return false;
+          if (a.length !== b.length) return false;
+
+          for (var i = 0; i < a.length; ++i) {
+            if (a[i] !== b[i]) return false;
+          }
+
+          return true;
+        }
+      });
+    }
+  }, {
+    key: "addEventSort",
+    value: function addEventSort() {
+      var _this = this;
+
+      this.$els.order_btn.change(function () {
+        _this.$els.sortType = this.value;
+
+        _this.changeOrder();
+      });
+    }
+  }, {
+    key: "changeOrder",
+    value: function changeOrder(adverts) {
+      if (adverts == undefined) adverts = this.$els.adverts;
+
+      var _this = this;
+
+      var sortType = this.$els.sortType;
+      if (sortType == "") sortType = "plusRecent"; // sort
+
+      if (sortType == "prixCroissant") adverts.sort(function (a, b) {
+        return a.price_one_h > b.price_one_h ? 1 : b.price_one_h > a.price_one_h ? -1 : 0;
+      });else if (sortType == "prixDecroissant") adverts.sort(function (a, b) {
+        return a.price_one_h > b.price_one_h ? -1 : b.price_one_h > a.price_one_h ? 1 : 0;
+      });else if (sortType == "plusRecent") adverts.sort(function (a, b) {
+        return a.created_at > b.created_at ? -1 : b.created_at > a.created_at ? 1 : 0;
+      });else if (sortType == "plusAncien") adverts.sort(function (a, b) {
+        return a.created_at > b.created_at ? 1 : b.created_at > a.created_at ? -1 : 0;
+      });
+      this.$els.adverts = adverts;
+      this.$els.advertsM = _this.splitInPages(adverts);
+      this.displayAdverts();
+    }
+  }, {
+    key: "addEventFilter",
+    value: function addEventFilter() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('change', '.js-filter', function (event) {
+        var filter_on = _this.$els.filter_on;
+
+        if (this.type == "checkbox") {
+          filter_on["prestataire"] = true;
+          var typeAccount = _this.$els.typeAccount;
+          if (this.checked == true) typeAccount.push(this.id);else {
+            var index = typeAccount.indexOf(this.id);
+            typeAccount.splice(index, 1);
+          }
+          _this.$els.typeAccount = typeAccount;
+        } else {
+          filter_on[this.id] = this.value; // add filter
+
+          if (this.value == "") delete filter_on[this.id]; // remove filter
+        }
+
+        _this.$els.filter_on = filter_on; // save filters
+
+        _this.getAdverts(jquery__WEBPACK_IMPORTED_MODULE_0___default()('title')[0].innerHTML, false);
+      });
+    }
+  }, {
+    key: "filter",
+    value: function filter(adverts) {
+      if (adverts == false || adverts == undefined) adverts = this.$els.adverts; // reduce the description length
+
+      var _iterator4 = _createForOfIteratorHelper(adverts),
+          _step4;
+
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var d = _step4.value;
+          if (d.desc.length > 300) d.desc = d.desc.substring(0, 300) + "...";
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+
+      if (adverts == undefined) adverts = false;
+      var urgent = this.$els.urgent;
+
+      var _this = this;
+
+      var filter_on = this.$els.filter_on;
+      filter_on = Object.entries(filter_on); // convertion en array
+
+      var value;
+      var key; // filters
+
+      var _iterator5 = _createForOfIteratorHelper(filter_on),
+          _step5;
+
+      try {
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var _step5$value = _slicedToArray(_step5.value, 2);
+
+          key = _step5$value[0];
+          value = _step5$value[1];
+
+          if (key == "type") {
+            adverts = adverts.filter(function (v) {
+              return value == v[key];
+            });
+            _this.$els.allAdverts = adverts;
+          } else if (key == "place" && _typeof(value) == "object") {
+            adverts = adverts.filter(function (v) {
+              return value.includes(v[key]);
+            });
+          } else if (key == "prestataire") {
+            adverts = adverts.filter(function (v) {
+              value = _this.$els.typeAccount;
+              return value.includes(v["user_status"]);
+            });
+          } else if (key == "activity" || key == "place" || key == "user_language") {
+            adverts = adverts.filter(function (v) {
+              var a = v[key].toLowerCase();
+              var b = value.toLowerCase();
+              return a.includes(b);
+            });
+          } else if (key == "date") {
+            adverts = adverts.filter(function (v) {
+              return value >= v["date_from"] && value <= v["date_to"];
+            });
+          } else if (key == "inpSalMin") {
+            adverts = adverts.filter(function (v) {
+              return v["salaire"] >= value;
+            });
+          } else if (key == "inpSalMax") {
+            adverts = adverts.filter(function (v) {
+              return v["salaire"] <= value;
+            });
+          }
+          /*
+                      else if(key == "PRO" || key == "PAR" || key == "SOA" || key == "NSOA") {
+          
+                      let typeAccount = ["PRO", "PAR", "SOA", "NSOA"];
+                      var index = typeAccount.indexOf(key);
+                      typeAccount.splice(index, 1);
+                      console.log(typeAccount);
+          
+                          adverts = adverts.filter(function(v){
+                              return (value == v[key]);
+                          });     
+                      }*/
+          else {
+              adverts = adverts.filter(function (v) {
+                return value == v[key];
+              });
+            }
+
+          if (urgent) {
+            adverts = adverts.filter(function (v) {
+              return v["premium_urgent_week"] == 1;
+            });
+          }
+        }
+      } catch (err) {
+        _iterator5.e(err);
+      } finally {
+        _iterator5.f();
+      }
+
+      this.$els.adverts = adverts;
+      this.$els.advertsM = _this.splitInPages(adverts);
+      this.changeOrder(adverts);
+    }
+  }, {
+    key: "toggleAdvert",
+    value: function toggleAdvert() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-toggleAnnonce', function (event) {
+        var url = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('id');
+
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#sectionContent')[0].innerHTML == "") {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#sectionContent').load(url, function (data) {
+            var _Flickity;
+
+            if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(data).find('.lat').length > 0) {
+              var lat = jquery__WEBPACK_IMPORTED_MODULE_0___default()(data).find('.lat')[0].innerHTML;
+              var lng = jquery__WEBPACK_IMPORTED_MODULE_0___default()(data).find('.lng')[0].innerHTML;
+
+              _this.initMap(lat, lng);
+            }
+
+            _this.initFav();
+
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").toggleClass("stopScrolling");
+
+            flkyProfil: new flickity__WEBPACK_IMPORTED_MODULE_1___default.a('.main-carousel', (_Flickity = {
+              autoPlay: true,
+              wrapAround: true,
+              contain: true,
+              cellAlign: 'center',
+              pageDots: true,
+              pauseAutoPlayOnHover: true
+            }, _defineProperty(_Flickity, "autoPlay", 5000), _defineProperty(_Flickity, "prevNextButtons", false), _Flickity));
+          });
+        } else {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#sectionContent')[0].innerHTML = "";
+
+          _this.initFav();
+
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").toggleClass("stopScrolling");
+        }
+      });
+    }
+  }, {
+    key: "getActs",
+    value: function getActs() {
+      var _this = this;
+
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#activity').length == 1) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+          method: "get",
+          url: _this.$els.base + "/getActs",
+          success: function success(data) {
+            var _iterator6 = _createForOfIteratorHelper(data),
+                _step6;
+
+            try {
+              for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+                var item = _step6.value;
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()('#dataActivities')[0].innerHTML += "<option value=" + item.activity + ">";
+              }
+            } catch (err) {
+              _iterator6.e(err);
+            } finally {
+              _iterator6.f();
+            }
+          },
+          error: function error(data) {
+            console.log(data.responseJSON);
+          }
+        });
+      }
+    }
+  }, {
+    key: "getCities",
+    value: function getCities() {
+      var _this = this; // make the request only after the user finish tiping (wait 1s)
+
+
+      var typingTimer;
+      var doneTypingInterval = 1000;
+      var input = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place'); //on keyup, start the countdown
+
+      input.on('keyup', function (event) {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.searchCity')[0].id = "";
+
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place_lat').length > 0) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place_lat')[0].value = null;
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place_lng')[0].value = null;
+        }
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgPlace')[0].style.display = "block";
+      }); //on keydown, clear the countdown 
+
+      input.on('keydown', function () {
+        clearTimeout(typingTimer);
+      }); //user is "finished typing,"
+
+      function doneTyping() {
+        var _this = this;
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.searchCity')[0].id = "hidden";
+        var city = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place')[0].value;
+        var url = "http://api.geonames.org/searchJSON?q=" + city + "&maxRows=5&username=gwendal";
+
+        if (city.length > 0) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            method: "get",
+            url: url,
+            success: function success(data) {
+              jquery__WEBPACK_IMPORTED_MODULE_0___default()('.suggestions')[0].innerHTML = "";
+
+              var _iterator7 = _createForOfIteratorHelper(data.geonames),
+                  _step7;
+
+              try {
+                for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+                  var value = _step7.value;
+                  if (value.countryName != undefined) jquery__WEBPACK_IMPORTED_MODULE_0___default()('.suggestions')[0].innerHTML += "<div class='itemSug " + value.lat + " " + value.lng + "'>" + value.name + ", " + value.countryName + "</div>";else jquery__WEBPACK_IMPORTED_MODULE_0___default()('.suggestions')[0].innerHTML += "<div class='itemSug'>" + value.name + "</div>";
+                }
+              } catch (err) {
+                _iterator7.e(err);
+              } finally {
+                _iterator7.f();
+              }
+            },
+            error: function error(data) {
+              console.log(data);
+            }
+          });
+        } else {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.suggestions')[0].innerHTML = "";
+        }
+      }
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.itemSug', function (event) {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgPlace').length > 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgPlace')[0].style.display = "none";
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.suggestions')[0].innerHTML = "";
+
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place_lat').length > 0) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place_lat')[0].value = this.classList[1];
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place_lng')[0].value = this.classList[2];
+        }
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place')[0].value = this.innerHTML.split(', ')[0];
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("click", function (e) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.suggestions')[0].innerHTML = "";
+      });
+    }
+  }, {
+    key: "getUrgent",
+    value: function getUrgent() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-inpUrgent', function (event) {
+        _this.getAdverts("Urgent");
+
+        _this.$els.urgent = true;
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-inpTout', function (event) {
+        _this.getAdverts("Annonce");
+
+        _this.$els.urgent = false;
+      });
+    }
+  }, {
+    key: "changePage",
+    value: function changePage() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '#changePage', function (event) {
+        var page = this.innerHTML - 1;
+        window.scrollTo(0, 0);
+
+        _this.displayAdverts(page);
+      });
+    }
+  }, {
+    key: "splitInPages",
+    value: function splitInPages(array) {
+      var resultat = [];
+      var i,
+          j,
+          temparray,
+          chunk = 8;
+
+      for (i = 0, j = array.length; i < j; i += chunk) {
+        temparray = array.slice(i, i + chunk);
+        resultat.push(temparray);
+      }
+
+      return resultat;
+    }
+  }, {
+    key: "hideMap",
+    value: function hideMap() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".hideMap").on("click", function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.divM').removeClass("mapFull");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.divM').toggleClass("mapHidden");
+
+        _this.initMapAdverts();
+      });
+    }
+  }, {
+    key: "checkIfexpandMap",
+    value: function checkIfexpandMap() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".expandMap").on("click", function () {
+        _this.expandMap();
+      });
+    }
+  }, {
+    key: "expandMap",
+    value: function expandMap() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.divM').removeClass("mapHidden");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.divM').toggleClass("mapFull");
+
+      _this.initMapAdverts();
+    }
+  }]);
+
+  return AdvertisementPage;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/create_advertisement.js":
+/*!****************************************************!*\
+  !*** ./resources/js/pages/create_advertisement.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CreateAdvertisementPage; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
@@ -41593,362 +42591,130 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
-var AdvertisementPage = /*#__PURE__*/function () {
-  function AdvertisementPage() {
-    _classCallCheck(this, AdvertisementPage);
+var CreateAdvertisementPage = /*#__PURE__*/function () {
+  function CreateAdvertisementPage() {
+    _classCallCheck(this, CreateAdvertisementPage);
 
     this.initEls();
     this.initEvents();
-    var c = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content');
-
-    if (c == "advertisement" || c == "favorites" || c == "mes_annonces") {
-      this.initEventsAdverts();
-    }
   }
 
-  _createClass(AdvertisementPage, [{
+  _createClass(CreateAdvertisementPage, [{
     key: "initEls",
     value: function initEls() {
       this.$els = {
-        more_filter_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-more_filter'),
-        less_filter_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-less_filter'),
-        order_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-order'),
-        filter_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-filter'),
-        filter_on: {},
-        adverts: ""
+        form: jquery__WEBPACK_IMPORTED_MODULE_0___default()('form'),
+        left_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#left'),
+        right_btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#right')
       };
     }
   }, {
     key: "initEvents",
     value: function initEvents() {
-      this.getAdvertisementPage();
-      this.getActs();
-      this.getCities();
-      this.toggleAdvert();
-      this.deleteAdvert();
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') == "create_advertisement") {
+        this.getCreateAdvertisementPage();
+        this.changeAdvertType();
+        this.setMaxPictures();
+      }
     }
   }, {
-    key: "initEventsAdverts",
-    value: function initEventsAdverts() {
-      this.filter();
-      this.getAdverts(jquery__WEBPACK_IMPORTED_MODULE_0___default()('title')[0].innerHTML);
-    }
-  }, {
-    key: "getAdvertisementPage",
-    value: function getAdvertisementPage() {
-      this.$els.more_filter_btn.click(function () {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).removeClass("js-active");
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-first_filter_more').addClass("js-active");
-      });
-      this.$els.less_filter_btn.click(function () {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-first_filter_more').removeClass("js-active");
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-more_filter').addClass("js-active");
-      });
-    }
-  }, {
-    key: "getAdverts",
-    value: function getAdverts(type) {
+    key: "changeAdvertType",
+    value: function changeAdvertType() {
       var _this = this;
 
-      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-        method: "get",
-        url: "/getAdverts",
-        data: {
-          type: type
-        },
-        success: function success(data) {
-          _this.$els.adverts = data;
-
-          _this.displayAdverts();
-
-          _this.changeOrder();
-        },
-        error: function error(data) {
-          console.log(data.responseJSON);
-        }
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.inpType').change(function () {
+        _this.toggleVisibilityInp(this.value);
       });
     }
   }, {
-    key: "displayAdverts",
-    value: function displayAdverts() {
-      var _this = this;
+    key: "toggleVisibilityInp",
+    value: function toggleVisibilityInp(type) {
+      var divInps = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.form-group');
+      var inps = [];
 
-      var adverts = this.$els.adverts;
-      document.querySelector("#js-container").innerHTML = "";
-      var c = 0;
-      var url;
-
-      var _iterator = _createForOfIteratorHelper(adverts),
+      var _iterator = _createForOfIteratorHelper(divInps),
           _step;
 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var advert = _step.value;
-          url = "/advert/" + advert.id;
+          var divInp = _step.value;
 
-          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') == "mes_annonces") {
-            url = "/mAdvert/" + advert.id;
+          if (divInp.classList.contains(type)) {
+            divInp.style.display = "block";
+            inps = divInp.querySelectorAll('input, select');
+            toggleRequired(inps, true);
+          } else {
+            divInp.style.display = "none";
+            inps = divInp.querySelectorAll('input, select');
+            toggleRequired(inps, false);
           }
-
-          jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            type: "GET",
-            url: url,
-            success: function success(res) {
-              jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-container').append(res);
-              c++;
-
-              if (c === adverts.length) {
-                _this.initFav();
-              }
-            }
-          });
         }
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
-    }
-  }, {
-    key: "initFav",
-    value: function initFav() {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-        type: "GET",
-        url: "getFavorites",
-        success: function success(favorites) {
-          var btnFavs = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.buttonFav');
 
-          var _iterator2 = _createForOfIteratorHelper(favorites),
-              _step2;
+      function toggleRequired(inps, value) {
+        var _iterator2 = _createForOfIteratorHelper(inps),
+            _step2;
 
-          try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var favorite = _step2.value;
-
-              var _iterator3 = _createForOfIteratorHelper(btnFavs),
-                  _step3;
-
-              try {
-                for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-                  var btnFav = _step3.value;
-
-                  if (favorite.id == btnFav.id) {
-                    btnFav.classList.toggle("buttonFavOn");
-                  }
-                }
-              } catch (err) {
-                _iterator3.e(err);
-              } finally {
-                _iterator3.f();
-              }
-            }
-          } catch (err) {
-            _iterator2.e(err);
-          } finally {
-            _iterator2.f();
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var inp = _step2.value;
+            if (inp.classList.contains("required")) inp.required = value;
           }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
         }
-      });
-    }
-  }, {
-    key: "initMap",
-    value: function initMap(place) {
-      var x;
-      var y; // $("#js-map").innerHTML = "<div id='mapid'></div>"
-
-      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=' + place, function (data) {
-        x = parseFloat(data[0].lat);
-        y = parseFloat(data[0].lon);
-        var map = L.map('mapid').setView([x, y], 6 / data[0].importance);
-        L.marker([x, y]).addTo(map);
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ', {
-          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-          maxZoom: 18,
-          id: 'mapbox/streets-v11',
-          tileSize: 512,
-          zoomOffset: -1,
-          accessToken: 'pk.eyJ1Ijoidnprbml6cW4iLCJhIjoiY2thejNpczhqMGEyMDJycGpxZWFpMDZkNiJ9.PFRuOm6POv773ECXsIFPrQ'
-        }).addTo(map);
-        map.invalidateSize();
-      });
-    }
-  }, {
-    key: "changeOrder",
-    value: function changeOrder() {
-      var _this = this;
-
-      this.$els.order_btn.change(function () {
-        var value = this.value;
-        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-          method: "get",
-          url: "/sortAdverts",
-          data: {
-            type: value,
-            adverts: JSON.stringify(_this.$els.adverts)
-          },
-          success: function success(data) {
-            _this.$els.adverts = data;
-
-            _this.displayAdverts();
-          },
-          error: function error(data) {
-            console.log(data.responseJSON);
-          }
-        });
-      });
-    }
-  }, {
-    key: "filter",
-    value: function filter() {
-      var _this = this;
-
-      var filter_on = this.$els.filter_on;
-      this.$els.filter_btn.change(function () {
-        // recup every filter
-        filter_on[this.id] = this.value;
-        if (this.value == "") delete filter_on[this.id];
-        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-          method: "get",
-          url: "/filterAdverts",
-          data: {
-            filter_on: filter_on
-          },
-          success: function success(data) {
-            data = Object.keys(data).map(function (i) {
-              return data[i];
-            });
-            _this.$els.adverts = data;
-
-            _this.displayAdverts();
-          },
-          error: function error(data) {
-            console.log(data.responseJSON);
-          }
-        });
-      });
-    }
-  }, {
-    key: "toggleAdvert",
-    value: function toggleAdvert() {
-      var _this = this;
-
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-toggleAnnonce', function (event) {
-        // toggle open / close
-        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#sectionContent')[0].innerHTML == "") {
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#sectionContent').load(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('id'), function (data) {
-            var location = jquery__WEBPACK_IMPORTED_MODULE_0___default()(data).find('.firstL')[0].id;
-
-            _this.initMap(location);
-
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".modalAnnonce").scrollTop(0);
-
-            _this.initFav();
-          });
-        } else {
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#sectionContent')[0].innerHTML = "";
-
-          _this.initFav();
-        }
-
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").toggleClass("stopScrolling");
-      });
-    }
-  }, {
-    key: "getCities",
-    value: function getCities() {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select2-container').on("click", function () {
-        if (this.parentNode.childNodes[3].id == "place") {
-          checkChange();
-        }
-      });
-
-      function checkChange() {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select2-search__field').on("input", function () {
-          var value = this.value;
-          jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            method: "get",
-            url: "https://api.teleport.org/api/cities/?search=" + value,
-            success: function success(data) {
-              var res = Object.entries(data._embedded)[0][1];
-
-              if (value != "") {
-                jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place')[0].innerHTML = "";
-
-                var _iterator4 = _createForOfIteratorHelper(res),
-                    _step4;
-
-                try {
-                  for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-                    var item = _step4.value;
-                    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place')[0].innerHTML += '<option value="e">' + item.matching_full_name + '</option>';
-                  }
-                } catch (err) {
-                  _iterator4.e(err);
-                } finally {
-                  _iterator4.f();
-                }
-              }
-            },
-            error: function error(data) {
-              console.log(data.responseJSON);
-            }
-          });
-        });
       }
     }
   }, {
-    key: "getActs",
-    value: function getActs() {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-        method: "get",
-        url: "/getActs",
-        success: function success(data) {
-          //$('#activities')[0].innerHTML = "";
-          var _iterator5 = _createForOfIteratorHelper(data),
-              _step5;
-
-          try {
-            for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {//$('#activities')[0].innerHTML += '<option value="e">'+item.activity+'</option>'
-
-              var item = _step5.value;
-            }
-          } catch (err) {
-            _iterator5.e(err);
-          } finally {
-            _iterator5.f();
+    key: "getCreateAdvertisementPage",
+    value: function getCreateAdvertisementPage() {
+      this.$els.left_btn.click(function () {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('js-active')) {
+          if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').hasClass('js-second')) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').removeClass('js-second');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('#left').removeClass('js-active');
+          } else {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').addClass('js-second');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').removeClass('js-third');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('#right').addClass('js-active');
           }
-        },
-        error: function error(data) {
-          console.log(data.responseJSON);
+        }
+      });
+      this.$els.right_btn.click(function () {
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('js-active')) {
+          if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').hasClass('js-second')) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').addClass('js-second');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('#left').addClass('js-active');
+          } else {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').addClass('js-third');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('form').removeClass('js-second');
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('#right').removeClass('js-active');
+          }
         }
       });
     }
   }, {
-    key: "deleteAdvert",
-    value: function deleteAdvert() {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-btnDeleteAdvert', function (event) {
-        if (confirm("Voulez vous vraiment supprimer cette annonce ? \n\nCette annonce sera définitivement supprimer.")) {
-          var id = this.id;
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.mAdvert.' + this.id).remove();
-          jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-            method: "get",
-            url: "/deleteAdvert",
-            data: {
-              id: id
-            },
-            success: function success(data) {
-              console.log(data);
-            },
-            error: function error(data) {
-              console.log(data.responseJSON);
-            }
-          });
+    key: "setMaxPictures",
+    value: function setMaxPictures() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("input[type='file']").change(function () {
+        if (this.files.length > 5) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgFiles')[0].style.display = "block";
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit')[0].classList = 'cantClick';
+        } else {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit')[0].classList = '';
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.msgFiles')[0].style.display = "none";
         }
       });
     }
   }]);
 
-  return AdvertisementPage;
+  return CreateAdvertisementPage;
 }();
 
 
@@ -41986,7 +42752,9 @@ var Annonce = /*#__PURE__*/function () {
   _createClass(Annonce, [{
     key: "initEls",
     value: function initEls() {
-      this.$els = {};
+      this.$els = {
+        base: ""
+      };
     }
   }, {
     key: "initEvents",
@@ -41994,6 +42762,8 @@ var Annonce = /*#__PURE__*/function () {
       if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') == "mes_annonces") {
         this.toggleCheckbox();
         this.toggleOnglet();
+        this.deleteAdvert();
+        this.saveModif();
       }
     }
   }, {
@@ -42010,11 +42780,136 @@ var Annonce = /*#__PURE__*/function () {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-toggleOnglet").toggleClass("selected");
         jquery__WEBPACK_IMPORTED_MODULE_0___default()(".mAdvert").toggleClass("hidden");
         jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divHead").toggleClass("hidden");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".divPage").toggleClass("hidden");
+      });
+    }
+  }, {
+    key: "deleteAdvert",
+    value: function deleteAdvert() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-btnDeleteAdvert', function (event) {
+        if (confirm(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('confirm'))) {
+          var id = this.id;
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()('.mAdvert.' + this.id).remove();
+          jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            method: "get",
+            url: _this.$els.base + "/deleteAdvert",
+            data: {
+              id: id
+            },
+            success: function success(data) {//console.log(data);
+            },
+            error: function error(data) {
+              console.log(data.responseJSON);
+            }
+          });
+        }
+      });
+    }
+  }, {
+    key: "saveModif",
+    value: function saveModif() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-btnSaveModif', function (event) {
+        var advert = {};
+        advert.id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".modalAnnonce")[0].id;
+        advert.name = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-title")[0].value;
+        advert.date_from = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-dateStart")[0].value;
+        advert.date_to = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-dateEnd")[0].value;
+        advert.desc = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-description")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-price').val()) advert.price_one_h = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-price")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-place').val()) advert.place = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-place")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-duration').val()) advert.duration = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-duration")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-job').val()) advert.job = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-job")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-salaire').val()) advert.salaire = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-salaire")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-loge').val()) advert.loge = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-loge")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-nbPers').val()) advert.nbPers = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-nbPers")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-activity').val()) advert.activity = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-activity")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-sexe').val()) advert.sexe = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-sexe")[0].value;
+        if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('#ad-urgent').val()) advert.premium_urgent_week = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#ad-urgent")[0].value;
+        /*
+        var imgs = "";
+        var inpImgs = $('.ad-img');
+        for(var inpImg of inpImgs) {
+            imgs +=inpImg.value + ", ";
+        }
+        advert.img = file;*/
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+          method: "get",
+          url: _this.$els.base + "/saveModif",
+          data: {
+            advert: advert
+          },
+          success: function success(data) {
+            window.location.href = _this.$els.base + "/mes_annonces";
+          },
+          error: function error(data) {
+            console.log(data.responseJSON);
+          }
+        });
       });
     }
   }]);
 
   return Annonce;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/mailbox.js":
+/*!***************************************!*\
+  !*** ./resources/js/pages/mailbox.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Admin; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Admin = /*#__PURE__*/function () {
+  function Admin() {
+    _classCallCheck(this, Admin);
+
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') === "mailbox") {
+      this.initEls();
+      this.initEvents();
+    }
+  }
+
+  _createClass(Admin, [{
+    key: "initEls",
+    value: function initEls() {
+      this.$els = {};
+    }
+  }, {
+    key: "initEvents",
+    value: function initEvents() {
+      this.setActive();
+    }
+  }, {
+    key: "setActive",
+    value: function setActive() {
+      var id_page = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#" + id_page)[0].classList.toggle('selected');
+    }
+  }]);
+
+  return Admin;
 }();
 
 
@@ -42052,35 +42947,49 @@ var Parameters = /*#__PURE__*/function () {
     _classCallCheck(this, Parameters);
 
     this.initEls();
-    this.initEvents();
+
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') == "parameters" || jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') == "Administrateur") {
+      this.initEvents();
+    }
   }
 
   _createClass(Parameters, [{
     key: "initEls",
-    value: function initEls() {}
+    value: function initEls() {
+      this.$els = {
+        base: ""
+      };
+    }
   }, {
     key: "initEvents",
     value: function initEvents() {
       this.addAlerte();
       this.removeAlerte();
       this.getAlertes();
+      this.modifInfosPerso();
+      this.modifInfosA();
+      this.modifPrefNotif();
+      this.setInfos();
+      this.toggleVisibilityPassword();
+      this.deleteAccount();
     }
   }, {
     key: "addAlerte",
     value: function addAlerte() {
+      var _this = this;
+
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.btnAddAlerte', function (event) {
         var alerte = {};
-        alerte.type = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inpType :selected')[0].value;
-        alerte.act = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#activities :selected')[0].innerText;
-        alerte.place = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place :selected')[0].innerText;
+        alerte.type = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#type')[0].value;
+        alerte.act = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#activity')[0].value;
+        alerte.place = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#place')[0].value;
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
           type: "GET",
-          url: "/addAlerte",
+          url: _this.$els.base + "/addAlerte",
           data: {
             alerte: alerte
           },
           success: function success(res) {
-            console.log(res);
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('.divElemAlertes').append(res);
           },
           error: function error(res) {
@@ -42092,17 +43001,20 @@ var Parameters = /*#__PURE__*/function () {
   }, {
     key: "removeAlerte",
     value: function removeAlerte() {
+      var _this = this;
+
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.buttonSup', function (event) {
         this.parentNode.remove();
         var id = this.id;
         jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
           type: "GET",
-          url: "/removeAlerte",
+          url: _this.$els.base + "/removeAlerte",
           data: {
             id: id
           },
-          success: function success(res) {
-            console.log(res);
+          success: function success(res) {},
+          error: function error(res) {
+            console.log(res.responseJSON);
           }
         });
       });
@@ -42114,7 +43026,7 @@ var Parameters = /*#__PURE__*/function () {
 
       jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
         type: "GET",
-        url: "/getAlertes",
+        url: _this.$els.base + "/getAlertes",
         success: function success(alertes) {
           var _iterator = _createForOfIteratorHelper(alertes),
               _step;
@@ -42139,9 +43051,11 @@ var Parameters = /*#__PURE__*/function () {
   }, {
     key: "displayAlerte",
     value: function displayAlerte(alerte) {
+      var _this = this;
+
       jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
         type: "GET",
-        url: "/displayAlerte",
+        url: _this.$els.base + "/displayAlerte",
         data: {
           id: alerte.id
         },
@@ -42150,6 +43064,141 @@ var Parameters = /*#__PURE__*/function () {
         },
         error: function error(res) {
           console.log(res.responseJSON);
+        }
+      });
+    }
+  }, {
+    key: "setInfos",
+    value: function setInfos() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+        type: "GET",
+        url: _this.$els.base + "/getInfos",
+        success: function success(res) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()("#mail")[0].value = res.email; // $("#siret")[0].value = res.siret;
+          // $("#num_licence")[0].value = res.num_licence;
+          // $("#IBAN")[0].value = res.IBAN;
+
+          jquery__WEBPACK_IMPORTED_MODULE_0___default()("#notif_alerte")[0].checked = res.notif_alerte;
+        },
+        error: function error(res) {
+          console.log(res.responseJSON);
+        }
+      });
+    }
+  }, {
+    key: "modifInfosPerso",
+    value: function modifInfosPerso() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-btnModifyInfos', function (event) {
+        var infos = {};
+        infos.oldMdp = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#oldMdp")[0].value;
+        infos.mail = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#mail")[0].value;
+        infos.mdp = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#mdp")[0].value;
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".msgErreurOld")[0].innerHTML = "";
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".msgErreurNew")[0].innerHTML = "";
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+          type: "GET",
+          url: _this.$els.base + "/changeInfosPerso",
+          data: {
+            infos: infos
+          },
+          success: function success(res) {
+            if (res == 0) jquery__WEBPACK_IMPORTED_MODULE_0___default()(".msgErreurOld")[0].innerHTML = "Mot de passe incorrect";else if (res == "c") jquery__WEBPACK_IMPORTED_MODULE_0___default()(".msgErreurNew")[0].innerHTML = "Mot de passe trop court (minimum 6 caractères)";else window.location.href = "/parametres";
+          },
+          error: function error(res) {
+            console.log(res.responseJSON);
+          }
+        });
+      });
+    }
+  }, {
+    key: "modifInfosA",
+    value: function modifInfosA() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-btnModifyInfosA', function (event) {
+        var infos = {};
+        infos.siret = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#siret")[0].value;
+        infos.num_licence = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#num_licence")[0].value;
+        infos.IBAN = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#IBAN")[0].value;
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+          type: "GET",
+          url: _this.$els.base + "/changeInfosA",
+          data: {
+            infos: infos
+          },
+          success: function success(res) {},
+          error: function error(res) {
+            console.log(res.responseJSON);
+          }
+        });
+      });
+    }
+  }, {
+    key: "modifPrefNotif",
+    value: function modifPrefNotif() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('change', '#notif_alerte', function (event) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.switch_alerte')[0].style.pointerEvents = "none";
+        var infos = {};
+        infos.notif_alerte = this.checked;
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+          method: "get",
+          url: _this.$els.base + "/modifPrefNotif",
+          data: {
+            infos: infos
+          },
+          success: function success(data) {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('.switch_alerte')[0].style.pointerEvents = "default";
+            window.location.href = "/parametres";
+          },
+          error: function error(data) {
+            console.log(data.responseJSON);
+          }
+        });
+      });
+    }
+  }, {
+    key: "toggleVisibilityPassword",
+    value: function toggleVisibilityPassword() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-visiPassword', function (event) {
+        var inp = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#mdp")[0];
+
+        if (inp.type === "password") {
+          inp.type = "text";
+        } else {
+          inp.type = "password";
+        }
+
+        this.classList.toggle("fa-eye-slash");
+      });
+    }
+  }, {
+    key: "deleteAccount",
+    value: function deleteAccount() {
+      var _this = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.js-btnDeleteAccount', function (event) {
+        if (confirm(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('confirm'))) {
+          jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+            method: "get",
+            data: {
+              id: null
+            },
+            url: _this.$els.base + "/deleteAccount",
+            success: function success(data) {
+              window.location.href = "/";
+            },
+            error: function error(data) {
+              console.log(data.responseJSON);
+            }
+          });
         }
       });
     }
@@ -42162,16 +43211,63 @@ var Parameters = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/js/pages/profil.js":
-/*!**************************************!*\
-  !*** ./resources/js/pages/profil.js ***!
-  \**************************************/
+/***/ "./resources/js/pages/payment.js":
+/*!***************************************!*\
+  !*** ./resources/js/pages/payment.js ***!
+  \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Profil; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Admin; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Admin = /*#__PURE__*/function () {
+  function Admin() {
+    _classCallCheck(this, Admin);
+
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') === "payment") {
+      this.initEls();
+      this.initEvents();
+    }
+  }
+
+  _createClass(Admin, [{
+    key: "initEls",
+    value: function initEls() {
+      this.$els = {};
+    }
+  }, {
+    key: "initEvents",
+    value: function initEvents() {}
+  }]);
+
+  return Admin;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/profile.js":
+/*!***************************************!*\
+  !*** ./resources/js/pages/profile.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Profile; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var flickity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flickity */ "./node_modules/flickity/js/index.js");
@@ -42185,47 +43281,78 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
-var Profil = /*#__PURE__*/function () {
-  function Profil() {
-    _classCallCheck(this, Profil);
+var Profile = /*#__PURE__*/function () {
+  function Profile() {
+    _classCallCheck(this, Profile);
 
-    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') === "userProfil") {
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').data('content') === "userProfile") {
       this.initEls();
       this.initEvents();
     }
   }
 
-  _createClass(Profil, [{
+  _createClass(Profile, [{
     key: "initEls",
     value: function initEls() {
       this.$els = {
-        flkyProfil: new flickity__WEBPACK_IMPORTED_MODULE_1___default.a('.profil-main-carousel', {
+        flkyProfile: new flickity__WEBPACK_IMPORTED_MODULE_1___default.a('.profile-main-carousel', {
           freeScroll: false,
           contain: true,
           // disable previous & next buttons and dots
           prevNextButtons: false,
           groupCells: 2,
-          cellAlign: 'left'
-        })
+          cellAlign: 'left',
+          pageDots: true
+        }),
+        btn: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-modifyProfile'),
+        back: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-back-profile-updatePanel'),
+        btn_img: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#js-modifyImg'),
+        back_img: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-back-img-updatePanel')
       };
     }
   }, {
     key: "initEvents",
     value: function initEvents() {
       this.bannerParallax();
+      this.getUpdatePanel();
+      this.getUpdatePanel_img();
     }
   }, {
     key: "bannerParallax",
     value: function bannerParallax() {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).on("scroll", function () {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".profil-Banner").css({
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".profile-Banner").css({
           backgroundPositionY: -window.scrollY * 0.07 + 'px'
         });
       });
     }
+  }, {
+    key: "getUpdatePanel",
+    value: function getUpdatePanel() {
+      this.$els.btn.click(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-profile-updatePanel').toggleClass("hidden");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass("stopScrolling");
+      });
+      this.$els.back.click(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-profile-updatePanel').toggleClass("hidden");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass("stopScrolling");
+      });
+    }
+  }, {
+    key: "getUpdatePanel_img",
+    value: function getUpdatePanel_img() {
+      this.$els.btn_img.click(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-img-updatePanel').toggleClass("hidden");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass("stopScrolling");
+      });
+      this.$els.back_img.click(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-img-updatePanel').toggleClass("hidden");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass("stopScrolling");
+      });
+    }
   }]);
 
-  return Profil;
+  return Profile;
 }();
 
 
@@ -42371,8 +43498,8 @@ var RegisterForm = /*#__PURE__*/function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Thomas\Workspace\stage_weGuideYou\weguideyou_repo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Thomas\Workspace\stage_weGuideYou\weguideyou_repo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\gwen9\Documents\Informatique\Web\WeGuideYou\weguideyou_repo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\gwen9\Documents\Informatique\Web\WeGuideYou\weguideyou_repo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

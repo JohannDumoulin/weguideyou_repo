@@ -23,6 +23,8 @@ export default class AdvertisementPage {
             urgent: false,
             cities: "",
             fAff: true,
+            typeAccount: ["PRO", "SOA", "NSOA"],
+            base: "",
         }
     }
 
@@ -39,7 +41,7 @@ export default class AdvertisementPage {
         this.addEventSort();
         this.addEventFilter();
         this.hideMap();
-        this.expandMap();
+        this.checkIfexpandMap();
 
         var c = $('body').data('content') 
         if(c == "advertisement" || c == "advertisementPro" || c == "home" || c == "parameters" || c == "homeIndividual" || c == "create_advertisement")
@@ -67,7 +69,8 @@ export default class AdvertisementPage {
             type = $('title')[0].innerHTML;
         }
 
-        $('.msgNoAd')[0].style.display = "none";
+        if($('.msgNoAd') > 0)
+            $('.msgNoAd')[0].style.display = "none";
 
         // afficher qu'une seule annonce
         var url = window.location.pathname;
@@ -79,11 +82,11 @@ export default class AdvertisementPage {
 
         $.ajax({
             method: "get",
-            url: "/getAdverts",
+            url: _this.$els.base + "/getAdverts",
             data: {type: type, filterUrl : filterUrl},
             success : function(data) {
 
-                if(data.length == 0){
+                if(data.length == 0 && $('.msgNoAd') > 0){
                     $('.msgNoAd')[0].style.display = "block";
                     $(".divPage")[0].innerHTML = ""
                     return 0;
@@ -136,11 +139,17 @@ export default class AdvertisementPage {
         if($('.nbrAdverts').length > 0)
             $('.nbrAdverts')[0].innerHTML = adverts.length
 
+
         // aucune offres
         if(advertsM[page] === undefined){
-            $('.msgNoAd')[0].style.display = "block";
-            $('.js-divLoading')[0].innerHTML = "";
-            $(".divPage")[0].innerHTML = ""
+
+            if($('.msgNoAd').length > 0)
+                $('.msgNoAd')[0].style.display = "block";
+            if($('.js-divLoading').length > 0)
+                $('.js-divLoading')[0].innerHTML = "";
+            if($('.divPage').length > 0)
+                $(".divPage")[0].innerHTML = "";
+
             return 0;
         }
 
@@ -188,7 +197,7 @@ export default class AdvertisementPage {
 
             //Afficher les annonces en avant
             $.ajax({ type: "GET",   
-                url: "/adverts",
+                url: _this.$els.base + "/adverts",
                 data: {adverts : banner},
                 success : function(res) {
                     $('#js-container-premium').append(res)
@@ -204,7 +213,7 @@ export default class AdvertisementPage {
 
         // affiche les annonces
         $.ajax({ type: "GET",   
-            url: "/adverts",
+            url: _this.$els.base + "/adverts",
             data: {adverts : advertsM[page], type : $('body').data('content')},
             success : function(res) {
 
@@ -250,8 +259,10 @@ export default class AdvertisementPage {
 
     initFav() {
 
+        var _this = this;
+
         $.ajax({ type: "GET",   
-            url: "getFavorites",
+            url: _this.$els.base + "/getFavorites",
             success : function(favorites) {
 
                 var btnFavs = $('.buttonFav');
@@ -348,6 +359,10 @@ export default class AdvertisementPage {
                         $("#place")[0].value = this._popup._content;
                         _this.$els.filter_on["place"] = this._popup._content;
                         _this.getAdverts($('title')[0].innerHTML, false);
+
+                        // ferme la map quand elle est en fullscreen
+                        if($('.divM')[0].classList.contains("mapFull") === true)
+                            _this.expandMap()
                     });
 
                 markers.push(m);
@@ -446,9 +461,18 @@ export default class AdvertisementPage {
             var filter_on = _this.$els.filter_on;
 
             if(this.type == "checkbox") {
-                filter_on[this.id] = this.checked;
-                if(this.checked == true) 
-                    delete filter_on[this.id];
+
+                filter_on["prestataire"] = true;
+                let typeAccount = _this.$els.typeAccount;
+
+                if(this.checked == true)
+                    typeAccount.push(this.id)
+                else {
+                    let index = typeAccount.indexOf(this.id);
+                    typeAccount.splice(index, 1);
+            }
+
+            _this.$els.typeAccount = typeAccount;
             } 
             else {
                 filter_on[this.id] = this.value; // add filter
@@ -503,10 +527,11 @@ export default class AdvertisementPage {
                     return value.includes(v[key]);
                 });
             }
-            else if(key == "PAR" || key == "PRO") {
+            else if(key == "prestataire") {
                 adverts = adverts.filter(function(v){
-                    return (v["user_status"] != key)
-                });
+                    value = _this.$els.typeAccount;
+                    return value.includes(v["user_status"]);
+                });    
             }
             else if(key == "activity" || key == "place" || key == "user_language") {
                 adverts = adverts.filter(function(v){
@@ -530,6 +555,18 @@ export default class AdvertisementPage {
                     return (v["salaire"] <= value);
                 });      
             }
+/*
+            else if(key == "PRO" || key == "PAR" || key == "SOA" || key == "NSOA") {
+
+            let typeAccount = ["PRO", "PAR", "SOA", "NSOA"];
+            var index = typeAccount.indexOf(key);
+            typeAccount.splice(index, 1);
+            console.log(typeAccount);
+
+                adverts = adverts.filter(function(v){
+                    return (value == v[key]);
+                });     
+            }*/
             else {
                 adverts = adverts.filter(function(v){
                     return (value == v[key]);
@@ -588,11 +625,13 @@ export default class AdvertisementPage {
 
     getActs() {
 
+        var _this = this;
+
         if($('#activity').length == 1) {
         
             $.ajax({
                 method: "get",
-                url: "/getActs",
+                url: _this.$els.base + "/getActs",
                 success: function (data) {
 
                     for(var item of data){
@@ -615,22 +654,32 @@ export default class AdvertisementPage {
 
         var typingTimer;
         var doneTypingInterval = 1000;
-        var $input = $('#place');
+        var input = $('#place');
 
         //on keyup, start the countdown
-        $input.on('keyup', function (event) {
+        input.on('keyup', function (event) {
             clearTimeout(typingTimer);
             typingTimer = setTimeout(doneTyping, doneTypingInterval);
             $('.searchCity')[0].id = "";
+            
+            if($('#place_lat').length > 0) {
+                $('#place_lat')[0].value = null;
+                $('#place_lng')[0].value = null;
+            }
+
+            $('.msgPlace')[0].style.display = "block";
+
         });
 
         //on keydown, clear the countdown 
-        $input.on('keydown', function () {
+        input.on('keydown', function () {
             clearTimeout(typingTimer);
         });
 
         //user is "finished typing,"
         function doneTyping () {
+
+            var _this = this;
 
             $('.searchCity')[0].id = "hidden";
 
@@ -664,11 +713,14 @@ export default class AdvertisementPage {
 
         $(document).on('click', '.itemSug', function(event) {
 
+            if($('.msgPlace').length > 0)
+                $('.msgPlace')[0].style.display = "none";
+
             $('.suggestions')[0].innerHTML = "";
 
             if($('#place_lat').length > 0) {
-                $('#place_lat')[0].value = this.classList[1]
-                $('#place_lng')[0].value = this.classList[2]
+                $('#place_lat')[0].value = this.classList[1];
+                $('#place_lng')[0].value = this.classList[2];
             }
 
             $('#place')[0].value = this.innerHTML.split(', ')[0];
@@ -725,14 +777,21 @@ export default class AdvertisementPage {
         })
     }
 
-    expandMap() {
+    checkIfexpandMap() {
 
         var _this = this;
 
         $(".expandMap").on("click", function() {
-            $('.divM').removeClass("mapHidden");
-            $('.divM').toggleClass("mapFull");
-            _this.initMapAdverts();
+            _this.expandMap();
         })
+    }
+
+    expandMap() {
+
+        var _this = this;
+
+        $('.divM').removeClass("mapHidden");
+        $('.divM').toggleClass("mapFull");
+        _this.initMapAdverts(); 
     }
 }

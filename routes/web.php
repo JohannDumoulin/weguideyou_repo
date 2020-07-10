@@ -94,7 +94,7 @@ Route::get('/deleteAccount', 'ParametersController@deleteAccount');
 
 /* Favorites */
 Route::get('toggleFavorite', 'FavoritesController@toggleFavorite');
-Route::get('getFavorites', 'FavoritesController@getFavorites');
+Route::get('/getFavorites', 'FavoritesController@getFavorites');
 
 /* Payment */
 Route::get('/payment', function () {

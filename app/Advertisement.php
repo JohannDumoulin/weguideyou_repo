@@ -27,6 +27,7 @@ class Advertisement extends Model
         'nbReport',
         'salaire',
         'job',
+        'sexe',
         'loge',
     	'phone_bool',
     	'premium_in_front_week',

@@ -1,64 +1,124 @@
 body[data-content="create_advertisement"] {
 	section {
-		padding: 100px 0;
+		padding: 50px 0;
 		overflow: hidden;
 
 		h1 {
 			text-align: center;
 		}
 
+		label {
+			font-weight: 600;
+			color: black;
+			display: block;
+			margin-bottom: 5px;
+			font-size: 1.1em;
+		}
+
+		input, textarea, select {
+			width: 50%;
+			border-radius: 5px;
+			border: 1px solid $lightGrey;
+			font-family: "Roboto", Arial, sans-serif;
+			outline: 0;
+			padding: 10px;
+		}
+
+		textarea {
+			height: 100px;
+		}
+
+		select {
+			width: 25%;
+		}
+
+		input[type="submit"] {
+			margin: auto;
+			background-color: white;
+			border: 2px solid $deepBlue;
+			border-radius: 20px;
+			color: $deepBlue;
+			padding: 10px 15px;
+			font-weight: 900;
+			outline: none;
+			cursor: pointer;
+			width: min-content;
+		}
+
+		.cantClick {
+			pointer-events: none;
+			border: 2px solid lightgrey !important;
+			color: lightgrey !important;
+		}
+
 		form {
-			margin-top: 100px;
-			width: 300vw;
+			margin-top: 50px;
+			width: 100vw;
 			display: flex;
+			flex-direction: column;
+
+			.divPlace {
+				position: relative;
+				width: 100%;
+
+				.msgPlace {
+					display: none;
+				}
+
+				#place_lat, #place_lng, .msgFiles {
+					display: none;
+				}
+			}
+
+			.divPhone {
+				display: flex;
+
+				input {
+					width: auto;
+					margin-right: 10px;
+				}
+			}
+
+			.divDispo {
+
+				.content {
+					display: flex;
+					margin-top: 20px;
+
+					input {
+						width: 150px;
+						margin-right: 25px;
+					}
+				}
+			}
+
+			.divPlace {
+				width: 50%;
+
+				input {
+					width: 100%;
+				}
+
+				.loader {
+					right: -10px;
+					top: 60px;
+				}
+
+				.suggestions {
+					margin-top: 0;
+				}
+			}
 
 			.form_container {
 				width: 100%;
-				padding: 0 200px;
+				padding: 0 100px;
 				overflow: hidden;
 
-				.form_content {
-					display: flex;
-					justify-content: space-between;
-				}
 
 				.form-group {
-					display: flex;
-					align-items: center;
-					flex-wrap: wrap;
-					// justify-content: space-between;
+					display: none;
+					padding-top: 30px;
 
-					label {
-						font-weight: 400;
-						color: black;
-						margin-right: 25px;
-					}
-
-					input, textarea, select {
-						border-radius: 5px;
-						border: 1px solid $lightGrey;
-						font-family: "Roboto", Arial, sans-serif;
-						outline: 0;
-						width: auto;
-						height: auto;
-					}
-
-					input {
-						&[type="text"] {
-							font-size: 1.5em;
-							width: 50%;
-						}
-
-						&[type="date"] {
-							cursor: pointer;
-						}
-					}
-
-					textarea {
-						resize: none;
-						padding: 10px 15px;
-						width: 75%;
-					}
 
 					select {
 						cursor: pointer;
@@ -66,7 +126,7 @@ body[data-content="create_advertisement"] {
 
 					#price_container {
 						.price_content {
-							display: flex;
+							/*display: flex;*/
 						}
 					}
 				}

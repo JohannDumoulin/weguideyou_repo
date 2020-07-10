@@ -15,7 +15,47 @@ export default class CreateAdvertisementPage {
     }
 
     initEvents(){
-        this.getCreateAdvertisementPage();
+
+        if($('body').data('content') == "create_advertisement") {
+            this.getCreateAdvertisementPage();
+            this.changeAdvertType();
+            this.setMaxPictures();
+        }
+
+    }
+
+    changeAdvertType() {
+        var _this = this;
+
+        $('.inpType').change(function() {
+            _this.toggleVisibilityInp(this.value)
+        })
+    }
+
+    toggleVisibilityInp(type) {
+
+        var divInps = $('.form-group');
+        let inps = []
+
+        for(let divInp of divInps) {
+            if(divInp.classList.contains(type)) {
+                divInp.style.display = "block";
+                inps = divInp.querySelectorAll('input, select');
+                toggleRequired(inps, true)
+            }
+            else {
+                divInp.style.display = "none";
+                inps = divInp.querySelectorAll('input, select');
+                toggleRequired(inps, false)
+            }
+        }
+
+        function toggleRequired(inps, value) {
+            for(let inp of inps) {
+                if(inp.classList.contains("required"))
+                    inp.required = value;
+            }
+        }
     }
 
     getCreateAdvertisementPage(){
@@ -49,5 +89,18 @@ export default class CreateAdvertisementPage {
             	}
             }
         });
-    }   
+    }
+
+    setMaxPictures() {
+        $("input[type='file']").change(function(){
+
+            if(this.files.length > 5) {
+                $('.msgFiles')[0].style.display = "block";
+                $('#submit')[0].classList = 'cantClick';    
+            } else {
+                $('#submit')[0].classList = '';
+                $('.msgFiles')[0].style.display = "none";
+            }
+        });   
+    }
 }

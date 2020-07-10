@@ -25,7 +25,7 @@
             <a href="#notif">@lang('Notifications')</a>
             <a href="#alerte">@lang('Alertes')</a>
             <!-- <a href="#payement">@lang('Méthodes de paiement')</a> -->
-            <a href="#infos">@lang('Infos')</a>
+            <!-- <a href="#infos">@lang('Infos')</a> -->
             <a href="#sup">@lang('Supprimer mon compte')</a>
         </div>
 
@@ -42,7 +42,7 @@
                         <p class="msgErreurOld"></p>
                          <div>
                             <label for="">@lang('Adresse E-mail')</label>
-                            <input type="text" name="" id="mail" placeholder="Adresse E-mail">
+                            <input type="text" name="" id="mail" placeholder="Adresse E-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                         </div>
                         <div class="">
                             <label for="">@lang('Nouveau Mot de passe')</label>
@@ -179,7 +179,7 @@
                 </div>
             </section>
         -->
-
+<!-- 
             <section class="payement" id="infos">
                 <div class="wrap">
                     
@@ -210,11 +210,11 @@
 
                 </div>
             </section>
+-->
 
             <section class="sup" id="sup">
                 <div class="wrap">
-                    
-                    <button class="js-btnDeleteAccount">@lang('Supprimer mon compte')</button>
+                    <button class="js-btnDeleteAccount" data-confirm="{{ trans('default.conf_delete_compte') }}">@lang('Supprimer mon compte')</button>
 
                 </div>  
             </section>

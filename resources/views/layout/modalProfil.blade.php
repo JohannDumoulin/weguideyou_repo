@@ -25,9 +25,9 @@
                         <a href="{{route('admin.index')}}">@lang('Administration')</a>
                     @endif
                     <a href="{{route('profile.index')}}">@lang('Profil')</a>
-                    <a href="/messagerie">@lang('Messagerie')</a>
-                    @if(Auth::user()->admin!==1)
-                        <a href="/mes_annonces">@lang('Mes Annonces')</a>
+                    <a href="{{ url('/messagerie') }}">@lang('Messagerie')</a>
+                    @if(Auth::user()->status != "PAR")
+                        <a href="{{ url('/mes_annonces') }}">@lang('Mes Annonces')</a>
                     <!--
                         <hr>
                         <a href="#" id="premium">Premium</a>
@@ -38,7 +38,7 @@
                     -->
                     @endif
                     <hr>
-                    <a href="/parametres" id="parametres">@lang('Paramètres')</a>
+                    <a href="{{ url('/parametres') }}" id="parametres">@lang('Paramètres')</a>
                     <hr>
                 </div>
                 <div class="logout">

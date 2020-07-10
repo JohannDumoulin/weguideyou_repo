@@ -118,7 +118,7 @@ class NewProfessionalAccount extends Form
             ->add('licence', 'text',[
                 'label' => Lang::get('Numéro de carte pro'),
                 'rules' => [
-                    'required|numeric|digits:14'
+                    'required'
                 ]
             ])
             ->add('licenceDate', 'date',[

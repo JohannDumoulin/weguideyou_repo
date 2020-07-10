@@ -4,13 +4,15 @@ export default class Parameters {
     constructor() {
         this.initEls();
 
-        if ($('body').data('content') == "parameters"){
+        if ($('body').data('content') == "parameters" || $('body').data('content') == "Administrateur"){
             this.initEvents();
         }
     }
 
     initEls(){
-
+        this.$els ={
+            base: "",
+        }
     }
 
     initEvents(){
@@ -27,6 +29,8 @@ export default class Parameters {
 
     addAlerte() {
 
+        var _this = this;
+
     	$(document).on('click', '.btnAddAlerte', function(event) {
 
             var alerte = {};
@@ -36,7 +40,7 @@ export default class Parameters {
             alerte.place = $('#place')[0].value;
 
             $.ajax({ type: "GET",   
-                url: "/addAlerte",
+                url: _this.$els.base + "/addAlerte",
                 data: {alerte: alerte},
                 success : function(res) {
                     $('.divElemAlertes').append(res);
@@ -50,13 +54,15 @@ export default class Parameters {
 
     removeAlerte() {
 
+        var _this = this;
+
         $(document).on('click', '.buttonSup', function(event) {
             this.parentNode.remove();
 
             var id = this.id
 
             $.ajax({ type: "GET",   
-                url: "/removeAlerte",
+                url: _this.$els.base + "/removeAlerte",
                 data: {id: id},
                 success : function(res) {
 
@@ -73,7 +79,7 @@ export default class Parameters {
         var _this = this;
 
         $.ajax({ type: "GET",   
-            url: "/getAlertes",
+            url: _this.$els.base + "/getAlertes",
             success : function(alertes) {
                 for(var alerte of alertes) {
                     _this.displayAlerte(alerte)
@@ -87,8 +93,10 @@ export default class Parameters {
 
     displayAlerte(alerte) {
 
+        var _this = this;
+
         $.ajax({ type: "GET",   
-            url: "/displayAlerte",
+            url: _this.$els.base + "/displayAlerte",
             data: {id: alerte.id},
             success : function(res) {
                 $('.divElemAlertes').append(res);
@@ -101,13 +109,15 @@ export default class Parameters {
 
     setInfos() {
 
+        var _this = this;
+
         $.ajax({ type: "GET",   
-            url: "/getInfos",
+            url: _this.$els.base + "/getInfos",
             success : function(res) {
                 $("#mail")[0].value = res.email;
-                $("#siret")[0].value = res.siret;
-                $("#num_licence")[0].value = res.num_licence;
-                $("#IBAN")[0].value = res.IBAN;
+                // $("#siret")[0].value = res.siret;
+                // $("#num_licence")[0].value = res.num_licence;
+                // $("#IBAN")[0].value = res.IBAN;
                 $("#notif_alerte")[0].checked = res.notif_alerte;
             },
             error : function(res) {
@@ -118,6 +128,9 @@ export default class Parameters {
     }
 
     modifInfosPerso() {
+
+        var _this = this;
+
         $(document).on('click', '.js-btnModifyInfos', function(event) {
             
             let infos = {}
@@ -129,7 +142,7 @@ export default class Parameters {
             $(".msgErreurNew")[0].innerHTML = "";
 
             $.ajax({ type: "GET",   
-                url: "/changeInfosPerso",
+                url: _this.$els.base + "/changeInfosPerso",
                 data: {infos: infos},
                 success : function(res) {
 
@@ -149,6 +162,9 @@ export default class Parameters {
     }
 
     modifInfosA() {
+
+        var _this = this;
+
         $(document).on('click', '.js-btnModifyInfosA', function(event) {
             
             let infos = {}
@@ -157,7 +173,7 @@ export default class Parameters {
             infos.IBAN = $("#IBAN")[0].value;
 
             $.ajax({ type: "GET",   
-                url: "/changeInfosA",
+                url: _this.$els.base + "/changeInfosA",
                 data: {infos: infos},
                 success : function(res) {
 
@@ -172,6 +188,8 @@ export default class Parameters {
 
     modifPrefNotif() {
 
+        var _this = this;
+
         $(document).on('change', '#notif_alerte', function(event) {
             $('.switch_alerte')[0].style.pointerEvents = "none";
 
@@ -180,7 +198,7 @@ export default class Parameters {
 
             $.ajax({
                 method: "get",
-                url: "/modifPrefNotif",
+                url: _this.$els.base + "/modifPrefNotif",
                 data: {infos : infos},
                 success: function (data) {
                     $('.switch_alerte')[0].style.pointerEvents = "default";
@@ -194,6 +212,9 @@ export default class Parameters {
     }
 
     toggleVisibilityPassword() {
+
+        var _this = this;
+
         $(document).on('click', '.js-visiPassword', function(event) {
 
             var inp = $("#mdp")[0];
@@ -209,15 +230,16 @@ export default class Parameters {
     }
 
     deleteAccount() {
+
+        var _this = this;
+
         $(document).on('click', '.js-btnDeleteAccount', function(event) {
 
-            if ( confirm( `
-Voulez vous vraiment supprimer votre compte ? \n
-Votre compte sera définitivement supprimer ainsi que toutes les données lui étant liées (annonces, favoris, commentaires...).\n` ) ) {
-
+            if(confirm ($(this).data('confirm'))) {
                 $.ajax({
                     method: "get",
-                    url: "/deleteAccount",
+                    data: {id: null},
+                    url: _this.$els.base + "/deleteAccount",
                     success: function (data) {
                        window.location.href = "/";
                     },

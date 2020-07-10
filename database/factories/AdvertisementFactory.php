@@ -39,13 +39,16 @@ $factory->define(Advertisement::class, function (Faker $faker) {
     $job = ["Guide", "Moniteur"];
     $job = $job[array_rand($job)];
 
-    $status = ["PAR", "PRO"];
+    $status = ["SOA", "NSOA", "PRO"];
     $status = $status[array_rand($status)];
+
+    $sexe = ["f", "h", "o"];
+    $sexe = $sexe[array_rand($sexe)];
 
     $user_language = DB::table('user_languages')
                         ->join('languages', 'user_languages.language_id', '=', 'languages.language_id')
                         ->select('languages.language_name')
-                        ->where("user_languages.user_id", "=", "1")
+                        ->where("user_languages.user_id", "=", "2")
                         ->get();
 
     $l = "";
@@ -54,7 +57,7 @@ $factory->define(Advertisement::class, function (Faker $faker) {
     }
 
     return [
-        'user_id' => 1,
+        'user_id' => 2,
         'user_status' => $status,
         'user_language' => $l,
         'type' => $type,
@@ -74,10 +77,11 @@ $factory->define(Advertisement::class, function (Faker $faker) {
         'duration' => $duration,
         'nbReport' => 0,
         'job' => $job,
+        'sexe' => $sexe,
         'salaire' => random_int (0, 5000),
         'img' => "https://www.glisshop.com/Imagestorage/images/0/0/5dd4feb744785_5cadff0d8faa9_ski_alpin_piste.jpg, https://www.sancy.com/wp-content/uploads/2017/07/w_14328_ski_montdore.jpg",
         'premium_urgent_week' => random_int (0, 1), 
-        'premium_banner_week' => random_int (0, 1), 
+        'premium_banner_week' => 0, 
         'loge' => random_int (0, 1), 
         'phone_bool' => random_int (0, 1), 
         'created_at' => \Carbon\Carbon::now()->toDateTimeString(),

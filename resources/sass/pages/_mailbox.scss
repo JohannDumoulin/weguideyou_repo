@@ -1,4 +1,10 @@
 body[data-content="mailbox"] {
+
+	.selected {
+		background-color: $deepBlue;
+		color: white;
+	}
+
 	#mailbox {
 		padding-bottom: 100px;
 
@@ -20,6 +26,7 @@ body[data-content="mailbox"] {
 			justify-content: space-between;
 
 			#all_mails {
+				padding: 0 !important;
 				box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.25);
 				border-radius: 9px;
 				padding: 20px 15px;
@@ -28,6 +35,7 @@ body[data-content="mailbox"] {
 				max-height: 660px;
 
 				.mail_content {
+					width: 100%;
 					display: flex;
 					margin-bottom: 40px;
 					cursor: pointer;
@@ -51,7 +59,14 @@ body[data-content="mailbox"] {
 					}
 
 					.advertisement_content {
-						margin-left: 20px;
+						width: 100%;
+						padding-bottom: 20px;
+						padding-left: 20px;
+						margin-top: 20px;
+						margin-bottom: 0;
+						border-radius: 0;
+						border-bottom: 1px solid;
+						box-shadow: none;
 						display: flex;
 						flex-direction: column;
 
@@ -145,6 +160,7 @@ body[data-content="mailbox"] {
 						padding: 15px 20px;
 						line-height: 20px;
 						background-color: $lightGrey;
+						align-self: flex-start;
 
 						&.right {
 							align-self: flex-end;
@@ -189,9 +205,34 @@ body[data-content="mailbox"] {
 						color: white;
 						margin-left: 30px;
 						outline: 0;
+						cursor: pointer;
 					}
 				}
 			}
 		}
 	}
+}
+
+
+body[data-content="new_message"] {
+
+	p {
+		font-weight: bold;
+		margin-top: 5px;
+	}
+
+	form {
+		margin-top: 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	textarea {
+		margin: 50px;
+		height: 200px;
+		width: 60%;
+		padding: 10px;
+	}
+
 }

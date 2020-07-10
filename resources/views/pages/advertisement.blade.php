@@ -78,8 +78,8 @@
 					<p>@lang('Choix du prestataire :')</p>
 					<input class="js-filter" type="checkbox" id="PRO" name="PRO" checked>
 					<label for="organization">@lang('Professionnels')</label>
-					<input class="js-filter" type="checkbox" id="PAR" name="PAR" checked>
-					<label for="freelance">@lang('Particuliers')</label>
+					<input class="js-filter" type="checkbox" id="SOA" name="SOA" checked>
+					<label for="freelance">@lang('Organisation Sportive')</label>
 				</div>
 				<div class="first_filter_more_content">
 					<p>@lang('Nombre de personne(s) :')</p>
@@ -113,19 +113,21 @@
 			</div>
 
 			<div class="effaceFilters">
-				<a href="/annonces?type=Cours">@lang('Effacer tous les filtres')</a>
+				<a href="{{ url('/annonces?type=Cours') }}">@lang('Effacer tous les filtres')</a>
 			</div>
 			
 <!---------------------- Second Filters -------------------->
 			<div id="second_filter">
 				<div class="second_filter_child left">
 					<p><span class="nbrAdverts"></span> @lang('Annonce(s) :')</p>
+<!-- 
 					<div class="advertisement all">
 
-						<input type="radio" name="t" checked class="js-inpTout">
+ 						<input type="radio" name="t" checked class="js-inpTout">
 						<p>@lang('Toutes les annonces')</p>
 
 					</div>
+
 					<div class="advertisement urgent">
 
 						<input type="radio" name="t" class="js-inpUrgent">
@@ -144,6 +146,7 @@
 
 						<p>@lang('Urgentes')</p>
 					</div>
+ -->
 				</div>
 				<div class="second_filter_child right">					
 					<p>@lang('Trier par :')</p>
@@ -179,7 +182,7 @@
 
 					@if(Request::is('a/*'))
 					<div class="divAllAdvert">
-						<a href="/annonces?type=Cours">@lang('Voir toutes les annonces')</a>
+						<a href="{{ url('/annonces?type=Cours') }}">@lang('Voir toutes les annonces')</a>
 					</div>
 					@endif
 
@@ -191,7 +194,7 @@
 				<!-- Annonce en avant -->
 				<div class="divRight">
 					<div class="titre">
-						<span>@lang('Mise en avant')</span>
+						<span></span>
 					</div>
 					<div class="advertisement_container premium" id="js-container-premium"></div>
 				</div>

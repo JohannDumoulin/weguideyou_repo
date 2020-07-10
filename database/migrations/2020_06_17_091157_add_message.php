@@ -24,8 +24,6 @@ class AddMessage extends Migration
             $table->text('content');
             $table->timestamp('created_at')->useCurrent();
             $table->dateTime('read_at')->nullable();
-
-
         });
     }
 

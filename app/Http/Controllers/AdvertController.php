@@ -9,7 +9,10 @@ use View;
 use Illuminate\Support\Facades\Auth;
 use App\Advertisement;
 use App\User;
+use App\Language;
+use App\UserLanguage;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Lang;
 
 
 class AdvertController extends Controller
@@ -90,7 +93,7 @@ class AdvertController extends Controller
 	}
 
 	public function displayDetailAdvert($id) {
-        $advert = DB::select('select * from Advertisement where id ='.$id);
+        $advert = DB::select('select * from advertisement where id ='.$id);
         $advert = $advert[0];
         $user = DB::select('select * from users where id ='.$advert->user_id);
         $user = $user[0];
@@ -107,10 +110,19 @@ class AdvertController extends Controller
 		: (date("Y") - $birthDate[2]));
 		$user->age = $age;
 
+        $activeLang = UserLanguage::where('user_id', $user->id)->get();
+        if ($activeLang){
+            $userActiveLangs = [];
+            foreach ($activeLang as $key=>$values){
+                $userActiveLangs[$key] = Language::where('language_id', $values->language_id)->first();
+                $userActiveLangs[$key] = $userActiveLangs[$key]->language_name;
+            }
+        }
+
 		// get images
 		$advert->img = json_decode($advert->img);
 
-        return view('layout/annonce', ['advert' => $advert, 'user' => $user]);
+        return view('layout/annonce', ['advert' => $advert, 'user' => $user, 'userActiveLangs'=>$userActiveLangs ?? null]);
     }
 
     public function displayAdverts(Request $request) {
@@ -133,7 +145,7 @@ class AdvertController extends Controller
     }
 
 	public function displayModifyAdvert($id) {
-        $advert = DB::select('select * from Advertisement where id ='.$id);
+        $advert = DB::select('select * from advertisement where id ='.$id);
         $advert = $advert[0];
 
         // convertion format date
@@ -155,7 +167,7 @@ class AdvertController extends Controller
 			          ->where('id', $advert["id"])
 			          ->update($advert);
 
-    	redirect('/')->with(['message' => 'L\'annonce a bien été modifiée !']);
+    	redirect('/')->with(['message' => Lang::get('L\'annonce a bien été modifiée !')]);
 
     	return 1;
     }
@@ -177,7 +189,7 @@ class AdvertController extends Controller
 
 	public function alerte($id) {
 
-    	$advert = DB::select('select * from Advertisement where id ='.$id)[0];
+    	$advert = DB::select('select * from advertisement where id ='.$id)[0];
 
 		$alertes = DB::table('alerte')
 			->join('users', 'alerte.user_id', '=', 'users.id')
@@ -203,6 +215,8 @@ class AdvertController extends Controller
 		DB::table('advertisement')
 			->where('id', $request->id)
 			->delete();
+
+		redirect('/')->with(['message' => Lang::get('L\'annonce a bien été modifiée !')]);
 
 		return $request->id;
 	}

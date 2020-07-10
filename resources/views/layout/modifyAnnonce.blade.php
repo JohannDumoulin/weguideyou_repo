@@ -29,7 +29,13 @@
 	                <input id="ad-title" value="{{ $advert->name }}"></input>
 	            </div>   
 
-	            <input id="ad-price" value="{{ $advert->price_one_h }}"></input>€ / h
+	            @if($advert->price_one_h != null)
+	            	<input id="ad-price" value="{{ $advert->price_one_h }}"></input>€
+	            @endif
+
+	            @if($advert->salaire != null)
+	            	<input id="ad-price" value="{{ $advert->salaire }}"></input>€
+	            @endif
 
 	            <div class="item">
 					<i class="fa fa-map-marker"></i>
@@ -67,7 +73,7 @@
 	    <section class="detail">
 	        <div class="wrap">              
 
-	            @if($advert->activity != false)
+	            @if($advert->activity != null)
 		        <div>
 	                <i class="fas fa-running"></i>
 	                <label>@lang('Activité')</label>
@@ -75,24 +81,27 @@
 	            </div> 
 	            @endif 
 	            
-	            @if($advert->nbPers != false)
+	            @if($advert->nbPers != null)
 	            <div>
 	                <i class="fa fa-users"></i>
 	                <label>@lang('Nombre de personne(s)')</label>
 	                <select id="ad-nbPers">
 	                	<option value="{{ $advert->nbPers }}" selected disabled hidden>{{ $advert->nbPers }}</option>
+						<option value="-">-</option>
 						<option value="Collectif">@lang('Collectif')</option>
 						<option value="Individuel">@lang('Individuel')</option>
+						<option value="Individuel ou Collectif">@lang('Individuel ou Collectif')</option>
 	                </select>
 	            </div>  
 	            @endif              
 
-				@if($advert->duration != false)
+				@if($advert->duration != null)
 	            <div>
 					<i class="fa fa-calendar"></i>
 	                <label>@lang('Durée')</label>
 	                <select id="ad-duration">
 	                	<option value="{{ $advert->duration }}" selected disabled hidden>{{ $advert->duration }}</option>
+						<option value="-">-</option>
 						<option value="1h">1h</option>
 						<option value="2h">2h</option>
 						<option value="4h">4h</option>
@@ -102,7 +111,7 @@
 	            </div>
 	            @endif 
 
-	            @if($advert->loge != false)
+	            @if($advert->loge != null)
 		        <div>
 	                <i class="fas fa-house-user"></i>
 	                <label>@lang('Poste logé')</label>
@@ -112,13 +121,14 @@
 		                @else
 							<option value="{{ $advert->loge }}" selected disabled hidden>@lang('Non')</option>
 						@endif
+						<option value="-">-</option>
 	                	<option value="1">@lang('Oui')</option>
 	                	<option value="0">@lang('Non')</option>
 	                </select>
 	            </div> 
 	            @endif 
 
-	            @if($advert->salaire != false)
+	            @if($advert->salaire != null)
 	            <div>
 	                <i class="far fa-money-bill-alt"></i>
 	                <label>@lang('Salaire')</label>
@@ -126,11 +136,45 @@
 	            </div>  
 	            @endif 
 
-	            @if($advert->job != false)
+	            @if($advert->job != null)
 	            <div>
 	                <i class="fas fa-running"></i>
 	                <label>@lang('Profession')</label>
 	                <input id="ad-job" value={{ $advert->job }}></input>
+	            </div> 
+	            @endif
+
+	            @if($advert->sexe == 'f'|| $advert->sexe == 'h')
+	            <div>
+	                <i class="fas fa-user"></i>
+	                <label>@lang('Sexe')</label>
+	                <select id="ad-sexe">
+	    		     	@if($advert->sexe == 'f')
+		                	<option value="{{ $advert->sexe }}" selected disabled hidden>@lang('Femme')</option>
+		                @else
+							<option value="{{ $advert->sexe }}" selected disabled hidden>@lang('Homme')</option>
+						@endif
+	                	<option value="">-</option>
+	                	<option value="f">@lang('Femme')</option>
+	                	<option value="h">@lang('Homme')</option>
+	                </select>
+	            </div> 
+	            @endif
+
+	            @if($advert->premium_urgent_week != null)
+	            <div>
+	                <i class="fas fa-user"></i>
+	                <label>@lang('Urgent')</label>
+	                <select id="ad-urgent">
+	    		     	@if($advert->premium_urgent_week == 1)
+		                	<option value="{{ $advert->premium_urgent_week }}" selected disabled hidden>@lang('Oui')</option>
+		                @else
+							<option value="{{ $advert->premium_urgent_week }}" selected disabled hidden>@lang('Non')</option>
+						@endif
+	                	<option value="-">-</option>
+	                	<option value="1">@lang('Oui')</option>
+	                	<option value="0">@lang('Non')</option>
+	                </select>
 	            </div> 
 	            @endif
 

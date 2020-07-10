@@ -1,1 +1,1 @@
-<a class="buttonLink" id="{{ $newId ?? '' }}" href="{{ $link }}"><span>{{ $text ?? '' }}</span></a>
+<a class="buttonLink" id="{{ $newId ?? '' }}" href="{{ url($link) }}"><span>{{ $text ?? '' }}</span></a>

@@ -13,6 +13,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Lang;
 
 class NotificationController extends Controller
 {
@@ -43,7 +44,7 @@ class NotificationController extends Controller
 
         Notification::route('mail', 'noreply.wgy@gmail.com')->notify(new Report($content, $motif, $id_advert));
 
-        return redirect("/annonces?type=Cours")->with(['message' => 'L\'annonce a bien été signalée !']);
+        return redirect("/annonces?type=Cours")->with(['message' => Lang::get('L\'annonce a bien été signalée !')]);
     }
 
     public function alerte($users, $alertes, $advert_id) {

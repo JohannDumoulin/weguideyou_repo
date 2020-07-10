@@ -8,7 +8,7 @@ export default class Annonce{
 
     initEls(){
         this.$els ={
-
+            base: "",
         }
     }
 
@@ -18,6 +18,8 @@ export default class Annonce{
     }
 
     toggleFavorite() {
+
+        var _this = this;
 
         $(document).on("click", ".buttonFav", function(event) {
 
@@ -30,7 +32,7 @@ export default class Annonce{
 
             $.ajax({
                 method: "get",
-                url: "/toggleFavorite",
+                url: _this.$els.base + "/toggleFavorite",
                 data: {type: value, id: id},
                 success: function (data) {
                     //console.log(data);
@@ -43,9 +45,12 @@ export default class Annonce{
     }
 
     getFavorites() {
+
+        var _this = this;
+
         $.ajax({
             method: "get",
-            url: "/getFavorites",
+            url: _this.$els.base + "/getFavorites",
             success: function (data) {
                 //console.log(data);
             },

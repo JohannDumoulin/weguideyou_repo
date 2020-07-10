@@ -175,9 +175,11 @@
             </div>
         </div>
         <div class="profile-Banner">
+            <!--  
             <div>
                 @include('components.buttonLink', ['link' => '#'], ['text' => Lang::get('Modifier')])
             </div>
+            -->
         </div>
         <div class="wrap">
             <div class="mainContainer">
@@ -269,14 +271,21 @@
                                             <h3> {{ $advert->name }}</h3>
                                             <div class="info_content">
                                                 <div class="more">
-                                                    <p> {{ $advert->price_one_h }} €</p>
+                                                    @if($advert->price_one_h != null)
+                                                        <p> {{ $advert->price_one_h }} €</p>
+                                                    @elseif($advert->salaire != null)
+                                                        <p> {{ $advert->salaire }} €</p>
+                                                    @endif
                                                     <div class="seller_infos">
                                                         <p>{{ $advert->user_name }}</p>
                                                     </div>
-                                                    <p class="desc">{{ $advert->desc }}</p>
                                                 </div>
+                                                <p class="desc">{{ $advert->desc }}</p>
                                             </div>
+                                        </div>
+
                                             <div class="js-toggleAnnonce" id=/annonce/{{ $advert->id }}>@lang('Ouvrir')</div>
+                                        
 
                                             @include('components.buttonFav', ['id' => $advert->id ])
 

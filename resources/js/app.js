@@ -15,6 +15,7 @@ import Parameters from "./pages/parameters";
 import mAdvert from "./pages/mAdvert";
 import CreateAdvertisementPage from './pages/create_advertisement.js'
 import Payment from './pages/payment.js'
+import Mailbox from './pages/mailbox.js'
 /*Components*/
 
 class App {
@@ -43,6 +44,7 @@ class App {
         new mAdvert();
         new CreateAdvertisementPage;
         new Payment();
+        new Mailbox();
 
         //admin
         new Admin;
